@@ -1,0 +1,103 @@
+{
+    "meta":  {
+                 "title":  "title",
+                 "delimiter":  "|",
+                 "inp":  {
+                             "Scalars":  [
+                                             "Filename",
+                                             "Delimiter",
+                                             "Indent"
+                                         ],
+                             "Write-Debug":  [
+                                                 "Message",
+                                                 "New Y/N",
+                                                 "Filename"
+                                             ],
+                             "Get-ObjLisFromCsv":  [
+                                                       "Line"
+                                                   ],
+                             "Get-Heading":  [
+                                                 "Title"
+                                             ],
+                             "Get-ColHeaders":  [
+                                                    "Value",
+                                                    "Length"
+                                                ],
+                             "Get-2LisAsLine":  [
+                                                    "Value",
+                                                    "Length"
+                                                ],
+                             "Get-StrLisFromObjLis":  [
+                                                          "Line"
+                                                      ]
+                         },
+                 "out":  {
+                             "Write-Debug":  [
+                                                 "Line"
+                                             ],
+                             "Get-ObjLisFromCsv":  [
+                                                       "Line"
+                                                   ],
+                             "Get-Heading":  [
+                                                 "Line"
+                                             ],
+                             "Get-ColHeaders":  [
+                                                    "Line"
+                                                ],
+                             "Get-2LisAsLine":  [
+                                                    "Line"
+                                                ],
+                             "Get-StrLisFromObjLis":  [
+                                                          "Line"
+                                                      ]
+                         }
+             },
+    "scenarios":  {
+                      "scenario 1":  {
+                                         "active_yn":  "Y",
+                                         "inp":  {
+                                                     "Scalars":  [
+                                                                     "||"
+                                                                 ],
+                                                     "Write-Debug":  [
+                                                                         "||"
+                                                                     ],
+                                                     "Get-ObjLisFromCsv":  [
+                                                                               ""
+                                                                           ],
+                                                     "Get-Heading":  [
+                                                                         ""
+                                                                     ],
+                                                     "Get-ColHeaders":  [
+                                                                            "|"
+                                                                        ],
+                                                     "Get-2LisAsLine":  [
+                                                                            "|"
+                                                                        ],
+                                                     "Get-StrLisFromObjLis":  [
+                                                                                  ""
+                                                                              ]
+                                                 },
+                                         "out":  {
+                                                     "Write-Debug":  [
+                                                                         ""
+                                                                     ],
+                                                     "Get-ObjLisFromCsv":  [
+                                                                               ""
+                                                                           ],
+                                                     "Get-Heading":  [
+                                                                         ""
+                                                                     ],
+                                                     "Get-ColHeaders":  [
+                                                                            ""
+                                                                        ],
+                                                     "Get-2LisAsLine":  [
+                                                                            ""
+                                                                        ],
+                                                     "Get-StrLisFromObjLis":  [
+                                                                                  ""
+                                                                              ]
+                                                 }
+                                     }
+                  }
+}

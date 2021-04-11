@@ -1,0 +1,1389 @@
+Unit Test Report: Get-UT_TemplateObject
+=======================================
+
+      #    Scenario                              Fails (of 4)  Status 
+      ---  ------------------------------------  ------------  -------
+      1    Base case, defaulting                 0             SUCCESS
+      2    Base case, but non-default delimiter  0             SUCCESS
+      3    No input group                        0             SUCCESS
+      4    No output group                       0             SUCCESS
+      5    Many input groups - 20                0             SUCCESS
+      6    Many output groups - 20               0             SUCCESS
+      7    Many input fields - 100               0             SUCCESS
+      8    Many output fields - 100              0             SUCCESS
+      9    Large group names - 100ch             0             SUCCESS
+      10   Large field names - 100ch             0             SUCCESS
+
+Test scenarios: 0 failed of 10: SUCCESS
+=======================================
+
+SCENARIO 1: Base case, defaulting {
+===================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1  |         
+            2  Input Group 2            
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+            2  Output Group 2  |         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 2: Base case, but non-default delimiter {
+==================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Delimiter
+            -  ---------
+            1  :        
+
+      }
+      =
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1  :         
+            2  Input Group 2            
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+            2  Output Group 2  :         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 3: No input group {
+============================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group: Empty
+      ===========================
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group: Empty as expected: SUCCESS
+      =========================================================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 4: No output group {
+=============================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name      
+            -  -------------  ----------------
+            1  Input Group 1  Output Field 1-1
+
+      }
+      =
+
+      GROUP 3: Output Group: Empty
+      ============================
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name      
+            -  -------------  ----------------
+            1  Input Group 1  Output Field 1-1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group: Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1            
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group: Empty as expected: SUCCESS
+      ==========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 5: Many input groups - 20 {
+====================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #   Group Name      Field Name
+            --  --------------  ----------
+            1   Input Group 1   Field 1   
+            2   Input Group 1   Field 2   
+            3   Input Group 2   Field 1   
+            4   Input Group 2   Field 2   
+            5   Input Group 3   Field 1   
+            6   Input Group 3   Field 2   
+            7   Input Group 4   Field 1   
+            8   Input Group 4   Field 2   
+            9   Input Group 5   Field 1   
+            10  Input Group 5   Field 2   
+            11  Input Group 6   Field 1   
+            12  Input Group 6   Field 2   
+            13  Input Group 7   Field 1   
+            14  Input Group 7   Field 2   
+            15  Input Group 8   Field 1   
+            16  Input Group 8   Field 2   
+            17  Input Group 9   Field 1   
+            18  Input Group 9   Field 2   
+            19  Input Group 10  Field 1   
+            20  Input Group 10  Field 2   
+            21  Input Group 11  Field 1   
+            22  Input Group 11  Field 2   
+            23  Input Group 12  Field 1   
+            24  Input Group 12  Field 2   
+            25  Input Group 13  Field 1   
+            26  Input Group 13  Field 2   
+            27  Input Group 14  Field 1   
+            28  Input Group 14  Field 2   
+            29  Input Group 15  Field 1   
+            30  Input Group 15  Field 2   
+            31  Input Group 16  Field 1   
+            32  Input Group 16  Field 2   
+            33  Input Group 17  Field 1   
+            34  Input Group 17  Field 2   
+            35  Input Group 18  Field 1   
+            36  Input Group 18  Field 2   
+            37  Input Group 19  Field 1   
+            38  Input Group 19  Field 2   
+            39  Input Group 20  Field 1   
+            40  Input Group 20  Field 2   
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #   Group Name      Field Name
+            --  --------------  ----------
+            1   Input Group 1   Field 1   
+            2   Input Group 1   Field 2   
+            3   Input Group 2   Field 1   
+            4   Input Group 2   Field 2   
+            5   Input Group 3   Field 1   
+            6   Input Group 3   Field 2   
+            7   Input Group 4   Field 1   
+            8   Input Group 4   Field 2   
+            9   Input Group 5   Field 1   
+            10  Input Group 5   Field 2   
+            11  Input Group 6   Field 1   
+            12  Input Group 6   Field 2   
+            13  Input Group 7   Field 1   
+            14  Input Group 7   Field 2   
+            15  Input Group 8   Field 1   
+            16  Input Group 8   Field 2   
+            17  Input Group 9   Field 1   
+            18  Input Group 9   Field 2   
+            19  Input Group 10  Field 1   
+            20  Input Group 10  Field 2   
+            21  Input Group 11  Field 1   
+            22  Input Group 11  Field 2   
+            23  Input Group 12  Field 1   
+            24  Input Group 12  Field 2   
+            25  Input Group 13  Field 1   
+            26  Input Group 13  Field 2   
+            27  Input Group 14  Field 1   
+            28  Input Group 14  Field 2   
+            29  Input Group 15  Field 1   
+            30  Input Group 15  Field 2   
+            31  Input Group 16  Field 1   
+            32  Input Group 16  Field 2   
+            33  Input Group 17  Field 1   
+            34  Input Group 17  Field 2   
+            35  Input Group 18  Field 1   
+            36  Input Group 18  Field 2   
+            37  Input Group 19  Field 1   
+            38  Input Group 19  Field 2   
+            39  Input Group 20  Field 1   
+            40  Input Group 20  Field 2   
+
+      } 0 failed of 40: SUCCESS
+      =========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #   Group Name      Delimiters
+            --  --------------  ----------
+            1   Input Group 1   |         
+            2   Input Group 2   |         
+            3   Input Group 3   |         
+            4   Input Group 4   |         
+            5   Input Group 5   |         
+            6   Input Group 6   |         
+            7   Input Group 7   |         
+            8   Input Group 8   |         
+            9   Input Group 9   |         
+            10  Input Group 10  |         
+            11  Input Group 11  |         
+            12  Input Group 12  |         
+            13  Input Group 13  |         
+            14  Input Group 14  |         
+            15  Input Group 15  |         
+            16  Input Group 16  |         
+            17  Input Group 17  |         
+            18  Input Group 18  |         
+            19  Input Group 19  |         
+            20  Input Group 20  |         
+
+      } 0 failed of 20: SUCCESS
+      =========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+            2  Output Group 2  |         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 6: Many output groups - 20 {
+=====================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #   Group Name       Field Name
+            --  ---------------  ----------
+            1   Output Group 1   Field 1   
+            2   Output Group 1   Field 2   
+            3   Output Group 2   Field 1   
+            4   Output Group 2   Field 2   
+            5   Output Group 3   Field 1   
+            6   Output Group 3   Field 2   
+            7   Output Group 4   Field 1   
+            8   Output Group 4   Field 2   
+            9   Output Group 5   Field 1   
+            10  Output Group 5   Field 2   
+            11  Output Group 6   Field 1   
+            12  Output Group 6   Field 2   
+            13  Output Group 7   Field 1   
+            14  Output Group 7   Field 2   
+            15  Output Group 8   Field 1   
+            16  Output Group 8   Field 2   
+            17  Output Group 9   Field 1   
+            18  Output Group 9   Field 2   
+            19  Output Group 10  Field 1   
+            20  Output Group 10  Field 2   
+            21  Output Group 11  Field 1   
+            22  Output Group 11  Field 2   
+            23  Output Group 12  Field 1   
+            24  Output Group 12  Field 2   
+            25  Output Group 13  Field 1   
+            26  Output Group 13  Field 2   
+            27  Output Group 14  Field 1   
+            28  Output Group 14  Field 2   
+            29  Output Group 15  Field 1   
+            30  Output Group 15  Field 2   
+            31  Output Group 16  Field 1   
+            32  Output Group 16  Field 2   
+            33  Output Group 17  Field 1   
+            34  Output Group 17  Field 2   
+            35  Output Group 18  Field 1   
+            36  Output Group 18  Field 2   
+            37  Output Group 19  Field 1   
+            38  Output Group 19  Field 2   
+            39  Output Group 20  Field 1   
+            40  Output Group 20  Field 2   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #   Group Name       Field Name
+            --  ---------------  ----------
+            1   Output Group 1   Field 1   
+            2   Output Group 1   Field 2   
+            3   Output Group 2   Field 1   
+            4   Output Group 2   Field 2   
+            5   Output Group 3   Field 1   
+            6   Output Group 3   Field 2   
+            7   Output Group 4   Field 1   
+            8   Output Group 4   Field 2   
+            9   Output Group 5   Field 1   
+            10  Output Group 5   Field 2   
+            11  Output Group 6   Field 1   
+            12  Output Group 6   Field 2   
+            13  Output Group 7   Field 1   
+            14  Output Group 7   Field 2   
+            15  Output Group 8   Field 1   
+            16  Output Group 8   Field 2   
+            17  Output Group 9   Field 1   
+            18  Output Group 9   Field 2   
+            19  Output Group 10  Field 1   
+            20  Output Group 10  Field 2   
+            21  Output Group 11  Field 1   
+            22  Output Group 11  Field 2   
+            23  Output Group 12  Field 1   
+            24  Output Group 12  Field 2   
+            25  Output Group 13  Field 1   
+            26  Output Group 13  Field 2   
+            27  Output Group 14  Field 1   
+            28  Output Group 14  Field 2   
+            29  Output Group 15  Field 1   
+            30  Output Group 15  Field 2   
+            31  Output Group 16  Field 1   
+            32  Output Group 16  Field 2   
+            33  Output Group 17  Field 1   
+            34  Output Group 17  Field 2   
+            35  Output Group 18  Field 1   
+            36  Output Group 18  Field 2   
+            37  Output Group 19  Field 1   
+            38  Output Group 19  Field 2   
+            39  Output Group 20  Field 1   
+            40  Output Group 20  Field 2   
+
+      } 0 failed of 40: SUCCESS
+      =========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1  |         
+            2  Input Group 2            
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #   Group Name       Delimiters
+            --  ---------------  ----------
+            1   Output Group 1   |         
+            2   Output Group 2   |         
+            3   Output Group 3   |         
+            4   Output Group 4   |         
+            5   Output Group 5   |         
+            6   Output Group 6   |         
+            7   Output Group 7   |         
+            8   Output Group 8   |         
+            9   Output Group 9   |         
+            10  Output Group 10  |         
+            11  Output Group 11  |         
+            12  Output Group 12  |         
+            13  Output Group 13  |         
+            14  Output Group 14  |         
+            15  Output Group 15  |         
+            16  Output Group 16  |         
+            17  Output Group 17  |         
+            18  Output Group 18  |         
+            19  Output Group 19  |         
+            20  Output Group 20  |         
+
+      } 0 failed of 20: SUCCESS
+      =========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 7: Many input fields - 100 {
+=====================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #    Group Name     Field Name     
+            ---  -------------  ---------------
+            1    Input Group 1  Field 1        
+            2    Input Group 1  Field 2        
+            3    Input Group 1  Field 3        
+            4    Input Group 1  Field 4        
+            5    Input Group 1  Field 5        
+            6    Input Group 1  Field 6        
+            7    Input Group 1  Field 7        
+            8    Input Group 1  Field 8        
+            9    Input Group 1  Field 9        
+            10   Input Group 1  Field 10       
+            11   Input Group 1  Field 11       
+            12   Input Group 1  Field 12       
+            13   Input Group 1  Field 13       
+            14   Input Group 1  Field 14       
+            15   Input Group 1  Field 15       
+            16   Input Group 1  Field 16       
+            17   Input Group 1  Field 17       
+            18   Input Group 1  Field 18       
+            19   Input Group 1  Field 19       
+            20   Input Group 1  Field 20       
+            21   Input Group 1  Field 21       
+            22   Input Group 1  Field 22       
+            23   Input Group 1  Field 23       
+            24   Input Group 1  Field 24       
+            25   Input Group 1  Field 25       
+            26   Input Group 1  Field 26       
+            27   Input Group 1  Field 27       
+            28   Input Group 1  Field 28       
+            29   Input Group 1  Field 29       
+            30   Input Group 1  Field 30       
+            31   Input Group 1  Field 31       
+            32   Input Group 1  Field 32       
+            33   Input Group 1  Field 33       
+            34   Input Group 1  Field 34       
+            35   Input Group 1  Field 35       
+            36   Input Group 1  Field 36       
+            37   Input Group 1  Field 37       
+            38   Input Group 1  Field 38       
+            39   Input Group 1  Field 39       
+            40   Input Group 1  Field 40       
+            41   Input Group 1  Field 41       
+            42   Input Group 1  Field 42       
+            43   Input Group 1  Field 43       
+            44   Input Group 1  Field 44       
+            45   Input Group 1  Field 45       
+            46   Input Group 1  Field 46       
+            47   Input Group 1  Field 47       
+            48   Input Group 1  Field 48       
+            49   Input Group 1  Field 49       
+            50   Input Group 1  Field 50       
+            51   Input Group 1  Field 51       
+            52   Input Group 1  Field 52       
+            53   Input Group 1  Field 53       
+            54   Input Group 1  Field 54       
+            55   Input Group 1  Field 55       
+            56   Input Group 1  Field 56       
+            57   Input Group 1  Field 57       
+            58   Input Group 1  Field 58       
+            59   Input Group 1  Field 59       
+            60   Input Group 1  Field 60       
+            61   Input Group 1  Field 61       
+            62   Input Group 1  Field 62       
+            63   Input Group 1  Field 63       
+            64   Input Group 1  Field 64       
+            65   Input Group 1  Field 65       
+            66   Input Group 1  Field 66       
+            67   Input Group 1  Field 67       
+            68   Input Group 1  Field 68       
+            69   Input Group 1  Field 69       
+            70   Input Group 1  Field 70       
+            71   Input Group 1  Field 71       
+            72   Input Group 1  Field 72       
+            73   Input Group 1  Field 73       
+            74   Input Group 1  Field 74       
+            75   Input Group 1  Field 75       
+            76   Input Group 1  Field 76       
+            77   Input Group 1  Field 77       
+            78   Input Group 1  Field 78       
+            79   Input Group 1  Field 79       
+            80   Input Group 1  Field 80       
+            81   Input Group 1  Field 81       
+            82   Input Group 1  Field 82       
+            83   Input Group 1  Field 83       
+            84   Input Group 1  Field 84       
+            85   Input Group 1  Field 85       
+            86   Input Group 1  Field 86       
+            87   Input Group 1  Field 87       
+            88   Input Group 1  Field 88       
+            89   Input Group 1  Field 89       
+            90   Input Group 1  Field 90       
+            91   Input Group 1  Field 91       
+            92   Input Group 1  Field 92       
+            93   Input Group 1  Field 93       
+            94   Input Group 1  Field 94       
+            95   Input Group 1  Field 95       
+            96   Input Group 1  Field 96       
+            97   Input Group 1  Field 97       
+            98   Input Group 1  Field 98       
+            99   Input Group 1  Field 99       
+            100  Input Group 1  Field 100      
+            101  Input Group 2  Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #    Group Name     Field Name     
+            ---  -------------  ---------------
+            1    Input Group 1  Field 1        
+            2    Input Group 1  Field 2        
+            3    Input Group 1  Field 3        
+            4    Input Group 1  Field 4        
+            5    Input Group 1  Field 5        
+            6    Input Group 1  Field 6        
+            7    Input Group 1  Field 7        
+            8    Input Group 1  Field 8        
+            9    Input Group 1  Field 9        
+            10   Input Group 1  Field 10       
+            11   Input Group 1  Field 11       
+            12   Input Group 1  Field 12       
+            13   Input Group 1  Field 13       
+            14   Input Group 1  Field 14       
+            15   Input Group 1  Field 15       
+            16   Input Group 1  Field 16       
+            17   Input Group 1  Field 17       
+            18   Input Group 1  Field 18       
+            19   Input Group 1  Field 19       
+            20   Input Group 1  Field 20       
+            21   Input Group 1  Field 21       
+            22   Input Group 1  Field 22       
+            23   Input Group 1  Field 23       
+            24   Input Group 1  Field 24       
+            25   Input Group 1  Field 25       
+            26   Input Group 1  Field 26       
+            27   Input Group 1  Field 27       
+            28   Input Group 1  Field 28       
+            29   Input Group 1  Field 29       
+            30   Input Group 1  Field 30       
+            31   Input Group 1  Field 31       
+            32   Input Group 1  Field 32       
+            33   Input Group 1  Field 33       
+            34   Input Group 1  Field 34       
+            35   Input Group 1  Field 35       
+            36   Input Group 1  Field 36       
+            37   Input Group 1  Field 37       
+            38   Input Group 1  Field 38       
+            39   Input Group 1  Field 39       
+            40   Input Group 1  Field 40       
+            41   Input Group 1  Field 41       
+            42   Input Group 1  Field 42       
+            43   Input Group 1  Field 43       
+            44   Input Group 1  Field 44       
+            45   Input Group 1  Field 45       
+            46   Input Group 1  Field 46       
+            47   Input Group 1  Field 47       
+            48   Input Group 1  Field 48       
+            49   Input Group 1  Field 49       
+            50   Input Group 1  Field 50       
+            51   Input Group 1  Field 51       
+            52   Input Group 1  Field 52       
+            53   Input Group 1  Field 53       
+            54   Input Group 1  Field 54       
+            55   Input Group 1  Field 55       
+            56   Input Group 1  Field 56       
+            57   Input Group 1  Field 57       
+            58   Input Group 1  Field 58       
+            59   Input Group 1  Field 59       
+            60   Input Group 1  Field 60       
+            61   Input Group 1  Field 61       
+            62   Input Group 1  Field 62       
+            63   Input Group 1  Field 63       
+            64   Input Group 1  Field 64       
+            65   Input Group 1  Field 65       
+            66   Input Group 1  Field 66       
+            67   Input Group 1  Field 67       
+            68   Input Group 1  Field 68       
+            69   Input Group 1  Field 69       
+            70   Input Group 1  Field 70       
+            71   Input Group 1  Field 71       
+            72   Input Group 1  Field 72       
+            73   Input Group 1  Field 73       
+            74   Input Group 1  Field 74       
+            75   Input Group 1  Field 75       
+            76   Input Group 1  Field 76       
+            77   Input Group 1  Field 77       
+            78   Input Group 1  Field 78       
+            79   Input Group 1  Field 79       
+            80   Input Group 1  Field 80       
+            81   Input Group 1  Field 81       
+            82   Input Group 1  Field 82       
+            83   Input Group 1  Field 83       
+            84   Input Group 1  Field 84       
+            85   Input Group 1  Field 85       
+            86   Input Group 1  Field 86       
+            87   Input Group 1  Field 87       
+            88   Input Group 1  Field 88       
+            89   Input Group 1  Field 89       
+            90   Input Group 1  Field 90       
+            91   Input Group 1  Field 91       
+            92   Input Group 1  Field 92       
+            93   Input Group 1  Field 93       
+            94   Input Group 1  Field 94       
+            95   Input Group 1  Field 95       
+            96   Input Group 1  Field 96       
+            97   Input Group 1  Field 97       
+            98   Input Group 1  Field 98       
+            99   Input Group 1  Field 99       
+            100  Input Group 1  Field 100      
+            101  Input Group 2  Input Field 2-1
+
+      } 0 failed of 101: SUCCESS
+      ==========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 2  Output Field 2-1
+            3  Output Group 2  Output Field 2-2
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters                                                                                         
+            -  -------------  ---------------------------------------------------------------------------------------------------
+            1  Input Group 1  |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+            2  Input Group 2                                                                                                     
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+            2  Output Group 2  |         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 8: Many output fields - 100 {
+======================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #    Group Name      Field Name      
+            ---  --------------  ----------------
+            1    Output Group 1  Output Field 1-1
+            2    Output Group 2  Field 1         
+            3    Output Group 2  Field 2         
+            4    Output Group 2  Field 3         
+            5    Output Group 2  Field 4         
+            6    Output Group 2  Field 5         
+            7    Output Group 2  Field 6         
+            8    Output Group 2  Field 7         
+            9    Output Group 2  Field 8         
+            10   Output Group 2  Field 9         
+            11   Output Group 2  Field 10        
+            12   Output Group 2  Field 11        
+            13   Output Group 2  Field 12        
+            14   Output Group 2  Field 13        
+            15   Output Group 2  Field 14        
+            16   Output Group 2  Field 15        
+            17   Output Group 2  Field 16        
+            18   Output Group 2  Field 17        
+            19   Output Group 2  Field 18        
+            20   Output Group 2  Field 19        
+            21   Output Group 2  Field 20        
+            22   Output Group 2  Field 21        
+            23   Output Group 2  Field 22        
+            24   Output Group 2  Field 23        
+            25   Output Group 2  Field 24        
+            26   Output Group 2  Field 25        
+            27   Output Group 2  Field 26        
+            28   Output Group 2  Field 27        
+            29   Output Group 2  Field 28        
+            30   Output Group 2  Field 29        
+            31   Output Group 2  Field 30        
+            32   Output Group 2  Field 31        
+            33   Output Group 2  Field 32        
+            34   Output Group 2  Field 33        
+            35   Output Group 2  Field 34        
+            36   Output Group 2  Field 35        
+            37   Output Group 2  Field 36        
+            38   Output Group 2  Field 37        
+            39   Output Group 2  Field 38        
+            40   Output Group 2  Field 39        
+            41   Output Group 2  Field 40        
+            42   Output Group 2  Field 41        
+            43   Output Group 2  Field 42        
+            44   Output Group 2  Field 43        
+            45   Output Group 2  Field 44        
+            46   Output Group 2  Field 45        
+            47   Output Group 2  Field 46        
+            48   Output Group 2  Field 47        
+            49   Output Group 2  Field 48        
+            50   Output Group 2  Field 49        
+            51   Output Group 2  Field 50        
+            52   Output Group 2  Field 51        
+            53   Output Group 2  Field 52        
+            54   Output Group 2  Field 53        
+            55   Output Group 2  Field 54        
+            56   Output Group 2  Field 55        
+            57   Output Group 2  Field 56        
+            58   Output Group 2  Field 57        
+            59   Output Group 2  Field 58        
+            60   Output Group 2  Field 59        
+            61   Output Group 2  Field 60        
+            62   Output Group 2  Field 61        
+            63   Output Group 2  Field 62        
+            64   Output Group 2  Field 63        
+            65   Output Group 2  Field 64        
+            66   Output Group 2  Field 65        
+            67   Output Group 2  Field 66        
+            68   Output Group 2  Field 67        
+            69   Output Group 2  Field 68        
+            70   Output Group 2  Field 69        
+            71   Output Group 2  Field 70        
+            72   Output Group 2  Field 71        
+            73   Output Group 2  Field 72        
+            74   Output Group 2  Field 73        
+            75   Output Group 2  Field 74        
+            76   Output Group 2  Field 75        
+            77   Output Group 2  Field 76        
+            78   Output Group 2  Field 77        
+            79   Output Group 2  Field 78        
+            80   Output Group 2  Field 79        
+            81   Output Group 2  Field 80        
+            82   Output Group 2  Field 81        
+            83   Output Group 2  Field 82        
+            84   Output Group 2  Field 83        
+            85   Output Group 2  Field 84        
+            86   Output Group 2  Field 85        
+            87   Output Group 2  Field 86        
+            88   Output Group 2  Field 87        
+            89   Output Group 2  Field 88        
+            90   Output Group 2  Field 89        
+            91   Output Group 2  Field 90        
+            92   Output Group 2  Field 91        
+            93   Output Group 2  Field 92        
+            94   Output Group 2  Field 93        
+            95   Output Group 2  Field 94        
+            96   Output Group 2  Field 95        
+            97   Output Group 2  Field 96        
+            98   Output Group 2  Field 97        
+            99   Output Group 2  Field 98        
+            100  Output Group 2  Field 99        
+            101  Output Group 2  Field 100       
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #    Group Name      Field Name      
+            ---  --------------  ----------------
+            1    Output Group 1  Output Field 1-1
+            2    Output Group 2  Field 1         
+            3    Output Group 2  Field 2         
+            4    Output Group 2  Field 3         
+            5    Output Group 2  Field 4         
+            6    Output Group 2  Field 5         
+            7    Output Group 2  Field 6         
+            8    Output Group 2  Field 7         
+            9    Output Group 2  Field 8         
+            10   Output Group 2  Field 9         
+            11   Output Group 2  Field 10        
+            12   Output Group 2  Field 11        
+            13   Output Group 2  Field 12        
+            14   Output Group 2  Field 13        
+            15   Output Group 2  Field 14        
+            16   Output Group 2  Field 15        
+            17   Output Group 2  Field 16        
+            18   Output Group 2  Field 17        
+            19   Output Group 2  Field 18        
+            20   Output Group 2  Field 19        
+            21   Output Group 2  Field 20        
+            22   Output Group 2  Field 21        
+            23   Output Group 2  Field 22        
+            24   Output Group 2  Field 23        
+            25   Output Group 2  Field 24        
+            26   Output Group 2  Field 25        
+            27   Output Group 2  Field 26        
+            28   Output Group 2  Field 27        
+            29   Output Group 2  Field 28        
+            30   Output Group 2  Field 29        
+            31   Output Group 2  Field 30        
+            32   Output Group 2  Field 31        
+            33   Output Group 2  Field 32        
+            34   Output Group 2  Field 33        
+            35   Output Group 2  Field 34        
+            36   Output Group 2  Field 35        
+            37   Output Group 2  Field 36        
+            38   Output Group 2  Field 37        
+            39   Output Group 2  Field 38        
+            40   Output Group 2  Field 39        
+            41   Output Group 2  Field 40        
+            42   Output Group 2  Field 41        
+            43   Output Group 2  Field 42        
+            44   Output Group 2  Field 43        
+            45   Output Group 2  Field 44        
+            46   Output Group 2  Field 45        
+            47   Output Group 2  Field 46        
+            48   Output Group 2  Field 47        
+            49   Output Group 2  Field 48        
+            50   Output Group 2  Field 49        
+            51   Output Group 2  Field 50        
+            52   Output Group 2  Field 51        
+            53   Output Group 2  Field 52        
+            54   Output Group 2  Field 53        
+            55   Output Group 2  Field 54        
+            56   Output Group 2  Field 55        
+            57   Output Group 2  Field 56        
+            58   Output Group 2  Field 57        
+            59   Output Group 2  Field 58        
+            60   Output Group 2  Field 59        
+            61   Output Group 2  Field 60        
+            62   Output Group 2  Field 61        
+            63   Output Group 2  Field 62        
+            64   Output Group 2  Field 63        
+            65   Output Group 2  Field 64        
+            66   Output Group 2  Field 65        
+            67   Output Group 2  Field 66        
+            68   Output Group 2  Field 67        
+            69   Output Group 2  Field 68        
+            70   Output Group 2  Field 69        
+            71   Output Group 2  Field 70        
+            72   Output Group 2  Field 71        
+            73   Output Group 2  Field 72        
+            74   Output Group 2  Field 73        
+            75   Output Group 2  Field 74        
+            76   Output Group 2  Field 75        
+            77   Output Group 2  Field 76        
+            78   Output Group 2  Field 77        
+            79   Output Group 2  Field 78        
+            80   Output Group 2  Field 79        
+            81   Output Group 2  Field 80        
+            82   Output Group 2  Field 81        
+            83   Output Group 2  Field 82        
+            84   Output Group 2  Field 83        
+            85   Output Group 2  Field 84        
+            86   Output Group 2  Field 85        
+            87   Output Group 2  Field 86        
+            88   Output Group 2  Field 87        
+            89   Output Group 2  Field 88        
+            90   Output Group 2  Field 89        
+            91   Output Group 2  Field 90        
+            92   Output Group 2  Field 91        
+            93   Output Group 2  Field 92        
+            94   Output Group 2  Field 93        
+            95   Output Group 2  Field 94        
+            96   Output Group 2  Field 95        
+            97   Output Group 2  Field 96        
+            98   Output Group 2  Field 97        
+            99   Output Group 2  Field 98        
+            100  Output Group 2  Field 99        
+            101  Output Group 2  Field 100       
+
+      } 0 failed of 101: SUCCESS
+      ==========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1  |         
+            2  Input Group 2            
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters                                                                                         
+            -  --------------  ---------------------------------------------------------------------------------------------------
+            1  Output Group 1                                                                                                     
+            2  Output Group 2  |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 9: Large group names - 100ch {
+=======================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name                                                                                            Field Name     
+            -  ----------------------------------------------------------------------------------------------------  ---------------
+            1  Input Group 1.......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Input Field 1-1
+            2  Input Group 1.......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Input Field 1-2
+            3  Input Group 2                                                                                         Input Field 2-1
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name                                                                                            Field Name      
+            -  ----------------------------------------------------------------------------------------------------  ----------------
+            1  Output Group 1......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Output Field 1-1
+            2  Output Group 2                                                                                        Output Field 2-1
+            3  Output Group 2                                                                                        Output Field 2-2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name                                                                                            Field Name     
+            -  ----------------------------------------------------------------------------------------------------  ---------------
+            1  Input Group 1.......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Input Field 1-1
+            2  Input Group 1.......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Input Field 1-2
+            3  Input Group 2                                                                                         Input Field 2-1
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name                                                                                            Field Name      
+            -  ----------------------------------------------------------------------------------------------------  ----------------
+            1  Output Group 1......12345678901234567890123456789012345678901234567890123456789012345678901234567890  Output Field 1-1
+            2  Output Group 2                                                                                        Output Field 2-1
+            3  Output Group 2                                                                                        Output Field 2-2
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name                                                                                            Delimiters
+            -  ----------------------------------------------------------------------------------------------------  ----------
+            1  Input Group 1.......12345678901234567890123456789012345678901234567890123456789012345678901234567890  |         
+            2  Input Group 2                                                                                                   
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name                                                                                            Delimiters
+            -  ----------------------------------------------------------------------------------------------------  ----------
+            1  Output Group 1......12345678901234567890123456789012345678901234567890123456789012345678901234567890            
+            2  Output Group 2                                                                                        |         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 10: Large field names - 100ch {
+========================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars: Empty
+      =======================
+
+      GROUP 2: Input Group {
+      ======================
+
+            #  Group Name     Field Name                                                                                          
+            -  -------------  ----------------------------------------------------------------------------------------------------
+            1  Input Group 1  Input Field 1-1.....12345678901234567890123456789012345678901234567890123456789012345678901234567890
+            2  Input Group 1  Input Field 1-2                                                                                     
+            3  Input Group 2  Input Field 2-1                                                                                     
+
+      }
+      =
+
+      GROUP 3: Output Group {
+      =======================
+
+            #  Group Name      Field Name                                                                                          
+            -  --------------  ----------------------------------------------------------------------------------------------------
+            1  Output Group 1  Output Field 1-1....12345678901234567890123456789012345678901234567890123456789012345678901234567890
+            2  Output Group 2  Output Field 2-1                                                                                    
+            3  Output Group 2  Output Field 2-2                                                                                    
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name                                                                                          
+            -  -------------  ----------------------------------------------------------------------------------------------------
+            1  Input Group 1  Input Field 1-1.....12345678901234567890123456789012345678901234567890123456789012345678901234567890
+            2  Input Group 1  Input Field 1-2                                                                                     
+            3  Input Group 2  Input Field 2-1                                                                                     
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name                                                                                          
+            -  --------------  ----------------------------------------------------------------------------------------------------
+            1  Output Group 1  Output Field 1-1....12345678901234567890123456789012345678901234567890123456789012345678901234567890
+            2  Output Group 2  Output Field 2-1                                                                                    
+            3  Output Group 2  Output Field 2-2                                                                                    
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Scenario Input Group {
+      ===============================
+
+            #  Group Name     Delimiters
+            -  -------------  ----------
+            1  Input Group 1  |         
+            2  Input Group 2            
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Scenario Output Group {
+      ================================
+
+            #  Group Name      Delimiters
+            -  --------------  ----------
+            1  Output Group 1            
+            2  Output Group 2  |         
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+} 0 failed of 4: SUCCESS
+========================
