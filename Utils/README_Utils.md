@@ -220,6 +220,7 @@ $ npm install trapit
 
 ### Unit Testing Process
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
+
 The package is tested using the Math Function Unit Testing design pattern, described here: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
 In this case, where we have a set of small independent methods, most of which are pure functions, the wrapper function is designed to test all of them in a single generalised transaction.
@@ -237,6 +238,7 @@ $ node ./examples/externals/test-externals
 
 ### Scenarios
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
+
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
 A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. In our case we might consider the following category sets, and create scenarios accordingly:
@@ -258,6 +260,7 @@ The summary report in text format shows the scenarios tested:
 
 ### Test Helper Utilities
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
+
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
 From a powershell window in test\helper:

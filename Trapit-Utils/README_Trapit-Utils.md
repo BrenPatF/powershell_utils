@@ -259,6 +259,7 @@ $ node ./examples/externals/test-externals
 
 ### Scenarios
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#unit-testing)
+
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
 A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. In our case we might consider the following category sets, and create scenarios accordingly:
@@ -288,6 +289,7 @@ The summary report in text format shows the scenarios tested:
 
 ### Test Helper Utilities
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#unit-testing)
+
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
 From a powershell window in test\helper:
