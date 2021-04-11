@@ -161,6 +161,9 @@ The functional programming construct of a function as a parameter to another fun
 
 ## API - Trapit-Utils
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#in-this-readme)
+- [Write-UT_Template](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#write-ut_templatestem-delimiter)
+- [Get-UT_TemplateObject](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#get-ut_templateobjectinpgrouplis-outgrouplis-delimiter)
+- [Test-Unit](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#test-unitinpfile-outfile-purelywrapunit)
 ```powershell
 Import-Module Trapit-Utils
 ```
@@ -182,14 +185,14 @@ Gets an object with the same structure as the unit testing template JSON file, f
 
 This is a pure function that is called by Write-UT_Template, which writes its return value to file in JSON format.
 
-###  Test-Unit($inpFile, $outFile, $purelyWrapUnit)
+### Test-Unit($inpFile, $outFile, $purelyWrapUnit)
 Unit tests a unit using the Math Function Unit Testing design pattern with input data read from a JSON file, and output results written to an output JSON file, with parameters:
 
 * `$inpFile`: input JSON file, with input and expected output data
 * `$outFile`: output JSON file, with input, expected and actual output data
 * `$purelyWrapUnit`: function to process unit test for a single scenario, passed in from test script, described below
 
-###  $purelyWrapUnit($inpGroups)
+#### $purelyWrapUnit($inpGroups)
 Processes unit test for a single scenario, taking inputs as an object with input group data, making calls to the unit under test, and returning the actual outputs as an object with output group data, with parameters:
 
 * `$inpGroups`: object containig input groups with group name as key and list of delimited input records as value, of form:
@@ -209,6 +212,8 @@ This function acts as a 'pure' wrapper around calls to the unit under test. It i
 
 ## Installation
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#in-this-readme)
+- [Install Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#install-prerequisites)
+- [Install Trapit-Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#install-trapit-utils)
 
 ### Install Prerequisites
 
@@ -233,6 +238,9 @@ This will create a folder Trapit-Utils under the first folder in your `psmodulep
 
 ## Unit Testing
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#in-this-readme)
+- [Wrapper Function Extended Signature](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#wrapper-function-extended-signature)
+- [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#scenarios)
+- [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#test-helper-utilities)
 
 The package is tested using the Math Function Unit Testing design pattern, described here: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
@@ -246,9 +254,11 @@ The output file is processed by a nodejs program that has to be installed separa
 $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Extended Signature
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#unit-testing)
 <img src="powershell_utils-trapit-utils.png">
 
 ### Scenarios
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#unit-testing)
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
 A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. In our case we might consider the following category sets, and create scenarios accordingly:
@@ -277,6 +287,7 @@ The summary report in text format shows the scenarios tested:
       10   Large field names - 100ch             0             SUCCESS
 
 ### Test Helper Utilities
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Trapit-Utils/README_Trapit-Utils.md#unit-testing)
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
 From a powershell window in test\helper:

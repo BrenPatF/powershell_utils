@@ -137,6 +137,12 @@ $ .\Show-Examples
 
 ## API - Utils
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#in-this-readme)
+- [Write-Debug](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#write-debugmsg-new-filename)
+- [Get-ObjLisFromCsv](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#get-objlisfromcsvcsv-delimiter)
+- [Get-Heading](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#get-headingtitle-indent)
+- [Get-ColHeaders](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#get-colheadersheader2lis-indent)
+- [Get-2LisAsLine](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#get-2lisaslineline2lis-indent)
+- [Get-StrLisFromObjLis](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#get-strlisfromobjlisobjlis-delimiter)
 
 ```powershell
 Import-Module Utils
@@ -156,6 +162,7 @@ Imports a csv file with headers into an array of objects; keys are the column he
 * `$delimiter`: delimiter; default ','
 
 ### Get-Heading($title, $indent)
+- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#api---utils)
 Returns a 2-line heading with double underlining, from an input string, with parameters:
 
 * `$title`: title
@@ -174,6 +181,7 @@ Returns a list of strings as one line, input as list of (string, length) tuples,
 * `$indent`: indent level; default 0
 
 ### Get-StrLisFromObjLis($objLis, $delimiter)
+- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#api---utils)
 Returns a list of name, value strings from a list of objects, with simple string properties, usinmg a delimiter. Property names from first object first, with parameters:
 
 * `$objLis`:list of pscustomobjects
@@ -190,8 +198,14 @@ This will create a folder Utils under the first folder in your `psmodulepath` en
 
 ## Unit Testing
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#in-this-readme)
+- [Unit Testing Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing-prerequisites)
+- [Unit Testing Process](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing-process)
+- [Wrapper Function Extended Signature](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#wrapper-function-extended-signature)
+- [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#scenarios)
+- [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#test-helper-utilities)
 
 ### Unit Testing Prerequisites
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
 
 The powershell package Trapit-Utils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the install folder below Trapit-Utils, and execute as follows:
 ```
@@ -205,7 +219,7 @@ $ npm install trapit
 ```
 
 ### Unit Testing Process
-
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
 The package is tested using the Math Function Unit Testing design pattern, described here: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
 In this case, where we have a set of small independent methods, most of which are pure functions, the wrapper function is designed to test all of them in a single generalised transaction.
@@ -218,9 +232,11 @@ The output file is processed by a nodejs program that has to be installed separa
 $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Extended Signature
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
 <img src="powershell_utils-utils.png">
 
 ### Scenarios
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
 A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. In our case we might consider the following category sets, and create scenarios accordingly:
@@ -241,6 +257,7 @@ The summary report in text format shows the scenarios tested:
       6    Many - 100             0             SUCCESS
 
 ### Test Helper Utilities
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#unit-testing)
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
 From a powershell window in test\helper:
