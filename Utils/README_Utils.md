@@ -10,19 +10,19 @@ Its use is demonstrated by examples including a simple file-reading and group-co
 It is unit tested using the Math Function Unit Testing design pattern, described here in general: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit)
 
 ## In this README...
-- [Usage](https://github.com/BrenPatF/powershell_utils/Utils#usage)
-- [API - Utils](https://github.com/BrenPatF/powershell_utils/Utils#api---utils)
-- [Installation](https://github.com/BrenPatF/powershell_utils/Utils#installation)
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/Utils#unit-testing)
-- [Operating System](https://github.com/BrenPatF/powershell_utils/Utils#operating-system)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#usage)
+- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#api---utils)
+- [Installation](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#installation)
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#unit-testing)
+- [Operating System](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#operating-system)
 
 ## Usage
-- [In this README...](https://github.com/BrenPatF/powershell_utils/Utils#in-this-readme)
-- [Show-Examples.ps1](https://github.com/BrenPatF/powershell_utils/Utils#show-examples-ps1)
-- [ColGroup.psm1](https://github.com/BrenPatF/powershell_utils/Utils#colgroup-psm1)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#in-this-readme)
+- [Show-Examples.ps1](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#show-examples-ps1)
+- [ColGroup.psm1](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#colgroup-psm1)
 
 ### Show-Examples.ps1
-- [Usage](https://github.com/BrenPatF/powershell_utils/Utils#usage)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#usage)
 
 ```powershell
 Using Module './ColGroup.psm1'
@@ -72,7 +72,7 @@ c|d
 ```
 
 ### ColGroup.psm1
-- [Usage](https://github.com/BrenPatF/powershell_utils/Utils#usage)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#usage)
 
 The constructor function reads a csv file into a list of objects:
 ```powershell
@@ -135,7 +135,7 @@ $ .\Show-Examples
 ```
 
 ## API - Utils
-- [In this README...](https://github.com/BrenPatF/powershell_utils/Utils#in-this-readme)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#in-this-readme)
 
 ```powershell
 Import-Module Utils
@@ -179,7 +179,7 @@ Returns a list of name, value strings from a list of objects, with simple string
 * `$delimiter`: $delimiter; default '|'
 
 ## Installation
-- [In this README...](https://github.com/BrenPatF/powershell_utils/Utils#in-this-readme)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#in-this-readme)
 
 To install Utils open a powershell window in the install folder below Utils, and execute as follows:
 ```
@@ -188,7 +188,7 @@ $ .\Install-Utils
 This will create a folder Utils under the first folder in your `psmodulepath` environment variable, and copy Utils.psm1 to it.
 
 ## Unit Testing
-- [In this README...](https://github.com/BrenPatF/powershell_utils/Utils#in-this-readme)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#in-this-readme)
 
 ### Unit Testing Prerequisites
 
@@ -254,7 +254,7 @@ From a powershell window in test\helper:
 ```
 
 ## Operating System
-- [In this README...](https://github.com/BrenPatF/powershell_utils/Utils#in-this-readme)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/utils/README_Utils.md#in-this-readme)
 
 The package has been tested on:
 
