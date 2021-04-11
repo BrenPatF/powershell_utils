@@ -19,8 +19,8 @@ https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#u
 
 ## Usage
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#in-this-readme)
-- [Show-Examples.ps1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#show-examples-ps1)
-- [ColGroup.psm1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#colgroup-psm1)
+- [Show-Examples.ps1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#show-examplesps1)
+- [ColGroup.psm1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#colgrouppsm1)
 
 ### Show-Examples.ps1
 - [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#usage)
@@ -218,7 +218,7 @@ The output file is processed by a nodejs program that has to be installed separa
 $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Extended Signature
-<img src="powershell_utils-Utils.png">
+<img src="powershell_utils-utils.png">
 
 ### Scenarios
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
