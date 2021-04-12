@@ -34,7 +34,7 @@ $psPathFirst = $env:psmodulepath.split(';')[0]
 $module = 'Utils'
 "Installing $module in $psPathFirst"
 $path = $psPathFirst + '\' + $module
-if ( Test-Path $path) {
+if (Test-Path $path) {
     "$path already exists"
 } else {
     New-Item -ItemType Directory -Force -Path $path
