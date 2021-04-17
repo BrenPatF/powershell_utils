@@ -211,11 +211,11 @@ This will create a folder Utils under the first folder in your `psmodulepath` en
 ### Unit Testing Prerequisites
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
 
-The powershell package Trapit-Utils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the install folder below Trapit-Utils, and execute as follows:
+The powershell package TrapitUtils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the install folder below TrapitUtils, and execute as follows:
 ```
 $ .\Install-TrapitUtils
 ```
-This will create a folder Trapit-Utils under the first folder in your `psmodulepath` environment variable, and copy Trapit-Utils.psm1 to it.
+This will create a folder TrapitUtils under the first folder in your `psmodulepath` environment variable, and copy TrapitUtils.psm1 to it.
 
 The npm package trapit is required to format the unit test output JSON file in HTML and/or text. You will need to have npm installed, then you can install the package as follows:
 ```
@@ -269,7 +269,7 @@ The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
 From a powershell window in test\helper:
 ```powershell
-Import-Module Trapit-Utils
+Import-Module TrapitUtils
 Write-UT_Template 'ps_utils' ';'
 ```
 #### Generate JSON records for the Many scenario
@@ -288,7 +288,7 @@ The package has been tested on:
 
 ## See also
 - [Unit test formatter (trapit nodejs)](https://github.com/BrenPatF/trapit_nodejs_tester)
-- [Powershell Trapit unit testing utilities](https://github.com/BrenPatF/powershell_utils/trapit-utils)
+- [Powershell Trapit unit testing utilities](https://github.com/BrenPatF/powershell_utils/TrapitUtils)
 
 ## License
 MIT
