@@ -11,7 +11,6 @@ It is unit tested using the Math Function Unit Testing design pattern, described
 
 - Recording: powershell_utils.Utils.mp4
 ## In this README...
-https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#usage
 - [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#usage)
 - [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#api---utils)
 - [Installation](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#installation)
