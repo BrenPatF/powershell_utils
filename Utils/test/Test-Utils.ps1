@@ -24,7 +24,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |------------------|  Utils         |  General utility functions                                   |
 |                  |                |                                                              |
 | *Test-Utils*     |----------------|--------------------------------------------------------------|
-|                  |  Trapit-Utils  |  Trapit unit testing utility functions                       |
+|                  |  TrapitUtils   |  Trapit unit testing utility functions                       |
 ====================================================================================================
 
 Unit test script following the Math Function Unit Testing design pattern. 
@@ -49,7 +49,7 @@ text and HTML formats. This can be obtained from the GitHub project mentioned ab
 
 **************************************************************************************************#>
 Import-Module Utils
-Import-Module Trapit-Utils
+Import-Module TrapitUtils
 <#**************************************************************************************************
 
 purelyWrap-Unit: Design pattern has the unit under test calls wrapped in a 'pure' function, called

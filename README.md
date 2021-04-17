@@ -4,19 +4,22 @@ This project has the code and other artefacts for small Powershell projects, inc
 
 :file_cabinet:
 
+- Recording: powershell_utils.mp4
 ## Utils
 The Utils subproject comprises a set of generic powershell functions for 'pretty-printing' etc.
 
 - [Blog: TBD](http://aprogrammerwrites.eu/?p=)
 - [Tweet TBD](https://twitter.com/BrenPatF/status/)
 - [README: Utils](Utils/README_Utils.md)
+- Recording: Utils\powershell_utils.Utils.mp4
 
-## Trapit-Utils
-The Trapit-Utils subproject comprises a set of powershell utility functions for unit testing following the Math Function Unit Testing design pattern..
+## TrapitUtils
+The TrapitUtils subproject comprises a set of powershell utility functions for unit testing following the Math Function Unit Testing design pattern
 
 - [Blog: TBD](http://aprogrammerwrites.eu/?p=)
 - [Tweet TBD](https://twitter.com/BrenPatF/status/)
-- [README: Trapit-Utils](Trapit-Utils/README_Trapit-Utils.md)
+- [README: TrapitUtils](TrapitUtils/README_TrapitUtils.md)
+- Recording: TrapitUtils\powershell_utils.TrapitUtils.mp4
 
 ## Operating System
 - Windows 10

@@ -43,7 +43,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |  Install-TrapitUtils        |                   Install script copies module to Powershell path  |
 |-----------------------------|--------------------------------------------------------------------|
 | *Show-Examples*             |                |                                                   |
-|-----------------------------|  Trapit-Utils  |  Trapit unit testing utility functions            |
+|-----------------------------|  TrapitUtils   |  Trapit unit testing utility functions            |
 |  Test-GetUT_TemplateObject  |----------------|---------------------------------------------------|
 |                             |  Utils         |  General utility functions                        |
 ====================================================================================================
@@ -55,5 +55,5 @@ the unit test script Test-GetUT_TemplateObject.ps1 and in the function Write-UT_
 respectively.
 
 **************************************************************************************************#>
-Import-Module Trapit-Utils
+Import-Module TrapitUtils
 Write-UT_Template 'get_ut_template_object' ';'

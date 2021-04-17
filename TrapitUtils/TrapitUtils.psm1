@@ -184,7 +184,6 @@ function Test-Unit($inpFile,          # input file
         foreach ($o in $actObj.PSObject.Properties) {
 
             $grpName = $o.name
-            Write-Debug ('$grpName ' + $grpName)
             $value = [PSCustomObject]@{
                                         exp = $inpScenario.out.$grpName
                                         act = $o.value
@@ -206,7 +205,7 @@ function Test-Unit($inpFile,          # input file
           Logic:
           - read the scenarios from JSON input file into an object
           - loop over active scenarios making a 'pure' call to function purelyWrapUnit passed in
-              - pass in the input scenario value
+              - pass in the scenario input value
               - pass the return value, along with the input scenario, to getUT_OutScenario
               - assign the return value to scenarios object, with key as the input scenario name
           - create object with properties meta from input JSON and scenarios from the calls 
@@ -215,7 +214,7 @@ function Test-Unit($inpFile,          # input file
     **************************************************************************************************#>
     function main($inpFile,          # input file
                   $outFile,          # output file
-                  $purelyWrapUnit) { # function that takes scenario as input, returning new version with actuals merged in
+                  $purelyWrapUnit) { # function that takes scenario input value as input, returning actual output value
 
         $json = Get-Content $inpFile | Out-String | ConvertFrom-Json
 
@@ -232,6 +231,5 @@ function Test-Unit($inpFile,          # input file
 
         $outObj | ConvertTo-Json -depth 6 | Set-Content $outFile
     }
-    Write-Debug 'Debug ' $true
     main $inpFile $outFile $purelyWrapUnit
 }

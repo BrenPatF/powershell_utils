@@ -9,6 +9,7 @@ Its use is demonstrated by examples including a simple file-reading and group-co
 
 It is unit tested using the Math Function Unit Testing design pattern, described here in general: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit)
 
+- Recording: powershell_utils.Utils.mp4
 ## In this README...
 https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#usage
 - [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#usage)
@@ -75,7 +76,10 @@ c|d
 ### ColGroup.psm1
 - [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#usage)
 
-The constructor function reads a csv file into a list of objects:
+The constructor function reads a csv file into a list of objects, and demonstrates the usage of:
+
+- Get-ObjLisFromCsv
+
 ```powershell
     $objLis = Get-ObjLisFromCsv $file $delim
 ```
@@ -182,6 +186,7 @@ Returns a list of strings as one line, input as list of (string, length) tuples,
 
 ### Get-StrLisFromObjLis($objLis, $delimiter)
 - [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README_Utils.md#api---utils)
+
 Returns a list of name, value strings from a list of objects, with simple string properties, usinmg a delimiter. Property names from first object first, with parameters:
 
 * `$objLis`:list of pscustomobjects

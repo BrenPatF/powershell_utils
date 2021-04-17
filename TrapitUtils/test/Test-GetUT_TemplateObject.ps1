@@ -43,7 +43,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |  Install-TrapitUtils        |                   Install script copies module to Powershell path  |
 |-----------------------------|--------------------------------------------------------------------|
 |  Show-Examples              |                |                                                   |
-|-----------------------------|  Trapit-Utils  |  Trapit unit testing utility functions            |
+|-----------------------------|  TrapitUtils   |  Trapit unit testing utility functions            |
 | *Test-GetUT_TemplateObject* |----------------|---------------------------------------------------|
 |                             |  Utils         |  General utility functions                        |
 ====================================================================================================
@@ -69,7 +69,7 @@ text and HTML formats. This can be obtained from the GitHub project mentioned ab
     $ npm install trapit
 
 **************************************************************************************************#>
-Import-Module Trapit-Utils
+Import-Module TrapitUtils
 $DELIM = ';'
 <#**************************************************************************************************
 

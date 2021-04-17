@@ -43,7 +43,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 | *Install-TrapitUtils*       |                   Install script copies module to Powershell path  |
 |-----------------------------|--------------------------------------------------------------------|
 |  Show-Examples              |                |                                                   |
-|-----------------------------|  Trapit-Utils  |  Trapit unit testing utility functions            |
+|-----------------------------|  TrapitUtils   |  Trapit unit testing utility functions            |
 |  Test-GetUT_TemplateObject  |----------------|---------------------------------------------------|
 |                             |  Utils         |  General utility functions                        |
 ====================================================================================================
@@ -52,7 +52,7 @@ Install script
 
 **************************************************************************************************#>
 $psPathFirst = $env:psmodulepath.split(';')[0]
-$module = 'Trapit-Utils'
+$module = 'TrapitUtils'
 "Installing $module in $psPathFirst"
 $path = $psPathFirst + '\' + $module
 if ( Test-Path $path) {
