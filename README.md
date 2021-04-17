@@ -10,7 +10,7 @@ The Utils subproject comprises a set of generic powershell functions for 'pretty
 
 - [Blog: TBD](http://aprogrammerwrites.eu/?p=)
 - [Tweet TBD](https://twitter.com/BrenPatF/status/)
-- [README: Utils](Utils/README_Utils.md)
+- [README: Utils](Utils/README.md)
 - Recording: Utils\powershell_utils.Utils.mp4
 
 ## TrapitUtils
@@ -18,7 +18,7 @@ The TrapitUtils subproject comprises a set of powershell utility functions for u
 
 - [Blog: TBD](http://aprogrammerwrites.eu/?p=)
 - [Tweet TBD](https://twitter.com/BrenPatF/status/)
-- [README: TrapitUtils](TrapitUtils/README_TrapitUtils.md)
+- [README: TrapitUtils](TrapitUtils/README.md)
 - Recording: TrapitUtils\powershell_utils.TrapitUtils.mp4
 
 ## Operating System

@@ -18,20 +18,20 @@ Package usage use is demonstrated by scripts used in unit testing the module its
 
 - Recording: powershell_utils.TrapitUtils.mp4
 ## In this README...
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#usage)
-- [API - TrapitUtils](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#api---TrapitUtils)
-- [Installation](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#installation)
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#unit-testing)
-- [Operating System](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#operating-system)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#usage)
+- [API - TrapitUtils](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#api---TrapitUtils)
+- [Installation](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#installation)
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#unit-testing)
+- [Operating System](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#operating-system)
 
 ## Usage
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#in-this-readme)
-- [Write-UT_Template](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#write-ut_template)
-- [Get-UT_TemplateObject](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#get-ut_templateObject)
-- [Test-Unit](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#test-unit)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#in-this-readme)
+- [Write-UT_Template](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#write-ut_template)
+- [Get-UT_TemplateObject](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#get-ut_templateObject)
+- [Test-Unit](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#test-unit)
 
 ### Write-UT_Template
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#usage)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#usage)
 
 Writes a unit testing template JSON file in the format of the Math Function Unit Testing design pattern.
 ```powershell
@@ -109,7 +109,7 @@ The template has an object with two properties, "meta" having the group/field st
 ```
 
 ### Get-UT_TemplateObject
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#usage)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#usage)
 
 Gets an object with the same structure as the unit testing template JSON file, from input lists of objects for input and output groups.
 
@@ -130,7 +130,7 @@ function Write-UT_Template($stem,              # filename stem
 Get-UT_TemplateObject is passed three parameters, as described in the `API - TrapitUtils` section below.
 
 ### Test-Unit
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#usage)
+- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#usage)
 
 Unit tests a unit using the Math Function Unit Testing design pattern with input data read from a JSON file, and output results written to an output JSON file.
 
@@ -161,10 +161,10 @@ Test-Unit is passed three parameters, as described in the `API - TrapitUtils` se
 The functional programming construct of a function as a parameter to another function allows us to centralize the unit testing processing as much as possible, leaving the test scripts just the function definition and a one-line call to do.
 
 ## API - TrapitUtils
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#in-this-readme)
-- [Write-UT_Template](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#write-ut_templatestem-delimiter)
-- [Get-UT_TemplateObject](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#get-ut_templateobjectinpgrouplis-outgrouplis-delimiter)
-- [Test-Unit](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#test-unitinpfile-outfile-purelywrapunit)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#in-this-readme)
+- [Write-UT_Template](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#write-ut_templatestem-delimiter)
+- [Get-UT_TemplateObject](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#get-ut_templateobjectinpgrouplis-outgrouplis-delimiter)
+- [Test-Unit](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#test-unitinpfile-outfile-purelywrapunit)
 ```powershell
 Import-Module TrapitUtils
 ```
@@ -212,9 +212,9 @@ Processes unit test for a single scenario, taking inputs as an object with input
 This function acts as a 'pure' wrapper around calls to the unit under test. It is 'externally pure' in the sense that it is deterministic, and interacts externally only via parameters and return value. Where the unit under test reads inputs from file the wrapper writes them based on its parameters, and where the unit under test writes outputs to file the wrapper reads them and passes them out in its return value. Any file writing is reverted before exit.
 
 ## Installation
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#in-this-readme)
-- [Install Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#install-prerequisites)
-- [Install TrapitUtils](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#install-TrapitUtils)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#in-this-readme)
+- [Install Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#install-prerequisites)
+- [Install TrapitUtils](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#install-TrapitUtils)
 
 ### Install Prerequisites
 
@@ -238,10 +238,10 @@ $ .\Install-TrapitUtils
 This will create a folder TrapitUtils under the first folder in your `psmodulepath` environment variable, and copy TrapitUtils.psm1 to it.
 
 ## Unit Testing
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#in-this-readme)
-- [Wrapper Function Extended Signature](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#wrapper-function-extended-signature)
-- [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#scenarios)
-- [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#test-helper-utilities)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#in-this-readme)
+- [Wrapper Function Extended Signature](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#wrapper-function-extended-signature)
+- [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#scenarios)
+- [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#test-helper-utilities)
 
 The package is tested using the Math Function Unit Testing design pattern, described here: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
@@ -255,11 +255,11 @@ The output file is processed by a nodejs program that has to be installed separa
 $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Extended Signature
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#unit-testing)
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#unit-testing)
 <img src="powershell_utils-TrapitUtils.png">
 
 ### Scenarios
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#unit-testing)
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#unit-testing)
 
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
@@ -289,7 +289,7 @@ The summary report in text format shows the scenarios tested:
       10   Large field names - 100ch             0             SUCCESS
 
 ### Test Helper Utilities
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#unit-testing)
+- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#unit-testing)
 
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
@@ -305,7 +305,7 @@ From a powershell window in test\helper:
 ```
 
 ## Operating System
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README_TrapitUtils.md#in-this-readme)
+- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#in-this-readme)
 
 The package has been tested on:
 
