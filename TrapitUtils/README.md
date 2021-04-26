@@ -74,7 +74,7 @@ It produces an output file with a template for the JSON unit testing input file 
 
 - get_ut_template_object_temp.json
 
-The template has an object with two properties, "meta" having the group/field structure, and "scenarios" having a single example scenario with a single record in each group with empty strings for the field values, separated by the delimter ';'. Here is the "scenarios" property:
+The template has an object with two properties, "meta" having the group/field structure, and "scenarios" having a single example scenario with a single record in each group with empty strings for the field values, separated by the delimiter ';'. Here is the "scenarios" property:
 ```
     "scenarios":  {
                       "scenario 1":  {
@@ -249,6 +249,12 @@ In this case, the pure function Get-UT_TemplateObject is unit tested explicitly,
 
 The program is data-driven from the input file get_ut_template_object.json and produces an output file, get_ut_template_object_out.json, that contains arrays of expected and actual records by group and scenario.
 
+To run the unit test program, open a powershell window in the test folder and run:
+
+```
+.\Test-GetUT_TemplateObject 
+```
+
 The output file is processed by a nodejs program that has to be installed separately from the `npm` nodejs repository, as described in the Install prerequisites section above. The nodejs program produces listings of the results in HTML and/or text format, and a sample set of listings is included in the subfolder test_output. To run the processor, open a powershell window in the npm trapit package folder after placing the output JSON file, utils_out.json, in the subfolder ./examples/externals and run:
 
 ```
@@ -256,6 +262,7 @@ $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Extended Signature
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/README.md#unit-testing)
+
 <img src="powershell_utils-TrapitUtils.png">
 
 ### Scenarios

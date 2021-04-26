@@ -193,7 +193,6 @@ function Test-Unit($inpFile,          # input file
         }
 
         [PSCustomObject]@{
-            active_yn = $inpScenario.active_yn
             inp = $inpScenario.inp
             out = $retObj
         }
@@ -221,7 +220,7 @@ function Test-Unit($inpFile,          # input file
         $scenarios = New-Object -TypeName psobject
         foreach ($s in $json.scenarios.PSObject.Properties) {
 
-            if ($s.value.active_yn -eq 'Y') {
+            if ($s.value.active_yn -ne 'N') {
                 $scenarios | Add-Member -MemberType NoteProperty -Name $s.name -Value (getUT_OutScenario $s.value (&$purelyWrapUnit $s.value.inp))
             }
         }
