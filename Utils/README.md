@@ -204,7 +204,7 @@ This will create a folder Utils under the first folder in your `psmodulepath` en
 - [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
 - [Unit Testing Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing-prerequisites)
 - [Unit Testing Process](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing-process)
-- [Wrapper Function Extended Signature](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#wrapper-function-extended-signature)
+- [Wrapper Function Signature Diagram](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#wrapper-function-signature-diagram)
 - [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#scenarios)
 - [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#test-helper-utilities)
 
@@ -229,15 +229,21 @@ The package is tested using the Math Function Unit Testing design pattern, descr
 
 In this case, where we have a set of small independent methods, most of which are pure functions, the wrapper function is designed to test all of them in a single generalised transaction.
 
-The program is data-driven from the input file utils.json and produces an output file, utils_out.json, that contains arrays of expected and actual records by group and scenario.
+The program is data-driven from the input file, ps_utils.json, and produces an output file, ps_utils_out.json, that contains arrays of expected and actual records by group and scenario.
 
-The output file is processed by a nodejs program that has to be installed separately from the `npm` nodejs repository, as described in the prerequisites section above. The nodejs program produces listings of the results in HTML and/or text format, and a sample set of listings is included in the subfolder test_output. To run the processor, open a powershell window in the npm trapit package folder after placing the output JSON file, utils_out.json, in the subfolder ./examples/externals and run:
+To run the unit test, open a powershell window in the test folder containing the input JSON file, ps_utils.json and run:
+
+```
+$ .\Test-Utils
+```
+The output file is processed by a nodejs program that has to be installed separately from the `npm` nodejs repository, as described in the prerequisites section above. The nodejs program produces listings of the results in HTML and/or text format, and a sample set of listings is included in the subfolder test_output. To run the processor, open a powershell window in the npm trapit package folder after placing the output JSON file, ps_utils_out.json, in the subfolder ./examples/externals and run:
 
 ```
 $ node ./examples/externals/test-externals
 ```
-### Wrapper Function Extended Signature
+### Wrapper Function Signature Diagram
 - [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+
 <img src="powershell_utils-utils.png">
 
 ### Scenarios
