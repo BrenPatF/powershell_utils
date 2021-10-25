@@ -204,13 +204,13 @@ Unit tests a unit using the Math Function Unit Testing design pattern with input
 
 Processes unit test for a single scenario, taking inputs as an object with input group data, making calls to the unit under test, and returning the actual outputs as an object with output group data, with parameters:
 
-* `$inpGroups`: object containig input groups with group name as key and list of delimited input records as value, of form:
+* `$inpGroups`: object containing input groups with group name as key and list of delimited input records as value, of form:
                 [PSCustomObject]@{
                     inpGroup1 = [rec1, rec2,...]
                     inpGroup2 = [rec1, rec2,...]
                     ...
                 }
-* `Return value`: object containig output groups with group name as key and list of delimited actual output records as value, of form:
+* `Return value`: object containing output groups with group name as key and list of delimited actual output records as value, of form:
                 [PSCustomObject]@{
                     outGroup1 = [rec1, rec2,...]
                     outGroup2 = [rec1, rec2,...]
