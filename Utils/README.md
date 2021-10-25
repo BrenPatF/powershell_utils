@@ -10,20 +10,21 @@ Its use is demonstrated by examples including a simple file-reading and group-co
 It is unit tested using the Math Function Unit Testing design pattern, described here in general: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit)
 
 - Recording: powershell_utils.Utils.mp4
+
 ## In this README...
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#usage)
-- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#api---utils)
-- [Installation](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#installation)
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
-- [Operating System](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#operating-system)
+[&darr; Usage](#usage)<br />
+[&darr; API - Utils](#api---utils)<br />
+[&darr; Installation](#installation)<br />
+[&darr; Unit Testing](#unit-testing)<br />
+[&darr; Operating System](#operating-system)
 
 ## Usage
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
-- [Show-Examples.ps1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#show-examplesps1)
-- [ColGroup.psm1](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#colgrouppsm1)
+[&uarr; In this README...](#in-this-readme)<br />
+[&darr; Show-Examples.ps1](#show-examplesps1)<br />
+[&darr; ColGroup.psm1](#colgrouppsm1)
 
 ### Show-Examples.ps1
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#usage)
+[&uarr; Usage](#usage)
 
 ```powershell
 Using Module './ColGroup.psm1'
@@ -73,7 +74,7 @@ c|d
 ```
 
 ### ColGroup.psm1
-- [Usage](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#usage)
+[&uarr; Usage](#usage)
 
 The constructor function reads a csv file into a list of objects, and demonstrates the usage of:
 
@@ -139,13 +140,13 @@ $ .\Show-Examples
 ```
 
 ## API - Utils
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
-- [Write-Debug](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#write-debugmsg-new-filename)
-- [Get-ObjLisFromCsv](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#get-objlisfromcsvcsv-delimiter)
-- [Get-Heading](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#get-headingtitle-indent)
-- [Get-ColHeaders](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#get-colheadersheader2lis-indent)
-- [Get-2LisAsLine](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#get-2lisaslineline2lis-indent)
-- [Get-StrLisFromObjLis](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#get-strlisfromobjlisobjlis-delimiter)
+[&uarr; In this README...](#in-this-readme)<br />
+[&darr; Write-Debug](#write-debugmsg-new-filename)<br />
+[&darr; Get-ObjLisFromCsv](#get-objlisfromcsvcsv-delimiter)<br />
+[&darr; Get-Heading](#get-headingtitle-indent)<br />
+[&darr; Get-ColHeaders](#get-colheadersheader2lis-indent)<br />
+[&darr; Get-2LisAsLine](#get-2lisaslineline2lis-indent)<br />
+[&darr; Get-StrLisFromObjLis](#get-strlisfromobjlisobjlis-delimiter)
 
 ```powershell
 Import-Module Utils
@@ -165,7 +166,8 @@ Imports a csv file with headers into an array of objects; keys are the column he
 * `$delimiter`: delimiter; default ','
 
 ### Get-Heading($title, $indent)
-- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#api---utils)
+[&uarr; API - Utils](#api---utils)
+
 Returns a 2-line heading with double underlining, from an input string, with parameters:
 
 * `$title`: title
@@ -184,7 +186,7 @@ Returns a list of strings as one line, input as list of (string, length) tuples,
 * `$indent`: indent level; default 0
 
 ### Get-StrLisFromObjLis($objLis, $delimiter)
-- [API - Utils](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#api---utils)
+[&uarr; API - Utils](#api---utils)
 
 Returns a list of name, value strings from a list of objects, with simple string properties, usinmg a delimiter. Property names from first object first, with parameters:
 
@@ -192,7 +194,7 @@ Returns a list of name, value strings from a list of objects, with simple string
 * `$delimiter`: $delimiter; default '|'
 
 ## Installation
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
+[&uarr; In this README...](#in-this-readme)
 
 To install Utils open a powershell window in the install folder below Utils, and execute as follows:
 ```
@@ -201,15 +203,15 @@ $ .\Install-Utils
 This will create a folder Utils under the first folder in your `psmodulepath` environment variable, and copy Utils.psm1 to it.
 
 ## Unit Testing
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
-- [Unit Testing Prerequisites](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing-prerequisites)
-- [Unit Testing Process](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing-process)
-- [Wrapper Function Signature Diagram](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#wrapper-function-signature-diagram)
-- [Scenarios](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#scenarios)
-- [Test Helper Utilities](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#test-helper-utilities)
+[&uarr; In this README...](#in-this-readme)<br />
+[&darr; Unit Testing Prerequisites](#unit-testing-prerequisites)<br />
+[&darr; Unit Testing Process](#unit-testing-process)<br />
+[&darr; Wrapper Function Signature Diagram](#wrapper-function-signature-diagram)<br />
+[&darr; Scenarios](#scenarios)<br />
+[&darr; Test Helper Utilities](#test-helper-utilities)
 
 ### Unit Testing Prerequisites
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+[&uarr; Unit Testing](#unit-testing)
 
 The powershell package TrapitUtils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the install folder below TrapitUtils, and execute as follows:
 ```
@@ -223,7 +225,7 @@ $ npm install trapit
 ```
 
 ### Unit Testing Process
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+[&uarr; Unit Testing](#unit-testing)
 
 The package is tested using the Math Function Unit Testing design pattern, described here: [The Math Function Unit Testing design pattern, implemented in nodejs](https://github.com/BrenPatF/trapit_nodejs_tester#trapit). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
@@ -242,12 +244,12 @@ The output file is processed by a nodejs program that has to be installed separa
 $ node ./examples/externals/test-externals
 ```
 ### Wrapper Function Signature Diagram
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+[&uarr; Unit Testing](#unit-testing)
 
 <img src="powershell_utils-utils.png">
 
 ### Scenarios
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+[&uarr; Unit Testing](#unit-testing)
 
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
@@ -269,7 +271,7 @@ The summary report in text format shows the scenarios tested:
       6    Many - 100             0             SUCCESS
 
 ### Test Helper Utilities
-- [Unit Testing](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#unit-testing)
+[&uarr; Unit Testing](#unit-testing)
 
 The test\helper subfolder has helper script and input files, as follows:
 #### Generate a template for the input JSON file
@@ -285,7 +287,7 @@ From a powershell window in test\helper:
 ```
 
 ## Operating System
-- [In this README...](https://github.com/BrenPatF/powershell_utils/blob/master/Utils/README.md#in-this-readme)
+[&uarr; In this README...](#in-this-readme)
 
 The package has been tested on:
 
