@@ -1,0 +1,1 @@
+pwsh .\merge_mdfiles.ps1 > .\merge_mdfiles.out 2> .\merge_mdfiles.err
