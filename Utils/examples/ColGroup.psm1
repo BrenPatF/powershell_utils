@@ -68,10 +68,10 @@ Class ColGroup {
                         [Object[]]$keyValues) { # list of key/value objects
 
         $strLis = Get-Heading ('Counts sorted by ' + $sortBy)
-        $strLis += Get-ColHeaders @(@('Team', -$this.maxLen), @('#apps', 5))
+        $strLis += ((Get-ColHeaders @(@('Team', -$this.maxLen), @('#apps', 5))) + "`n")
         foreach ($kv in $keyValues) {
 
-            $strLis += Get-2LisAsLine @(@($kv.name, -$this.maxLen), @($kv.value, 5))
+            $strLis += ((Get-2LisAsLine @(@($kv.name, -$this.maxLen), @($kv.value, 5))) + "`n")
 
         }
         return $strLis

@@ -30,13 +30,5 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 Install script
 
 **************************************************************************************************#>
-$psPathFirst = $env:psmodulepath.split(';')[0]
-$module = 'Utils'
-"Installing $module in $psPathFirst"
-$path = $psPathFirst + '\' + $module
-if (Test-Path $path) {
-    "$path already exists"
-} else {
-    New-Item -ItemType Directory -Force -Path $path
-}
-Copy-Item ('..\' + $module + '.psm1') $path
+Import-Module ($PSScriptRoot + '\Utils.psm1')
+Install-Module $PSScriptRoot 'Utils'
