@@ -372,7 +372,7 @@ Next we show the scenario-level summary of results.
 
 You can review the HTML formatted unit test results here:
 
-- [Unit Test Report: Get UT Template Object](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/unit_test/get-ut-template-object/get-ut-template-object.html)
+- [Unit Test Report: Powershell Utils](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/Utils/unit_test/powershell-utils/powershell-utils.html)
 
 ##### Unit Test Report - Powershell Utils
 [&uarr; Step 3: Format Results](#step-3-format-results)<br />
@@ -398,9 +398,7 @@ Tested: 2023-04-09 14:44:19, Formatted: 2023-04-09 14:44:19
 [&uarr; In this README...](#in-this-readme)<br />
 
 The project folder structure is shown below.
-
 <img src="png/folders.png">
-
 There are four subfolders below the trapit root folder:
 - `examples`: Examples of use
 - `install`: This holds the project library source code and a script to copy the module to the first folder in the powershell path
