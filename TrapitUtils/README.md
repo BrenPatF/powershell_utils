@@ -974,7 +974,7 @@ The API can be run with the following powershell in the folder of the CSV files:
 Import-Module TrapitUtils
 Write-UT_Template 'get_ut_template_object' '|'
 ```
-This creates the template JSON file, get_ut_template_object_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files.
+This creates the template JSON file, get_ut_template_object_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files. The template file is then updated manually with data appropriate to each scenario.
 
 ### Step 2: Create Results Object
 [&uarr; Unit Testing](#unit-testing)<br />
