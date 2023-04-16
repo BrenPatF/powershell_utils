@@ -510,7 +510,7 @@
       },
       "out": {
         "Log": [
-          "2|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
+          "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
         ],
         "listAsIs": [
           "2"

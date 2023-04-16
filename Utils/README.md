@@ -271,8 +271,51 @@ From the input and output groups depicted we can construct CSV files with flatte
 
 ##### Scenario Category ANalysis (SCAN)
 [&uarr; Step 1: Create JSON File](#step-1-create-json-file)<br />
+[&darr; Generic Category Sets](#generic-category-sets)<br />
+[&darr; Categories and Scenarios](#categories-and-scenarios)<br />
 
-The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs. A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories, an approach discussed in [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html). While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
+The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
+
+A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories.  I explore this approach further in this article:
+
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+
+While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
+
+###### Generic Category Sets
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
+
+As explained in the article mentioned above, it can be very useful to think in terms of generic category sets that apply in many situations. In this case, where we are testing a set of independent utilities, they are particularly useful and can be applied across many of the utilities at the same time.
+
+###### Binary
+
+There are many situations where a category set splits into two opposing values such as Yes / No or True / False. In this case we can use it to apply to whether defaults are used or override parameters are passed.
+
+| Code | Description     |
+|:----:|:----------------|
+| Yes  | Yes / True etc. |
+| No   | No / False etc. |
+
+###### Size
+
+We may wish to check that functions work correctly for both large and small parameter or other data values.
+
+| Code   | Description  |
+|:------:|:-------------|
+| Small  | Small values |
+| Large  | Large values |
+
+###### Multiplicity
+
+The generic category set of multiplicity is applicable very frequently, and we should check each of the relevant categories. In some cases we'll want to check None / One / Multiple instance categories, but in this case we'll use Few / Many.
+
+| Code     | Description     |
+|:--------:|:----------------|
+| Few      | Few values      |
+| Many     | Many values     |
+
+###### Categories and Scenarios
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
 
 After analysis of the possible scenarios in terms of categories and category sets, we can depict them on a Category Structure diagram:
 
@@ -398,7 +441,9 @@ Tested: 2023-04-09 14:44:19, Formatted: 2023-04-09 14:44:19
 [&uarr; In this README...](#in-this-readme)<br />
 
 The project folder structure is shown below.
+
 <img src="png/folders.png">
+
 There are four subfolders below the trapit root folder:
 - `examples`: Examples of use
 - `install`: This holds the project library source code and a script to copy the module to the first folder in the powershell path

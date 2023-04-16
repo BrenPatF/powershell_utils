@@ -91,7 +91,13 @@ In the first step the external program creates the output results JSON file, whi
 
 Step 1 requires analysis to determine the extended signature for the unit under test, and to determine appropriate scenarios to test.
 
-The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs. A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories, an approach discussed in [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html). While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
+The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
+
+A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. I explore this approach further in this article:
+
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+
+While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
 
 The results of this analysis can be summarised in three CSV files which the first API in this powershell package uses as inputs to create a template for the JSON file.
 
@@ -117,7 +123,7 @@ The API can be run with the following powershell in the folder of the CSV files:
 Import-Module TrapitUtils
 Write-UT_Template 'stem' '|'
 ```
-This creates the template JSON file, `stem`_temp.json based on the CSV files having prefix `stem` and using the field delimiter '|'.
+This creates the template JSON file, `stem`_temp.json based on the CSV files having prefix `stem` and using the field delimiter '|'. The template file is then updated manually with data appropriate to each scenario.
 
 This powershell API can be used for testing in any language.
 
@@ -498,6 +504,32 @@ From the input and output groups depicted we can construct CSV files with flatte
 ###### Scenario Category ANalysis (SCAN) - ColGroup
 [&uarr; Step 1: Create JSON File - ColGroup](#step-1-create-json-file---colgroup)<br />
 
+As noted earlier, a useful approach to scenario selection can be to think in terms of categories of inputs, where we reduce large ranges to representative categories.
+
+###### Generic Category Sets - ColGroup
+
+As explained in the article mentioned earlier, it can be very useful to think in terms of generic category sets that apply in many situations. Multiplicity is relevant here (as it often is):
+
+###### Multiplicity
+
+There are several entities where the generic category set of multiplicity applies, and we should check each of the None / One / Multiple instance categories.
+
+| Code     | Description     |
+|:--------:|:----------------|
+| None     | No values       |
+| One      | One value       |
+| Multiple | Multiple values |
+
+Apply to:
+<ul>
+<li>Lines</li>
+<li>File Columns (one or multiple only)</li>
+<li>Key Instance (one or multiple only)</li>
+<li>Delimiter (one or multiple only)</li>
+</ul>
+
+###### Categories and Scenarios - ColGroup
+
 After analysis of the possible scenarios in terms of categories and category sets, we can depict them on a Category Structure diagram:
 
 <img src="png/CSD-CG.png">
@@ -645,39 +677,12 @@ You can review the HTML formatted unit test results here:
 ###### Unit Test Report - ColGroup
 [&uarr; Step 3: Format Results - ColGroup](#step-3-format-results---colgroup)<br />
 
-```
-Unit Test Report: ColGroup - Powershell
-=======================================
-
-      #    Category Set               Scenario                                  Fails (of 5)  Status
-      ---  -------------------------  ----------------------------------------  ------------  -------
-      1    Lines Multiplicity         No lines                                  0             SUCCESS
-      2    Lines Multiplicity         One line                                  0             SUCCESS
-      3    Lines Multiplicity         Multiple lines                            0             SUCCESS
-      4    File Column Multiplicity   One column in file                        0             SUCCESS
-      5    File Column Multiplicity   Multiple columns in file                  0             SUCCESS
-      6    Key Instance Multiplicity  One key instance                          0             SUCCESS
-      7    Key Instance Multiplicity  Multiple key instances                    0             SUCCESS
-      8    Delimiter Multiplicity     One delimiter character                   0             SUCCESS
-      9*   Delimiter Multiplicity     Multiple delimiter characters             5             FAILURE
-      10   Key Size                   Short key                                 0             SUCCESS
-      11   Key Size                   Long key                                  0             SUCCESS
-      12   Log file existence         Log file does not exist at time of call   0             SUCCESS
-      13   Log file existence         Log file exists at time of call           0             SUCCESS
-      14   Key/Value Ordering         Order by key differs from order by value  0             SUCCESS
-      15   Key/Value Ordering         Order by key same as order by value       0             SUCCESS
-      16*  Errors                     Actual/expected mismatch                  2             FAILURE
-      17*  Errors                     Unhandled exception                       5             FAILURE
-
-Test scenarios: 3 failed of 17: FAILURE
-=======================================
-Tested: 2023-04-09 14:42:06, Formatted: 2023-04-09 14:42:06
-```
+<img src="png/summary-colgroup.png">
 
 ###### Scenario 9: Multiple delimiter characters
 [&uarr; Step 3: Format Results - ColGroup](#step-3-format-results---colgroup)<br />
 
-This is one of three scenarios that fail, and it fails due to an unhandled exception, which is captured by the Test-Unit API. The error message is printed in a special output group, `Unhandled Exception` that is not specified in the input JSON file but added dynamically by the API into each scenario. In the case of an unhandled exception all the other output groups have empty 'actual' record sets, which will usually be recorded as failing. Note that we also use the scenario data to explicitly demonstrate behaviour of unhandled exceptions against the 'Errors' category set in scenario 17.
+<img src="png/scenario_9-colgroup.png">This is one of three scenarios that fail, and it fails due to an unhandled exception, which is captured by the Test-Unit API. The error message is printed in a special output group, `Unhandled Exception` that is not specified in the input JSON file but added dynamically by the API into each scenario. In the case of an unhandled exception all the other output groups have empty 'actual' record sets, which will usually be reported as failing. Note that we also use the scenario data to explicitly demonstrate behaviour of unhandled exceptions against the 'Errors' category set in scenario 17.
 
 The error message comes from powershell itself and explains clearly what has gone wrong:
 ```
@@ -686,77 +691,19 @@ Cannot bind parameter 'Delimiter'. Cannot convert value ";;" to type "System.Cha
 ```
 The code uses a standard powershell API, Import-CSV, to read in a CSV file, which takes the delimiter as a parameter. This API does not accept multi-character delimiters as the message indicates.
 
+The Unhandled Exception group also includes the error stack:
+
 ```
-SCENARIO 9: Multiple delimiter characters [Category Set: Delimiter Multiplicity] {
-==================================================================================
-   INPUTS
-   ======
-      GROUP 1: Log {
-      ==============
-            #  Line
-            -  ----
-            1
-      }
-      =
-      GROUP 2: Scalars {
-      ==================
-            #  Delimiter  Column
-            -  ---------  ------
-            1  ;;         col_1
-      }
-      =
-      GROUP 3: Lines {
-      ================
-            #  Line
-            -  -------------------
-            1  col_0;;col_1;;col_2
-            2  val_0;;val_1;;val_2
-      }
-      =
-   OUTPUTS
-   =======
-      GROUP 1: Log {
-      ==============
-            #   #Lines       Date Offset        Text
-            --  -----------  -----------------  -----------------------------------------------------------------
-            1   1            IN [0,2000]:       LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/:
-            1*  *NO RECORD*  NOT IN [0,2000]:   NOT LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/:
-      } 1 failed of 1: FAILURE
-      ========================
-      GROUP 2: listAsIs {
-      ===================
-            #   #Instances
-            --  -----------
-            1   1
-            1*  *NO RECORD*
-      } 1 failed of 1: FAILURE
-      ========================
-      GROUP 3: sortByKey {
-      ====================
-            #   Key          Value
-            --  -----------  -----
-            1   val_1        1
-            1*  *NO RECORD*
-      } 1 failed of 1: FAILURE
-      ========================
-      GROUP 4: sortByValue {
-      ======================
-            #   Key          Value
-            --  -----------  -----
-            1   val_1        1
-            1*  *NO RECORD*
-      } 1 failed of 1: FAILURE
-      ========================
-      GROUP 5: Unhandled Exception {
-      ==============================
-            #   Error Message
-            --  ---------------------------------------------------------------------------------------------------------------------------------------
-            1   *NO RECORD*
-            1*  Cannot bind parameter 'Delimiter'. Cannot convert value ";;" to type "System.Char". Error: "String must be exactly one character long."
-      } 1 failed of 1: FAILURE
-      ========================
-} 5 failed of 5: FAILURE
-========================
+at readList, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 65
+at ColGroup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 87
+at setup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 85
+at purelyWrap-Unit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 98
+at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
+at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
+at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 121
+at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Run-Test-ColGroup.ps1: line 67
 ```
 
 #### Batch Testing
@@ -949,6 +896,44 @@ From the input and output groups depicted we can construct CSV files with flatte
 
 #### Scenario Category ANalysis (SCAN)
 [&uarr; Step 1: Create JSON File](#step-1-create-json-file-1)<br />
+[&darr; Generic Category Sets](#generic-category-sets)<br />
+[&darr; Categories and Scenarios](#categories-and-scenarios)<br />
+
+The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
+
+A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. I explore this approach further in this article:
+
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+
+While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
+
+##### Generic Category Sets
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
+
+As explained in the article mentioned above, it can be very useful to think in terms of generic category sets that apply in many situations. Multiplicity is relevant here (as it often is):
+
+###### Multiplicity
+
+There are several entities where the generic category set of multiplicity applies, and we should check each of the applicable None / One / Multiple instance categories.
+
+| Code     | Description     |
+|:--------:|:----------------|
+| None     | No values       |
+| One      | One value       |
+| Multiple | Multiple values |
+
+Apply to:
+<ul>
+<li>Input Groups</li>
+<li>Output Groups</li>
+<li>Input Group Fields (one or multiple only)</li>
+<li>Output Group Fields (one or multiple only)</li>
+<li>Delimiter (one or multiple only)</li>
+<li>Scenarios (none or multiple only)</li>
+</ul>
+
+##### Categories and Scenarios
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
 
 After analysis of the possible scenarios in terms of categories and category sets, we can depict them on a Category Structure diagram:
 
@@ -1170,7 +1155,6 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
 
 The project folder structure is shown below.
 <img src="png/folders.png">
-
 There are three subfolders below the trapit root folder:
 - `examples`: Two working powershell examples are included in their own subfolders, with both test scripts and a main script that shows how the unit under test would normally be called
 - `install`: This holds the project library source code and a script to copy the module to the first folder in the powershell path
