@@ -18,12 +18,12 @@ Unit Test Report: ColGroup - Powershell
       13   Log file existence         Log file exists at time of call           0             SUCCESS
       14   Key/Value Ordering         Order by key differs from order by value  0             SUCCESS
       15   Key/Value Ordering         Order by key same as order by value       0             SUCCESS
-      16*  Errors                     Actual/expected mismatch                  1             FAILURE
+      16*  Errors                     Actual/expected mismatch                  2             FAILURE
       17*  Errors                     Unhandled exception                       5             FAILURE
 
 Test scenarios: 3 failed of 17: FAILURE
 =======================================
-Tested: 2023-04-16 06:49:44, Formatted: 2023-04-16 06:49:44
+Tested: 2023-05-07 10:27:04, Formatted: 2023-05-07 10:27:04
 
 SCENARIO 1: No lines [Category Set: Lines Multiplicity] {
 =========================================================
@@ -67,9 +67,9 @@ SCENARIO 1: No lines [Category Set: Lines Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 653.3015  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 457.0486  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:57: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -139,9 +139,9 @@ SCENARIO 2: One line [Category Set: Lines Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 861.8421  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 759.5971  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:57: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -226,9 +226,9 @@ SCENARIO 3: Multiple lines [Category Set: Lines Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset             Text                                                                                                                                                                                                                    
-            -  ------  ----------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 1008.8474  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset             Text                                                                                                                                                                                                                        
+            -  ------  ----------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 1011.6997  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:57: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -312,9 +312,9 @@ SCENARIO 4: One column in file [Category Set: File Column Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 141.3843  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0
+            #  #Lines  Date Offset           Text                                                                                                                                                                                                                        
+            -  ------  --------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 191.018  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/: 2023-05-06 13:03:58: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -398,9 +398,9 @@ SCENARIO 5: Multiple columns in file [Category Set: File Column Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 281.3942  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 380.4112  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:58: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -484,9 +484,9 @@ SCENARIO 6: One key instance [Category Set: Key Instance Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 430.4046  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 555.9635  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:58: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -572,9 +572,9 @@ SCENARIO 7: Multiple key instances [Category Set: Key Instance Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset           Text                                                                                                                                                                                                                    
-            -  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 567.468  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 755.7414  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:58: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -660,9 +660,9 @@ SCENARIO 8: One delimiter character [Category Set: Delimiter Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 705.2156  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 925.0005  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:58: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -790,19 +790,19 @@ SCENARIO 9: Multiple delimiter characters [Category Set: Delimiter Multiplicity]
       GROUP 5: Unhandled Exception {
       ==============================
 
-            #   Error Message                                                                                                Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-            --  -----------------------------------------------------------------------------------------------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1   *NO RECORD*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-            1*  Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.  at readList, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 65
-at ColGroup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 87
-at setup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 85
-at purelyWrap-Unit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 98
+            #   Error Message                                                                                                Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            --  -----------------------------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1   *NO RECORD*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            1*  Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.  at readList, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 65
+at ColGroup, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 87
+at setup, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 85
+at purelyWrap-Unit, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 98
 at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
 at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
 at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
-at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 121
-at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
-at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Run-Test-ColGroup.ps1: line 67
+at <ScriptBlock>, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 121
+at Test-FormatFolder, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 386
+at <ScriptBlock>, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\Run-Test-Examples.ps1: line 6
 
       } 1 failed of 1: FAILURE
       ========================
@@ -846,9 +846,9 @@ SCENARIO 10: Short key [Category Set: Key Size] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 992.9054  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 294.9591  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:59: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -925,9 +925,9 @@ SCENARIO 11: Long key [Category Set: Key Size] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 144.2385  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 474.7206  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:59: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1004,9 +1004,9 @@ SCENARIO 12: Log file does not exist at time of call [Category Set: Log file exi
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 272.2571  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 644.5567  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:59: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1090,9 +1090,9 @@ SCENARIO 13: Log file exists at time of call [Category Set: Log file existence] 
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 396.1867  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 800.1015  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:59: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1178,9 +1178,9 @@ SCENARIO 14: Order by key differs from order by value [Category Set: Key/Value O
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 520.2207  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 956.9253  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:03:59: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1268,9 +1268,9 @@ SCENARIO 15: Order by key same as order by value [Category Set: Key/Value Orderi
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 651.1825  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 132.7708  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:04:00: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1358,11 +1358,12 @@ SCENARIO 16: Actual/expected mismatch [Category Set: Errors] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 790.1263  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-04-16 07:49:43: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #   #Lines  Date Offset            Text                                                                                                                                                                                                                        
+            --  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1   2       IN [0,2000]: 302.8335  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:04:00: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1*  1       IN [0,2000]: 302.8335  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2023-05-06 13:04:00: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
-      } 0 failed of 1: SUCCESS
+      } 1 failed of 1: FAILURE
       ========================
 
       GROUP 2: listAsIs {
@@ -1401,7 +1402,7 @@ SCENARIO 16: Actual/expected mismatch [Category Set: Errors] {
       GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 1 failed of 5: FAILURE
+} 2 failed of 5: FAILURE
 ========================
 
 SCENARIO 17: Unhandled exception [Category Set: Errors] {
@@ -1493,19 +1494,19 @@ SCENARIO 17: Unhandled exception [Category Set: Errors] {
       GROUP 5: Unhandled Exception {
       ==============================
 
-            #   Error Message                                                                                                Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-            --  -----------------------------------------------------------------------------------------------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1   *NO RECORD*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-            1*  Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.  at readList, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 65
-at ColGroup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 87
-at setup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 85
-at purelyWrap-Unit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 98
+            #   Error Message                                                                                                Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            --  -----------------------------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1   *NO RECORD*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            1*  Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.  at readList, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 65
+at ColGroup, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 87
+at setup, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 85
+at purelyWrap-Unit, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 98
 at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
 at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
 at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
-at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 121
-at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
-at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Run-Test-ColGroup.ps1: line 67
+at <ScriptBlock>, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 121
+at Test-FormatFolder, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 386
+at <ScriptBlock>, C:\Users\Brend\Dropbox\Home\WIP\github_stage\powershell_utils\TrapitUtils\examples\Run-Test-Examples.ps1: line 6
 
       } 1 failed of 1: FAILURE
       ========================

@@ -57,7 +57,7 @@ This file contains the install script for the TrapitUtils module.
 
 To run from the install folder:
 
-    $ .\install\Install-TrapitUtils
+    $ .\Install-TrapitUtils
 **************************************************************************************************#>
-Import-Module ($PSScriptRoot + '\..\..\Utils\install\Utils.psm1')
+Import-Module ($PSScriptRoot + '\..\Utils\Utils.psm1')
 Install-Module $PSScriptRoot 'TrapitUtils'

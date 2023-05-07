@@ -213,7 +213,7 @@ Installs a module in the first folder in psmodulepath environment variable, with
 ## Installation
 [&uarr; In this README...](#in-this-readme)<br />
 
-To install Utils open a powershell window in the install folder below Utils, and execute as follows:
+To install Utils open a powershell window in the root Utils folder, and execute as follows:
 ```
 $ ./Install-Utils
 ```
@@ -394,7 +394,7 @@ Step 3 involves formatting the results contained in the JSON output file from st
 
 ```powershell
 Import-Module TrapitUtils
-Test-Format ($PSScriptRoot + '/Test-Utils.ps1') ($PSScriptRoot + '/../..')
+Test-Format ($PSScriptRoot + '/Test-Utils.ps1') ($PSScriptRoot + '/../../TrapitUtils')
 ```
 This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
 
@@ -442,11 +442,10 @@ Tested: 2023-04-09 14:44:19, Formatted: 2023-04-09 14:44:19
 
 The project folder structure is shown below.
 
-<img src="png/folders.png">
+<img src="png/folders-Utils.png">
 
-There are four subfolders below the trapit root folder:
+There are three subfolders below the trapit root folder, which has README and module:
 - `examples`: Examples of use
-- `install`: This holds the project library source code and a script to copy the module to the first folder in the powershell path
 - `png`: This holds the image files for the README
 - `unit_test`: Root folder for unit testing of the package, with subfolder having the results files
 
@@ -454,8 +453,9 @@ There are four subfolders below the trapit root folder:
 [&uarr; In this README...](#in-this-readme)<br />
 - [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester)
 - [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
-- [Powershell Trapit Unit Testing Utilities module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
+- [Powershell Trapit Unit Testing Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
 - [Node.js Downloads](https://nodejs.org/en/download)
+- [Powershell General Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
 
 ## Software Versions
 

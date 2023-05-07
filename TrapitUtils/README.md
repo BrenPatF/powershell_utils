@@ -746,6 +746,7 @@ There is also a script Run-Main-Examples.ps1 in the examples folder that runs bo
 [&darr; Test-Unit](#test-unit)<br />
 [&darr; Test-Format](#test-format)<br />
 [&darr; Test-FormatFolder](#test-formatfolder)<br />
+[&darr; Test-FormatDB](#test-formatdb)<br />
 ```powershell
 Import-Module TrapitUtils
 ```
@@ -842,6 +843,19 @@ Calls each of a list of powershell unit test driver scripts, then calls the Java
 * `$jsonFolder`: folder where JSON files are copied, and results subfolders placed
 * `$npmRoot`: parent folder of the JavaScript node_modules npm root folder
 
+### Test-FormatDB
+[&uarr; API - TrapitUtils](#api---trapitutils)<br />
+```
+Test-FormatDB($unpw, $conn, $utGroup, $testRoot)
+```
+Automates the running of Oracle PL/SQL unit tests and formatting of the results via the JavaScript formatter. It has parameters:
+
+* `$unpw`: Oracle user name / password string
+* `$conn`:  Oracle connection string (such as the TNS alias)
+* `$utGroup`:  Oracle unit test group
+* `$testRoot`:  unit testing root folder, where results folders will be placed
+
+Runs a SQL*Plus session calling the Oracle unit test driving function, with the test group passed as a parameter. The unit test driving function returns a list of the output JSON files created, which are then processed in a loop by the JavaScript formatter, which writes the formatted results files to subfolders based on the titles, and returns a summary of the results.
 ## Installation
 [&uarr; In This README...](#in-this-readme)<br />
 [&darr; Install Prerequisites](#install-prerequisites)<br />
@@ -861,7 +875,7 @@ The JavaScript npm package [Trapit - JavaScript Unit Tester/Formatter](https://g
 ### Install TrapitUtils
 [&uarr; Installation](#installation)<br />
 
-To install TrapitUtils open a powershell window in the install folder below TrapitUtils, and execute as follows:
+To install TrapitUtils open a powershell window in the root TrapitUtils folder, and execute as follows:
 ```
 $ .\Install-TrapitUtils
 ```
@@ -1154,10 +1168,11 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
 [&uarr; In This README...](#in-this-readme)<br />
 
 The project folder structure is shown below.
-<img src="png/folders.png">
-There are three subfolders below the trapit root folder:
+
+<img src="png/folders-TrapitUtils.png">
+
+There are four subfolders below the trapit root folder, which has README and module:
 - `examples`: Two working powershell examples are included in their own subfolders, with both test scripts and a main script that shows how the unit under test would normally be called
-- `install`: This holds the project library source code and a script to copy the module to the first folder in the powershell path
 - `node_modules`: npm root
 - `png`: This holds the image files for the README
 - `unit_test`: Root folder for unit testing of the Get-UT_TemplateObject function, with subfolder having the results files
@@ -1166,7 +1181,8 @@ There are three subfolders below the trapit root folder:
 [&uarr; In This README...](#in-this-readme)<br />
 - [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester)
 - [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
-- [Powershell General Utilities module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
+- [Powershell General Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
+- [Powershell Trapit Unit Testing Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
 
 ## Software Versions
 

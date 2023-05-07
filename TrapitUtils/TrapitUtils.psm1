@@ -57,7 +57,7 @@ JavaScript formatter.
 This file contains the TrapitUtils module for unit testing following the Math Function Unit Testing
 design pattern.
 **************************************************************************************************#>
-Import-Module Utils
+Import-Module ($PSScriptRoot + '\..\Utils\Utils.psm1')
 <#**************************************************************************************************
 Write-UT_Template($stem, $delimiter): Write a template for the unit test scenarios JSON file used in
     the Math Function Unit Testing design pattern (https://github.com/BrenPatF/trapit_nodejs_tester)
@@ -387,4 +387,61 @@ function Test-FormatFolder {
         Copy-Item $jsonFile $jsonFolder
     }
     node ($npmRoot + '/node_modules/trapit/externals/format-external-folder') ($jsonFolder -Replace '\\', '/')
+}
+<#**************************************************************************************************
+Test-FormatDB($unpw, $conn, $utGroup, $testRoot): Run Oracle unit tests for a given test group
+
+    Input: $unpw        - Oracle user name / password string
+           $conn        - Oracle connection string (such as the TNS alias)
+           $utGroup     - Oracle unit test group
+           $testRoot    - unit testing root folder, where results folders will be placed
+                             
+    Return: Results summary for each unit tested as a string
+
+    The function runs a SQL*Plus session calling the unit test driving function, with the test group 
+    passed as a parameter. The unit test driving function returns a list of the output JSON files
+    created, which are then processed in a loop by the JavaScript formatter, which writes the 
+    formatted results files to subfolders based on the titles, and returns a summary of the results
+**************************************************************************************************#>
+function Test-FormatDB {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$unpw, # Oracle user name / password string
+        [Parameter(Mandatory=$true)]
+        [string]$conn, # Oracle connection string (such as the TNS alias)
+        [Parameter(Mandatory=$true)]
+        [string]$utGroup, # Oracle unit test group
+        [Parameter(Mandatory=$true)]
+        [string]$testRoot # unit testing root folder, where results folders will be placed
+    )
+
+    $sqlPlusCommands = @"
+SET SERVEROUTPUT ON
+DECLARE
+    l_file_lis                   L1_chr_arr;
+BEGIN
+
+    l_file_lis := Trapit_Run.Test_Output_Files('GROUP');
+    Utils.W('!');
+    Utils.W(l_file_lis);
+    Utils.W('!');
+
+END;
+/
+EXIT;
+"@
+    $fullConn = $unpw + '@' + $conn
+    $output = $sqlPlusCommands -Replace 'GROUP', $utGroup | sqlplus $fullConn
+    $output
+    $arr = $output.Split([Environment]::NewLine)
+    $ids = ($arr | select-string '!').linenumber
+
+    if ($arr[$ids[0]] -eq '!') { throw "No output files to process..." }
+    foreach($i in $ids[0] .. ($ids[1] - 2)) {
+        Copy-Item $arr[$i] $testRoot
+        $fileName = $testRoot + '/' + (Split-Path $arr[$i] -leaf)
+        ' '
+        node ($PSScriptRoot + '/node_modules/trapit/externals/format-external-file') $fileName
+    }
 }

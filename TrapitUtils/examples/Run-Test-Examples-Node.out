@@ -1,6 +1,6 @@
 UT folder: C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples
 JavaScript folder: C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples/../node_modules/trapit/
-Executing:  Test-HelloWorld.ps1 at 09-Apr-23 15:38:04
+Executing:  Test-HelloWorld.ps1 at 07-May-23 11:27:04
 C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples/helloworld/Test-HelloWorld
 Executing:  Test-ColGroup.ps1
 C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples/colgroup/Test-ColGroup
@@ -24,5 +24,5 @@ Title:         ColGroup - Powershell
 Inp Groups:    3
 Out Groups:    5
 Tests:         17
-Fails:         5
+Fails:         3
 Folder:        colgroup---powershell

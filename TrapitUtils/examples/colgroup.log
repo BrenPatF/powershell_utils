@@ -3,5 +3,5 @@ Title:         ColGroup - Powershell
 Inp Groups:    3
 Out Groups:    5
 Tests:         17
-Fails:         5
+Fails:         3
 Folder:        colgroup---powershell

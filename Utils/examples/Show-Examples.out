@@ -23,29 +23,29 @@ Counts sorted by (as is)
 ========================
 Team         #apps
 -----------  -----
-Newcastle     1247
-Aston Villa    685
-Reading       1167
-West Brom     1219
-Tottenham     1288
-Man City      1099
-Southampton   1110
-Everton       1147
-Stoke City    1170
-Arsenal        534
-Norwich       1229
-Fulham        1209
-Liverpool     1227
-Sunderland    1162
-Man Utd       1231
-Wigan         1036
-Chelsea       1147
 Swansea       1180
-West Ham      1126
-Blackburn       33
-Wolves          31
-QPR           1517
 Bolton          37
+Aston Villa    685
+Fulham        1209
+West Ham      1126
+Wolves          31
+West Brom     1219
+Wigan         1036
+Arsenal        534
+Everton       1147
+Man City      1099
+Blackburn       33
+Stoke City    1170
+QPR           1517
+Newcastle     1247
+Man Utd       1231
+Tottenham     1288
+Liverpool     1227
+Norwich       1229
+Sunderland    1162
+Southampton   1110
+Reading       1167
+Chelsea       1147
 
 
 Counts sorted by key
@@ -130,7 +130,7 @@ After:
 Content of debug.log...
 =======================
 
-Debug starting, 04/09/2023 15:44:33: Debug
+Debug starting, 05/07/2023 11:23:40: Debug
 Counted 23 teams, with 22831 appearances
 
 Demonstrate Install-Module...
