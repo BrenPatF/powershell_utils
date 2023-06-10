@@ -1,0 +1,443 @@
+Unit Test Report: Merge MD Files
+================================
+
+      #    Scenario                                                                                       Fails (of 3)  Status 
+      ---  ---------------------------------------------------------------------------------------------  ------------  -------
+      1    Validation Error                                                                               0             SUCCESS
+      2    Minimal edge cases                                                                             0             SUCCESS
+      3    Semi-minimal edge cases                                                                        0             SUCCESS
+      4    Multiple entity; 2 levels with Level 3 included in Level 2 file section                        0             SUCCESS
+      5    Multiple entity; 6 levels, with a Level 3 file section; unlinked heading; all character types  0             SUCCESS
+
+Test scenarios: 0 failed of 5: SUCCESS
+======================================
+Tested: 2023-04-10 06:33:42, Formatted: 2023-04-10 06:33:42
+
+SCENARIO 1: Validation Error {
+==============================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Max Level
+            -  ---------
+            1  7        
+
+      }
+      =
+
+      GROUP 2: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 3: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File: Empty as expected: SUCCESS
+      =======================================================
+
+      GROUP 2: Return Headings: Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 3: Error Message {
+      ========================
+
+            #  Line                                                                                                                                                                                             
+            -  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  Cannot validate argument on parameter 'maxLev'. The 7 argument is greater than the maximum allowed range of 6. Supply an argument that is less than or equal to 6 and then try the command again.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+} 0 failed of 3: SUCCESS
+========================
+
+SCENARIO 2: Minimal edge cases {
+================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Max Level
+            -  ---------
+            1           
+
+      }
+      =
+
+      GROUP 2: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 3: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+} 0 failed of 3: SUCCESS
+========================
+
+SCENARIO 3: Semi-minimal edge cases {
+=====================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Max Level
+            -  ---------
+            1           
+
+      }
+      =
+
+      GROUP 2: Input Files List {
+      ===========================
+
+            #  File Name     File Empty?
+            -  ------------  -----------
+            1  intro.md      N          
+            2  heading_1.md  N          
+
+      }
+      =
+
+      GROUP 3: Input Files {
+      ======================
+
+            #  File Name     Line               
+            -  ------------  -------------------
+            1  intro.md      intro...           
+            2  intro.md      # In This README...
+            3  heading_1.md  ## Heading Level 2 
+            4  heading_1.md  Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  intro...                                         
+            2  # In This README...                              
+            3  [&darr; Heading Level 2](#heading-level-2)<br /> 
+            4  ## Heading Level 2                               
+            5  [&uarr; In This README...](#in-this-readme)<br />
+            6  Line 1                                           
+
+      } 0 failed of 6: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading Level 2 
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+} 0 failed of 3: SUCCESS
+========================
+
+SCENARIO 4: Multiple entity; 2 levels with Level 3 included in Level 2 file section {
+=====================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Max Level
+            -  ---------
+            1           
+
+      }
+      =
+
+      GROUP 2: Input Files List {
+      ===========================
+
+            #  File Name     File Empty?
+            -  ------------  -----------
+            1  intro.md      N          
+            2  heading_1.md  N          
+
+      }
+      =
+
+      GROUP 3: Input Files {
+      ======================
+
+            #   File Name     Line                              
+            --  ------------  ----------------------------------
+            1   intro.md      intro...                          
+            2   intro.md      intro line 2                      
+            3   intro.md                                        
+            4   intro.md      # In This README...               
+            5   heading_1.md  ## Heading Level 2                
+            6   heading_1.md  Line 1                            
+            7   heading_1.md  Line 2                            
+            8   heading_1.md                                    
+            9   heading_1.md  ### Level 3 heading within L1 file
+            10  heading_1.md  Level 3 line 1                    
+            11  heading_1.md  Level 3 line 2                    
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                                          
+            --  ------------------------------------------------------------------------------
+            1   intro...                                                                      
+            2   intro line 2                                                                  
+            3                                                                                 
+            4   # In This README...                                                           
+            5   [&darr; Heading Level 2](#heading-level-2)<br />                              
+            6   ## Heading Level 2                                                            
+            7   [&uarr; In This README...](#in-this-readme)<br />                             
+            8   [&darr; Level 3 heading within L1 file](#level-3-heading-within-l1-file)<br />
+            9   Line 1                                                                        
+            10  Line 2                                                                        
+            11                                                                                
+            12  ### Level 3 heading within L1 file                                            
+            13  [&uarr; Heading Level 2](#heading-level-2)<br />                              
+            14  Level 3 line 1                                                                
+            15  Level 3 line 2                                                                
+
+      } 0 failed of 15: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                              
+            -  ----------------------------------
+            1  # In This README...               
+            2  ## Heading Level 2                
+            3  ### Level 3 heading within L1 file
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+} 0 failed of 3: SUCCESS
+========================
+
+SCENARIO 5: Multiple entity; 6 levels, with a Level 3 file section; unlinked heading; all character types {
+===========================================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Max Level
+            -  ---------
+            1           
+
+      }
+      =
+
+      GROUP 2: Input Files List {
+      ===========================
+
+            #  File Name     File Empty?
+            -  ------------  -----------
+            1  intro.md      N          
+            2  heading_1.md  N          
+            3  heading_2.md  N          
+
+      }
+      =
+
+      GROUP 3: Input Files {
+      ======================
+
+            #   File Name     Line                                              
+            --  ------------  --------------------------------------------------
+            1   intro.md      intro...                                          
+            2   intro.md      intro line 2                                      
+            3   intro.md                                                        
+            4   intro.md      # In This README...                               
+            5   heading_1.md  ## Heading Level 2                                
+            6   heading_1.md  Line 1 with a # in middle                         
+            7   heading_1.md  Line 2                                            
+            8   heading_1.md                                                    
+            9   heading_1.md  ### Level 3 heading within L2 file-CTC=AL:/(),.;?$
+            10  heading_1.md  Level 3 line 1                                    
+            11  heading_1.md  Level 3 line 2                                    
+            12  heading_2.md  ### Heading Level 3                               
+            13  heading_2.md  Level 3 file line 1                               
+            14  heading_2.md  Level 3 file line 2                               
+            15  heading_2.md  #### Level 4 heading within L3 file               
+            16  heading_2.md  Level 4 file line 1                               
+            17  heading_2.md  Level 4 file line 2                               
+            18  heading_2.md  ##### Level 5 heading within L3 file              
+            19  heading_2.md  Level 5 file line 1                               
+            20  heading_2.md  Level 5 file line 2                               
+            21  heading_2.md  ###### Level 6 heading within L3 file             
+            22  heading_2.md  Level 6 file line 1                               
+            23  heading_2.md  Level 6 file line 2                               
+            24  heading_2.md  ####### Level 7 heading within L3 file            
+            25  heading_2.md  Level 7 file line 1                               
+            26  heading_2.md  Level 7 file line 2                               
+            27  heading_2.md  !#### Level 4 heading unlinked                    
+            28  heading_2.md  Level 4 heading unlinked line 1                   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                                                                
+            --  ----------------------------------------------------------------------------------------------------
+            1   intro...                                                                                            
+            2   intro line 2                                                                                        
+            3                                                                                                       
+            4   # In This README...                                                                                 
+            5   [&darr; Heading Level 2](#heading-level-2)<br />                                                    
+            6   ## Heading Level 2                                                                                  
+            7   [&uarr; In This README...](#in-this-readme)<br />                                                   
+            8   [&darr; Level 3 heading within L2 file-CTC=AL:/(),.;?$](#level-3-heading-within-l2-file-ctcal)<br />
+            9   [&darr; Heading Level 3](#heading-level-3)<br />                                                    
+            10  Line 1 with a # in middle                                                                           
+            11  Line 2                                                                                              
+            12                                                                                                      
+            13  ### Level 3 heading within L2 file-CTC=AL:/(),.;?$                                                  
+            14  [&uarr; Heading Level 2](#heading-level-2)<br />                                                    
+            15  Level 3 line 1                                                                                      
+            16  Level 3 line 2                                                                                      
+            17  ### Heading Level 3                                                                                 
+            18  [&uarr; Heading Level 2](#heading-level-2)<br />                                                    
+            19  [&darr; Level 4 heading within L3 file](#level-4-heading-within-l3-file)<br />                      
+            20  Level 3 file line 1                                                                                 
+            21  Level 3 file line 2                                                                                 
+            22  #### Level 4 heading within L3 file                                                                 
+            23  [&uarr; Heading Level 3](#heading-level-3)<br />                                                    
+            24  [&darr; Level 5 heading within L3 file](#level-5-heading-within-l3-file)<br />                      
+            25  Level 4 file line 1                                                                                 
+            26  Level 4 file line 2                                                                                 
+            27  ##### Level 5 heading within L3 file                                                                
+            28  [&uarr; Level 4 heading within L3 file](#level-4-heading-within-l3-file)<br />                      
+            29  [&darr; Level 6 heading within L3 file](#level-6-heading-within-l3-file)<br />                      
+            30  Level 5 file line 1                                                                                 
+            31  Level 5 file line 2                                                                                 
+            32  ###### Level 6 heading within L3 file                                                               
+            33  [&uarr; Level 5 heading within L3 file](#level-5-heading-within-l3-file)<br />                      
+            34  Level 6 file line 1                                                                                 
+            35  Level 6 file line 2                                                                                 
+            36  ####### Level 7 heading within L3 file                                                              
+            37  Level 7 file line 1                                                                                 
+            38  Level 7 file line 2                                                                                 
+            39  #### Level 4 heading unlinked                                                                       
+            40  Level 4 heading unlinked line 1                                                                     
+
+      } 0 failed of 40: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                                              
+            -  --------------------------------------------------
+            1  # In This README...                               
+            2  ## Heading Level 2                                
+            3  ### Level 3 heading within L2 file-CTC=AL:/(),.;?$
+            4  ### Heading Level 3                               
+            5  #### Level 4 heading within L3 file               
+            6  ##### Level 5 heading within L3 file              
+            7  ###### Level 6 heading within L3 file             
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+} 0 failed of 3: SUCCESS
+========================

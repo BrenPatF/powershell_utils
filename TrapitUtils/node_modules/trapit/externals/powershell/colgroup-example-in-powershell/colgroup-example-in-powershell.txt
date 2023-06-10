@@ -1,0 +1,1303 @@
+Unit Test Report: ColGroup EXample in Powershell
+================================================
+
+      #    Category Set               Scenario                                  Fails (of 5)  Status 
+      ---  -------------------------  ----------------------------------------  ------------  -------
+      1    Lines Multiplicity         No lines                                  0             SUCCESS
+      2    Lines Multiplicity         One line                                  0             SUCCESS
+      3    Lines Multiplicity         Multiple lines                            0             SUCCESS
+      4    File Column Multiplicity   One column in file                        0             SUCCESS
+      5    File Column Multiplicity   Multiple columns in file                  0             SUCCESS
+      6    Key Instance Multiplicity  One key instance                          0             SUCCESS
+      7    Key Instance Multiplicity  Multiple key instances                    0             SUCCESS
+      8    Delimiter Multiplicity     One delimiter character                   0             SUCCESS
+      9*   Delimiter Multiplicity     Multiple delimiter characters             5             FAILURE
+      10   Key Size                   Short key                                 0             SUCCESS
+      11   Key Size                   Long key                                  0             SUCCESS
+      12   Log file existence         Log file does not exist at time of call   0             SUCCESS
+      13   Log file existence         Log file exists at time of call           0             SUCCESS
+      14   Key/Value Ordering Same    Order by key differs from order by value  0             SUCCESS
+      15   Key/Value Ordering Same    Order by key same as order by value       0             SUCCESS
+
+Test scenarios: 1 failed of 15: FAILURE
+=======================================
+Tested: 2022-12-17 11:43:05, Formatted: 2022-12-17 11:43:05
+
+SCENARIO 1: No lines [Category Set: Lines Multiplicity] {
+=========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 723.7734  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:02: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  0         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 4: sortByValue: Empty as expected: SUCCESS
+      ================================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 2: One line [Category Set: Lines Multiplicity] {
+=========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 920.5901  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:02: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 3: Multiple lines [Category Set: Lines Multiplicity] {
+===============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+            3  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset           Text                                                                                                                                                                                          
+            -  ------  --------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 77.0215  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  2    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  2    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 4: One column in file [Category Set: File Column Multiplicity] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_0 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line 
+            -  -----
+            1  col_0
+            2  val_0
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 223.4548  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_0  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_0  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 5: Multiple columns in file [Category Set: File Column Multiplicity] {
+===============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 375.9952  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 6: One key instance [Category Set: Key Instance Multiplicity] {
+========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 516.9005  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 7: Multiple key instances [Category Set: Key Instance Multiplicity] {
+==============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line              
+            -  ------------------
+            1  col_0,col_1,col_2 
+            2  val_0,val_10,val_2
+            3  val_0,val_11,val_2
+            4  val_0,val_10,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 666.1492  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  2         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_10  2    
+            2  val_11  1    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_11  1    
+            2  val_10  2    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 8: One delimiter character [Category Set: Delimiter Multiplicity] {
+============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 812.1689  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:03: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 9: Multiple delimiter characters [Category Set: Delimiter Multiplicity] {
+==================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ;;         col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line               
+            -  -------------------
+            1  col_0;;col_1;;col_2
+            2  val_0;;val_1;;val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #   #Lines       Date Offset        Text                                                             
+            --  -----------  -----------------  -----------------------------------------------------------------
+            1   1            IN [0,2000]:       LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/:     
+            1*  *NO RECORD*  NOT IN [0,2000]:   NOT LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 
+
+      } 1 failed of 1: FAILURE
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #   #Instances 
+            --  -----------
+            1   1          
+            1*  *NO RECORD*
+
+      } 1 failed of 1: FAILURE
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #   Key          Value
+            --  -----------  -----
+            1   val_1        1    
+            1*  *NO RECORD*       
+
+      } 1 failed of 1: FAILURE
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #   Key          Value
+            --  -----------  -----
+            1   val_1        1    
+            1*  *NO RECORD*       
+
+      } 1 failed of 1: FAILURE
+      ========================
+
+      GROUP 5: Unhandled Exception {
+      ==============================
+
+            #   Error Message                                                                                                                          
+            --  ---------------------------------------------------------------------------------------------------------------------------------------
+            1   *NO RECORD*                                                                                                                            
+            1*  Cannot bind parameter 'Delimiter'. Cannot convert value ";;" to type "System.Char". Error: "String must be exactly one character long."
+
+      } 1 failed of 1: FAILURE
+      ========================
+
+} 5 failed of 5: FAILURE
+========================
+
+SCENARIO 10: Short key [Category Set: Key Size] {
+=================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log: Empty
+      ===================
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset           Text                                                                                                                                                                                          
+            -  ------  --------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 88.5508  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 11: Long key [Category Set: Key Size] {
+================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log: Empty
+      ===================
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line                                                          
+            -  --------------------------------------------------------------
+            1  col_0,col_1,col_2                                             
+            2  val_0,val45678901234567890123456789012345678901234567890,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 228.6918  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key                                                 Value
+            -  --------------------------------------------------  -----
+            1  val45678901234567890123456789012345678901234567890  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key                                                 Value
+            -  --------------------------------------------------  -----
+            1  val45678901234567890123456789012345678901234567890  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 12: Log file does not exist at time of call [Category Set: Log file existence] {
+=========================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log: Empty
+      ===================
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset          Text                                                                                                                                                                                          
+            -  ------  -------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 364.75  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 13: Log file exists at time of call [Category Set: Log file existence] {
+=================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line      
+            -  ----------
+            1  Log line 1
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line             
+            -  -----------------
+            1  col_0,col_1,col_2
+            2  val_0,val_1,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 504.3852  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  1         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key    Value
+            -  -----  -----
+            1  val_1  1    
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 14: Order by key differs from order by value [Category Set: Key/Value Ordering Same] {
+===============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line              
+            -  ------------------
+            1  col_0,col_1,col_2 
+            2  val_0,val_10,val_2
+            3  val_0,val_11,val_2
+            4  val_0,val_10,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 630.0881  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  2         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_10  2    
+            2  val_11  1    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_11  1    
+            2  val_10  2    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 15: Order by key same as order by value [Category Set: Key/Value Ordering Same] {
+==========================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Log {
+      ==============
+
+            #  Line
+            -  ----
+            1      
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Delimiter  Column
+            -  ---------  ------
+            1  ,          col_1 
+
+      }
+      =
+
+      GROUP 3: Lines {
+      ================
+
+            #  Line              
+            -  ------------------
+            1  col_0,col_1,col_2 
+            2  val_0,val_11,val_2
+            3  val_0,val_10,val_2
+            4  val_0,val_11,val_2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Log {
+      ==============
+
+            #  #Lines  Date Offset            Text                                                                                                                                                                                          
+            -  ------  ---------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 776.3886  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2022-12-17 11:43:04: File C:-Users-Brend-Dropbox-Home-WIP-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: listAsIs {
+      ===================
+
+            #  #Instances
+            -  ----------
+            1  2         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: sortByKey {
+      ====================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_10  1    
+            2  val_11  2    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: sortByValue {
+      ======================
+
+            #  Key     Value
+            -  ------  -----
+            1  val_10  1    
+            2  val_11  2    
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
