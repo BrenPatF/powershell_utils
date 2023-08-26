@@ -1,18 +1,18 @@
 Unit Test Report: Powershell Utils
 ==================================
 
-      #    Category Set  Scenario       Fails (of 9)  Status 
-      ---  ------------  -------------  ------------  -------
-      1    Defaulting    Defaulted      0             SUCCESS
-      2    Defaulting    Not Defaulted  0             SUCCESS
-      3    Size          Small          0             SUCCESS
-      4    Size          Large          0             SUCCESS
-      5    Multiplicity  Few            0             SUCCESS
-      6    Multiplicity  Many           0             SUCCESS
+      #    Category Set  Scenario       Fails (of 11)  Status 
+      ---  ------------  -------------  -------------  -------
+      1    Defaulting    Defaulted      0              SUCCESS
+      2    Defaulting    Not Defaulted  0              SUCCESS
+      3    Size          Small          0              SUCCESS
+      4    Size          Large          0              SUCCESS
+      5    Multiplicity  Few            0              SUCCESS
+      6    Multiplicity  Many           0              SUCCESS
 
 Test scenarios: 0 failed of 6: SUCCESS
 ======================================
-Tested: 2023-05-07 10:26:24, Formatted: 2023-05-07 10:26:24
+Tested: 2023-08-26 13:41:06, Formatted: 2023-08-26 13:41:06
 
 SCENARIO 1: Defaulted [Category Set: Defaulting] {
 ==================================================
@@ -73,7 +73,18 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #  Value  Length
+            -  -----  ------
+            1  hdr1   5     
+            2  hdr2   -5    
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #  Value  Length
@@ -84,7 +95,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #  Line         
@@ -95,7 +106,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -105,12 +116,22 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
             1  .              TestModule 
+
+      }
+      =
+
+      GROUP 11: Start-MySleep {
+      =========================
+
+            #  Elapsed Seconds  Fraction CPU
+            -  ---------------  ------------
+            1  1                0.3         
 
       }
       =
@@ -123,7 +144,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
 
             #  Line                                                                                  
             -  --------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 05/07/2023 11:26:15: Testing...
+            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:40:57: Testing...
             2  Line 2...                                                                             
 
       } 0 failed of 2: SUCCESS
@@ -164,7 +185,18 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line        
+            -  ------------
+            1   hdr1  hdr2 
+            2  -----  -----
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line         
@@ -174,7 +206,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #  Line         
@@ -185,7 +217,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -199,7 +231,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -209,11 +241,21 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep {
+      =========================
 
-} 0 failed of 9: SUCCESS
-========================
+            #  Elapsed Seconds     CPU Seconds       
+            -  ------------------  ------------------
+            1  IN [0.8,1.2]: 1.03  IN [0.1,0.8]: 0.44
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================
 
 SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
 ======================================================
@@ -274,7 +316,18 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #  Value  Length
+            -  -----  ------
+            1  hdr1   5     
+            2  hdr2   -5    
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #  Value  Length
@@ -285,7 +338,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #  Line         
@@ -296,7 +349,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -306,8 +359,8 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
@@ -315,6 +368,9 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
 
       }
       =
+
+      GROUP 11: Start-MySleep: Empty
+      ==============================
 
    OUTPUTS
    =======
@@ -324,7 +380,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
 
             #  Line                                                                                      
             -  ------------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing...ND/: Debug starting, 05/07/2023 11:26:17: Testing...ND
+            1  LIKE /Debug starting, .*: Testing...ND/: Debug starting, 08/26/2023 14:40:59: Testing...ND
             2  Line 2...ND                                                                               
 
       } 0 failed of 2: SUCCESS
@@ -365,7 +421,18 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line             
+            -  -----------------
+            1        hdr1  hdr2 
+            2       -----  -----
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line              
@@ -375,7 +442,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #  Line         
@@ -386,7 +453,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -400,7 +467,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -410,11 +477,14 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep: Empty as expected: SUCCESS
+      ===================================================
 
-} 0 failed of 9: SUCCESS
-========================
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================
 
 SCENARIO 3: Small [Category Set: Size] {
 ========================================
@@ -475,7 +545,18 @@ SCENARIO 3: Small [Category Set: Size] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #  Value  Length
+            -  -----  ------
+            1  h      1     
+            2  g      -1    
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #  Value  Length
@@ -486,7 +567,7 @@ SCENARIO 3: Small [Category Set: Size] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #  Line
@@ -497,7 +578,7 @@ SCENARIO 3: Small [Category Set: Size] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -507,8 +588,8 @@ SCENARIO 3: Small [Category Set: Size] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
@@ -516,6 +597,9 @@ SCENARIO 3: Small [Category Set: Size] {
 
       }
       =
+
+      GROUP 11: Start-MySleep: Empty
+      ==============================
 
    OUTPUTS
    =======
@@ -525,7 +609,7 @@ SCENARIO 3: Small [Category Set: Size] {
 
             #  Line                                                                
             -  --------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: T/: Debug starting, 05/07/2023 11:26:18: T
+            1  LIKE /Debug starting, .*: T/: Debug starting, 08/26/2023 14:41:00: T
             2  L                                                                   
 
       } 0 failed of 2: SUCCESS
@@ -566,7 +650,18 @@ SCENARIO 3: Small [Category Set: Size] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line
+            -  ----
+            1  h  g
+            2  -  -
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line
@@ -576,7 +671,7 @@ SCENARIO 3: Small [Category Set: Size] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #  Line
@@ -587,7 +682,7 @@ SCENARIO 3: Small [Category Set: Size] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -601,7 +696,7 @@ SCENARIO 3: Small [Category Set: Size] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -611,11 +706,14 @@ SCENARIO 3: Small [Category Set: Size] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep: Empty as expected: SUCCESS
+      ===================================================
 
-} 0 failed of 9: SUCCESS
-========================
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================
 
 SCENARIO 4: Large [Category Set: Size] {
 ========================================
@@ -676,7 +774,18 @@ SCENARIO 4: Large [Category Set: Size] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #  Value                                                                                                 Length
+            -  ----------------------------------------------------------------------------------------------------  ------
+            1  hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  105   
+            2  hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  -105  
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #  Value                                                                                                 Length
@@ -687,7 +796,7 @@ SCENARIO 4: Large [Category Set: Size] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #  Line                                                                                                                                                                                                     
@@ -698,7 +807,7 @@ SCENARIO 4: Large [Category Set: Size] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -708,8 +817,8 @@ SCENARIO 4: Large [Category Set: Size] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
@@ -717,6 +826,9 @@ SCENARIO 4: Large [Category Set: Size] {
 
       }
       =
+
+      GROUP 11: Start-MySleep: Empty
+      ==============================
 
    OUTPUTS
    =======
@@ -726,7 +838,7 @@ SCENARIO 4: Large [Category Set: Size] {
 
             #  Line                                                                                                                                                                                                                                                                      
             -  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/: Debug starting, 05/07/2023 11:26:19: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+            1  LIKE /Debug starting, .*: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/: Debug starting, 08/26/2023 14:41:01: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
             2  Line 2...0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890                                                                                                                                                                      
 
       } 0 failed of 2: SUCCESS
@@ -767,7 +879,18 @@ SCENARIO 4: Large [Category Set: Size] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line                                                                                                                                                                                                                                              
+            -  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1                                     hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890     
+            2                                ---------------------------------------------------------------------------------------------------------  ---------------------------------------------------------------------------------------------------------
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line                                                                                                                                                                                                                                              
@@ -777,7 +900,7 @@ SCENARIO 4: Large [Category Set: Size] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #  Line                                                                                                                                                                                                     
@@ -788,7 +911,7 @@ SCENARIO 4: Large [Category Set: Size] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -802,7 +925,7 @@ SCENARIO 4: Large [Category Set: Size] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -812,11 +935,14 @@ SCENARIO 4: Large [Category Set: Size] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep: Empty as expected: SUCCESS
+      ===================================================
 
-} 0 failed of 9: SUCCESS
-========================
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================
 
 SCENARIO 5: Few [Category Set: Multiplicity] {
 ==============================================
@@ -875,7 +1001,17 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #  Value  Length
+            -  -----  ------
+            1  hdr1   5     
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #  Value  Length
@@ -885,7 +1021,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #  Line  
@@ -896,7 +1032,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -906,8 +1042,8 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
@@ -915,6 +1051,9 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
 
       }
       =
+
+      GROUP 11: Start-MySleep: Empty
+      ==============================
 
    OUTPUTS
    =======
@@ -924,7 +1063,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
 
             #  Line                                                                                  
             -  --------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 05/07/2023 11:26:20: Testing...
+            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:41:02: Testing...
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -964,7 +1103,18 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line 
+            -  -----
+            1   hdr1
+            2  -----
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line 
@@ -974,7 +1124,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #  Line  
@@ -985,7 +1135,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -999,7 +1149,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -1009,11 +1159,14 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep: Empty as expected: SUCCESS
+      ===================================================
 
-} 0 failed of 9: SUCCESS
-========================
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================
 
 SCENARIO 6: Many [Category Set: Multiplicity] {
 ===============================================
@@ -1369,7 +1522,116 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 6: Get-2LisAsLine {
+      GROUP 6: Get-ColHeadersLis {
+      ============================
+
+            #    Value   Length
+            ---  ------  ------
+            1    hdr1    5     
+            2    hdr2    5     
+            3    hdr3    5     
+            4    hdr4    5     
+            5    hdr5    5     
+            6    hdr6    5     
+            7    hdr7    5     
+            8    hdr8    5     
+            9    hdr9    5     
+            10   hdr10   5     
+            11   hdr11   5     
+            12   hdr12   5     
+            13   hdr13   5     
+            14   hdr14   5     
+            15   hdr15   5     
+            16   hdr16   5     
+            17   hdr17   5     
+            18   hdr18   5     
+            19   hdr19   5     
+            20   hdr20   5     
+            21   hdr21   5     
+            22   hdr22   5     
+            23   hdr23   5     
+            24   hdr24   5     
+            25   hdr25   5     
+            26   hdr26   5     
+            27   hdr27   5     
+            28   hdr28   5     
+            29   hdr29   5     
+            30   hdr30   5     
+            31   hdr31   5     
+            32   hdr32   5     
+            33   hdr33   5     
+            34   hdr34   5     
+            35   hdr35   5     
+            36   hdr36   5     
+            37   hdr37   5     
+            38   hdr38   5     
+            39   hdr39   5     
+            40   hdr40   5     
+            41   hdr41   5     
+            42   hdr42   5     
+            43   hdr43   5     
+            44   hdr44   5     
+            45   hdr45   5     
+            46   hdr46   5     
+            47   hdr47   5     
+            48   hdr48   5     
+            49   hdr49   5     
+            50   hdr50   5     
+            51   hdr51   5     
+            52   hdr52   5     
+            53   hdr53   5     
+            54   hdr54   5     
+            55   hdr55   5     
+            56   hdr56   5     
+            57   hdr57   5     
+            58   hdr58   5     
+            59   hdr59   5     
+            60   hdr60   5     
+            61   hdr61   5     
+            62   hdr62   5     
+            63   hdr63   5     
+            64   hdr64   5     
+            65   hdr65   5     
+            66   hdr66   5     
+            67   hdr67   5     
+            68   hdr68   5     
+            69   hdr69   5     
+            70   hdr70   5     
+            71   hdr71   5     
+            72   hdr72   5     
+            73   hdr73   5     
+            74   hdr74   5     
+            75   hdr75   5     
+            76   hdr76   5     
+            77   hdr77   5     
+            78   hdr78   5     
+            79   hdr79   5     
+            80   hdr80   5     
+            81   hdr81   5     
+            82   hdr82   5     
+            83   hdr83   5     
+            84   hdr84   5     
+            85   hdr85   5     
+            86   hdr86   5     
+            87   hdr87   5     
+            88   hdr88   5     
+            89   hdr89   5     
+            90   hdr90   5     
+            91   hdr91   5     
+            92   hdr92   5     
+            93   hdr93   5     
+            94   hdr94   5     
+            95   hdr95   5     
+            96   hdr96   5     
+            97   hdr97   5     
+            98   hdr98   5     
+            99   hdr99   5     
+            100  hdr100  5     
+
+      }
+      =
+
+      GROUP 7: Get-2LisAsLine {
       =========================
 
             #    Value   Length
@@ -1478,7 +1740,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 7: Get-StrLisFromObjLis {
+      GROUP 8: Get-StrLisFromObjLis {
       ===============================
 
             #    Line                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -1588,7 +1850,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 8: Remove-ExtraLF {
+      GROUP 9: Remove-ExtraLF {
       =========================
 
             #  Line  
@@ -1598,8 +1860,8 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       }
       =
 
-      GROUP 9: Install-Module {
-      =========================
+      GROUP 10: Install-Module {
+      ==========================
 
             #  Source Folder  Module Name
             -  -------------  -----------
@@ -1607,6 +1869,9 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
 
       }
       =
+
+      GROUP 11: Start-MySleep: Empty
+      ==============================
 
    OUTPUTS
    =======
@@ -1616,7 +1881,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
 
             #    Line                                                                                  
             ---  --------------------------------------------------------------------------------------
-            1    LIKE /Debug starting, .*: Testing.../: Debug starting, 05/07/2023 11:26:21: Testing...
+            1    LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:41:03: Testing...
             2    Line 2...                                                                             
             3    Line 3...                                                                             
             4    Line 4...                                                                             
@@ -1854,7 +2119,18 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Get-2LisAsLine {
+      GROUP 5: Get-ColHeadersLis {
+      ============================
+
+            #  Line                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            -  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1   hdr1   hdr2   hdr3   hdr4   hdr5   hdr6   hdr7   hdr8   hdr9  hdr10  hdr11  hdr12  hdr13  hdr14  hdr15  hdr16  hdr17  hdr18  hdr19  hdr20  hdr21  hdr22  hdr23  hdr24  hdr25  hdr26  hdr27  hdr28  hdr29  hdr30  hdr31  hdr32  hdr33  hdr34  hdr35  hdr36  hdr37  hdr38  hdr39  hdr40  hdr41  hdr42  hdr43  hdr44  hdr45  hdr46  hdr47  hdr48  hdr49  hdr50  hdr51  hdr52  hdr53  hdr54  hdr55  hdr56  hdr57  hdr58  hdr59  hdr60  hdr61  hdr62  hdr63  hdr64  hdr65  hdr66  hdr67  hdr68  hdr69  hdr70  hdr71  hdr72  hdr73  hdr74  hdr75  hdr76  hdr77  hdr78  hdr79  hdr80  hdr81  hdr82  hdr83  hdr84  hdr85  hdr86  hdr87  hdr88  hdr89  hdr90  hdr91  hdr92  hdr93  hdr94  hdr95  hdr96  hdr97  hdr98  hdr99  hdr100
+            2  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----- 
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 6: Get-2LisAsLine {
       =========================
 
             #  Line                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -1864,7 +2140,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 6: Get-StrLisFromObjLis {
+      GROUP 7: Get-StrLisFromObjLis {
       ===============================
 
             #    Line                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -1974,7 +2250,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       } 0 failed of 101: SUCCESS
       ==========================
 
-      GROUP 7: Remove-ExtraLF {
+      GROUP 8: Remove-ExtraLF {
       =========================
 
             #  Line             
@@ -1988,7 +2264,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       } 0 failed of 5: SUCCESS
       ========================
 
-      GROUP 8: Install-Module {
+      GROUP 9: Install-Module {
       =========================
 
             #  File Name      
@@ -1998,8 +2274,11 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
-      ========================================================
+      GROUP 10: Start-MySleep: Empty as expected: SUCCESS
+      ===================================================
 
-} 0 failed of 9: SUCCESS
-========================
+      GROUP 11: Unhandled Exception: Empty as expected: SUCCESS
+      =========================================================
+
+} 0 failed of 11: SUCCESS
+=========================

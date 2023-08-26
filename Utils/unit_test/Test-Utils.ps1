@@ -130,6 +130,22 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
         }
         ,$strLis
     }
+    function getColHeadersLis($inpRecLis, # input record list of delimited strings
+                              $indent) {  # indent level
+
+        $header2Lis = @()
+        foreach ($r in $inpRecLis) {
+            $Value, $Length = $r.Split(';')
+            $header2Lis += ,@($Value, $Length)
+        }
+
+        if ($indent -eq '') {
+             $strLis = (Get-ColHeadersLis $header2Lis).Split("`n")
+        } else {
+             $strLis = (Get-ColHeadersLis $header2Lis $indent).Split("`n")
+        }
+        ,$strLis
+    }
     function get2LisAsLine($inpRecLis, # input record list of delimited strings
                            $indent) {  # indent level
 
@@ -149,7 +165,7 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
                                  $delimiter) { # delimiter
 
         if (-not $inpRecLis) {
-            @()
+            ,@()
             return
         }
         $ObjLis = @()
@@ -187,7 +203,7 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
     }
     function installModule ($inpRecLis) {
         if (-not $inpRecLis) {
-            @()
+            ,@()
             return
         }
         $srcFolder, $modName = $inpRecLis[0].split(';')
@@ -201,6 +217,23 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
         Remove-Item $FILENAME
         Remove-Item ($psPathFirst + '\' + $modName) -Recurse
     }
+    function startMySleep($inpRecLis) { # input record list of delimited strings
+
+        if (-not $inpRecLis) {
+            ,@()
+            return
+        }
+        [float]$sleepEla, [float]$fractionCpu = $inpRecLis[0].Split(';')
+        [long]$ela0 = $(Get-Date).ticks
+        [long]$cpu0 = $(Get-Process -id $pid).TotalProcessorTime.ticks
+
+        Start-MySleep $sleepEla $fractionCpu
+
+        [float]$elaUsed = [math]::Round((($(Get-Date).ticks - $ela0) / 10000000.0), 2)
+        [float]$cpuUsed = [math]::Round((($(Get-Process -id $pid).TotalProcessorTime.ticks - $cpu0) / 10000000.0), 2)
+        [string[]]$strLis = @($elaUsed.ToString() + ';' + $cpuUsed.ToString())
+        ,$strLis
+    }
     $delimiter, $indent =  $inpGroups.'Scalars'.Split(';')
 
     #      Object key (group name)  Private function     Group value = list of input records  Function parameters
@@ -209,10 +242,12 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
           'Get-ObjLisFromCsv'     = getObjLisFromCsv     $inpGroups.'Get-ObjLisFromCsv'       $delimiter
           'Get-Heading'           = getHeading           $inpGroups.'Get-Heading'             $indent
           'Get-ColHeaders'        = getColHeaders        $inpGroups.'Get-ColHeaders'          $indent
+          'Get-ColHeadersLis'     = getColHeadersLis     $inpGroups.'Get-ColHeadersLis'       $indent
           'Get-2LisAsLine'        = get2LisAsLine        $inpGroups.'Get-2LisAsLine'          $indent
           'Get-StrLisFromObjLis'  = getStrLisFromObjLis  $inpGroups.'Get-StrLisFromObjLis'    $delimiter
           'Remove-ExtraLF'        = removeExtraLF        $inpGroups.'Remove-ExtraLF'    
           'Install-Module'        = installModule        $inpGroups.'Install-Module'
+          'Start-MySleep'         = startMySleep         $inpGroups.'Start-MySleep'
     }
 }
 # one line main section passing in input and output file names, and the local 'pure' function to unit test utility

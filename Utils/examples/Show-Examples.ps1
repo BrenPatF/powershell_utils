@@ -64,6 +64,10 @@ $grp.WriteList('(as is)', $grp.ListAsIs())
 $grp.WriteList('key',     $grp.SortByKey())
 $grp.WriteList('value',   $grp.SortByValue())
 
+Get-Heading 'Demonstrate call to Get-ColHeadersLis...'
+"Get-ColHeadersLis @(('left, 10', -10), ('right, 15', 15))"
+Get-ColHeadersLis @(('left, 10', -10), ('right, 15', 15))
+
 Get-Heading 'Demonstrate call to Get-StrLisFromObjLis...'
 'Get-StrLisFromObjLis @($exampleObj1, $exampleObj2)'
 ''
@@ -95,3 +99,15 @@ $childs = Get-ChildItem -Path $newFolder -Recurse
 "$childs"
 'Delete the installed module to clean up...'
 Remove-Item -LiteralPath ($psPathFirst + '\ExampleModuleEmpty') -Force -Recurse
+
+Get-Heading 'Demonstrate call to Start-MySleep...'
+'Start-MySleep 5 0.5'
+[long]$ela0 = $(Get-Date).ticks
+[long]$cpu0 = $(Get-Process -id $pid).TotalProcessorTime.ticks
+
+"Date before call: $(date)"
+Start-MySleep 5 0.5
+"Date after call: $(date)"
+
+"Elapsed = " + ([math]::Round((($(Get-Date).ticks - $ela0) / 10000000.0), 2)).ToString()
+"CPU = " + ([math]::Round((($(Get-Process -id $pid).TotalProcessorTime.ticks - $cpu0) / 10000000.0), 2)).ToString()

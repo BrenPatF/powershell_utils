@@ -68,6 +68,8 @@ The full script also demonstrates usage of:
 - Get-StrLisFromObjLis
 - Remove-ExtraLF
 - Install-Module
+- Get-ColHeadersLis
+- Start-MySleep
 
 ### ColGroup.psm1 (extracts)
 [&uarr; Usage](#usage)<br />
@@ -121,10 +123,12 @@ $ ./Show-Examples
 [&darr; Get-ObjLisFromCsv](#get-objlisfromcsv)<br />
 [&darr; Get-Heading](#get-heading)<br />
 [&darr; Get-ColHeaders](#get-colheaders)<br />
+[&darr; Get-ColHeadersLis](#get-colheaderslis)<br />
 [&darr; Get-2LisAsLine](#get-2lisasline)<br />
 [&darr; Get-StrLisFromObjLis](#get-strlisfromobjlis)<br />
 [&darr; Remove-ExtraLF](#remove-extralf)<br />
 [&darr; Install-Module](#install-module)<br />
+[&darr; Start-MySleep](#start-mysleep)<br />
 
 ```powershell
 Import-Module Utils
@@ -132,83 +136,145 @@ Import-Module Utils
 
 ### Write-Debug
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Write-Debug($msg, $new, $filename)
 ```
 Writes a line of text to a debug file, with parameters:
 
-* `$msg`: timer name
-* `$new`: overwrite file if $true; default $false
-* `$filename`: file name; default '.\debug.log'
+* `[string]$msg`: timer name
+* `[string]$new`: overwrite file if $true; default $false
+* `[string]$filename`: file name; default '.\debug.log'
+
+Return value:
+
+* `[void]`
 
 ### Get-ObjLisFromCsv
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Get-ObjLisFromCsv($csv, $delimiter)
 ```
 Imports a csv file with headers into an array of objects; keys are the column headers, with cells as values, with parameters:
 
-* `$csv`: csv file
-* `$delimiter`: delimiter; default ','
+* `[string]$csv`: csv file
+* `[string]$delimiter`: delimiter; default ','
+
+Return value:
+
+* `[object[]]`: array of objects with fields named after the column headers:
+	* `[string]column header 1`: value in column 1
+	* ...
 
 ### Get-Heading
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Get-Heading($title, $indent)
 ```
 Returns a 2-line heading with double underlining, from an input string, with parameters:
 
-* `$title`: title
-* `$indent`: indent level; default 0
+* `[string]$title`: title
+* `[int]$indent`: indent level; default 0
+
+Return value:
+
+* `[object[]]`: array of objects with fields named after the column headers:
 
 ### Get-ColHeaders
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Get-ColHeaders($header2Lis, $indent)
 ```
 Returns a list of strings as one line, input as list of (string, length) tuples, and indent spaces, with parameters:
 
 * `$header2Lis`: list of (string, length) tuples; -ve length -> right-justify
-* `$indent`: indent level; default 0
+* `[int]$indent`: indent level; default 0
+
+Return value:
+
+* `[string]`: column headers 2-line string with headers underlined
+
+### Get-ColHeadersLis
+[&uarr; API - Utils](#api---utils)<br />
+```powershell
+Get-ColHeaders($header2Lis, $indent)
+```
+Returns a list of strings as one line, input as list of (string, length) tuples, and indent spaces, with parameters:
+
+* `$header2Lis`: list of (string, length) tuples; -ve length -> right-justify
+* `[int]$indent`: indent level; default 0
+
+Return value:
+
+* `[string[]]`: column headers 2-element array of strings with headers underlined
 
 ### Get-2LisAsLine
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Get-2LisAsLine($line2Lis, $indent)
 ```
 Returns a list of strings as one line, input as list of (string, length) tuples, and indent spaces, with parameters:
 
 * `$line2Lis`: list of (string, length) tuples; -ve length -> right-justify
-* `$indent`: indent level; default 0
+* `[int]$indent`: indent level; default 0
+
+Return value:
+
+* `[string]`: formatted line
 
 ### Get-StrLisFromObjLis
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Get-StrLisFromObjLis($objLis, $delimiter)
 ```
-Returns a list of name, value strings from a list of objects, with simple string properties, usinmg a delimiter. Property names from first object first, with parameters:
+Returns a list of delimited value strings from a list of objects, with simple string properties; uses the first object to start return list with the object names delimited, with parameters:
 
-* `$objLis`: list of pscustomobjects
-* `$delimiter`: $delimiter; default '|'
+* `[Object[]]$objLis`: list of objects
+* `[string]$delimiter`: $delimiter; default '|'
+
+Return value:
+
+* `[void]`
 
 ### Remove-ExtraLF
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Remove-ExtraLF($fileName)
 ```
 Removes the last two characters from a file, intended for the spurious extra line added by powershell functions like Out-File in Windows, with parameters:
 
-* `$fileName`: file name
+* `[string]$fileName`: file name
+
+Return value:
+
+* `[void]`
 
 ### Install-Module
 [&uarr; API - Utils](#api---utils)<br />
-```
+```powershell
 Install-Module($srcFolder, $modName)
 ```
-Installs a module in the first folder in psmodulepath environment variable, with parameters:
+Installs a module in the first folder in PSModulePath environment variable, with parameters:
 
-* `$srcFolder`: source folder for the module file
-* `$modName`: module name (stem, without '.psm1' extension)
+* `[string]$srcFolder`: source folder for the module file
+* `[string]$modName`: module name (stem, without '.psm1' extension)
+
+Return value:
+
+* `[void]`
+
+### Start-MySleep
+[&uarr; API - Utils](#api---utils)<br />
+```powershell
+Start-MySleep($stime, $fractionCPU)
+```
+Sleep for $stime seconds, of which target $fractionCPU as fraction of total to be CPU, with parameters:
+
+* `[float]$stime`: total seconds to sleep for
+* `[float]$fractionCPU`: fraction of total to be CPU; default 0.5
+
+Return value:
+
+* `[void]`
 
 ## Installation
 [&uarr; In this README...](#in-this-readme)<br />
@@ -217,7 +283,7 @@ To install Utils open a powershell window in the root Utils folder, and execute 
 ```
 $ ./Install-Utils
 ```
-This will create a folder Utils under the first folder in your `psmodulepath` environment variable, and copy Utils.psm1 to it.
+This will create a folder Utils under the first folder in your `PSModulePath` environment variable, and copy Utils.psm1 to it.
 ## Unit Testing
 [&uarr; In this README...](#in-this-readme)<br />
 [&darr; Unit Testing Prerequisites](#unit-testing-prerequisites)<br />
@@ -360,10 +426,12 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
     function getObjLisFromCsv($inpRecLis, $delimiter)    { (function body) }
     function getHeading($inpRecLis, $indent)             { (function body) }
     function getColHeaders($inpRecLis, $indent)          { (function body) }
+    function getColHeadersLis($inpRecLis, $indent)       { (function body) }
     function get2LisAsLine($inpRecLis, $indent)          { (function body) }
     function getStrLisFromObjLis($inpRecLis, $delimiter) { (function body) }
     function removeExtraLF($inpRecLis)                   { (function body) }
     function installModule($inpRecLis)                   { (function body) }
+    function startMySleep($inpRecLis)                    { (function body) }
     $delimiter, $indent =  $inpGroups.'Scalars'.Split(';')
     #      Object key (group name)  Private function     Group value = list of input records  Function parameters
     [PSCustomObject]@{
@@ -371,10 +439,12 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
           'Get-ObjLisFromCsv'     = getObjLisFromCsv     $inpGroups.'Get-ObjLisFromCsv'       $delimiter
           'Get-Heading'           = getHeading           $inpGroups.'Get-Heading'             $indent
           'Get-ColHeaders'        = getColHeaders        $inpGroups.'Get-ColHeaders'          $indent
+          'Get-ColHeadersLis'     = getColHeadersLis     $inpGroups.'Get-ColHeadersLis'       $indent
           'Get-2LisAsLine'        = get2LisAsLine        $inpGroups.'Get-2LisAsLine'          $indent
           'Get-StrLisFromObjLis'  = getStrLisFromObjLis  $inpGroups.'Get-StrLisFromObjLis'    $delimiter
           'Remove-ExtraLF'        = removeExtraLF        $inpGroups.'Remove-ExtraLF'
           'Install-Module'        = installModule        $inpGroups.'Install-Module'
+          'Start-MySleep'         = startMySleep         $inpGroups.'Start-MySleep'
     }
 }
 Test-Unit ($PSScriptRoot + '/ps_utils.json') ($PSScriptRoot + '/ps_utils_out.json') `
@@ -404,8 +474,8 @@ Results summary for file: [MY_PATH]/powershell_utils/Utils/unit_test/ps_utils_ou
 
 File:          ps_utils_out.json
 Title:         Powershell Utils
-Inp Groups:    7
-Out Groups:    7
+Inp Groups:    11
+Out Groups:    11
 Tests:         6
 Fails:         0
 Folder:        powershell-utils
@@ -424,18 +494,18 @@ You can review the HTML formatted unit test results here:
 Unit Test Report: Powershell Utils
 ==================================
 
-      #    Category Set  Scenario       Fails (of 9)  Status
-      ---  ------------  -------------  ------------  -------
-      1    Defaulting    Defaulted      0             SUCCESS
-      2    Defaulting    Not Defaulted  0             SUCCESS
-      3    Size          Small          0             SUCCESS
-      4    Size          Large          0             SUCCESS
-      5    Multiplicity  Few            0             SUCCESS
-      6    Multiplicity  Many           0             SUCCESS
+      #    Category Set  Scenario       Fails (of 11)  Status
+      ---  ------------  -------------  -------------  -------
+      1    Defaulting    Defaulted      0              SUCCESS
+      2    Defaulting    Not Defaulted  0              SUCCESS
+      3    Size          Small          0              SUCCESS
+      4    Size          Large          0              SUCCESS
+      5    Multiplicity  Few            0              SUCCESS
+      6    Multiplicity  Many           0              SUCCESS
 
 Test scenarios: 0 failed of 6: SUCCESS
 ======================================
-Tested: 2023-04-09 14:44:19, Formatted: 2023-04-09 14:44:19
+Tested: 2023-08-26 13:41:06, Formatted: 2023-08-26 13:41:06
 ```
 ## Folder Structure
 [&uarr; In this README...](#in-this-readme)<br />

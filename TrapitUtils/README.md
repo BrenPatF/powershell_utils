@@ -758,8 +758,8 @@ Write-UT_Template($stem, $delimiter)
 ```
 Writes a unit testing template JSON file in the format of the Math Function Unit Testing design pattern, with parameters:
 
-* `$stem`: file name stem,
-* `$delimiter`: delimiter; default '|'
+* `[string]$stem`: file name stem,
+* `[string]$delimiter`: delimiter; default '|'
 
 There are two mandatory input group structure CSV files, with header 'Group, Field, Value':
 * `$stem`_inp.csv: list of group, field, value triples for input
@@ -774,6 +774,10 @@ The function writes an output JSON file:
 
 If there is a scenario list CSV file present, then the output file will contain a template scenario for each record; if not the output file will have a single template scenario with name 'scenario 1'. Each group has a single record with field values taken from the group CSV files. The records need to be manually updated (and added or subtracted) to reflect input and expected output values for the scenario being tested.
 
+Return value:
+
+* `[void]`
+
 ### Get-UT_TemplateObject
 [&uarr; API - TrapitUtils](#api---trapitutils)<br />
 ```powershell
@@ -783,10 +787,16 @@ Gets an object with the same structure as the unit testing template JSON file, f
 
 * `$inpGroupLis`: list of group, field, value triples for input
 * `$outGroupLis`: list of group, field, value triples for output
-* `$delimiter`: delimiter; default '|'
+* `[string]$delimiter`: delimiter; default '|'
 * `$sceLis`: list of category set, scenario, active triples
 
 This is a pure function that is called by Write-UT_Template, which writes its return value to file in JSON format.
+
+Return value:
+
+* `[PSCustomObject]`: object with fields:
+    * `[PSCustomObject]meta`: metadata object
+    * `[PSCustomObject]scenarios`: scenarios object
 
 ### Test-Unit
 [&uarr; API - TrapitUtils](#api---trapitutils)<br />
@@ -796,9 +806,13 @@ Test-Unit($inpFile, $outFile, $purelyWrapUnit)
 ```
 Unit tests a unit using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) with input data read from a JSON file, and output results written to an output JSON file, with parameters:
 
-* `$inpFile`: input JSON file, with input and expected output data
-* `$outFile`: output JSON file, with input, expected and actual output data
-* `$purelyWrapUnit`: function to process unit test for a single scenario, passed in from test script, described below
+* `[string]$inpFile`: input JSON file, with input and expected output data
+* `[string]$outFile`: output JSON file, with input, expected and actual output data
+* `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario, passed in from test script, described below
+
+Return value:
+
+* `[string]`: output JSON file passed in
 
 #### $purelyWrapUnit
 [&uarr; Test-Unit](#test-unit)<br />
@@ -807,18 +821,24 @@ $purelyWrapUnit($inpGroups)
 ```
 Processes unit test for a single scenario, taking inputs as an object with input group data, making calls to the unit under test, and returning the actual outputs as an object with output group data, with parameters:
 
-* `$inpGroups`: object containing input groups with group name as key and list of delimited input records as value, of form:
-                [PSCustomObject]@{
-                    inpGroup1 = [rec1, rec2,...]
-                    inpGroup2 = [rec1, rec2,...]
-                    ...
-                }
-* `Return value`: object containing output groups with group name as key and list of delimited actual output records as value, of form:
-                [PSCustomObject]@{
-                    outGroup1 = [rec1, rec2,...]
-                    outGroup2 = [rec1, rec2,...]
-                    ...
-                }
+* `[PSCustomObject]$inpGroups`: object containing input groups with group name as key and list of delimited input records as value, of form:
+<pre>
+    @{
+        inpGroup1 = [rec1, rec2,...]
+        inpGroup2 = [rec1, rec2,...]
+        ...
+    }
+</pre>
+Return value:
+
+* `[PSCustomObject]`: object containing output groups with group name as key and list of delimited actual output records as value, of form:
+<pre>
+    @{
+        outGroup1 = [rec1, rec2,...]
+        outGroup2 = [rec1, rec2,...]
+        ...
+    }
+</pre>
 
 This function acts as a 'pure' wrapper around calls to the unit under test. It is 'externally pure' in the sense that it is deterministic, and interacts externally only via parameters and return value. Where the unit under test reads inputs from file the wrapper writes them based on its parameters, and where the unit under test writes outputs to file the wrapper reads them and passes them out in its return value. Any file writing is reverted before exit.
 
@@ -829,8 +849,12 @@ Test-Format($psScript, $npmRoot)
 ```
 Calls a powershell unit test driver script, then calls the JavaScript formatter, which writes the formatted results files to a subfolder in the script folder, based on the title, returning a summary. It has parameters:
 
-* `$psScript`: full name of the powershell unit test driver script
-* `$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+* `[string]$psScript`: full name of the powershell unit test driver script
+* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+
+Return value:
+
+* `[string]`: summary of results
 
 ### Test-FormatFolder
 [&uarr; API - TrapitUtils](#api---trapitutils)<br />
@@ -839,9 +863,13 @@ Test-FormatFolder($psScriptLis, $jsonFolder, $npmRoot)
 ```
 Calls each of a list of powershell unit test driver scripts, then calls the JavaScript formatter, which writes the formatted results files to a subfolder within a results folder, based on the titles, returning a summary. It has parameters:
 
-* `$psScript`: array of full names of the unit test driver scripts
-* `$jsonFolder`: folder where JSON files are copied, and results subfolders placed
-* `$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+* `[string[]]$psScriptLis`: array of full names of the unit test driver scripts
+* `[string]$jsonFolder`: folder where JSON files are copied, and results subfolders placed
+* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+
+Return value:
+
+* `[string]`: summary of results
 
 ### Test-FormatDB
 [&uarr; API - TrapitUtils](#api---trapitutils)<br />
@@ -850,15 +878,19 @@ Test-FormatDB($unpw, $conn, $utGroup, $testRoot, $preSQL)
 ```
 Automates the running of Oracle PL/SQL unit tests and formatting of the results via the JavaScript formatter. It has parameters:
 
-* `$unpw`: Oracle user name / password string
-* `$conn`: Oracle connection string (such as the TNS alias)
-* `$utGroup`: Oracle unit test group
-* `$testRoot`: Unit testing root folder, where results folders will be placed
-* `$preSQL`: SQL to execute first (optional)
+* `[string]$unpw`: Oracle user name / password string
+* `[string]$conn`: Oracle connection string (such as the TNS alias)
+* `[string]$utGroup`: Oracle unit test group
+* `[string]$testRoot`: Unit testing root folder, where results folders will be placed
+* `[string]$preSQL`: SQL to execute first (optional)
 
 Runs a SQL*Plus session calling the Oracle unit test driving function, with the test group passed as a parameter. The unit test driving function returns a list of the output JSON files created, which are then processed in a loop by the JavaScript formatter, which writes the formatted results files to subfolders based on the titles, and returns a summary of the results.
 
 If $preSQL is set the SQL statement it contains will be executed first. It can be used, for example, to point a view to a particular table.
+
+Return value:
+
+* `[string]`: summary of results
 ## Installation
 [&uarr; In This README...](#in-this-readme)<br />
 [&darr; Install Prerequisites](#install-prerequisites)<br />
@@ -867,22 +899,22 @@ If $preSQL is set the SQL statement it contains will be executed first. It can b
 ### Install Prerequisites
 [&uarr; Installation](#installation)<br />
 
-The powershell package Utils is required. This is a subproject of the same GitHub project as TrapitUtils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the install folder below Utils, and execute as follows:
+The powershell package Utils is required. This is a subproject of the same GitHub project as TrapitUtils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the Utils root folder, and execute as follows:
 ```
-$ .\Install-Utils
+$ ./Install-Utils
 ```
-This will create a folder Utils under the first folder in your `psmodulepath` environment variable, and copy Utils.psm1 to it.
+This will create a folder Utils under the first folder in your `PSModulePath` environment variable, and copy Utils.psm1 to it.
 
-The JavaScript npm package [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester) is required to format the unit test output JSON file in HTML and/or text. The package is installed as part of the TrapitUtils installation (next section) but you need to have [Node.js](https://nodejs.org/en/download) installed to run it.
+The JavaScript npm package [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester) is required to format the unit test output JSON file in HTML and/or text. The package is included as part of the TrapitUtils subproject within the Powershell Utils GitHub project but you need to have [Node.js](https://nodejs.org/en/download) installed to run it. The root folder location for the package is passed as a parameter to the functions that need it.
 
 ### Install TrapitUtils
 [&uarr; Installation](#installation)<br />
 
 To install TrapitUtils open a powershell window in the root TrapitUtils folder, and execute as follows:
 ```
-$ .\Install-TrapitUtils
+$ ./Install-TrapitUtils
 ```
-This will create a folder TrapitUtils under the first folder in your `psmodulepath` environment variable, and copy TrapitUtils.psm1 to it.
+This will create a folder TrapitUtils under the first folder in your `PSModulePath` environment variable, and copy TrapitUtils.psm1 to it.
 ## Unit Testing
 [&uarr; In This README...](#in-this-readme)<br />
 [&darr; Step 1: Create JSON File](#step-1-create-json-file-1)<br />
@@ -1186,6 +1218,7 @@ There are four subfolders below the trapit root folder, which has README and mod
 - [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester)
 - [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
 - [Powershell General Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
+- [Node.js Downloads](https://nodejs.org/en/download)
 - [Powershell Trapit Unit Testing Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
 
 ## Software Versions

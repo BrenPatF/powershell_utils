@@ -22,6 +22,10 @@
                                                     "Value",
                                                     "Length"
                                                 ],
+                             "Get-ColHeadersLis":  [
+                                                    "Value",
+                                                    "Length"
+                                                   ],
                              "Get-2LisAsLine":  [
                                                     "Value",
                                                     "Length"
@@ -35,6 +39,10 @@
                              "Install-Module": [
                                "Source Folder",
                                "Module Name"
+                             ],
+                             "Start-MySleep": [
+                               "Elapsed Seconds",
+                               "Fraction CPU"
                              ]
                          },
                  "out":  {
@@ -50,6 +58,9 @@
                              "Get-ColHeaders":  [
                                                     "Line"
                                                 ],
+                             "Get-ColHeadersLis":  [
+                                                    "Line"
+                                                   ],
                              "Get-2LisAsLine":  [
                                                     "Line"
                                                 ],
@@ -61,6 +72,10 @@
                              ],
                              "Install-Module": [
                                "File Name"
+                             ],
+                             "Start-MySleep": [
+                               "Elapsed Seconds",
+                               "CPU Seconds"
                              ]
                          }
              },
@@ -87,6 +102,10 @@
                                                                             "hdr1;5",
                                                                             "hdr2;-5"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                            "hdr1;5",
+                                                                            "hdr2;-5"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                             "fld1;5",
                                                                             "fld2;-6"
@@ -100,6 +119,9 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
+                                                                               "1;0.3"
                                                                               ]
                                                  },
                                          "out":  {
@@ -121,6 +143,10 @@
                                                                            " hdr1  hdr2 ",
                                                                            "-----  -----"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                           " hdr1  hdr2 ",
+                                                                           "-----  -----"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                           " fld1  fld2  "
                                                                         ],
@@ -137,6 +163,9 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
+                                                                               "IN [0.8,1.2];IN [0.1,0.8]"
                                                                               ]
                                                  }
                                      },
@@ -162,6 +191,10 @@
                                                                             "hdr1;5",
                                                                             "hdr2;-5"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                            "hdr1;5",
+                                                                            "hdr2;-5"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                             "fld1;5",
                                                                             "fld2;-6"
@@ -175,6 +208,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  },
                                          "out":  {
@@ -196,6 +231,10 @@
                                                                            "      hdr1  hdr2 ",
                                                                            "     -----  -----"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                           "      hdr1  hdr2 ",
+                                                                           "     -----  -----"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                           "      fld1  fld2  "
                                                                         ],
@@ -212,6 +251,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  }
                                      },
@@ -237,6 +278,10 @@
                                                                             "h;1",
                                                                             "g;-1"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                            "h;1",
+                                                                            "g;-1"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                             "f;1",
                                                                             "g;-1"
@@ -250,6 +295,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  },
                                          "out":  {
@@ -271,6 +318,10 @@
                                                                                    "h  g",
                                                                                    "-  -"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                                   "h  g",
+                                                                                   "-  -"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                                    "f  g"
                                                                         ],
@@ -287,6 +338,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  }
                                      },
@@ -312,6 +365,10 @@
                                                                             "hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;105",
                                                                             "hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;-105"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                            "hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;105",
+                                                                            "hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;-105"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                             "fld1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;105",
                                                                             "fld2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890;-105"
@@ -325,6 +382,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  },
                                          "out":  {
@@ -346,6 +405,10 @@
                                                                                    "                                   hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890     ",
                                                                                    "                              ---------------------------------------------------------------------------------------------------------  ---------------------------------------------------------------------------------------------------------"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                                   "                                   hdr1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  hdr2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890     ",
+                                                                                   "                              ---------------------------------------------------------------------------------------------------------  ---------------------------------------------------------------------------------------------------------"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                                    "                                   fld1567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890  fld2567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890     "
                                                                         ],
@@ -362,6 +425,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  }
                                      },
@@ -385,6 +450,9 @@
                                                      "Get-ColHeaders":  [
                                                                             "hdr1;5"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                            "hdr1;5"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                             "fld1;5"
                                                                         ],
@@ -397,6 +465,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  },
                                          "out":  {
@@ -417,6 +487,10 @@
                                                                                  " hdr1",
                                                                                  "-----"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                                 " hdr1",
+                                                                                 "-----"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                                  " fld1"
                                                                         ],
@@ -433,6 +507,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  }
                                      },
@@ -753,6 +829,108 @@
                                                                            "hdr99;5",
                                                                            "hdr100;5"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                           "hdr1;5",
+                                                                           "hdr2;5",
+                                                                           "hdr3;5",
+                                                                           "hdr4;5",
+                                                                           "hdr5;5",
+                                                                           "hdr6;5",
+                                                                           "hdr7;5",
+                                                                           "hdr8;5",
+                                                                           "hdr9;5",
+                                                                           "hdr10;5",
+                                                                           "hdr11;5",
+                                                                           "hdr12;5",
+                                                                           "hdr13;5",
+                                                                           "hdr14;5",
+                                                                           "hdr15;5",
+                                                                           "hdr16;5",
+                                                                           "hdr17;5",
+                                                                           "hdr18;5",
+                                                                           "hdr19;5",
+                                                                           "hdr20;5",
+                                                                           "hdr21;5",
+                                                                           "hdr22;5",
+                                                                           "hdr23;5",
+                                                                           "hdr24;5",
+                                                                           "hdr25;5",
+                                                                           "hdr26;5",
+                                                                           "hdr27;5",
+                                                                           "hdr28;5",
+                                                                           "hdr29;5",
+                                                                           "hdr30;5",
+                                                                           "hdr31;5",
+                                                                           "hdr32;5",
+                                                                           "hdr33;5",
+                                                                           "hdr34;5",
+                                                                           "hdr35;5",
+                                                                           "hdr36;5",
+                                                                           "hdr37;5",
+                                                                           "hdr38;5",
+                                                                           "hdr39;5",
+                                                                           "hdr40;5",
+                                                                           "hdr41;5",
+                                                                           "hdr42;5",
+                                                                           "hdr43;5",
+                                                                           "hdr44;5",
+                                                                           "hdr45;5",
+                                                                           "hdr46;5",
+                                                                           "hdr47;5",
+                                                                           "hdr48;5",
+                                                                           "hdr49;5",
+                                                                           "hdr50;5",
+                                                                           "hdr51;5",
+                                                                           "hdr52;5",
+                                                                           "hdr53;5",
+                                                                           "hdr54;5",
+                                                                           "hdr55;5",
+                                                                           "hdr56;5",
+                                                                           "hdr57;5",
+                                                                           "hdr58;5",
+                                                                           "hdr59;5",
+                                                                           "hdr60;5",
+                                                                           "hdr61;5",
+                                                                           "hdr62;5",
+                                                                           "hdr63;5",
+                                                                           "hdr64;5",
+                                                                           "hdr65;5",
+                                                                           "hdr66;5",
+                                                                           "hdr67;5",
+                                                                           "hdr68;5",
+                                                                           "hdr69;5",
+                                                                           "hdr70;5",
+                                                                           "hdr71;5",
+                                                                           "hdr72;5",
+                                                                           "hdr73;5",
+                                                                           "hdr74;5",
+                                                                           "hdr75;5",
+                                                                           "hdr76;5",
+                                                                           "hdr77;5",
+                                                                           "hdr78;5",
+                                                                           "hdr79;5",
+                                                                           "hdr80;5",
+                                                                           "hdr81;5",
+                                                                           "hdr82;5",
+                                                                           "hdr83;5",
+                                                                           "hdr84;5",
+                                                                           "hdr85;5",
+                                                                           "hdr86;5",
+                                                                           "hdr87;5",
+                                                                           "hdr88;5",
+                                                                           "hdr89;5",
+                                                                           "hdr90;5",
+                                                                           "hdr91;5",
+                                                                           "hdr92;5",
+                                                                           "hdr93;5",
+                                                                           "hdr94;5",
+                                                                           "hdr95;5",
+                                                                           "hdr96;5",
+                                                                           "hdr97;5",
+                                                                           "hdr98;5",
+                                                                           "hdr99;5",
+                                                                           "hdr100;5"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                            "fld1;5",
                                                                            "fld2;5",
@@ -963,6 +1141,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                ".;TestModule"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  },
                                          "out":  {
@@ -1181,6 +1361,10 @@
                                                                            " hdr1   hdr2   hdr3   hdr4   hdr5   hdr6   hdr7   hdr8   hdr9  hdr10  hdr11  hdr12  hdr13  hdr14  hdr15  hdr16  hdr17  hdr18  hdr19  hdr20  hdr21  hdr22  hdr23  hdr24  hdr25  hdr26  hdr27  hdr28  hdr29  hdr30  hdr31  hdr32  hdr33  hdr34  hdr35  hdr36  hdr37  hdr38  hdr39  hdr40  hdr41  hdr42  hdr43  hdr44  hdr45  hdr46  hdr47  hdr48  hdr49  hdr50  hdr51  hdr52  hdr53  hdr54  hdr55  hdr56  hdr57  hdr58  hdr59  hdr60  hdr61  hdr62  hdr63  hdr64  hdr65  hdr66  hdr67  hdr68  hdr69  hdr70  hdr71  hdr72  hdr73  hdr74  hdr75  hdr76  hdr77  hdr78  hdr79  hdr80  hdr81  hdr82  hdr83  hdr84  hdr85  hdr86  hdr87  hdr88  hdr89  hdr90  hdr91  hdr92  hdr93  hdr94  hdr95  hdr96  hdr97  hdr98  hdr99  hdr100",
                                                                            "-----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----"
                                                                         ],
+                                                     "Get-ColHeadersLis":  [
+                                                                           " hdr1   hdr2   hdr3   hdr4   hdr5   hdr6   hdr7   hdr8   hdr9  hdr10  hdr11  hdr12  hdr13  hdr14  hdr15  hdr16  hdr17  hdr18  hdr19  hdr20  hdr21  hdr22  hdr23  hdr24  hdr25  hdr26  hdr27  hdr28  hdr29  hdr30  hdr31  hdr32  hdr33  hdr34  hdr35  hdr36  hdr37  hdr38  hdr39  hdr40  hdr41  hdr42  hdr43  hdr44  hdr45  hdr46  hdr47  hdr48  hdr49  hdr50  hdr51  hdr52  hdr53  hdr54  hdr55  hdr56  hdr57  hdr58  hdr59  hdr60  hdr61  hdr62  hdr63  hdr64  hdr65  hdr66  hdr67  hdr68  hdr69  hdr70  hdr71  hdr72  hdr73  hdr74  hdr75  hdr76  hdr77  hdr78  hdr79  hdr80  hdr81  hdr82  hdr83  hdr84  hdr85  hdr86  hdr87  hdr88  hdr89  hdr90  hdr91  hdr92  hdr93  hdr94  hdr95  hdr96  hdr97  hdr98  hdr99  hdr100",
+                                                                           "-----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----"
+                                                                           ],
                                                      "Get-2LisAsLine":  [
                                                                            " fld1   fld2   fld3   fld4   fld5   fld6   fld7   fld8   fld9  fld10  fld11  fld12  fld13  fld14  fld15  fld16  fld17  fld18  fld19  fld20  fld21  fld22  fld23  fld24  fld25  fld26  fld27  fld28  fld29  fld30  fld31  fld32  fld33  fld34  fld35  fld36  fld37  fld38  fld39  fld40  fld41  fld42  fld43  fld44  fld45  fld46  fld47  fld48  fld49  fld50  fld51  fld52  fld53  fld54  fld55  fld56  fld57  fld58  fld59  fld60  fld61  fld62  fld63  fld64  fld65  fld66  fld67  fld68  fld69  fld70  fld71  fld72  fld73  fld74  fld75  fld76  fld77  fld78  fld79  fld80  fld81  fld82  fld83  fld84  fld85  fld86  fld87  fld88  fld89  fld90  fld91  fld92  fld93  fld94  fld95  fld96  fld97  fld98  fld99  fld100"
                                                                         ],
@@ -1296,6 +1480,8 @@
                                                                               ],
                                                      "Install-Module":  [
                                                                                "TestModule.psm1"
+                                                                              ],
+                                                     "Start-MySleep":  [
                                                                               ]
                                                  }
                                      }
