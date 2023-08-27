@@ -1,0 +1,1909 @@
+Unit Test Report: TimerSet - Powershell
+=======================================
+
+      #    Category Set               Scenario                                     Fails (of 9)  Status 
+      ---  -------------------------  -------------------------------------------  ------------  -------
+      1    Timer Timing Multiplicity  One timing for a timer                       0             SUCCESS
+      2    Timer Timing Multiplicity  Multiple timings for a timer                 0             SUCCESS
+      3    Timer Multiplicity         No timer in timer set                        0             SUCCESS
+      4    Timer Multiplicity         One timer in timer set                       0             SUCCESS
+      5    Timer Multiplicity         Multiple timers in timer set                 0             SUCCESS
+      6    Timer Set Multiplicity     One timer set                                0             SUCCESS
+      7    Timer Set Multiplicity     Multiple non-overlapping timer sets          0             SUCCESS
+      8    Timer Set Multiplicity     Multiple timer sets with overlapping         0             SUCCESS
+      9    Decimals Multiplicity      No decimal places                            0             SUCCESS
+      10   Decimals Multiplicity      One decimal place                            0             SUCCESS
+      11   Decimals Multiplicity      Multiple decimal places                      0             SUCCESS
+      12   Value Size                 Small values                                 0             SUCCESS
+      13   Value Size                 Medium values                                0             SUCCESS
+      14   Value Size                 Large values                                 0             SUCCESS
+      15   Parameter Defaults         None defaulted                               0             SUCCESS
+      16   Parameter Defaults         All defaulted                                0             SUCCESS
+      17   Entry Points Called        All entry points called                      0             SUCCESS
+      18   Timings Mocked             Timings real                                 0             SUCCESS
+      19   Parameter Validation       All parameters just valid                    0             SUCCESS
+      20   Parameter Validation       Parameter invalid: Time Width < 8            0             SUCCESS
+      21   Parameter Validation       Parameter invalid: Time DP > Time ratio DP   0             SUCCESS
+      22   Parameter Validation       Parameter invalid: Time Width - Time DP > 1  0             SUCCESS
+      23   Parameter Validation       Parameter invalid: Calls width < 5           0             SUCCESS
+
+Test scenarios: 0 failed of 23: SUCCESS
+=======================================
+Tested: 2023-08-27 07:19:59, Formatted: 2023-08-27 07:19:59
+
+SCENARIO 1: One timing for a timer [Category Set: Timer Timing Multiplicity] {
+==============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1                 GETF   20003.000     4000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    20000.00   4000.00       2  10000.00000   2000.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 2: Multiple timings for a timer [Category Set: Timer Timing Multiplicity] {
+====================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1     Timer 1     INC    20003.000     3000.800
+            4  Set 1                 GETF   30003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  20000.00   3000.00       2  10000.00000   1500.00000
+            4  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    30000.00   5000.00       3  10000.00000   1666.66667
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 3: No timer in timer set [Category Set: Timer Multiplicity] {
+======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1                 GETF   30003.000     5000.800
+            3  Set 1                 RES    30003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  (Other)  30000.00   5000.00       1  30000.00000   5000.00000
+            4  -------  --------  --------  ------  -----------  -----------
+            5  Total    30000.00   5000.00       1  30000.00000   5000.00000
+            6  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 6: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results {
+      ==================
+
+            #  Lines                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+            -  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  LIKE /Timer[^]*Other[^]*\[Timer timed[^]*\]/: 
+Timer set: Set 1, constructed at 2023-08-27 08:19:51, written at 2023-08-27 08:19:51
+====================================================================================
+
+Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+-------  --------  --------  ------  -----------  -----------
+(Other)  30000.00   5000.00       1  30000.00000   5000.00000
+-------  --------  --------  ------  -----------  -----------
+Total    30000.00   5000.00       1  30000.00000   5000.00000
+-------  --------  --------  ------  -----------  -----------
+[Timer timed (per call in ms): Elapsed: 12.94648, CPU: 7.81250]
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 4: One timer in timer set [Category Set: Timer Multiplicity] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1     Timer 1     INC    20003.000     3000.800
+            4  Set 1                 GETF   30003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  20000.00   3000.00       2  10000.00000   1500.00000
+            4  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    30000.00   5000.00       3  10000.00000   1666.66667
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 5: Multiple timers in timer set [Category Set: Timer Multiplicity] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1     Timer 2     INC    20003.000     3000.800
+            4  Set 1                 GETF   30003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  Timer 2  10000.00   1000.00       1  10000.00000   1000.00000
+            5  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            6  -------  --------  --------  ------  -----------  -----------
+            7  Total    30000.00   5000.00       3  10000.00000   1666.66667
+            8  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 6: One timer set [Category Set: Timer Set Multiplicity] {
+==================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1     Timer 2     INC    20003.000     3000.800
+            4  Set 1                 GETF   30003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  Timer 2  10000.00   1000.00       1  10000.00000   1000.00000
+            5  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            6  -------  --------  --------  ------  -----------  -----------
+            7  Total    30000.00   5000.00       3  10000.00000   1666.66667
+            8  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 7: Multiple non-overlapping timer sets [Category Set: Timer Set Multiplicity] {
+========================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1     Timer 2     INC    20003.000     3000.800
+            4  Set 2                 CON    20003.000     3000.800
+            5  Set 2     Timer 1     INC    30003.000     4000.800
+            6  Set 1                 GETF   40003.000     5000.800
+            7  Set 2                 GETF   40003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  Timer 2  10000.00   1000.00       1  10000.00000   1000.00000
+            5  (Other)  20000.00   2000.00       1  20000.00000   2000.00000
+            6  -------  --------  --------  ------  -----------  -----------
+            7  Total    40000.00   5000.00       3  13333.33333   1666.66667
+            8  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   1000.00       1  10000.00000   1000.00000
+            4  (Other)  10000.00   1000.00       1  10000.00000   1000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    20000.00   2000.00       2  10000.00000   1000.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 8: Multiple timer sets with overlapping [Category Set: Timer Set Multiplicity] {
+=========================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 2                 CON    20003.000     3000.800
+            4  Set 1     Timer 2     INC    30003.000     4000.800
+            5  Set 2     Timer 1     INC    30003.000     4000.800
+            6  Set 1                 GETF   40003.000     5000.800
+            7  Set 2                 GETF   40003.000     5000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  Timer 2  20000.00   2000.00       1  20000.00000   2000.00000
+            5  (Other)  10000.00   1000.00       1  10000.00000   1000.00000
+            6  -------  --------  --------  ------  -----------  -----------
+            7  Total    40000.00   5000.00       3  13333.33333   1666.66667
+            8  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   1000.00       1  10000.00000   1000.00000
+            4  (Other)  10000.00   1000.00       1  10000.00000   1000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    20000.00   2000.00       2  10000.00000   1000.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 9: No decimal places [Category Set: Decimals Multiplicity] {
+=====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time   
+            -  --------  ----------  -----  ------------  -----------
+            1  Set 1                 CON    3.000         .100       
+            2  Set 1     Timer 1     INC    10003.123456  2000.823456
+            3  Set 1     Timer 2     INC    20003.000     3000.800   
+            4  Set 1                 GETF   30003.000     5000.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           0                        0                          8          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                     
+            -  ---------------------------------------------------------
+            1  Timer     Elapsed       CPU     Calls  Ela/Call  CPU/Call
+            2  -------  --------  --------  --------  --------  --------
+            3  Timer 1     10000      2001         1     10000      2001
+            4  Timer 2     10000      1000         1     10000      1000
+            5  (Other)     10000      2000         1     10000      2000
+            6  -------  --------  --------  --------  --------  --------
+            7  Total       30000      5001         3     10000      1667
+            8  -------  --------  --------  --------  --------  --------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 10: One decimal place [Category Set: Decimals Multiplicity] {
+======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time   
+            -  --------  ----------  -----  ------------  -----------
+            1  Set 1                 CON    3.000         .100       
+            2  Set 1     Timer 1     INC    10003.123456  2000.823456
+            3  Set 1     Timer 2     INC    20003.000     3000.800   
+            4  Set 1                 GETF   30003.000     5000.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           1                        1                          8          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                     
+            -  ---------------------------------------------------------
+            1  Timer     Elapsed       CPU     Calls  Ela/Call  CPU/Call
+            2  -------  --------  --------  --------  --------  --------
+            3  Timer 1   10000.1    2000.7         1   10000.1    2000.7
+            4  Timer 2    9999.9    1000.0         1    9999.9    1000.0
+            5  (Other)   10000.0    2000.0         1   10000.0    2000.0
+            6  -------  --------  --------  --------  --------  --------
+            7  Total     30000.0    5000.7         3   10000.0    1666.9
+            8  -------  --------  --------  --------  --------  --------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 11: Multiple decimal places [Category Set: Decimals Multiplicity] {
+============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time   
+            -  --------  ----------  -----  ------------  -----------
+            1  Set 1                 CON    3.000         .100       
+            2  Set 1     Timer 1     INC    10003.123456  2000.823456
+            3  Set 1     Timer 2     INC    20003.000     3000.800   
+            4  Set 1                 GETF   30003.000     5000.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          10          4                        6                          8          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                                 
+            -  ---------------------------------------------------------------------
+            1  Timer       Elapsed         CPU     Calls      Ela/Call      CPU/Call
+            2  -------  ----------  ----------  --------  ------------  ------------
+            3  Timer 1  10000.1235   2000.7235         1  10000.123456   2000.723456
+            4  Timer 2   9999.8765    999.9765         1   9999.876544    999.976544
+            5  (Other)  10000.0000   2000.0000         1  10000.000000   2000.000000
+            6  -------  ----------  ----------  --------  ------------  ------------
+            7  Total    30000.0000   5000.7000         3  10000.000000   1666.900000
+            8  -------  ----------  ----------  --------  ------------  ------------
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 12: Small values [Category Set: Value Size] {
+======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.006         .802    
+            3  Set 1                 GETF   3.012         .808    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1      0.01      0.00       1      0.00600      0.00200
+            4  (Other)      0.01      0.01       1      0.00600      0.00600
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total        0.01      0.01       2      0.00600      0.00400
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 13: Medium values [Category Set: Value Size] {
+=======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    13.000        2.800   
+            3  Set 1                 GETF   23.000        4.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1     10.00      2.00       1     10.00000      2.00000
+            4  (Other)     10.00      2.00       1     10.00000      2.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total       20.00      4.00       2     10.00000      2.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 14: Large values [Category Set: Value Size] {
+======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    10003.000     2000.800
+            3  Set 1                 GETF   20003.000     4000.800
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1  10000.00   2000.00       1  10000.00000   2000.00000
+            4  (Other)  10000.00   2000.00       1  10000.00000   2000.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total    20000.00   4000.00       2  10000.00000   2000.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 15: None defaulted [Category Set: Parameter Defaults] {
+================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    13.000        2.800   
+            3  Set 1                 GETF   23.000        4.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           4                        6                          8          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU     Calls    Ela/Call    CPU/Call
+            2  -------  --------  --------  --------  ----------  ----------
+            3  Timer 1   10.0000    2.0000         1   10.000000    2.000000
+            4  (Other)   10.0000    2.0000         1   10.000000    2.000000
+            5  -------  --------  --------  --------  ----------  ----------
+            6  Total     20.0000    4.0000         2   10.000000    2.000000
+            7  -------  --------  --------  --------  ----------  ----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 16: All defaulted [Category Set: Parameter Defaults] {
+===============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    13.000        2.800   
+            3  Set 1                 GETF   23.000        4.800   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1     10.00      2.00       1     10.00000      2.00000
+            4  (Other)     10.00      2.00       1     10.00000      2.00000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total       20.00      4.00       2     10.00000      2.00000
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 17: All entry points called [Category Set: Entry Points Called] {
+==========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    33.123        9.256   
+            3  Set 1                 INI    153.615       43.080  
+            4  Set 1     Timer 1     INC    183.738       51.536  
+            5  Set 1                 GET    213.861       59.992  
+            6  Set 1                 GETF   213.861       59.992  
+            7  Set 1                 RES    213.861       59.992  
+            8  Set 1                 SELF   213.861       59.992  
+            9  Set 1                 SELFF  213.861       59.992  
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1 {
+      ================
+
+            #  Timer Name  Elapsed Ticks  CPU Ticks  #Calls
+            -  ----------  -------------  ---------  ------
+            1  Timer 1     602460000      169120000  2     
+            2  (Other)     1506150000     422800000  1     
+            3  Total       2108610000     591920000  3     
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                         
+            -  -------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+            2  -------  --------  --------  ------  -----------  -----------
+            3  Timer 1     60.25     16.91       2     30.12300      8.45600
+            4  (Other)    150.62     42.28       1    150.61500     42.28000
+            5  -------  --------  --------  ------  -----------  -----------
+            6  Total      210.86     59.19       3     70.28700     19.73067
+            7  -------  --------  --------  ------  -----------  -----------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked) {
+      ==========================
+
+            #  Elapsed Ticks                 CPU Ticks                  
+            -  ----------------------------  ---------------------------
+            1  IN [50000, 200000]: 84047.45  IN [20000, 200000]: 85937.5
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 6: Self (unmocked, formatted) {
+      =====================================
+
+            #  Self Timing Ratios                                                                                                    
+            -  ----------------------------------------------------------------------------------------------------------------------
+            1  LIKE /\[Timer timed \(per call in ms\): Elapsed: .*\]/: [Timer timed (per call in ms): Elapsed: 9.38526, CPU: 7.81250]
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 7: Results {
+      ==================
+
+            #  Lines                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            -  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  LIKE /Timer[^]*Timer 1[^]*\[Timer timed[^]*\]/: 
+Timer set: Set 1, constructed at 2023-08-27 08:19:51, written at 2023-08-27 08:19:51
+====================================================================================
+
+Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+-------  --------  --------  ------  -----------  -----------
+Timer 1     60.25     16.91       2     30.12300      8.45600
+(Other)    150.62     42.28       1    150.61500     42.28000
+-------  --------  --------  ------  -----------  -----------
+Total      210.86     59.19       3     70.28700     19.73067
+-------  --------  --------  ------  -----------  -----------
+[Timer timed (per call in ms): Elapsed: 7.12236, CPU: 6.25000]
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 18: Timings real [Category Set: Timings Mocked] {
+==========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    0.3000        .800    
+            2  Set 1     Timer 1     INC    0.123         9.256   
+            3  Set 1                 INI    0.615         0.080   
+            4  Set 1     Timer 1     INC    0.738         51.536  
+            5  Set 1                 GET    0.861         0.992   
+            6  Set 1                 GETF   0.861         0.992   
+            7  Set 1                 RES    0.861         0.992   
+            8  Set 1                 SELF   0.861         0.992   
+            9  Set 1                 SELFF  0.861         0.992   
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  N                                                                                     
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1 {
+      ================
+
+            #  Timer Name  Elapsed Ticks                    CPU Ticks                       #Calls
+            -  ----------  -------------------------------  ------------------------------  ------
+            1  Timer 1     IN [1500000,25000000]: 8897307   IN [75000,12500000]: 6250000    2     
+            2  (Other)     IN [3000000,50000000]: 14890113  IN [150000,250000000: 8437500   1     
+            3  Total       IN [6000000,80000000]: 23787420  IN [300000,40000000]: 14687500  3     
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                                             
+            -  ---------------------------------------------------------------------------------
+            1  Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call                    
+            2  -------  --------  --------  ------  -----------  -----------                    
+            3  LIKE /Timer 1.*/: Timer 1      0.89      0.62       2      0.44487      0.31250  
+            4  LIKE /\(Other\).*/: (Other)      1.49      0.84       1      1.48901      0.84375
+            5  -------  --------  --------  ------  -----------  -----------                    
+            6  LIKE /Total.*/: Total        2.38      1.47       3      0.79291      0.48958    
+            7  -------  --------  --------  ------  -----------  -----------                    
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked) {
+      ==========================
+
+            #  Elapsed Ticks                 CPU Ticks               
+            -  ----------------------------  ------------------------
+            1  IN [30000, 900000]: 74710.55  IN [1500, 450000]: 46875
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 6: Self (unmocked, formatted) {
+      =====================================
+
+            #  Self Timing Ratios                                                                                                    
+            -  ----------------------------------------------------------------------------------------------------------------------
+            1  LIKE /\[Timer timed \(per call in ms\): Elapsed: .*\]/: [Timer timed (per call in ms): Elapsed: 6.88319, CPU: 6.25000]
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 7: Results {
+      ==================
+
+            #  Lines                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            -  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  LIKE /Timer[^]*Timer 1[^]*\[Timer timed[^]*\]/: 
+Timer set: Set 1, constructed at 2023-08-27 08:19:52, written at 2023-08-27 08:19:56
+====================================================================================
+
+Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call
+-------  --------  --------  ------  -----------  -----------
+Timer 1      0.89      0.62       2      0.44487      0.31250
+(Other)      1.49      0.84       1      1.48901      0.84375
+-------  --------  --------  ------  -----------  -----------
+Total        2.38      1.47       3      0.79291      0.48958
+-------  --------  --------  ------  -----------  -----------
+[Timer timed (per call in ms): Elapsed: 7.26594, CPU: 6.25000]
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 19: All parameters just valid [Category Set: Parameter Validation] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.001         .801    
+            3  Set 1     Timer 1     INC    3.002         .802    
+            4  Set 1                 GETF   3.003         .803    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           6                        6                          5          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted) {
+      ============================
+
+            #  Line                                                  
+            -  ------------------------------------------------------
+            1  Timer     Elapsed       CPU  Calls  Ela/Call  CPU/Call
+            2  -------  --------  --------  -----  --------  --------
+            3  Timer 1  0.002000  0.002000      2  0.001000  0.001000
+            4  (Other)  0.001000  0.001000      1  0.001000  0.001000
+            5  -------  --------  --------  -----  --------  --------
+            6  Total    0.003000  0.003000      3  0.001000  0.001000
+            7  -------  --------  --------  -----  --------  --------
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 20: Parameter invalid: Time Width < 8 [Category Set: Parameter Validation] {
+=====================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.001         .801    
+            3  Set 1     Timer 1     INC    3.002         .802    
+            4  Set 1                 GETF   3.003         .803    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          7           5                        5                          5          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception {
+      ====================
+
+            #  1 Message, 2 Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            -  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  Error, timeWidth must be > 7, actual: 7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            2  LIKE /at valWidths, .*/: at valWidths, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 66
+at formatTimers, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 228
+at purelyWrapUnit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 98
+at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
+at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
+at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 124
+at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Run-Test-TimerSet.ps1: line 2
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 21: Parameter invalid: Time DP > Time ratio DP [Category Set: Parameter Validation] {
+==============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.001         .801    
+            3  Set 1     Timer 1     INC    3.002         .802    
+            4  Set 1                 GETF   3.003         .803    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           6                        5                          5          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception {
+      ====================
+
+            #  1 Message, 2 Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            -  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  Error, timeDP  must be <= timeRatioDP, actual: 6, 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+            2  LIKE /at valWidths, .*/: at valWidths, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 69
+at formatTimers, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 228
+at purelyWrapUnit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 98
+at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
+at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
+at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 124
+at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Run-Test-TimerSet.ps1: line 2
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 22: Parameter invalid: Time Width - Time DP > 1 [Category Set: Parameter Validation] {
+===============================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.001         .801    
+            3  Set 1     Timer 1     INC    3.002         .802    
+            4  Set 1                 GETF   3.003         .803    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           7                        7                          5          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception {
+      ====================
+
+            #  1 Message, 2 Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            -  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  Error, timeWidth - timeDP must be > 1 , actual: 8, 7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            2  LIKE /at valWidths, .*/: at valWidths, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 72
+at formatTimers, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 228
+at purelyWrapUnit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 98
+at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
+at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
+at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 124
+at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Run-Test-TimerSet.ps1: line 2
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================
+
+SCENARIO 23: Parameter invalid: Calls width < 5 [Category Set: Parameter Validation] {
+======================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Event Sequence {
+      =========================
+
+            #  Set Name  Timer Name  Event  Elapsed Time  CPU Time
+            -  --------  ----------  -----  ------------  --------
+            1  Set 1                 CON    3.000         .800    
+            2  Set 1     Timer 1     INC    3.001         .801    
+            3  Set 1     Timer 1     INC    3.002         .802    
+            4  Set 1                 GETF   3.003         .803    
+
+      }
+      =
+
+      GROUP 2: Scalars {
+      ==================
+
+            #  Mock Flag  Time Width  Decimal Places (Totals)  Decimal Places (per call)  Calls Width
+            -  ---------  ----------  -----------------------  -------------------------  -----------
+            1  Y          8           5                        5                          4          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Set 1: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 2: Set 1 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 3: Set 2: Empty as expected: SUCCESS
+      ==========================================
+
+      GROUP 4: Set 2 (formatted): Empty as expected: SUCCESS
+      ======================================================
+
+      GROUP 5: Self (unmocked): Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 6: Self (unmocked, formatted): Empty as expected: SUCCESS
+      ===============================================================
+
+      GROUP 7: Results: Empty as expected: SUCCESS
+      ============================================
+
+      GROUP 8: Exception {
+      ====================
+
+            #  1 Message, 2 Stack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            -  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  Error, callsWidth must be > 4, actual: 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+            2  LIKE /at valWidths, .*/: at valWidths, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 75
+at formatTimers, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet\TimerSet.psm1: line 228
+at purelyWrapUnit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 98
+at callPWU, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 262
+at main, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 298
+at Test-Unit, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 317
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Test-TimerSet.ps1: line 124
+at Test-Format, C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 348
+at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TimerSet\unit_test\Run-Test-TimerSet.ps1: line 2
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 9: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 9: SUCCESS
+========================

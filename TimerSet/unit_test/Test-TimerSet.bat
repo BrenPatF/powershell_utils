@@ -1,0 +1,1 @@
+pwsh .\Test-TimerSet.ps1  > .\Test-TimerSet.out 2> .\Test-TimerSet.err

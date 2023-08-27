@@ -1216,8 +1216,9 @@ There are four subfolders below the trapit root folder, which has README and mod
 [&uarr; In This README...](#in-this-readme)<br />
 - [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html)
 - [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester)
-- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
 - [Powershell General Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
+- [Powershell TimerSet Module](https://github.com/BrenPatF/powershell_utils/tree/master/TimerSet)
 - [Node.js Downloads](https://nodejs.org/en/download)
 - [Powershell Trapit Unit Testing Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
 

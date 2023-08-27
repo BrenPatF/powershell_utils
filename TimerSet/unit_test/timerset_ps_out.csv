@@ -1,0 +1,16 @@
+Group,Field,Value
+Set 1,Timer Name,Timer 1
+Set 1,Elapsed Ticks,
+Set 1,CPU Ticks,
+Set 1,#Calls,1
+Set 1 (formatted),Line,
+Set 2,Timer Name,Timer 1
+Set 2,Elapsed Ticks,
+Set 2,CPU Ticks,
+Set 2,#Calls,1
+Set 2 (formatted),Line,
+Self (unmocked),Elapsed Ticks,
+Self (unmocked),CPU Ticks,
+"Self (unmocked, formatted)",Self Timing Ratios,
+Results,Lines,
+Exception,"1 Message, 2 Stack",

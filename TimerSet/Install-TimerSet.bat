@@ -1,0 +1,1 @@
+pwsh .\Install-TimerSet.ps1 > .\Install-TimerSet.out 2> .\Install-TimerSet.err

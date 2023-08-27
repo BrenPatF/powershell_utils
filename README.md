@@ -14,6 +14,11 @@ The TrapitUtils subproject comprises a set of powershell utility functions for u
 
 - [README: TrapitUtils](TrapitUtils/README.md)
 
+## TimerSet
+The TimerSet subproject contains a class that facilitates code timing for instrumentation and other purposes, with very small footprint in both code and resource usage
+
+- [README: TimerSet](TimerSet/README.md)
+
 ## Operating System
 - Windows 11
 - Powershell 7
