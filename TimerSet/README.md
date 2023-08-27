@@ -310,7 +310,13 @@ The powershell package includes an npm package to format the unit test output JS
 
 The package is tested using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
-In this case, where we have a set of small independent methods, most of which are pure functions, the wrapper function is designed to test all of them in a single generalised transaction.
+The wrapper function represents a generalised transactional use of the package in which multiple timer sets may be constructed, and then timings carried out and reported on at the end of the transaction.
+
+This kind of package would usually be thought hard to unit-test, with CPU and elapsed times being inherently non-deterministic. However, this is a good example of the power of the design pattern: One of the inputs is a yes/no flag indicating whether to mock the system timing calls, or not. One of the two overloaded constructor methods takes as parameters script blocks that return mocked elapsed and CPU times read from the input scenario data.
+
+In the non-mocked scenarios standard function calls are made to return epochal elapsed and CPU times, while in the mocked scenarios these are bypassed, and deterministic values passed from the script blocks.
+
+In this way we can test correctness of the timing aggregations, independence of timer sets etc. using the deterministic values; on the other hand, one of the key benefits of automated unit testing is to test the actual dependencies, and we do this in the non-mocked case by passing in 'sleep' times to the wrapper function and testing the outputs against ranges of values.
 
 At a high level the Math Function Unit Testing design pattern involves three main steps:
 
