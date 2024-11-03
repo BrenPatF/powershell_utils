@@ -535,7 +535,7 @@ The project folder structure is shown below.
 
 <img src="png/folders-TimerSet.png">
 
-There are three subfolders below the trapit root folder, which has README and module:
+There are three subfolders below the TimerSet root folder, which has README and module:
 - `examples`: Examples of use, with a single subfolder for the ColGroup file I/O, group counting example
 - `png`: This holds the image files for the README
 - `unit_test`: Root folder for unit testing of the package, with subfolder having the results files
