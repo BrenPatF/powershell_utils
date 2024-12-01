@@ -12,7 +12,7 @@ Unit Test Report: Powershell Utils
 
 Test scenarios: 0 failed of 6: SUCCESS
 ======================================
-Tested: 2023-08-26 13:41:06, Formatted: 2023-08-26 13:41:06
+Formatted: 1/12/2024, 15:18:48
 
 SCENARIO 1: Defaulted [Category Set: Defaulting] {
 ==================================================
@@ -144,7 +144,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
 
             #  Line                                                                                  
             -  --------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:40:57: Testing...
+            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 12/01/2024 15:18:41: Testing...
             2  Line 2...                                                                             
 
       } 0 failed of 2: SUCCESS
@@ -246,7 +246,7 @@ SCENARIO 1: Defaulted [Category Set: Defaulting] {
 
             #  Elapsed Seconds     CPU Seconds       
             -  ------------------  ------------------
-            1  IN [0.8,1.2]: 1.03  IN [0.1,0.8]: 0.44
+            1  IN [0.8,1.2]: 1.01  IN [0.1,0.8]: 0.47
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -380,7 +380,7 @@ SCENARIO 2: Not Defaulted [Category Set: Defaulting] {
 
             #  Line                                                                                      
             -  ------------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing...ND/: Debug starting, 08/26/2023 14:40:59: Testing...ND
+            1  LIKE /Debug starting, .*: Testing...ND/: Debug starting, 12/01/2024 15:18:43: Testing...ND
             2  Line 2...ND                                                                               
 
       } 0 failed of 2: SUCCESS
@@ -609,7 +609,7 @@ SCENARIO 3: Small [Category Set: Size] {
 
             #  Line                                                                
             -  --------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: T/: Debug starting, 08/26/2023 14:41:00: T
+            1  LIKE /Debug starting, .*: T/: Debug starting, 12/01/2024 15:18:44: T
             2  L                                                                   
 
       } 0 failed of 2: SUCCESS
@@ -838,7 +838,7 @@ SCENARIO 4: Large [Category Set: Size] {
 
             #  Line                                                                                                                                                                                                                                                                      
             -  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/: Debug starting, 08/26/2023 14:41:01: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+            1  LIKE /Debug starting, .*: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/: Debug starting, 12/01/2024 15:18:45: Testing...123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
             2  Line 2...0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890                                                                                                                                                                      
 
       } 0 failed of 2: SUCCESS
@@ -1063,7 +1063,7 @@ SCENARIO 5: Few [Category Set: Multiplicity] {
 
             #  Line                                                                                  
             -  --------------------------------------------------------------------------------------
-            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:41:02: Testing...
+            1  LIKE /Debug starting, .*: Testing.../: Debug starting, 12/01/2024 15:18:46: Testing...
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1881,7 +1881,7 @@ SCENARIO 6: Many [Category Set: Multiplicity] {
 
             #    Line                                                                                  
             ---  --------------------------------------------------------------------------------------
-            1    LIKE /Debug starting, .*: Testing.../: Debug starting, 08/26/2023 14:41:03: Testing...
+            1    LIKE /Debug starting, .*: Testing.../: Debug starting, 12/01/2024 15:18:47: Testing...
             2    Line 2...                                                                             
             3    Line 3...                                                                             
             4    Line 4...                                                                             

@@ -1,0 +1,1937 @@
+{
+  "meta": {
+    "title": "Merge-LinkMDFiles",
+    "delimiter": "|",
+    "inp": {
+      "Input Files List": [
+        "File Name",
+        "File Empty?"
+      ],
+      "Input Files": [
+        "File Name",
+        "Line"
+      ]
+    },
+    "out": {
+      "Merged Output File": [
+        "Line"
+      ],
+      "Return Headings": [
+        "Line"
+      ],
+      "Error Message": [
+        "Line"
+      ],
+      "Unhandled Exception": [
+        "Error Message",
+        "Stack"
+      ]
+    }
+  },
+  "scenarios": {
+    "No file": {
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [],
+        "Input Files": []
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [],
+          "act": []
+        },
+        "Return Headings": {
+          "exp": [],
+          "act": []
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One file": {
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Some text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Some text"
+          ],
+          "act": [
+            "# In This README...",
+            "Some text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Multiple files": {
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "No heading": {
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|Line 1",
+          "intro.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "Line 1",
+            "Line 2"
+          ],
+          "act": [
+            "Line 1",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [],
+          "act": []
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One heading": {
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Some text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Some text"
+          ],
+          "act": [
+            "# In This README...",
+            "Some text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Multiple headings": {
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "No child link": {
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Some text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Some text"
+          ],
+          "act": [
+            "# In This README...",
+            "Some text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One child link": {
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Multiple child links": {
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|Line 1",
+          "Main.md|## Heading 2",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "[&darr; Heading 2](#heading-2)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "## Heading 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "[&darr; Heading 2](#heading-2)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "## Heading 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1",
+            "## Heading 2"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1",
+            "## Heading 2"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "No parent link": {
+      "category_set": "Parent Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Some text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Some text"
+          ],
+          "act": [
+            "# In This README...",
+            "Some text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One parent link": {
+      "category_set": "Parent Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One level": {
+      "category_set": "Level Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Some text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Some text"
+          ],
+          "act": [
+            "# In This README...",
+            "Some text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Six levels": {
+      "category_set": "Level Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Level 2",
+          "Main.md|Line 1",
+          "Main.md|### Level 3",
+          "Main.md|Line 2",
+          "Main.md|#### Level 4",
+          "Main.md|Line 3",
+          "Main.md|##### Level 5",
+          "Main.md|Line 4",
+          "Main.md|###### Level 6",
+          "Main.md|Line 5"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Level 2](#level-2)<br />",
+            "## Level 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 3](#level-3)<br />",
+            "Line 1",
+            "### Level 3",
+            "[&uarr; Level 2](#level-2)<br />",
+            "[&darr; Level 4](#level-4)<br />",
+            "Line 2",
+            "#### Level 4",
+            "[&uarr; Level 3](#level-3)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 3",
+            "##### Level 5",
+            "[&uarr; Level 4](#level-4)<br />",
+            "[&darr; Level 6](#level-6)<br />",
+            "Line 4",
+            "###### Level 6",
+            "[&uarr; Level 5](#level-5)<br />",
+            "Line 5"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Level 2](#level-2)<br />",
+            "## Level 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 3](#level-3)<br />",
+            "Line 1",
+            "### Level 3",
+            "[&uarr; Level 2](#level-2)<br />",
+            "[&darr; Level 4](#level-4)<br />",
+            "Line 2",
+            "#### Level 4",
+            "[&uarr; Level 3](#level-3)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 3",
+            "##### Level 5",
+            "[&uarr; Level 4](#level-4)<br />",
+            "[&darr; Level 6](#level-6)<br />",
+            "Line 4",
+            "###### Level 6",
+            "[&uarr; Level 5](#level-5)<br />",
+            "Line 5"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Level 2",
+            "### Level 3",
+            "#### Level 4",
+            "##### Level 5",
+            "###### Level 6"
+          ],
+          "act": [
+            "# In This README...",
+            "## Level 2",
+            "### Level 3",
+            "#### Level 4",
+            "##### Level 5",
+            "###### Level 6"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "One hash increment": {
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Level 2",
+          "Main.md|Line 1",
+          "Main.md|### Level 3",
+          "Main.md|Line 2",
+          "Main.md|#### Level 4",
+          "Main.md|Line 3",
+          "Main.md|##### Level 5",
+          "Main.md|Line 4",
+          "Main.md|###### Level 6",
+          "Main.md|Line 5"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Level 2](#level-2)<br />",
+            "## Level 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 3](#level-3)<br />",
+            "Line 1",
+            "### Level 3",
+            "[&uarr; Level 2](#level-2)<br />",
+            "[&darr; Level 4](#level-4)<br />",
+            "Line 2",
+            "#### Level 4",
+            "[&uarr; Level 3](#level-3)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 3",
+            "##### Level 5",
+            "[&uarr; Level 4](#level-4)<br />",
+            "[&darr; Level 6](#level-6)<br />",
+            "Line 4",
+            "###### Level 6",
+            "[&uarr; Level 5](#level-5)<br />",
+            "Line 5"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Level 2](#level-2)<br />",
+            "## Level 2",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 3](#level-3)<br />",
+            "Line 1",
+            "### Level 3",
+            "[&uarr; Level 2](#level-2)<br />",
+            "[&darr; Level 4](#level-4)<br />",
+            "Line 2",
+            "#### Level 4",
+            "[&uarr; Level 3](#level-3)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 3",
+            "##### Level 5",
+            "[&uarr; Level 4](#level-4)<br />",
+            "[&darr; Level 6](#level-6)<br />",
+            "Line 4",
+            "###### Level 6",
+            "[&uarr; Level 5](#level-5)<br />",
+            "Line 5"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Level 2",
+            "### Level 3",
+            "#### Level 4",
+            "##### Level 5",
+            "###### Level 6"
+          ],
+          "act": [
+            "# In This README...",
+            "## Level 2",
+            "### Level 3",
+            "#### Level 4",
+            "##### Level 5",
+            "###### Level 6"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Two hash increment": {
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|### Level 3",
+          "Main.md|Line 2",
+          "Main.md|##### Level 5",
+          "Main.md|Line 4"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Level 3](#level-3)<br />",
+            "### Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 2",
+            "##### Level 5",
+            "[&uarr; Level 3](#level-3)<br />",
+            "Line 4"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Level 3](#level-3)<br />",
+            "### Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Level 5](#level-5)<br />",
+            "Line 2",
+            "##### Level 5",
+            "[&uarr; Level 3](#level-3)<br />",
+            "Line 4"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "### Level 3",
+            "##### Level 5"
+          ],
+          "act": [
+            "# In This README...",
+            "### Level 3",
+            "##### Level 5"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Three hash increment": {
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|## In This README...",
+          "Main.md|##### Level 5",
+          "Main.md|Line 4"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "## In This README...",
+            "[&darr; Level 5](#level-5)<br />",
+            "##### Level 5",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 4"
+          ],
+          "act": [
+            "## In This README...",
+            "[&darr; Level 5](#level-5)<br />",
+            "##### Level 5",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 4"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "## In This README...",
+            "##### Level 5"
+          ],
+          "act": [
+            "## In This README...",
+            "##### Level 5"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Root 1:N": {
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Root 1:Y, Root 2: Y": {
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Child Heading 1",
+          "Main.md|Line 1",
+          "Main.md|# Second Root",
+          "Main.md|## Child Heading 2",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Child Heading 1](#child-heading-1)<br />",
+            "## Child Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "# Second Root",
+            "[&darr; Child Heading 2](#child-heading-2)<br />",
+            "## Child Heading 2",
+            "[&uarr; Second Root](#second-root)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Child Heading 1](#child-heading-1)<br />",
+            "## Child Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "# Second Root",
+            "[&darr; Child Heading 2](#child-heading-2)<br />",
+            "## Child Heading 2",
+            "[&uarr; Second Root](#second-root)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Child Heading 1",
+            "# Second Root",
+            "## Child Heading 2"
+          ],
+          "act": [
+            "# In This README...",
+            "## Child Heading 1",
+            "# Second Root",
+            "## Child Heading 2"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Root 1:Y, Root 2: N": {
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Child Heading 1",
+          "Main.md|Line 1",
+          "Main.md|# Second Root",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Child Heading 1](#child-heading-1)<br />",
+            "## Child Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "# Second Root",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Child Heading 1](#child-heading-1)<br />",
+            "## Child Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1",
+            "# Second Root",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Child Heading 1",
+            "# Second Root"
+          ],
+          "act": [
+            "# In This README...",
+            "## Child Heading 1",
+            "# Second Root"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Root 1:N, Root 2: Y": {
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|Line 1",
+          "Main.md|# Second Root",
+          "Main.md|## Child Heading 2",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Line 1",
+            "# Second Root",
+            "[&darr; Child Heading 2](#child-heading-2)<br />",
+            "## Child Heading 2",
+            "[&uarr; Second Root](#second-root)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "Line 1",
+            "# Second Root",
+            "[&darr; Child Heading 2](#child-heading-2)<br />",
+            "## Child Heading 2",
+            "[&uarr; Second Root](#second-root)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "# Second Root",
+            "## Child Heading 2"
+          ],
+          "act": [
+            "# In This README...",
+            "# Second Root",
+            "## Child Heading 2"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Root 1:N, Root 2: N": {
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|Line 1",
+          "Main.md|# Second Root",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Line 1",
+            "# Second Root",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "Line 1",
+            "# Second Root",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "# Second Root"
+          ],
+          "act": [
+            "# In This README...",
+            "# Second Root"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Dupe 1:Y, Dupe 2:Y": {
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|## Duplicate Heading",
+          "Main.md|Line 1",
+          "Main.md|### Heading 1 Level 3",
+          "Main.md|## Duplicate Heading",
+          "Main.md|### Heading 2 Level 3",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3"
+          ],
+          "act": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Dupe 1:Y, Dupe 2:N": {
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|## Duplicate Heading",
+          "Main.md|Line 1",
+          "Main.md|### Heading 1 Level 3",
+          "Main.md|!## Duplicate Heading",
+          "Main.md|### Heading 2 Level 3",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "### Heading 2 Level 3"
+          ],
+          "act": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "### Heading 2 Level 3"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Dupe 1:N, Dupe 2:Y": {
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|!## Duplicate Heading",
+          "Main.md|Line 1",
+          "Main.md|### Heading 1 Level 3",
+          "Main.md|## Duplicate Heading",
+          "Main.md|### Heading 2 Level 3",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "## Duplicate Heading",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "## Duplicate Heading",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3"
+          ],
+          "act": [
+            "# In This README...",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Dupe 1:N, Dupe 2:N": {
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|!## Duplicate Heading",
+          "Main.md|Line 1",
+          "Main.md|### Heading 1 Level 3",
+          "Main.md|!## Duplicate Heading",
+          "Main.md|### Heading 2 Level 3",
+          "Main.md|Line 2"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "## Duplicate Heading",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 2"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "## Duplicate Heading",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 2"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "### Heading 1 Level 3",
+            "### Heading 2 Level 3"
+          ],
+          "act": [
+            "# In This README...",
+            "### Heading 1 Level 3",
+            "### Heading 2 Level 3"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Dupe 1, 2, 3: Y": {
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|## Duplicate Heading",
+          "Main.md|Line 1",
+          "Main.md|### Heading 1 Level 3",
+          "Main.md|## Duplicate Heading",
+          "Main.md|### Heading 2 Level 3",
+          "Main.md|Line 2",
+          "Main.md|## Duplicate Heading",
+          "Main.md|### Heading 3 Level 3",
+          "Main.md|Line 3"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-2)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 3 Level 3](#heading-3-level-3)<br />",
+            "### Heading 3 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-2)<br />",
+            "Line 3"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Duplicate Heading](#duplicate-heading)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "[&darr; Duplicate Heading](#duplicate-heading-2)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 1 Level 3](#heading-1-level-3)<br />",
+            "Line 1",
+            "### Heading 1 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading)<br />",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 2 Level 3](#heading-2-level-3)<br />",
+            "### Heading 2 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-1)<br />",
+            "Line 2",
+            "## Duplicate Heading",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "[&darr; Heading 3 Level 3](#heading-3-level-3)<br />",
+            "### Heading 3 Level 3",
+            "[&uarr; Duplicate Heading](#duplicate-heading-2)<br />",
+            "Line 3"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "## Duplicate Heading",
+            "### Heading 3 Level 3"
+          ],
+          "act": [
+            "# In This README...",
+            "## Duplicate Heading",
+            "### Heading 1 Level 3",
+            "## Duplicate Heading",
+            "### Heading 2 Level 3",
+            "## Duplicate Heading",
+            "### Heading 3 Level 3"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "In heading": {
+      "category_set": "Special Characters",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters](#heading-1_-special-characters)<br />",
+            "## Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters](#heading-1_-special-characters)<br />",
+            "## Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1!\"£$%^&*()_+;'#,./{}:@~<>? special characters"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Not present": {
+      "category_set": "Section Text",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "First in #-prefix": {
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|!## Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Non-first in #-prefix": {
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|#!# Heading 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "#!# Heading 1",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "#!# Heading 1",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "In heading text": {
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading ! 1",
+          "Main.md|Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading ! 1](#heading--1)<br />",
+            "## Heading ! 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading ! 1](#heading--1)<br />",
+            "## Heading ! 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading ! 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading ! 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "First in non-heading": {
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "Main.md|## Heading 1",
+          "Main.md|!Line 1"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "!Line 1"
+          ],
+          "act": [
+            "# In This README...",
+            "[&darr; Heading 1](#heading-1)<br />",
+            "## Heading 1",
+            "[&uarr; In This README...](#in-this-readme)<br />",
+            "!Line 1"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README...",
+            "## Heading 1"
+          ],
+          "act": [
+            "# In This README...",
+            "## Heading 1"
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Missing file": {
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Ignore missing file"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Ignore missing file"
+          ],
+          "act": [
+            "# In This README...",
+            "Ignore missing file"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Empty file": {
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N",
+          "Main.md|Y"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|Ignore empty file"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "Ignore empty file"
+          ],
+          "act": [
+            "# In This README...",
+            "Ignore empty file"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    },
+    "Seven hashes": {
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README...",
+          "intro.md|####### Invalid header should be treated as plain text"
+        ]
+      },
+      "out": {
+        "Merged Output File": {
+          "exp": [
+            "# In This README...",
+            "####### Invalid header should be treated as plain text"
+          ],
+          "act": [
+            "# In This README...",
+            "####### Invalid header should be treated as plain text"
+          ]
+        },
+        "Return Headings": {
+          "exp": [
+            "# In This README..."
+          ],
+          "act": [
+            "# In This README..."
+          ]
+        },
+        "Error Message": {
+          "exp": [],
+          "act": []
+        },
+        "Unhandled Exception": {
+          "exp": [],
+          "act": []
+        }
+      }
+    }
+  }
+}

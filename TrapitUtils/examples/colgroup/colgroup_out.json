@@ -57,7 +57,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|894.4543|2023-05-07 11:27:24: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|208.2834|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -102,7 +102,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|204.3091|2023-05-07 11:27:25: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|367.3234|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -156,7 +156,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|509.377|2023-05-07 11:27:25: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|506.8996|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -209,7 +209,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/"
           ],
           "act": [
-            "1|687.4426|2023-05-07 11:27:25: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0"
+            "1|642.8798|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0"
           ]
         },
         "listAsIs": {
@@ -262,7 +262,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|864.8461|2023-05-07 11:27:25: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|786.6075|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -315,7 +315,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|1028.1261|2023-05-07 11:27:25: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|919.4341|2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -370,7 +370,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|203.3898|2023-05-07 11:27:26: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|52.0523|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -427,7 +427,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|382.102|2023-05-07 11:27:26: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|182.3271|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -502,7 +502,7 @@
         "Unhandled Exception": {
           "exp": [],
           "act": [
-            "Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.|at readList, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 65\r\nat ColGroup, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 87\r\nat setup, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 85\r\nat purelyWrap-Unit, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 121\r\nat Test-FormatFolder, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 386\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\Run-Test-Examples.ps1: line 6"
+            "Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.|at readList, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 73\r\nat ColGroup, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 95\r\nat setup, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 95\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 108\r\nat callPWU, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 132\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\Run-Test-Examples.ps1: line 4"
           ]
         }
       }
@@ -524,31 +524,37 @@
           "exp": [
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
-          "act": []
+          "act": [
+            "1|435.2424|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+          ]
         },
         "listAsIs": {
           "exp": [
             "1"
           ],
-          "act": []
+          "act": [
+            "1"
+          ]
         },
         "sortByKey": {
           "exp": [
             "val_1|1"
           ],
-          "act": []
+          "act": [
+            "val_1|1"
+          ]
         },
         "sortByValue": {
           "exp": [
             "val_1|1"
           ],
-          "act": []
+          "act": [
+            "val_1|1"
+          ]
         },
         "Unhandled Exception": {
           "exp": [],
-          "act": [
-            "The process cannot access the file 'C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ut_group.csv' because it is being used by another process.|at teardown, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 89\r\nat purelyWrap-Unit, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 117\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 121\r\nat Test-FormatFolder, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 386\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\Run-Test-Examples.ps1: line 6"
-          ]
+          "act": []
         }
       }
     },
@@ -570,7 +576,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "2|946.435|2023-05-07 11:27:26: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|567.3597|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -621,7 +627,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|116.089|2023-05-07 11:27:27: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|694.9148|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -674,7 +680,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|283.5461|2023-05-07 11:27:27: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|825.7355|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -729,7 +735,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|464.0131|2023-05-07 11:27:27: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|945.3181|2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -788,7 +794,7 @@
             "1|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|645.9616|2023-05-07 11:27:27: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|72.1268|2024-12-01 15:23:36: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -847,7 +853,7 @@
             "2|IN [0,2000]|LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/"
           ],
           "act": [
-            "1|814.9077|2023-05-07 11:27:27: File C:-Users-Brend-Dropbox-Home-WIP-github_stage-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
+            "1|196.2502|2024-12-01 15:23:36: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1"
           ]
         },
         "listAsIs": {
@@ -928,7 +934,7 @@
         "Unhandled Exception": {
           "exp": [],
           "act": [
-            "Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.|at readList, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 65\r\nat ColGroup, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 87\r\nat setup, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 85\r\nat purelyWrap-Unit, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 121\r\nat Test-FormatFolder, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 386\r\nat <ScriptBlock>, C:\\Users\\Brend\\Dropbox\\Home\\WIP\\github_stage\\powershell_utils\\TrapitUtils\\examples\\Run-Test-Examples.ps1: line 6"
+            "Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.|at readList, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 73\r\nat ColGroup, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\ColGroup.psm1: line 95\r\nat setup, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 95\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 108\r\nat callPWU, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\colgroup\\Test-ColGroup.ps1: line 132\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\examples\\Run-Test-Examples.ps1: line 4"
           ]
         }
       }

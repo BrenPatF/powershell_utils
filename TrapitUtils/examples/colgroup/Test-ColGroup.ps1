@@ -1,9 +1,8 @@
 <#**************************************************************************************************
 Name: Test-ColGroup.ps1                     Author: Brendan Furey                  Date: 05-Apr-2021
 
-Component script in the 'Trapit Utils' project in the powershell repository 'Powershell Utilities'.
-The project has utility functions for unit testing following the Math Function Unit Testing design
-pattern.
+Component script in the Powershell Utilities module TrapitUtils. The project has utility functions
+for unit testing following the Math Function Unit Testing design pattern.
 
     GitHub: https://github.com/BrenPatF/powershell_utils
 
@@ -12,7 +11,9 @@ input file including expected results, and an output file that has the actual re
 The output JSON file is processed by a JavaScript program that formats the results in HTML and text.
 
 The core utility module, TrapitUtils, has two main entry point functions to facilitate the design
-pattern.
+pattern, which is described here:
+
+    https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html
 
 Write-UT_Template writes a template for the unit test scenarios JSON file based on three input csv
 files holding the specific group/field structure for input and output groups, and a scenarios list.
@@ -22,44 +23,53 @@ idea in mind that pure functions are preferable to impure ones, and that we shou
 our code accordingly. In this way we can unit test the pure function more easily, while there is
 little complexity in the impure one, and it may not need explicit unit testing.
 
-Test-Unit is a utility that is called as effectively the main function of any specific unit test
-script. It reads the input JSON scenarios file, then loops over the scenarios making calls to a 
-function passed in as a parameter from the calling script. The function acts as a 'pure' wrapper
+Test-Format is a utility that is called as the driver function of any specific unit test script. It
+reads the input JSON scenarios file, then loops over the scenarios making calls to a function
+passed in as a parameter from the calling script. The passed function acts as a 'pure' wrapper
 around calls to the unit under test. It is 'externally pure' in the sense that it is deterministic,
-and interacts externally only via parameters and return value. Where the unit under test reads 
-inputs from file the wrapper writes them based on its parameters, and where the unit under test 
+and interacts externally only via parameters and return value. Where the unit under test reads
+inputs from file the wrapper writes them based on its parameters, and where the unit under test
 writes outputs to file the wrapper reads them and passes them out in its return value. Any file
-writing is reverted before exit. Test-Unit is called as part of any unit test driver script,
-including the one that tests Get-UT_TemplateObject, and is considered to be thereby tested
-implicitly.
+writing is reverted before exit.
+
+The utility function accumulates the output scenarios containing both expected and actual results,
+writes them to an output JSON file and calls a Javascript program that reads this file and produces
+output in text and HTML formats in a subfolder, returning a summary. Test-Format is called as part
+of any unit test driver script, including the one that tests Get-UT_TemplateObject, and is
+considered to be thereby tested implicitly.
 
 The table shows the driver scripts for the relevant modules: There are two examples of use, with
 main and test drivers; a test driver for the Get-UT_TemplateObject function; and an install script.
-In addition there is a "Run-" script for each test driver that calls the driver, then calls the
-JavaScript formatter.
+
 ====================================================================================================
-|  Script (.ps1)                   | Module (.psm1)| Notes                                         |
+|  Script (.ps1)               | Module (.psm1)| Notes                                             |
 |==================================================================================================|
-|  Show-HelloWorld                 |               | Simple Hello World program done as pure       |
-|  Test-HelloWorld                 |  HelloWorld   | function to allow for unit testing as a       |
-|  Run-Test-HelloWorld             |               | simple edge case                              |
-|----------------------------------|---------------|-----------------------------------------------|
-|  Show-ColGroup                   |               | Simple file-reading and group-counting        |
-| *Test-ColGroup*                  |  ColGroup     | module, with logging to file. Example of      |
-|  Run-Test-ColGroup               |               | testing impure units, and error display       |
-|----------------------------------|---------------|-----------------------------------------------|
-|                                  |  Utils        | General utility functions                     |
-|  Test-Get-UT_TemplateObject      |---------------|-----------------------------------------------|
-|  Run-Test-Get-UT_TemplateObject  |               | Trapit unit testing utility functions         |
-|----------------------------------|  TrapitUtils  |-----------------------------------------------|
-|  Install-TrapitUtils             |               | Installer copies module to Powershell path    |
+|  Show-HelloWorld             |               | Simple Hello World program done as pure function  |
+|  Test-HelloWorld             |  HelloWorld   | to allow for unit testing as a simple edge case   |
+|------------------------------|---------------|---------------------------------------------------|
+|  Show-ColGroup               |               | File-reading / group-counting module, logging to  |
+| *Test-ColGroup*              |  ColGroup     | file. Shows testing of impure units with errors   |
+|------------------------------|---------------|---------------------------------------------------|
+|                              |  Utils        | General utility functions                         |
+|  Test-Get-UT_TemplateObject  |---------------|---------------------------------------------------|
+|                              |               | Trapit unit testing utility functions             |
+|------------------------------|  TrapitUtils  |---------------------------------------------------|
+|  Install-TrapitUtils         |               | Installer copies module to Powershell path        |
 ====================================================================================================
+
 This file contains a unit test script for a simple file-reading and group-counting module, with
 logging to file. Note that this example has two deliberate errors to show how these are displayed.
 
-To run from the root folder:
+The script contains a wrapper function, purelyWrap-Unit, that takes a scenario input object
+containing a list of records for each input group, formatted as delimited strings. The function
+makes calls to the unit under test and returns an object containing a list of records for each
+output group, formatted as delimited strings.
 
-    $ examples/colgroup/Test-ColGroup
+The main section of the script is a call to a utility function, Test-Format, passing in the unit
+test root folder, the parent folder of the JavaScript node_modules npm root folder, the input JSON
+file name stem, and the wrapper function. The function creates a subfolder containing the formatted
+unit test results files, and returns a summary of the results.
+
 **************************************************************************************************#>
 Using Module './ColGroup.psm1'
 Import-Module TrapitUtils
@@ -117,6 +127,6 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
         teardown
     }
 }
-# one line main section passing in input and output file names, and the local 'pure' function to unit test utility
-Test-Unit ($PSScriptRoot + '/colgroup.json') ($PSScriptRoot + '/colgroup_out.json') `
-          ${function:purelyWrap-Unit}
+# one line main section passing in current root folder, npm parent folder, input JSON file name stem, and the local 'pure' function to unit test utility
+
+Test-Format $PSScriptRoot ($PSScriptRoot + '/../../../TrapitUtils') 'colgroup' ${function:purelyWrap-Unit}

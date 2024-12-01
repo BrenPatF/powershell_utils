@@ -1,9 +1,8 @@
 <#**************************************************************************************************
-Name: Test-TimerSet.ps1                 Author: Brendan Furey                      Date: 27-Aug-2023
+Name: Test-TimerSet.ps1                     Author: Brendan Furey                  Date: 05-Apr-2021
 
-Test script component in the Powershell code timing module TimerSet. This module facilitates code
-timing for instrumentation and other purposes, with very small footprint in both code and resource
-usage.
+Component script in the Powershell Utilities module TimerSet. This module facilitates code timing
+for instrumentation and other purposes, with very small footprint in both code and resource usage.
 
     GitHub: https://github.com/BrenPatF/powershell_utils
 
@@ -26,18 +25,20 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |  Show-ColGroup     |----------------|------------------------------------------------------------|
 |--------------------|  TimerSet      |  TimerSet class module                                     |
 |                    |----------------|------------------------------------------------------------|
-| *Test-TimerSet*    |  Trapit-Utils  |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
+| *Test-TimerSet*    |  TrapitUtils   |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
 |                    |----------------|------------------------------------------------------------|                                                                                                                                                                                                                                                                               -------------------------------------------------------------|
 |--------------------|  Utils         |  General utility functions                                 |
 |                    |-----------------------------------------------------------------------------|
 |  Install-TimerSet  |                   Install script copies module to Powershell path           |
-===================================================================================================
+====================================================================================================
 
-This file has the unit test script for the TimerSet class
+This file contains a wrapper script that calls the function Test-Format, passing in the test driver
+script name and the parent folder of the JavaScript node_modules npm root folder. It creates a
+subfolder containing the formatted unit test results files, and returns a summary of the results.
 
 **************************************************************************************************#>
-Using Module TimerSet
-Import-Module Utils, TrapitUtils
+Using Module ..\..\TimerSet\TimerSet.psm1
+Import-Module ..\..\Utils\Utils.psm1, ..\..\TrapitUtils\TrapitUtils.psm1
 
 $DELIM = '|'
 $CON,  $INC,  $INI,  $GET,  $GETF,  $SELF,  $SELFF,  $RES = 
@@ -49,7 +50,7 @@ $SELF_GRP,         $SELF_GRP_F,                  $RES_GRP,  $EXCEPTION =
 "Self (unmocked)", "Self (unmocked, formatted)", "Results", "Exception"
 [int]$counter_n = 0
 [int]$counter_c = 0
-function purelyWrapUnit([PSCustomObject]$inpGroups) {# json object for a single scenario, with inputs
+function purelyWrap-Unit([PSCustomObject]$inpGroups) {# json object for a single scenario, with inputs
 
     $script:counter_n = 0
     $script:counter_c = 0
@@ -121,5 +122,6 @@ function purelyWrapUnit([PSCustomObject]$inpGroups) {# json object for a single 
                 $EXCEPTION      = $exceptions
     }
 }
-Test-Unit ($PSScriptRoot + '/timerset_ps.json') ($PSScriptRoot + '/timerset_ps_out.json') `
-          ${function:purelyWrapUnit}
+# one line main section passing in current root folder, npm parent folder, input JSON file name stem, and the local 'pure' function to unit test utility
+
+Test-Format $PSScriptRoot ($PSScriptRoot + '/../../TrapitUtils') 'timerset_ps' ${function:purelyWrap-Unit}

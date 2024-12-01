@@ -1,0 +1,11 @@
+
+Results summary for file: C:/Users/Brend/OneDrive/Documents/GitHub/powershell_utils/TimerSet/unit_test/timerset_ps_out.json
+===========================================================================================================================
+
+File:          timerset_ps_out.json
+Title:         TimerSet - Powershell
+Inp Groups:    2
+Out Groups:    9
+Tests:         23
+Fails:         1
+Folder:        timerset---powershell

@@ -1,8 +1,8 @@
 <#**************************************************************************************************
 Name: Show-ColGroup.ps1                 Author: Brendan Furey                      Date: 27-Aug-2023
 
-Component package in the Powershell code timing module TimerSet. This module facilitates code timing
-forinstrumentation and other purposes, with very small footprint in both code and resource usage.
+Component script in the Powershell Utilities module TimerSet. This module facilitates code timing
+for instrumentation and other purposes, with very small footprint in both code and resource usage.
 
     GitHub: https://github.com/BrenPatF/powershell_utils
 
@@ -25,7 +25,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 | *Show-ColGroup*    |----------------|------------------------------------------------------------|
 |--------------------|  TimerSet      |  TimerSet class module                                     |
 |                    |----------------|------------------------------------------------------------|
-|  Test-TimerSet     |  Trapit-Utils  |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
+|  Test-TimerSet     |  TrapitUtils   |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
 |                    |----------------|------------------------------------------------------------|                                                                                                                                                                                                                                                                               -------------------------------------------------------------|
 |--------------------|  Utils         |  General utility functions                                 |
 |                    |-----------------------------------------------------------------------------|
@@ -34,10 +34,6 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 
 This file contains a main script for a simple file-reading and group-counting module, with logging
 to file.
-
-To run from the root folder:
-
-    $ examples/colgroup/Show-ColGroup
 
 **************************************************************************************************#>
 Using Module './ColGroup.psm1'

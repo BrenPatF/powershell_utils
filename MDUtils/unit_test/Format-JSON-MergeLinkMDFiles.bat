@@ -1,0 +1,1 @@
+pwsh .\Format-JSON-MergeLinkMDFiles.ps1  > .\Format-JSON-MergeLinkMDFiles.out 2> .\Format-JSON-MergeLinkMDFiles.err

@@ -1,0 +1,1 @@
+pwsh .\Test-ColGroup.ps1  > .\Test-ColGroup.out 2> .\Test-ColGroup.err

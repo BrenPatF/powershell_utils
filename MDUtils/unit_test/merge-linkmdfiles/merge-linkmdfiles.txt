@@ -1,0 +1,2418 @@
+Unit Test Report: Merge-LinkMDFiles
+===================================
+
+      #    Category Set                 Scenario               Fails (of 4)  Status 
+      ---  ---------------------------  ---------------------  ------------  -------
+      1    File Multiplicity            No file                0             SUCCESS
+      2    File Multiplicity            One file               0             SUCCESS
+      3    File Multiplicity            Multiple files         0             SUCCESS
+      4    Heading Multiplicity         No heading             0             SUCCESS
+      5    Heading Multiplicity         One heading            0             SUCCESS
+      6    Heading Multiplicity         Multiple headings      0             SUCCESS
+      7    Child Link Multiplicity      No child link          0             SUCCESS
+      8    Child Link Multiplicity      One child link         0             SUCCESS
+      9    Child Link Multiplicity      Multiple child links   0             SUCCESS
+      10   Parent Link Multiplicity     No parent link         0             SUCCESS
+      11   Parent Link Multiplicity     One parent link        0             SUCCESS
+      12   Level Multiplicity           One level              0             SUCCESS
+      13   Level Multiplicity           Six levels             0             SUCCESS
+      14   Hash Increment               One hash increment     0             SUCCESS
+      15   Hash Increment               Two hash increment     0             SUCCESS
+      16   Hash Increment               Three hash increment   0             SUCCESS
+      17   Root: Child? Incidence       Root 1:N               0             SUCCESS
+      18   Root: Child? Incidence       Root 1:Y, Root 2: Y    0             SUCCESS
+      19   Root: Child? Incidence       Root 1:Y, Root 2: N    0             SUCCESS
+      20   Root: Child? Incidence       Root 1:N, Root 2: Y    0             SUCCESS
+      21   Root: Child? Incidence       Root 1:N, Root 2: N    0             SUCCESS
+      22   Duplicate Headings: Linked?  Dupe 1:Y, Dupe 2:Y     0             SUCCESS
+      23   Duplicate Headings: Linked?  Dupe 1:Y, Dupe 2:N     0             SUCCESS
+      24   Duplicate Headings: Linked?  Dupe 1:N, Dupe 2:Y     0             SUCCESS
+      25   Duplicate Headings: Linked?  Dupe 1:N, Dupe 2:N     0             SUCCESS
+      26   Duplicate Headings: Linked?  Dupe 1, 2, 3: Y        0             SUCCESS
+      27   Special Characters           In heading             0             SUCCESS
+      28   Section Text                 Not present            0             SUCCESS
+      29   Delink Flag                  First in #-prefix      0             SUCCESS
+      30   Delink Flag                  Non-first in #-prefix  0             SUCCESS
+      31   Delink Flag                  In heading text        0             SUCCESS
+      32   Delink Flag                  First in non-heading   0             SUCCESS
+      33   Anomaly                      Missing file           0             SUCCESS
+      34   Anomaly                      Empty file             0             SUCCESS
+      35   Anomaly                      Seven hashes           0             SUCCESS
+
+Test scenarios: 0 failed of 35: SUCCESS
+=======================================
+Formatted: 1/12/2024, 15:17:26
+
+SCENARIO 1: No file [Category Set: File Multiplicity] {
+=======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List: Empty
+      ================================
+
+      GROUP 2: Input Files: Empty
+      ===========================
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File: Empty as expected: SUCCESS
+      =======================================================
+
+      GROUP 2: Return Headings: Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 2: One file [Category Set: File Multiplicity] {
+========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Some text          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Some text          
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 3: Multiple files [Category Set: File Multiplicity] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 4: No heading [Category Set: Heading Multiplicity] {
+=============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line  
+            -  ---------  ------
+            1  intro.md   Line 1
+            2  intro.md   Line 2
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line  
+            -  ------
+            1  Line 1
+            2  Line 2
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings: Empty as expected: SUCCESS
+      ====================================================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 5: One heading [Category Set: Heading Multiplicity] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Some text          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Some text          
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 6: Multiple headings [Category Set: Heading Multiplicity] {
+====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 7: No child link [Category Set: Child Link Multiplicity] {
+===================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Some text          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Some text          
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 8: One child link [Category Set: Child Link Multiplicity] {
+====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 9: Multiple child links [Category Set: Child Link Multiplicity] {
+==========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    Line 1             
+            4  Main.md    ## Heading 2       
+            5  Main.md    Line 2             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  [&darr; Heading 2](#heading-2)<br />             
+            4  ## Heading 1                                     
+            5  [&uarr; In This README...](#in-this-readme)<br />
+            6  Line 1                                           
+            7  ## Heading 2                                     
+            8  [&uarr; In This README...](#in-this-readme)<br />
+            9  Line 2                                           
+
+      } 0 failed of 9: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+            3  ## Heading 2       
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 10: No parent link [Category Set: Parent Link Multiplicity] {
+======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Some text          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Some text          
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 11: One parent link [Category Set: Parent Link Multiplicity] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 12: One level [Category Set: Level Multiplicity] {
+===========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Some text          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Some text          
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 13: Six levels [Category Set: Level Multiplicity] {
+============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #   File Name  Line               
+            --  ---------  -------------------
+            1   intro.md   # In This README...
+            2   Main.md    ## Level 2         
+            3   Main.md    Line 1             
+            4   Main.md    ### Level 3        
+            5   Main.md    Line 2             
+            6   Main.md    #### Level 4       
+            7   Main.md    Line 3             
+            8   Main.md    ##### Level 5      
+            9   Main.md    Line 4             
+            10  Main.md    ###### Level 6     
+            11  Main.md    Line 5             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                             
+            --  -------------------------------------------------
+            1   # In This README...                              
+            2   [&darr; Level 2](#level-2)<br />                 
+            3   ## Level 2                                       
+            4   [&uarr; In This README...](#in-this-readme)<br />
+            5   [&darr; Level 3](#level-3)<br />                 
+            6   Line 1                                           
+            7   ### Level 3                                      
+            8   [&uarr; Level 2](#level-2)<br />                 
+            9   [&darr; Level 4](#level-4)<br />                 
+            10  Line 2                                           
+            11  #### Level 4                                     
+            12  [&uarr; Level 3](#level-3)<br />                 
+            13  [&darr; Level 5](#level-5)<br />                 
+            14  Line 3                                           
+            15  ##### Level 5                                    
+            16  [&uarr; Level 4](#level-4)<br />                 
+            17  [&darr; Level 6](#level-6)<br />                 
+            18  Line 4                                           
+            19  ###### Level 6                                   
+            20  [&uarr; Level 5](#level-5)<br />                 
+            21  Line 5                                           
+
+      } 0 failed of 21: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Level 2         
+            3  ### Level 3        
+            4  #### Level 4       
+            5  ##### Level 5      
+            6  ###### Level 6     
+
+      } 0 failed of 6: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 14: One hash increment [Category Set: Hash Increment] {
+================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #   File Name  Line               
+            --  ---------  -------------------
+            1   intro.md   # In This README...
+            2   Main.md    ## Level 2         
+            3   Main.md    Line 1             
+            4   Main.md    ### Level 3        
+            5   Main.md    Line 2             
+            6   Main.md    #### Level 4       
+            7   Main.md    Line 3             
+            8   Main.md    ##### Level 5      
+            9   Main.md    Line 4             
+            10  Main.md    ###### Level 6     
+            11  Main.md    Line 5             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                             
+            --  -------------------------------------------------
+            1   # In This README...                              
+            2   [&darr; Level 2](#level-2)<br />                 
+            3   ## Level 2                                       
+            4   [&uarr; In This README...](#in-this-readme)<br />
+            5   [&darr; Level 3](#level-3)<br />                 
+            6   Line 1                                           
+            7   ### Level 3                                      
+            8   [&uarr; Level 2](#level-2)<br />                 
+            9   [&darr; Level 4](#level-4)<br />                 
+            10  Line 2                                           
+            11  #### Level 4                                     
+            12  [&uarr; Level 3](#level-3)<br />                 
+            13  [&darr; Level 5](#level-5)<br />                 
+            14  Line 3                                           
+            15  ##### Level 5                                    
+            16  [&uarr; Level 4](#level-4)<br />                 
+            17  [&darr; Level 6](#level-6)<br />                 
+            18  Line 4                                           
+            19  ###### Level 6                                   
+            20  [&uarr; Level 5](#level-5)<br />                 
+            21  Line 5                                           
+
+      } 0 failed of 21: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Level 2         
+            3  ### Level 3        
+            4  #### Level 4       
+            5  ##### Level 5      
+            6  ###### Level 6     
+
+      } 0 failed of 6: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 15: Two hash increment [Category Set: Hash Increment] {
+================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ### Level 3        
+            3  Main.md    Line 2             
+            4  Main.md    ##### Level 5      
+            5  Main.md    Line 4             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Level 3](#level-3)<br />                 
+            3  ### Level 3                                      
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  [&darr; Level 5](#level-5)<br />                 
+            6  Line 2                                           
+            7  ##### Level 5                                    
+            8  [&uarr; Level 3](#level-3)<br />                 
+            9  Line 4                                           
+
+      } 0 failed of 9: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ### Level 3        
+            3  ##### Level 5      
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 16: Three hash increment [Category Set: Hash Increment] {
+==================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                
+            -  ---------  --------------------
+            1  intro.md   ## In This README...
+            2  Main.md    ##### Level 5       
+            3  Main.md    Line 4              
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  ## In This README...                             
+            2  [&darr; Level 5](#level-5)<br />                 
+            3  ##### Level 5                                    
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 4                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                
+            -  --------------------
+            1  ## In This README...
+            2  ##### Level 5       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 17: Root 1:N [Category Set: Root: Child? Incidence] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 18: Root 1:Y, Root 2: Y [Category Set: Root: Child? Incidence] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Child Heading 1 
+            3  Main.md    Line 1             
+            4  Main.md    # Second Root      
+            5  Main.md    ## Child Heading 2 
+            6  Main.md    Line 2             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                             
+            --  -------------------------------------------------
+            1   # In This README...                              
+            2   [&darr; Child Heading 1](#child-heading-1)<br /> 
+            3   ## Child Heading 1                               
+            4   [&uarr; In This README...](#in-this-readme)<br />
+            5   Line 1                                           
+            6   # Second Root                                    
+            7   [&darr; Child Heading 2](#child-heading-2)<br /> 
+            8   ## Child Heading 2                               
+            9   [&uarr; Second Root](#second-root)<br />         
+            10  Line 2                                           
+
+      } 0 failed of 10: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Child Heading 1 
+            3  # Second Root      
+            4  ## Child Heading 2 
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 19: Root 1:Y, Root 2: N [Category Set: Root: Child? Incidence] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Child Heading 1 
+            3  Main.md    Line 1             
+            4  Main.md    # Second Root      
+            5  Main.md    Line 2             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Child Heading 1](#child-heading-1)<br /> 
+            3  ## Child Heading 1                               
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+            6  # Second Root                                    
+            7  Line 2                                           
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Child Heading 1 
+            3  # Second Root      
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 20: Root 1:N, Root 2: Y [Category Set: Root: Child? Incidence] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    Line 1             
+            3  Main.md    # Second Root      
+            4  Main.md    ## Child Heading 2 
+            5  Main.md    Line 2             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                            
+            -  ------------------------------------------------
+            1  # In This README...                             
+            2  Line 1                                          
+            3  # Second Root                                   
+            4  [&darr; Child Heading 2](#child-heading-2)<br />
+            5  ## Child Heading 2                              
+            6  [&uarr; Second Root](#second-root)<br />        
+            7  Line 2                                          
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  # Second Root      
+            3  ## Child Heading 2 
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 21: Root 1:N, Root 2: N [Category Set: Root: Child? Incidence] {
+=========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    Line 1             
+            3  Main.md    # Second Root      
+            4  Main.md    Line 2             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Line 1             
+            3  # Second Root      
+            4  Line 2             
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  # Second Root      
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 22: Dupe 1:Y, Dupe 2:Y [Category Set: Duplicate Headings: Linked?] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                 
+            -  ---------  ---------------------
+            1  intro.md   # In This README...  
+            2  intro.md   ## Duplicate Heading 
+            3  Main.md    Line 1               
+            4  Main.md    ### Heading 1 Level 3
+            5  Main.md    ## Duplicate Heading 
+            6  Main.md    ### Heading 2 Level 3
+            7  Main.md    Line 2               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                  
+            --  ------------------------------------------------------
+            1   # In This README...                                   
+            2   [&darr; Duplicate Heading](#duplicate-heading)<br />  
+            3   [&darr; Duplicate Heading](#duplicate-heading-1)<br />
+            4   ## Duplicate Heading                                  
+            5   [&uarr; In This README...](#in-this-readme)<br />     
+            6   [&darr; Heading 1 Level 3](#heading-1-level-3)<br />  
+            7   Line 1                                                
+            8   ### Heading 1 Level 3                                 
+            9   [&uarr; Duplicate Heading](#duplicate-heading)<br />  
+            10  ## Duplicate Heading                                  
+            11  [&uarr; In This README...](#in-this-readme)<br />     
+            12  [&darr; Heading 2 Level 3](#heading-2-level-3)<br />  
+            13  ### Heading 2 Level 3                                 
+            14  [&uarr; Duplicate Heading](#duplicate-heading-1)<br />
+            15  Line 2                                                
+
+      } 0 failed of 15: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                 
+            -  ---------------------
+            1  # In This README...  
+            2  ## Duplicate Heading 
+            3  ### Heading 1 Level 3
+            4  ## Duplicate Heading 
+            5  ### Heading 2 Level 3
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 23: Dupe 1:Y, Dupe 2:N [Category Set: Duplicate Headings: Linked?] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                 
+            -  ---------  ---------------------
+            1  intro.md   # In This README...  
+            2  intro.md   ## Duplicate Heading 
+            3  Main.md    Line 1               
+            4  Main.md    ### Heading 1 Level 3
+            5  Main.md    !## Duplicate Heading
+            6  Main.md    ### Heading 2 Level 3
+            7  Main.md    Line 2               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                
+            --  ----------------------------------------------------
+            1   # In This README...                                 
+            2   [&darr; Duplicate Heading](#duplicate-heading)<br />
+            3   ## Duplicate Heading                                
+            4   [&uarr; In This README...](#in-this-readme)<br />   
+            5   [&darr; Heading 1 Level 3](#heading-1-level-3)<br />
+            6   [&darr; Heading 2 Level 3](#heading-2-level-3)<br />
+            7   Line 1                                              
+            8   ### Heading 1 Level 3                               
+            9   [&uarr; Duplicate Heading](#duplicate-heading)<br />
+            10  ## Duplicate Heading                                
+            11  ### Heading 2 Level 3                               
+            12  [&uarr; Duplicate Heading](#duplicate-heading)<br />
+            13  Line 2                                              
+
+      } 0 failed of 13: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                 
+            -  ---------------------
+            1  # In This README...  
+            2  ## Duplicate Heading 
+            3  ### Heading 1 Level 3
+            4  ### Heading 2 Level 3
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 24: Dupe 1:N, Dupe 2:Y [Category Set: Duplicate Headings: Linked?] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                 
+            -  ---------  ---------------------
+            1  intro.md   # In This README...  
+            2  intro.md   !## Duplicate Heading
+            3  Main.md    Line 1               
+            4  Main.md    ### Heading 1 Level 3
+            5  Main.md    ## Duplicate Heading 
+            6  Main.md    ### Heading 2 Level 3
+            7  Main.md    Line 2               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                  
+            --  ------------------------------------------------------
+            1   # In This README...                                   
+            2   [&darr; Heading 1 Level 3](#heading-1-level-3)<br />  
+            3   [&darr; Duplicate Heading](#duplicate-heading-1)<br />
+            4   ## Duplicate Heading                                  
+            5   Line 1                                                
+            6   ### Heading 1 Level 3                                 
+            7   [&uarr; In This README...](#in-this-readme)<br />     
+            8   ## Duplicate Heading                                  
+            9   [&uarr; In This README...](#in-this-readme)<br />     
+            10  [&darr; Heading 2 Level 3](#heading-2-level-3)<br />  
+            11  ### Heading 2 Level 3                                 
+            12  [&uarr; Duplicate Heading](#duplicate-heading-1)<br />
+            13  Line 2                                                
+
+      } 0 failed of 13: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                 
+            -  ---------------------
+            1  # In This README...  
+            2  ### Heading 1 Level 3
+            3  ## Duplicate Heading 
+            4  ### Heading 2 Level 3
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 25: Dupe 1:N, Dupe 2:N [Category Set: Duplicate Headings: Linked?] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                 
+            -  ---------  ---------------------
+            1  intro.md   # In This README...  
+            2  intro.md   !## Duplicate Heading
+            3  Main.md    Line 1               
+            4  Main.md    ### Heading 1 Level 3
+            5  Main.md    !## Duplicate Heading
+            6  Main.md    ### Heading 2 Level 3
+            7  Main.md    Line 2               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                
+            --  ----------------------------------------------------
+            1   # In This README...                                 
+            2   [&darr; Heading 1 Level 3](#heading-1-level-3)<br />
+            3   [&darr; Heading 2 Level 3](#heading-2-level-3)<br />
+            4   ## Duplicate Heading                                
+            5   Line 1                                              
+            6   ### Heading 1 Level 3                               
+            7   [&uarr; In This README...](#in-this-readme)<br />   
+            8   ## Duplicate Heading                                
+            9   ### Heading 2 Level 3                               
+            10  [&uarr; In This README...](#in-this-readme)<br />   
+            11  Line 2                                              
+
+      } 0 failed of 11: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                 
+            -  ---------------------
+            1  # In This README...  
+            2  ### Heading 1 Level 3
+            3  ### Heading 2 Level 3
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 26: Dupe 1, 2, 3: Y [Category Set: Duplicate Headings: Linked?] {
+==========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #   File Name  Line                 
+            --  ---------  ---------------------
+            1   intro.md   # In This README...  
+            2   intro.md   ## Duplicate Heading 
+            3   Main.md    Line 1               
+            4   Main.md    ### Heading 1 Level 3
+            5   Main.md    ## Duplicate Heading 
+            6   Main.md    ### Heading 2 Level 3
+            7   Main.md    Line 2               
+            8   Main.md    ## Duplicate Heading 
+            9   Main.md    ### Heading 3 Level 3
+            10  Main.md    Line 3               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #   Line                                                  
+            --  ------------------------------------------------------
+            1   # In This README...                                   
+            2   [&darr; Duplicate Heading](#duplicate-heading)<br />  
+            3   [&darr; Duplicate Heading](#duplicate-heading-1)<br />
+            4   [&darr; Duplicate Heading](#duplicate-heading-2)<br />
+            5   ## Duplicate Heading                                  
+            6   [&uarr; In This README...](#in-this-readme)<br />     
+            7   [&darr; Heading 1 Level 3](#heading-1-level-3)<br />  
+            8   Line 1                                                
+            9   ### Heading 1 Level 3                                 
+            10  [&uarr; Duplicate Heading](#duplicate-heading)<br />  
+            11  ## Duplicate Heading                                  
+            12  [&uarr; In This README...](#in-this-readme)<br />     
+            13  [&darr; Heading 2 Level 3](#heading-2-level-3)<br />  
+            14  ### Heading 2 Level 3                                 
+            15  [&uarr; Duplicate Heading](#duplicate-heading-1)<br />
+            16  Line 2                                                
+            17  ## Duplicate Heading                                  
+            18  [&uarr; In This README...](#in-this-readme)<br />     
+            19  [&darr; Heading 3 Level 3](#heading-3-level-3)<br />  
+            20  ### Heading 3 Level 3                                 
+            21  [&uarr; Duplicate Heading](#duplicate-heading-2)<br />
+            22  Line 3                                                
+
+      } 0 failed of 22: SUCCESS
+      =========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                 
+            -  ---------------------
+            1  # In This README...  
+            2  ## Duplicate Heading 
+            3  ### Heading 1 Level 3
+            4  ## Duplicate Heading 
+            5  ### Heading 2 Level 3
+            6  ## Duplicate Heading 
+            7  ### Heading 3 Level 3
+
+      } 0 failed of 7: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 27: In heading [Category Set: Special Characters] {
+============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                                                     
+            -  ---------  ---------------------------------------------------------
+            1  intro.md   # In This README...                                      
+            2  Main.md    ## Heading 1!"£$%^&*()_+;'#,./{}:@~<>? special characters
+            3  Main.md    Line 1                                                   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                                                                                 
+            -  -----------------------------------------------------------------------------------------------------
+            1  # In This README...                                                                                  
+            2  [&darr; Heading 1!"£$%^&*()_+;'#,./{}:@~<>? special characters](#heading-1_-special-characters)<br />
+            3  ## Heading 1!"£$%^&*()_+;'#,./{}:@~<>? special characters                                            
+            4  [&uarr; In This README...](#in-this-readme)<br />                                                    
+            5  Line 1                                                                                               
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line                                                     
+            -  ---------------------------------------------------------
+            1  # In This README...                                      
+            2  ## Heading 1!"£$%^&*()_+;'#,./{}:@~<>? special characters
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 28: Not present [Category Set: Section Text] {
+=======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 29: First in #-prefix [Category Set: Delink Flag] {
+============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    !## Heading 1      
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+            3  Line 1             
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 30: Non-first in #-prefix [Category Set: Delink Flag] {
+================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    #!# Heading 1      
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  #!# Heading 1      
+            3  Line 1             
+
+      } 0 failed of 3: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 31: In heading text [Category Set: Delink Flag] {
+==========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading ! 1     
+            3  Main.md    Line 1             
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading ! 1](#heading--1)<br />          
+            3  ## Heading ! 1                                   
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  Line 1                                           
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading ! 1     
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 32: First in non-heading [Category Set: Delink Flag] {
+===============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  Main.md    ## Heading 1       
+            3  Main.md    !Line 1            
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                             
+            -  -------------------------------------------------
+            1  # In This README...                              
+            2  [&darr; Heading 1](#heading-1)<br />             
+            3  ## Heading 1                                     
+            4  [&uarr; In This README...](#in-this-readme)<br />
+            5  !Line 1                                          
+
+      } 0 failed of 5: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  ## Heading 1       
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 33: Missing file [Category Set: Anomaly] {
+===================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Ignore missing file
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Ignore missing file
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 34: Empty file [Category Set: Anomaly] {
+=================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+            2  Main.md    Y          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line               
+            -  ---------  -------------------
+            1  intro.md   # In This README...
+            2  intro.md   Ignore empty file  
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+            2  Ignore empty file  
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================
+
+SCENARIO 35: Seven hashes [Category Set: Anomaly] {
+===================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Input Files List {
+      ===========================
+
+            #  File Name  File Empty?
+            -  ---------  -----------
+            1  intro.md   N          
+
+      }
+      =
+
+      GROUP 2: Input Files {
+      ======================
+
+            #  File Name  Line                                                  
+            -  ---------  ------------------------------------------------------
+            1  intro.md   # In This README...                                   
+            2  intro.md   ####### Invalid header should be treated as plain text
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Merged Output File {
+      =============================
+
+            #  Line                                                  
+            -  ------------------------------------------------------
+            1  # In This README...                                   
+            2  ####### Invalid header should be treated as plain text
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 2: Return Headings {
+      ==========================
+
+            #  Line               
+            -  -------------------
+            1  # In This README...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: Error Message: Empty as expected: SUCCESS
+      ==================================================
+
+      GROUP 4: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 4: SUCCESS
+========================

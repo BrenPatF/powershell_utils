@@ -248,7 +248,7 @@
             "LIKE /Timer[^]*Other[^]*\\[Timer timed[^]*\\]/"
           ],
           "act": [
-            "\nTimer set: Set 1, constructed at 2023-08-27 08:19:51, written at 2023-08-27 08:19:51\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\n(Other)  30000.00   5000.00       1  30000.00000   5000.00000\n-------  --------  --------  ------  -----------  -----------\nTotal    30000.00   5000.00       1  30000.00000   5000.00000\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 12.94648, CPU: 7.81250]"
+            "\nTimer set: Set 1, constructed at 2024-12-01 15:17:55, written at 2024-12-01 15:17:55\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\n(Other)  30000.00   5000.00       1  30000.00000   5000.00000\n-------  --------  --------  ------  -----------  -----------\nTotal    30000.00   5000.00       1  30000.00000   5000.00000\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 0.15349, CPU: 0.09470]"
           ]
         },
         "Exception": {
@@ -1253,10 +1253,10 @@
         },
         "Self (unmocked)": {
           "exp": [
-            "IN [50000, 200000]|IN [20000, 200000]"
+            "IN [10, 1000000]|IN [10, 1000000]"
           ],
           "act": [
-            "84047.45|85937.5"
+            "1761.9754385964911|1096.4912280701753"
           ]
         },
         "Self (unmocked, formatted)": {
@@ -1264,7 +1264,7 @@
             "LIKE /\\[Timer timed \\(per call in ms\\): Elapsed: .*\\]/"
           ],
           "act": [
-            "[Timer timed (per call in ms): Elapsed: 9.38526, CPU: 7.81250]"
+            "[Timer timed (per call in ms): Elapsed: 0.20160, CPU: 0.12500]"
           ]
         },
         "Results": {
@@ -1272,7 +1272,7 @@
             "LIKE /Timer[^]*Timer 1[^]*\\[Timer timed[^]*\\]/"
           ],
           "act": [
-            "\nTimer set: Set 1, constructed at 2023-08-27 08:19:51, written at 2023-08-27 08:19:51\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\nTimer 1     60.25     16.91       2     30.12300      8.45600\n(Other)    150.62     42.28       1    150.61500     42.28000\n-------  --------  --------  ------  -----------  -----------\nTotal      210.86     59.19       3     70.28700     19.73067\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 7.12236, CPU: 6.25000]"
+            "\nTimer set: Set 1, constructed at 2024-12-01 15:17:55, written at 2024-12-01 15:17:55\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\nTimer 1     60.25     16.91       2     30.12300      8.45600\n(Other)    150.62     42.28       1    150.61500     42.28000\n-------  --------  --------  ------  -----------  -----------\nTotal      210.86     59.19       3     70.28700     19.73067\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 0.17678, CPU: 0.10965]"
           ]
         },
         "Exception": {
@@ -1311,9 +1311,9 @@
             "Total|IN [6000000,80000000]|IN [300000,40000000]|3"
           ],
           "act": [
-            "Timer 1|8897307|6250000|2",
-            "(Other)|14890113|8437500|1",
-            "Total|23787420|14687500|3"
+            "Timer 1|8652418|4062500|2",
+            "(Other)|14773741|4531250|1",
+            "Total|23426159|8593750|3"
           ]
         },
         "Set 1 (formatted)": {
@@ -1329,10 +1329,10 @@
           "act": [
             "Timer     Elapsed       CPU   Calls     Ela/Call     CPU/Call",
             "-------  --------  --------  ------  -----------  -----------",
-            "Timer 1      0.89      0.62       2      0.44487      0.31250",
-            "(Other)      1.49      0.84       1      1.48901      0.84375",
+            "Timer 1      0.87      0.41       2      0.43262      0.20312",
+            "(Other)      1.48      0.45       1      1.47737      0.45312",
             "-------  --------  --------  ------  -----------  -----------",
-            "Total        2.38      1.47       3      0.79291      0.48958",
+            "Total        2.34      0.86       3      0.78087      0.28646",
             "-------  --------  --------  ------  -----------  -----------"
           ]
         },
@@ -1346,10 +1346,10 @@
         },
         "Self (unmocked)": {
           "exp": [
-            "IN [30000, 900000]|IN [1500, 450000]"
+            "IN [10, 1000000]|IN [10, 1000000]"
           ],
           "act": [
-            "74710.55|46875"
+            "673.9288590604027|0"
           ]
         },
         "Self (unmocked, formatted)": {
@@ -1357,7 +1357,7 @@
             "LIKE /\\[Timer timed \\(per call in ms\\): Elapsed: .*\\]/"
           ],
           "act": [
-            "[Timer timed (per call in ms): Elapsed: 6.88319, CPU: 6.25000]"
+            "[Timer timed (per call in ms): Elapsed: 0.09488, CPU: 0.05841]"
           ]
         },
         "Results": {
@@ -1365,7 +1365,7 @@
             "LIKE /Timer[^]*Timer 1[^]*\\[Timer timed[^]*\\]/"
           ],
           "act": [
-            "\nTimer set: Set 1, constructed at 2023-08-27 08:19:52, written at 2023-08-27 08:19:56\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\nTimer 1      0.89      0.62       2      0.44487      0.31250\n(Other)      1.49      0.84       1      1.48901      0.84375\n-------  --------  --------  ------  -----------  -----------\nTotal        2.38      1.47       3      0.79291      0.48958\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 7.26594, CPU: 6.25000]"
+            "\nTimer set: Set 1, constructed at 2024-12-01 15:17:56, written at 2024-12-01 15:18:00\n====================================================================================\n\nTimer     Elapsed       CPU   Calls     Ela/Call     CPU/Call\n-------  --------  --------  ------  -----------  -----------\nTimer 1      0.87      0.41       2      0.43262      0.20312\n(Other)      1.48      0.45       1      1.47737      0.45312\n-------  --------  --------  ------  -----------  -----------\nTotal        2.34      0.86       3      0.78087      0.28646\n-------  --------  --------  ------  -----------  -----------\n[Timer timed (per call in ms): Elapsed: 0.08073, CPU: 0.03780]"
           ]
         },
         "Exception": {
@@ -1495,7 +1495,7 @@
           ],
           "act": [
             "Error, timeWidth must be > 7, actual: 7",
-            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 66\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrapUnit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 124\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 348\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Run-Test-TimerSet.ps1: line 2"
+            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 66\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 99\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 127"
           ]
         },
         "Unhandled Exception": {
@@ -1553,7 +1553,7 @@
           ],
           "act": [
             "Error, timeDP  must be <= timeRatioDP, actual: 6, 5",
-            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 69\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrapUnit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 124\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 348\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Run-Test-TimerSet.ps1: line 2"
+            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 69\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 99\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 127"
           ]
         },
         "Unhandled Exception": {
@@ -1611,7 +1611,7 @@
           ],
           "act": [
             "Error, timeWidth - timeDP must be > 1 , actual: 8, 7",
-            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 72\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrapUnit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 124\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 348\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Run-Test-TimerSet.ps1: line 2"
+            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 72\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 99\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 127"
           ]
         },
         "Unhandled Exception": {
@@ -1669,7 +1669,7 @@
           ],
           "act": [
             "Error, callsWidth must be > 4, actual: 4",
-            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 75\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrapUnit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 98\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 262\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 298\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 317\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 124\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\PowerShell\\Modules\\TrapitUtils\\TrapitUtils.psm1: line 348\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Run-Test-TimerSet.ps1: line 2"
+            "at valWidths, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 75\r\nat formatTimers, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\TimerSet.psm1: line 228\r\nat purelyWrap-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 99\r\nat callPWU, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 266\r\nat main, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 302\r\nat Test-Unit, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 321\r\nat Test-Format, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TrapitUtils\\TrapitUtils.psm1: line 367\r\nat <ScriptBlock>, C:\\Users\\Brend\\OneDrive\\Documents\\GitHub\\powershell_utils\\TimerSet\\unit_test\\Test-TimerSet.ps1: line 127"
           ]
         },
         "Unhandled Exception": {

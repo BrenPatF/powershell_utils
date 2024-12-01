@@ -3,29 +3,29 @@ Counts sorted by (as is)
 ========================
 Team         #apps
 -----------  -----
-QPR           1517
-Newcastle     1247
-Bolton          37
 Man Utd       1231
-Fulham        1209
-Liverpool     1227
 Norwich       1229
-Wolves          31
-Tottenham     1288
-Everton       1147
 Reading       1167
 Swansea       1180
-Southampton   1110
-Chelsea       1147
-Stoke City    1170
 West Ham      1126
-Arsenal        534
-West Brom     1219
+Bolton          37
 Aston Villa    685
-Blackburn       33
-Man City      1099
+Chelsea       1147
 Wigan         1036
+Wolves          31
+Stoke City    1170
+Tottenham     1288
+Newcastle     1247
 Sunderland    1162
+West Brom     1219
+Everton       1147
+Liverpool     1227
+QPR           1517
+Blackburn       33
+Fulham        1209
+Arsenal        534
+Southampton   1110
+Man City      1099
 
 
 Counts sorted by key
@@ -86,17 +86,17 @@ Tottenham     1288
 QPR           1517
 
 
-Timer set: Example Timer Set, constructed at 2023-08-27 09:54:40, written at 2023-08-27 09:55:04
+Timer set: Example Timer Set, constructed at 2024-12-01 15:23:58, written at 2024-12-01 15:24:05
 ================================================================================================
 
 Timer                  Elapsed       CPU   Calls     Ela/Call     CPU/Call
 --------------------  --------  --------  ------  -----------  -----------
-ColGroup constructor     23.98     21.16       1     23.97651     21.15625
-ListAsIs                  0.12      0.06       1      0.12407      0.06250
-SortByKey                 0.02      0.02       1      0.02457      0.01562
-SortByValue               0.02      0.02       1      0.01689      0.01562
-(Other)                   0.04      0.03       1      0.04119      0.03125
+ColGroup constructor      6.89      3.42       1      6.89141      3.42188
+ListAsIs                  0.03      0.02       1      0.03294      0.01562
+SortByKey                 0.01      0.02       1      0.00798      0.01562
+SortByValue               0.01      0.00       1      0.00877      0.00000
+(Other)                   0.02      0.02       1      0.01778      0.01562
 --------------------  --------  --------  ------  -----------  -----------
-Total                    24.18     21.28       5      4.83665      4.25625
+Total                     6.96      3.47       5      1.39177      0.69375
 --------------------  --------  --------  ------  -----------  -----------
-[Timer timed (per call in ms): Elapsed: 6.33744, CPU: 6.25000]
+[Timer timed (per call in ms): Elapsed: 0.16044, CPU: 0.12401]

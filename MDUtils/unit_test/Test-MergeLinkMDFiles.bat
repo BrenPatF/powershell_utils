@@ -1,0 +1,1 @@
+pwsh .\Test-MergeLinkMDFiles.ps1  > .\Test-MergeLinkMDFiles.out 2> .\Test-MergeLinkMDFiles.err

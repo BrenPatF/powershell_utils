@@ -11,21 +11,23 @@ example class module that uses the pretty-printing functions, and calls other fu
 
 The unit test script follows the Math Function Unit Testing design pattern, as described in:
 
-    https://github.com/BrenPatF/trapit_nodejs_tester#trapit
+    https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html
 
 ====================================================================================================
-| Main/Test (.ps1) | Module (.psm1) |  Notes                                                       |
+| Script (.ps1)   | Module (.psm1) |  Notes                                                        |
 |==================================================================================================|
-|                  | *ColGroup*     |  Simple file-reading and group-counting class module         |
-|  Show-Examples   |-------------------------------------------------------------------------------|
-|                  |                |                                                              |
-|------------------|  Utils         |  General utility functions                                   |
-|                  |                |                                                              |
-|  Test-Utils      |----------------|--------------------------------------------------------------|
-|                  |  Trapit-Utils  |  Trapit unit testing utility functions                       |
+|  Install-Utils  |                   Install script copies module to Powershell path              |
+|-----------------|--------------------------------------------------------------------------------|
+|                 | *ColGroup*     |  Simple file-reading and group-counting class module          |
+| Show-Examples   |----------------|---------------------------------------------------------------|
+|                 |                |                                                               |
+|-----------------|  Utils         |  General utility functions                                    |
+|                 |                |                                                               |
+|  Test-Utils     |----------------|---------------------------------------------------------------|
+|                 |  TrapitUtils   |  Trapit unit testing utility functions                        |
 ====================================================================================================
 
-ColGroup package which contains a class used as an example in the Show-Examples script
+ColGroup package which contains a class used as an example in the Show-Examples script.
 
 **************************************************************************************************#>
 Import-Module Utils

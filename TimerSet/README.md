@@ -5,30 +5,29 @@
 
 :stopwatch:
 
-This subproject contains a class that facilitates code timing for instrumentation and other purposes, with very small footprint in both code and resource usage. Construction and reporting require only a single line each, regardless of how many timers are included in a set.
+This module facilitates code timing for instrumentation and other purposes, with very small footprint in both code and resource usage. Construction and reporting require only a single line of code each, regardless of how many timers are included in a set, and usually only a single timing line is needed per section timed.
+
+Multiple timer sets can be created and run independently, allowing for timing at multiple levels simultaneously, and for use across multiple modules without conflicts.
 
 See [Code Timing and Object Orientation and Zombies](http://www.scribd.com/doc/43588788/Code-Timing-and-Object-Orientation-and-Zombies), November 2010, for the original idea implemented in Oracle PL/SQL, Perl and Java.
 
-Its use is demonstrated by an example using a simple file-reading and group-counting class module.
+Usage is demonstrated by an example calling a simple file-reading and group-counting package.
 
-The package is tested using the Math Function Unit Testing design pattern, with test results in HTML and text format included.
+The module is tested using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html), with test results in HTML and text format included.
 
 # In this README...
 [&darr; Usage](#usage)<br />
-[&darr; API - TimerSet](#api---timerset)<br />
+[&darr; API](#api)<br />
 [&darr; Installation](#installation)<br />
 [&darr; Unit Testing](#unit-testing)<br />
 [&darr; Folder Structure](#folder-structure)<br />
 [&darr; See Also](#see-also)<br />
 ## Usage
 [&uarr; In this README...](#in-this-readme)<br />
-[&darr; Show-ColGroup.ps1](#show-colgroupps1)<br />
 
 There is a script with an example of use of the TimerSet class to time calls to a demo class ColGroup. The scripts and output logs can be found in the `examples/colgroup` folder.
 
 ### Show-ColGroup.ps1
-[&uarr; Usage](#usage)<br />
-
 ```powershell
 Using Module './ColGroup.psm1'
 Using Module TimerSet
@@ -51,20 +50,20 @@ $ts.formatResults()
 This will create a timer set and time the sections, with listing at the end:
 
 ```
-Timer set: Example Timer Set, constructed at 2023-08-27 09:54:40, written at 2023-08-27 09:55:04
+Timer set: Example Timer Set, constructed at 2024-11-26 07:13:53, written at 2024-11-26 07:14:00
 ================================================================================================
 
 Timer                  Elapsed       CPU   Calls     Ela/Call     CPU/Call
 --------------------  --------  --------  ------  -----------  -----------
-ColGroup constructor     23.98     21.16       1     23.97651     21.15625
-ListAsIs                  0.12      0.06       1      0.12407      0.06250
-SortByKey                 0.02      0.02       1      0.02457      0.01562
-SortByValue               0.02      0.02       1      0.01689      0.01562
-(Other)                   0.04      0.03       1      0.04119      0.03125
+ColGroup constructor      7.15      3.03       1      7.14954      3.03125
+ListAsIs                  0.03      0.00       1      0.02909      0.00000
+SortByKey                 0.01      0.00       1      0.00676      0.00000
+SortByValue               0.00      0.00       1      0.00449      0.00000
+(Other)                   0.01      0.00       1      0.01366      0.00000
 --------------------  --------  --------  ------  -----------  -----------
-Total                    24.18     21.28       5      4.83665      4.25625
+Total                     7.20      3.03       5      1.44071      0.60625
 --------------------  --------  --------  ------  -----------  -----------
-[Timer timed (per call in ms): Elapsed: 6.33744, CPU: 6.25000]
+[Timer timed (per call in ms): Elapsed: 0.13983, CPU: 0.06510]
 ```
 
 To run the example script, open a powershell window in the `examples/colgroup` folder and execute as follows (after installing the TimerSet module):
@@ -73,8 +72,8 @@ To run the example script, open a powershell window in the `examples/colgroup` f
 $ ./Show-ColGroup
 ```
 
-It's worth noting here that the timings above show that Powershell can be extremely slow compared with other languages. I have implemented the Timer Set module in multiple languages, of which the versions in Oracle PL/SQL, JavaScript and Python are available on GitHub ([See Also](#see-also)). The timings in the corresponding tables are much smaller in each case.
-## API - TimerSet
+It's worth noting here that in earlier versions of Powershell than used here, the times recorded were much longer, as can be seen from the git history, and although different PCs were used, that does not fully account for the differences. It seems that Powershell used to be extremely slow compared with other languages, but that its performance has recently been much improved.
+## API
 [&uarr; In this README...](#in-this-readme)<br />
 [&darr; New (real timings)](#new-real-timings)<br />
 [&darr; New (mocked timings)](#new-mocked-timings)<br />
@@ -94,7 +93,7 @@ Using Module TimerSet
 ```
 
 ### New (real timings)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts = [TimerSet]::New($timerSetName)
 ```
@@ -107,7 +106,7 @@ Return value:
 * `[TimerSet]`: TimerSet object handle
 
 ### New (mocked timings)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts = [TimerSet]::New($timerSetName, $p_getEla, $p_getCpu)
 ```
@@ -122,7 +121,7 @@ Return value:
 * `[TimerSet]`: TimerSet object handle
 
 ### incrementTime
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.incrementTime([string]$timerName)
 ```
@@ -131,14 +130,14 @@ Increments the timing statistics (elapsed time, CPU time, and number of calls) f
 * `$timerName`: timer name
 
 ### initTime
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.initTime()
 ```
 Resets the statistics for timer set `$ts` to the current time, so that the next call to incrementTime measures from this point for its increment. This is only used where there are gaps between sections to be timed.
 
 ### getTimers
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.getTimers()
 ```
@@ -158,7 +157,7 @@ Return value:
 	* `[int]calls`: number of calls
 
 ### formatTimers (with parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.formatTimers($timeWidth, $timeDP, $timeRatioDP, $callsWidth)
 ```
@@ -174,7 +173,7 @@ Return value:
 * `[string[]]`: array of formatted strings with timer name and timing fields embedded
 
 ### formatTimers (without parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.formatTimers()
 ```
@@ -190,7 +189,7 @@ Return value:
 * `[string[]]`: array of formatted strings with timer name and timing fields embedded
 
 ### getSelfTimer
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 [TimerSet]::getSelfTimer()
 ```
@@ -203,7 +202,7 @@ Return value:
 	* `[float]cpu`: cpu time per call in milliseconds
 
 ### formatSelfTimer (with parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 [TimerSet]::formatSelfTimer($timeWidth, $timeDP, $timeRatioDP)
 ```
@@ -218,7 +217,7 @@ Return value:
 * `[string]`: string with elapsed and CPU times per call in milliseconds
 
 ### formatSelfTimer (without parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 [TimerSet]::formatSelfTimer()
 ```
@@ -233,7 +232,7 @@ Return value:
 * `[string]`: string with elapsed and CPU times per call in milliseconds
 
 ### formatResults (with parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.formatResults($timeWidth, $timeDP, $timeRatioDP, $callsWidth)
 ```
@@ -249,7 +248,7 @@ Return value:
 * `[string]`: string with tabulated results
 
 ### formatResults (without parameters)
-[&uarr; API - TimerSet](#api---timerset)<br />
+[&uarr; API](#api)<br />
 ```powershell
 $ts.formatResults()
 ```
@@ -272,41 +271,37 @@ Return value:
 ### Installation Prerequisites
 [&uarr; Installation](#installation)<br />
 
-The powershell package Utils is required. This is a subproject of the same GitHub project as TimerSet, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the Utils root folder, and execute as follows:
-```
-$ ./Install-Utils
-```
-This will create a folder Utils under the first folder in your `PSModulePath` environment variable, and copy Utils.psm1 to it.
+The powershell package Utils is required. This is a subproject of the same GitHub project as TimerSet, so if you have downloaded the project, you will already have it, and it will be installed automatically as part of the TimerSet installation.
 
 ### Install TimerSet
 [&uarr; Installation](#installation)<br />
 
 To install TimerSet open a powershell window in the root TimerSet folder, and execute as follows:
-```
+```powershell
 $ ./Install-TimerSet
 ```
 This will create a folder TimerSet under the first folder in your `PSModulePath` environment variable, and copy TimerSet.psm1 to it.
+
+It will also create a folder for the prerequisite module, Utils, under the first folder in your `PSModulePath` environment variable, and copy Utils.psm1 to it.
 ## Unit Testing
 [&uarr; In this README...](#in-this-readme)<br />
 [&darr; Unit Testing Prerequisites](#unit-testing-prerequisites)<br />
 [&darr; Unit Testing Process](#unit-testing-process)<br />
+[&darr; Unit Test Results](#unit-test-results)<br />
 
 ### Unit Testing Prerequisites
 [&uarr; Unit Testing](#unit-testing)<br />
 
-The powershell package TrapitUtils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it, and just need to install it. To do this open a powershell window in the TrapitUtils root folder, and execute as follows:
-```
-$ ./Install-TrapitUtils
-```
-This will create a folder TrapitUtils under the first folder in your `psmodulepath` environment variable, and copy TrapitUtils.psm1 to it.
+The powershell module TrapitUtils is required to run the unit tests. This is a subproject of the same GitHub project as Utils, so if you have downloaded it, you will already have it. The module is referenced using a relative path, so that it does not need to be installed explicitly.
 
-The powershell package includes an npm package to format the unit test output JSON file in HTML and/or text, but you need to have [Node.js](https://nodejs.org/en/download) installed to run it.
+The module includes an npm package to format the unit test output JSON file in HTML and/or text, but you need to have [Node.js](https://nodejs.org/en/download) installed to run it.
 
 ### Unit Testing Process
 [&uarr; Unit Testing](#unit-testing)<br />
-[&darr; Step 1: Create JSON File](#step-1-create-json-file)<br />
+[&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
 [&darr; Step 2: Create Results Object](#step-2-create-results-object)<br />
 [&darr; Step 3: Format Results](#step-3-format-results)<br />
+[&darr; Unit Test Driver Script](#unit-test-driver-script)<br />
 
 The package is tested using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html). In this approach, a 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
@@ -328,13 +323,13 @@ At a high level the Math Function Unit Testing design pattern involves three mai
 
 The first and third of these steps are supported by generic utilities that can be used in unit testing in any language. The second step uses a language-specific unit test driver utility.
 
-#### Step 1: Create JSON File
+#### Step 1: Create Input Scenarios File
 [&uarr; Unit Testing Process](#unit-testing-process)<br />
 [&darr; Unit Test Wrapper Function](#unit-test-wrapper-function)<br />
 [&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
 
 ##### Unit Test Wrapper Function
-[&uarr; Step 1: Create JSON File](#step-1-create-json-file)<br />
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
 
 The diagram below shows the structure of the input and output of the wrapper function.
 
@@ -343,8 +338,10 @@ The diagram below shows the structure of the input and output of the wrapper fun
 From the input and output groups depicted we can construct CSV files with flattened group/field structures, and default values added, as follows (with `timerset_ps_inp.csv` left, `timerset_ps_out.csv` right):
 <img src="png/groups - ut.png">
 
+These form two of the three input files for the Powershell script that generates a template for the input JSON file. The third is the scenarios file, shown in the next section.
+
 ##### Scenario Category ANalysis (SCAN)
-[&uarr; Step 1: Create JSON File](#step-1-create-json-file)<br />
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
 [&darr; Generic Category Sets](#generic-category-sets)<br />
 [&darr; Categories and Scenarios](#categories-and-scenarios)<br />
 
@@ -352,14 +349,14 @@ The art of unit testing lies in choosing a set of scenarios that will produce a 
 
 A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories.  I explore this approach further in this article:
 
-- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/jekyll/update/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
 
 ###### Generic Category Sets
 [&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
 
 As explained in the article mentioned above, it can be very useful to think in terms of generic category sets that apply in many situations.
 
-###### Multiplicity
+###### *Multiplicity*
 
 The generic category set of multiplicity is applicable very frequently, and we should check each of the relevant categories. In some cases we'll want to check Few / Many instance categories, but in this case we'll use None / One / Multiple.
 
@@ -374,7 +371,7 @@ The generic category set of multiplicity is applicable very frequently, and we s
 - Timer Sets: Number of timer sets (excluding None as in that case there's nothing to test, and splitting Multiple into two sub-categories)
 - Timer Timings: Number of timings made for a given timer (One and Mulitple only as a timer is only defined at its first call)
 
-###### Binary
+###### *Binary*
 
 There are many situations where a category set splits into two opposing values such as Yes / No or True / False.
 
@@ -389,7 +386,7 @@ We apply this to:
 - Entry Points Called
 - Timings Mocked
 
-###### Size
+###### *Size*
 
 We may wish to check that functions work correctly for both large and small parameter or other data values.
 
@@ -410,33 +407,33 @@ After analysis of the possible scenarios in terms of categories and category set
 We can tabulate the results of the category analysis, and assign a scenario against each category set/category with a unique description:
 
 
-| #| Category Set              | Category                  | Scenario (* = implicitly tested via other scenarios) |
-|-:|:--------------------------|:--------------------------|:-----------------------------------------------------|
-| 1| Timer Timing Multiplicity | One                       | One timing for a timer                               |
-| 2| Timer Timing Multiplicity | Multiple                  | Multiple timings for a timer                         |
-| 3| Timer Multiplicity        | None                      | No timer in timer set                                |
-| 4| Timer Multiplicity        | One                       | One timer in timer set                               |
-| 5| Timer Multiplicity        | Multiple                  | Multiple timers in timer set                         |
-| 6| Timer Set Multiplicity    | One                       | One timer set                                        |
-| 7| Timer Set Multiplicity    | Multiple (No Overlap)     | Multiple non-overlapping timer sets                  |
-| 8| Timer Set Multiplicity    | Multiple (Overlap)        | Multiple timer sets with overlapping                 |
-| 9| Decimals Multiplicity     | None                      | No decimal places                                    |
-|10| Decimals Multiplicity     | One                       | One decimal place                                    |
-|11| Decimals Multiplicity     | Multiple                  | Multiple decimal places                              |
-|12| Value Size                | Small                     | Small values                                         |
-|13| Value Size                | Medium                    | Medium values                                        |
-|14| Value Size                | Large                     | Large values                                         |
-|15| Parameter Defaults        | None                      | None defaulted                                       |
-|16| Parameter Defaults        | All                       | All defaulted                                        |
-|17| Entry Points Called       | All                       | All entry points called                              |
-|18| Entry Points Called       | Not All                   | (Not all entry points called)*                       |
-|19| Timings Mocked            | Yes                       | (Timings mocked)*                                    |
-|20| Timings Mocked            | No                        | Timings real                                         |
-|21| Parameter Validation      | All Just Valid            | All parameters just valid                            |
-|22| Parameter Validation      | Time Width < 8            | Parameter invalid: Time Width < 8                    |
-|23| Parameter Validation      | Time DP > Time Ratio DP   | Parameter invalid: Time DP > Time ratio DP           |
-|24| Parameter Validation      | Time Width - Time DP > 1  | Parameter invalid: Time Width - Time DP > 1          |
-|25| Parameter Validation      | Calls width < 5           | Parameter invalid: Calls width < 5                   |
+|  # | Category Set              | Category                  | Scenario (* = implicitly tested via other scenarios) |
+|---:|:--------------------------|:--------------------------|:-----------------------------------------------------|
+|  1 | Timer Timing Multiplicity | One                       | One timing for a timer                               |
+|  2 | Timer Timing Multiplicity | Multiple                  | Multiple timings for a timer                         |
+|  3 | Timer Multiplicity        | None                      | No timer in timer set                                |
+|  4 | Timer Multiplicity        | One                       | One timer in timer set                               |
+|  5 | Timer Multiplicity        | Multiple                  | Multiple timers in timer set                         |
+|  6 | Timer Set Multiplicity    | One                       | One timer set                                        |
+|  7 | Timer Set Multiplicity    | Multiple (No Overlap)     | Multiple non-overlapping timer sets                  |
+|  8 | Timer Set Multiplicity    | Multiple (Overlap)        | Multiple timer sets with overlapping                 |
+|  9 | Decimals Multiplicity     | None                      | No decimal places                                    |
+| 10 | Decimals Multiplicity     | One                       | One decimal place                                    |
+| 11 | Decimals Multiplicity     | Multiple                  | Multiple decimal places                              |
+| 12 | Value Size                | Small                     | Small values                                         |
+| 13 | Value Size                | Medium                    | Medium values                                        |
+| 14 | Value Size                | Large                     | Large values                                         |
+| 15 | Parameter Defaults        | None                      | None defaulted                                       |
+| 16 | Parameter Defaults        | All                       | All defaulted                                        |
+| 17 | Entry Points Called       | All                       | All entry points called                              |
+|  * | Entry Points Called       | Not All                   | (Not all entry points called)*                       |
+|  * | Timings Mocked            | Yes                       | (Timings mocked)*                                    |
+| 18 | Timings Mocked            | No                        | Timings real                                         |
+| 19 | Parameter Validation      | All Just Valid            | All parameters just valid                            |
+| 20 | Parameter Validation      | Time Width < 8            | Parameter invalid: Time Width < 8                    |
+| 21 | Parameter Validation      | Time DP > Time Ratio DP   | Parameter invalid: Time DP > Time ratio DP           |
+| 22 | Parameter Validation      | Time Width - Time DP > 1  | Parameter invalid: Time Width - Time DP > 1          |
+| 23 | Parameter Validation      | Calls width < 5           | Parameter invalid: Calls width < 5                   |
 
 From the scenarios identified we can construct the following CSV file (`timerset_ps_sce.csv`), taking the category set and scenario columns, and adding an initial value for the active flag:
 
@@ -444,9 +441,9 @@ From the scenarios identified we can construct the following CSV file (`timerset
 
 The API can be run with the following powershell in the folder of the CSV files:
 
-###### Format-JSON-Utils.ps1
+###### *Format-JSON-Utils.ps1*
 ```powershell
-Import-Module TrapitUtils
+Import-Module ..\..\TrapitUtils\TrapitUtils.psm1
 Write-UT_Template 'timerset_ps' '|'
 ```
 This creates the template JSON file, timerset_ps_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files. The template file is then updated manually with data appropriate to each scenario.
@@ -454,16 +451,12 @@ This creates the template JSON file, timerset_ps_temp.json, which contains an el
 #### Step 2: Create Results Object
 [&uarr; Unit Testing Process](#unit-testing-process)<br />
 
-Step 2 requires the writing of a wrapper function that is passed into a call to the unit test driver API.
+Step 2 requires the writing of a wrapper function that is passed into a unit test library function, Test-Unit, via the entry point API,  `Test-Format`. Test-Unit reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results.
 
-- `Test-Unit` is the unit test driver function from the TrapitUtils package that reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results
-
-##### Test-TimerSet.ps1 (skeleton)
+##### purelyWrap-Unit (skeleton)
+This is a skeleton listing of the wrapper function, which is included in the script Test-TimerSet.ps1 and passed as a parameter to Test-Format.
 ```powershell
-Using Module TimerSet
-Import-Module Utils, TrapitUtils
-...
-function purelyWrapUnit([PSCustomObject]$inpGroups) {# json object for a single scenario, with inputs
+function purelyWrap-Unit([PSCustomObject]$inpGroups) {# json object for a single scenario, with inputs
 ...
     [PSCustomObject]@{
                 $TIMER_SET_1    = $outArr[$TIMER_SET_1]
@@ -476,25 +469,45 @@ function purelyWrapUnit([PSCustomObject]$inpGroups) {# json object for a single 
                 $EXCEPTION      = $exceptions
     }
 }
-Test-Unit ($PSScriptRoot + '/timerset_ps.json') ($PSScriptRoot + '/timerset_ps_out.json') `
-          ${function:purelyWrapUnit}
 ```
-This creates the output JSON file: timerset_ps_out.json. Generally it will be preferable not to call the script directly, but to include the call in a higher level script that calls it and also calls the JavaScript formatter, as in the next section.
 
 #### Step 3: Format Results
 [&uarr; Unit Testing Process](#unit-testing-process)<br />
-[&darr; Unit Test Report - TimerSet - Powershell](#unit-test-report---timerset---powershell)<br />
-[&darr; Scenario 8: Multiple timer sets with overlapping [Category Set: Timer Set Multiplicity]](#scenario-8-multiple-timer-sets-with-overlapping-category-set-timer-set-multiplicity)<br />
 
-Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter, and this step can be combined with step 2 for convenience.
-
-- `Test-Format` is the function from the TrapitUtils package that calls the main test driver function, then passes the output JSON file name to the JavaScript formatter and outputs a summary of the results. It takes the name of the test driver script and the JavaScript root location as parameters.
-
-#### Run-Test-TimerSet.ps1
+Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter:
 
 ```powershell
-Import-Module TrapitUtils
-Test-Format ($PSScriptRoot + '/Test-TimerSet.ps1') ($PSScriptRoot + '/../../TrapitUtils')
+    node ($npmRoot + '/node_modules/trapit/externals/format-external-file') $jsonFile
+```
+
+This step is executed within the TrapitUtils entry point API, `Test-Format`.
+
+#### Unit Test Driver Script
+[&uarr; Unit Testing Process](#unit-testing-process)<br />
+
+Unit testing is executed through a driver script, Test-TimerSet.ps1, that contains the wrapper function and makes a call to the TrapitUtils library function `Test-Format`. This calls Test-Unit to create the output JSON file, and then calls the Javascript formatter, which writes the formatted results files to a subfolder in the script folder, with name based on the title, returning a summary of the results.
+
+`Test-Format` has parameters:
+
+* `[string]$utRoot`: unit test root folder
+* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+* `[string]$stemInpJSON`: input JSON file name stem
+* `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario
+
+Return value:
+
+* `[string]`: summary of results
+
+##### Test-TimerSet.ps1
+
+```powershell
+Using Module ..\..\TimerSet\TimerSet.psm1
+Import-Module ..\..\Utils\Utils.psm1, ..\..\TrapitUtils\TrapitUtils.psm1
+...
+function purelyWrap-Unit($inpGroups) { # input scenario groups
+    ...
+}
+Test-Format $PSScriptRoot ($PSScriptRoot + '/../../TrapitUtils') 'timerset_ps' ${function:purelyWrap-Unit}
 ```
 This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
 
@@ -511,23 +524,29 @@ Fails:         0
 Folder:        timerset---powershell
 ```
 
-You can review the HTML formatted unit test results here:
+### Unit Test Results
+[&uarr; Unit Testing](#unit-testing)<br />
+[&darr; Unit Test Report - TimerSet - Powershell](#unit-test-report---timerset---powershell)<br />
+[&darr; Scenario 8: Multiple timer sets with overlapping [Category Set: Timer Set Multiplicity]](#scenario-8-multiple-timer-sets-with-overlapping-category-set-timer-set-multiplicity)<br />
+
+Here we show screenshots of the scenario-level summary of results, and the results page for scenario 8.
+
+You can review the full HTML formatted unit test results here:
 
 - [Unit Test Report: Powershell Utils](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/TimerSet/unit_test/powershell-utils/powershell-utils.html)
 
-Next we show the scenario-level summary of results, followed by the results page for scenario 8.
-
 ##### Unit Test Report - TimerSet - Powershell
-[&uarr; Step 3: Format Results](#step-3-format-results)<br />
+[&uarr; Unit Test Results](#unit-test-results)<br />
 
 Here is the results summary in HTML format:
 <img src="png/Unit Test Report.png">
 
 ##### Scenario 8: Multiple timer sets with overlapping [Category Set: Timer Set Multiplicity]
-[&uarr; Step 3: Format Results](#step-3-format-results)<br />
+[&uarr; Unit Test Results](#unit-test-results)<br />
 
 Here is the results page for scenario 8 in HTML format:
 <img src="png/Scenario 8.png">
+
 ## Folder Structure
 [&uarr; In this README...](#in-this-readme)<br />
 
@@ -549,7 +568,7 @@ There are three subfolders below the TimerSet root folder, which has README and 
 - [Powershell Trapit Unit Testing Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/TrapitUtils)
 - [Node.js Downloads](https://nodejs.org/en/download)
 - [Powershell General Utilities Module](https://github.com/BrenPatF/powershell_utils/tree/master/Utils)
-- [Oracle Timer Set Module](https://github.com/BrenPatF/timer_set_oracle)
+- [Oracle PL/SQL Timer Set Module](https://github.com/BrenPatF/timer_set_oracle)
 - [Python Timer Set Module](https://github.com/BrenPatF/timerset_python)
 - [JavaScript Timer Set Module](https://github.com/BrenPatF/timer-set-nodejs)
 - [Powershell Timer Set Module](https://github.com/BrenPatF/powershell_utils/tree/master/TimerSet)

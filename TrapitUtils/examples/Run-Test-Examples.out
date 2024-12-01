@@ -1,10 +1,24 @@
+Executing:  Test-HelloWorld.ps1 at 01-Dec-24 15:23:33
 
-Unit Test Results Summary for Folder C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples/results
-===============================================================================================================================
- File                 Title                     Inp Groups  Out Groups  Tests  Fails  Folder                  
---------------------  ------------------------  ----------  ----------  -----  -----  ------------------------
-*colgroup_out.json    ColGroup - Powershell              3           5     17      5  colgroup---powershell   
- helloworld_out.json  Hello World - Powershell           0           2      1      0  hello-world---powershell
+Results summary for file: C:/Users/Brend/OneDrive/Documents/GitHub/powershell_utils/TrapitUtils/examples/helloworld/helloworld_out.json
+=======================================================================================================================================
 
-1 externals failed, see C:/Users/Brend/Dropbox/Home/WIP/github_stage/powershell_utils/TrapitUtils/examples/results for scenario listings
-colgroup_out.json
+File:          helloworld_out.json
+Title:         Hello World - Powershell
+Inp Groups:    0
+Out Groups:    2
+Tests:         1
+Fails:         0
+Folder:        hello-world---powershell
+Executing:  Test-ColGroup.ps1
+
+Results summary for file: C:/Users/Brend/OneDrive/Documents/GitHub/powershell_utils/TrapitUtils/examples/colgroup/colgroup_out.json
+===================================================================================================================================
+
+File:          colgroup_out.json
+Title:         ColGroup - Powershell
+Inp Groups:    3
+Out Groups:    5
+Tests:         17
+Fails:         3
+Folder:        colgroup---powershell

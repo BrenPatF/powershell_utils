@@ -11,20 +11,20 @@ example class module that uses the pretty-printing functions, and calls other fu
 
 The unit test script follows the Math Function Unit Testing design pattern, as described in:
 
-    https://github.com/BrenPatF/trapit_nodejs_tester#trapit
+    https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html
 
 ====================================================================================================
-| Script (.ps1)    | Module (.psm1) |  Notes                                                       |
+| Script (.ps1)   | Module (.psm1) |  Notes                                                        |
 |==================================================================================================|
-|  Install-Utils   |                   Install script copies module to Powershell path             |
-|------------------|-------------------------------------------------------------------------------|
-|                  |  ColGroup      |  Simple file-reading and group-counting class module         |
-| *Show-Examples*  |----------------|--------------------------------------------------------------|
-|                  |                |                                                              |
-|------------------|  Utils         |  General utility functions                                   |
-|                  |                |                                                              |
-|  Test-Utils      |----------------|--------------------------------------------------------------|
-|                  |  Trapit-Utils  |  Trapit unit testing utility functions                       |
+|  Install-Utils  |                   Install script copies module to Powershell path              |
+|-----------------|--------------------------------------------------------------------------------|
+|                 |  ColGroup      |  Simple file-reading and group-counting class module          |
+| *Show-Examples* |----------------|---------------------------------------------------------------|
+|                 |                |                                                               |
+|-----------------|  Utils         |  General utility functions                                    |
+|                 |                |                                                               |
+|  Test-Utils     |----------------|---------------------------------------------------------------|
+|                 |  TrapitUtils   |  Trapit unit testing utility functions                        |
 ====================================================================================================
 
 Main script for the examples of use. It demonstrates directly calls to:

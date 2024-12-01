@@ -11,44 +11,43 @@ example class module that uses the pretty-printing functions, and calls other fu
 
 The unit test script follows the Math Function Unit Testing design pattern, as described in:
 
-    https://github.com/BrenPatF/trapit_nodejs_tester#trapit
+    https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html
 
 ====================================================================================================
-| Script (.ps1)    | Module (.psm1) |  Notes                                                       |
+| Script (.ps1)   | Module (.psm1) |  Notes                                                        |
 |==================================================================================================|
-|  Install-Utils   |                   Install script copies module to Powershell path             |
-|------------------|-------------------------------------------------------------------------------|
-|                  |  ColGroup      |  Simple file-reading and group-counting class module         |
-|  Show-Examples   |----------------|--------------------------------------------------------------|
-|                  |                |                                                              |
-|------------------|  Utils         |  General utility functions                                   |
-|                  |                |                                                              |
-| *Test-Utils*     |----------------|--------------------------------------------------------------|
-|                  |  TrapitUtils   |  Trapit unit testing utility functions                       |
+|  Install-Utils  |                   Install script copies module to Powershell path              |
+|-----------------|--------------------------------------------------------------------------------|
+|                 |  ColGroup      |  Simple file-reading and group-counting class module          |
+|  Show-Examples  |----------------|---------------------------------------------------------------|
+|                 |                |                                                               |
+|-----------------|  Utils         |  General utility functions                                    |
+|                 |                |                                                               |
+| *Test-Utils*    |----------------|---------------------------------------------------------------|
+|                 |  TrapitUtils   |  Trapit unit testing utility functions                        |
 ====================================================================================================
 
-Unit test script following the Math Function Unit Testing design pattern. 
+This file contains a unit test script for the Utils package.
 
-The script contains a function, purelyWrap-Unit, that takes a scenario input object containing a
-list of records for each input group, formatted as delimited strings. The function makes calls to
-the functions in the unit under test and returns an object containing a list of records for each
-output group, formatted as delimited strings.
+The script contains a wrapper function, purelyWrap-Unit, that takes a scenario input object
+containing a list of records for each input group, formatted as delimited strings. The function
+makes calls to the functions in the unit under test and returns an object containing a list of
+records for each output group, formatted as delimited strings.
 
 The function is 'externally pure' in the sense that it is deterministic, interacts externally via
-paameters and return value: If h and any file output is reverted before exit.
+parameters and return value, and any file output is reverted before exit.
 
-The main section of the script is a call to a utility function, passing in the names of input and
-output JSON files, and the function. The utility function reads the input file, calls the function
-passed within a loop over the input scenarios, accumulating the output sacenarios containing both
-expected and actual results, and finally writes the output JSON file.
+The main section of the script is a call to a utility function, Test-Format, passing in the unit
+test root folder, the parent folder of the JavaScript node_modules npm root folder, the input JSON
+file name stem, and the wrapper function.
 
-A separate javascript program is used to read the output JSON file and produce formatted output in
-text and HTML formats. This can be obtained from the GitHub project mentioned above, or from npm:
-
-    $ npm install trapit
+The utility function reads the input file, calls the wrapper function passed within a loop over the
+input scenarios, accumulating the output scenarios containing both expected and actual results, and
+writes an output JSON file. The utility function then calls a Javascript program that reads the
+output JSON file and produces output in text and HTML formats in a subfolder, returning a summary.
 
 **************************************************************************************************#>
-Import-Module Utils, TrapitUtils
+Import-Module ..\..\Utils\Utils.psm1, ..\..\TrapitUtils\TrapitUtils.psm1
 <#**************************************************************************************************
 
 purelyWrap-Unit: Design pattern has the unit under test calls wrapped in a 'pure' function, called
@@ -250,6 +249,6 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
           'Start-MySleep'         = startMySleep         $inpGroups.'Start-MySleep'
     }
 }
-# one line main section passing in input and output file names, and the local 'pure' function to unit test utility
-Test-Unit ($PSScriptRoot + '/ps_utils.json') ($PSScriptRoot + '/ps_utils_out.json') `
-          ${function:purelyWrap-Unit}
+# one line main section passing in current root folder, npm parent folder, input JSON file name stem, and the local 'pure' function to unit test utility
+
+Test-Format $PSScriptRoot ($PSScriptRoot + '/../../TrapitUtils') 'ps_utils' ${function:purelyWrap-Unit}

@@ -1,0 +1,93 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #dddddd;
+  border: 1px solid #030303;
+  text-align: left;
+  padding: 8px;
+}
+          td {
+            font-weight: bold;
+            border: 1px solid #030303;
+            text-align: left;
+            padding: 8px;
+            white-space: pre;
+            font-family: arial, sans-serif;
+            font-size: 100%;
+          }
+h1 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 300%;
+  background-color: #FFFF00;
+}
+h2 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 200%;
+  background-color: #2AE6C1;
+}
+h3 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 150%;
+  background-color: #33F0FF;
+}
+h4 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 125%;
+  background-color: #7DFF33;
+}
+</style>
+</head>
+<body>
+<h1>Unit Test Report: Merge-LinkMDFiles</h1>
+<table>
+<tr><th>#</th><th>Category Set</th><th>Scenario</th><th>Fails (of 4)</th><th>Status</th></tr>
+<tr><td>1</td><td>File Multiplicity</td><td><a href="no-file.html" target="_blank">No file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>2</td><td>File Multiplicity</td><td><a href="one-file.html" target="_blank">One file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>3</td><td>File Multiplicity</td><td><a href="multiple-files.html" target="_blank">Multiple files</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>4</td><td>Heading Multiplicity</td><td><a href="no-heading.html" target="_blank">No heading</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>5</td><td>Heading Multiplicity</td><td><a href="one-heading.html" target="_blank">One heading</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>6</td><td>Heading Multiplicity</td><td><a href="multiple-headings.html" target="_blank">Multiple headings</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>7</td><td>Child Link Multiplicity</td><td><a href="no-child-link.html" target="_blank">No child link</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>8</td><td>Child Link Multiplicity</td><td><a href="one-child-link.html" target="_blank">One child link</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>9</td><td>Child Link Multiplicity</td><td><a href="multiple-child-links.html" target="_blank">Multiple child links</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>10</td><td>Parent Link Multiplicity</td><td><a href="no-parent-link.html" target="_blank">No parent link</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>11</td><td>Parent Link Multiplicity</td><td><a href="one-parent-link.html" target="_blank">One parent link</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>12</td><td>Level Multiplicity</td><td><a href="one-level.html" target="_blank">One level</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>13</td><td>Level Multiplicity</td><td><a href="six-levels.html" target="_blank">Six levels</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>14</td><td>Hash Increment</td><td><a href="one-hash-increment.html" target="_blank">One hash increment</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>15</td><td>Hash Increment</td><td><a href="two-hash-increment.html" target="_blank">Two hash increment</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>16</td><td>Hash Increment</td><td><a href="three-hash-increment.html" target="_blank">Three hash increment</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>17</td><td>Root: Child? Incidence</td><td><a href="root-1_n.html" target="_blank">Root 1:N</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>18</td><td>Root: Child? Incidence</td><td><a href="root-1_y,-root-2_-y.html" target="_blank">Root 1:Y, Root 2: Y</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>19</td><td>Root: Child? Incidence</td><td><a href="root-1_y,-root-2_-n.html" target="_blank">Root 1:Y, Root 2: N</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>20</td><td>Root: Child? Incidence</td><td><a href="root-1_n,-root-2_-y.html" target="_blank">Root 1:N, Root 2: Y</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>21</td><td>Root: Child? Incidence</td><td><a href="root-1_n,-root-2_-n.html" target="_blank">Root 1:N, Root 2: N</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>22</td><td>Duplicate Headings: Linked?</td><td><a href="dupe-1_y,-dupe-2_y.html" target="_blank">Dupe 1:Y, Dupe 2:Y</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>23</td><td>Duplicate Headings: Linked?</td><td><a href="dupe-1_y,-dupe-2_n.html" target="_blank">Dupe 1:Y, Dupe 2:N</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>24</td><td>Duplicate Headings: Linked?</td><td><a href="dupe-1_n,-dupe-2_y.html" target="_blank">Dupe 1:N, Dupe 2:Y</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>25</td><td>Duplicate Headings: Linked?</td><td><a href="dupe-1_n,-dupe-2_n.html" target="_blank">Dupe 1:N, Dupe 2:N</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>26</td><td>Duplicate Headings: Linked?</td><td><a href="dupe-1,-2,-3_-y.html" target="_blank">Dupe 1, 2, 3: Y</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>27</td><td>Special Characters</td><td><a href="in-heading.html" target="_blank">In heading</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>28</td><td>Section Text</td><td><a href="not-present.html" target="_blank">Not present</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>29</td><td>Delink Flag</td><td><a href="first-in-#-prefix.html" target="_blank">First in #-prefix</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>30</td><td>Delink Flag</td><td><a href="non-first-in-#-prefix.html" target="_blank">Non-first in #-prefix</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>31</td><td>Delink Flag</td><td><a href="in-heading-text.html" target="_blank">In heading text</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>32</td><td>Delink Flag</td><td><a href="first-in-non-heading.html" target="_blank">First in non-heading</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>33</td><td>Anomaly</td><td><a href="missing-file.html" target="_blank">Missing file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>34</td><td>Anomaly</td><td><a href="empty-file.html" target="_blank">Empty file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>35</td><td>Anomaly</td><td><a href="seven-hashes.html" target="_blank">Seven hashes</a></td><td>0</td><td>SUCCESS</td></tr>
+</table>
+<h1>Test scenarios: 0 failed of 35: SUCCESS</h1>
+<h4>Formatted: 1/12/2024, 15:17:26</h4>
+</body></html>

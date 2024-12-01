@@ -1,0 +1,1 @@
+pwsh .\Test-Utils.ps1  > .\Test-Utils.out 2> .\Test-Utils.err

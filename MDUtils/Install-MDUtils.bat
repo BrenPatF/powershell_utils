@@ -1,0 +1,1 @@
+pwsh .\Install-MDUtils.ps1 > .\Install-MDUtils.out 2> .\Install-MDUtils.err

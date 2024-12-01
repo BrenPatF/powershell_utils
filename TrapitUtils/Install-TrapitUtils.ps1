@@ -61,3 +61,4 @@ To run from the install folder:
 **************************************************************************************************#>
 Import-Module ($PSScriptRoot + '\..\Utils\Utils.psm1')
 Install-Module $PSScriptRoot 'TrapitUtils'
+Install-Module '..\Utils' 'Utils'

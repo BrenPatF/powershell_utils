@@ -1,4 +1,4 @@
-Executing:  Show-HelloWorld.ps1 at 07-May-23 11:27:14
+Executing:  Show-HelloWorld.ps1 at 01-Dec-24 15:23:24
 Hello World!
 Executing:  Show-ColGroup.ps1
 
@@ -6,29 +6,29 @@ Counts sorted by (as is)
 ========================
 Team         #apps
 -----------  -----
-Aston Villa    685
-Wolves          31
-Chelsea       1147
 Blackburn       33
-Fulham        1209
-West Brom     1219
-Arsenal        534
-QPR           1517
-Liverpool     1227
-West Ham      1126
-Reading       1167
-Southampton   1110
-Wigan         1036
-Swansea       1180
-Man City      1099
-Newcastle     1247
 Man Utd       1231
-Stoke City    1170
+Reading       1167
 Everton       1147
+Liverpool     1227
+Aston Villa    685
 Bolton          37
-Sunderland    1162
-Norwich       1229
+Southampton   1110
+Wolves          31
 Tottenham     1288
+Arsenal        534
+Stoke City    1170
+Swansea       1180
+Norwich       1229
+Chelsea       1147
+West Brom     1219
+Sunderland    1162
+West Ham      1126
+Newcastle     1247
+QPR           1517
+Man City      1099
+Wigan         1036
+Fulham        1209
 
 Counts sorted by key
 ====================

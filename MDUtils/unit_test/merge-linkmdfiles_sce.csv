@@ -1,0 +1,36 @@
+Category Set,Scenario,Active
+File Multiplicity,No file,Y
+File Multiplicity,One file,Y
+File Multiplicity,Multiple files,Y
+Heading Multiplicity,No heading,Y
+Heading Multiplicity,One heading,Y
+Heading Multiplicity,Multiple headings,Y
+Child Link Multiplicity,No child link,Y
+Child Link Multiplicity,One child link,Y
+Child Link Multiplicity,Multiple child links,Y
+Parent Link Multiplicity,No parent link,Y
+Parent Link Multiplicity,One parent link,Y
+Level Multiplicity,One level,Y
+Level Multiplicity,Six levels,Y
+Hash Increment,One hash increment,Y
+Hash Increment,Two hash increment,Y
+Hash Increment,Three hash increment,Y
+Root: Child? Incidence,Root 1:N,Y
+Root: Child? Incidence,"Root 1:Y, Root 2:Y",Y
+Root: Child? Incidence,"Root 1:Y, Root 2:N",Y
+Root: Child? Incidence,"Root 1:N, Root 2:Y",Y
+Root: Child? Incidence,"Root 1:N, Root 2:N",Y
+Duplicate Headings: Linked?,"Dupe 1:Y, Dupe 2:Y",Y
+Duplicate Headings: Linked?,"Dupe 1:Y, Dupe 2:N",Y
+Duplicate Headings: Linked?,"Dupe 1:N, Dupe 2:Y",Y
+Duplicate Headings: Linked?,"Dupe 1:N, Dupe 2:N",Y
+Duplicate Headings: Linked?,"Dupe 1, 2, 3: Y",Y
+Special Characters,In heading,Y
+Delink Flag,First in #-prefix,Y
+Delink Flag,Non-first in #-prefix,Y
+Delink Flag,In heading text,Y
+Delink Flag,First in non-heading,Y
+Section Text,Not present,Y
+Anomaly,Missing file,Y
+Anomaly,Empty file,Y
+Anomaly,Seven hashes,Y

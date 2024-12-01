@@ -1,2 +1,10 @@
-Installing TimerSet in C:\Users\Brend\OneDrive\Documents\PowerShell\Modules
-C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\TimerSet already exists
+Installing TimerSet in C:\Users\Brend\Documents\PowerShell\Modules
+
+    Directory: C:\Users\Brend\Documents\PowerShell\Modules
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          01/12/2024    15:19                TimerSet
+Installing Utils in C:\Users\Brend\Documents\PowerShell\Modules
+d----          01/12/2024    15:19                Utils
+

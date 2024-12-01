@@ -1,8 +1,8 @@
 <#**************************************************************************************************
 Name: ColGroup.psm1                     Author: Brendan Furey                      Date: 27-Aug-2023
 
-Component package in the Powershell code timing module TimerSet. This module facilitates code timing
-forinstrumentation and other purposes, with very small footprint in both code and resource usage.
+Component package in the Powershell Utilities module TimerSet. This module facilitates code timing
+for instrumentation and other purposes, with very small footprint in both code and resource usage.
 
     GitHub: https://github.com/BrenPatF/powershell_utils
 
@@ -25,7 +25,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |  Show-ColGroup     |----------------|------------------------------------------------------------|
 |--------------------|  TimerSet      |  TimerSet class module                                     |
 |                    |----------------|------------------------------------------------------------|
-|  Test-TimerSet     |  Trapit-Utils  |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
+|  Test-TimerSet     |  TrapitUtils   |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
 |                    |----------------|------------------------------------------------------------|                                                                                                                                                                                                                                                                               -------------------------------------------------------------|
 |--------------------|  Utils         |  General utility functions                                 |
 |                    |-----------------------------------------------------------------------------|
@@ -33,7 +33,7 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 ====================================================================================================
 
 This file has the ColGroup package which contains a class used as an example in the Show-ColGroup
-script
+script.
 
 **************************************************************************************************#>
 Import-Module Utils

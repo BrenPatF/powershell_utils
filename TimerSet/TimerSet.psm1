@@ -1,8 +1,8 @@
 <#**************************************************************************************************
 Name: TimerSet.psm1                     Author: Brendan Furey                      Date: 27-Aug-2023
 
-Component package in the Powershell code timing module TimerSet. This module facilitates code timing
-forinstrumentation and other purposes, with very small footprint in both code and resource usage.
+Component package in the Powershell Utilities module TimerSet. This module facilitates code timing
+for instrumentation and other purposes, with very small footprint in both code and resource usage.
 
     GitHub: https://github.com/BrenPatF/powershell_utils
 
@@ -25,17 +25,17 @@ The unit test script follows the Math Function Unit Testing design pattern, as d
 |  Show-ColGroup     |----------------|------------------------------------------------------------|
 |--------------------| *TimerSet*     |  TimerSet class module                                     |
 |                    |----------------|------------------------------------------------------------|
-|  Test-TimerSet     |  Trapit-Utils  |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
+|  Test-TimerSet     |  TrapitUtils   |  Trapit unit testing utility functions                     |                                                                                                                                                                                                                                                                                                                                                                                               
 |                    |----------------|------------------------------------------------------------|                                                                                                                                                                                                                                                                               -------------------------------------------------------------|
 |--------------------|  Utils         |  General utility functions                                 |
 |                    |-----------------------------------------------------------------------------|
 |  Install-TimerSet  |                   Install script copies module to Powershell path           |
 ====================================================================================================
 
-This file has the TimerSet class with methods called by Show-TimerSet and Test-TimerSet scripts
+This file has the TimerSet class with methods called by Show-TimerSet and Test-TimerSet scripts.
 
 **************************************************************************************************#>
-Import-Module Utils
+Import-Module ($PSScriptRoot + '\..\Utils\Utils.psm1')
 $CALLS_WIDTH, $TIME_WIDTH, $TIME_DP, $TIME_RATIO_DP, $TOT_TIMER, $OTH_TIMER, $SELF_TIME, $TIME_FACTOR =
 6,            8,           2,        5,              'Total',    '(Other)',  0.1,        1000
 <#*************************************************************************************************

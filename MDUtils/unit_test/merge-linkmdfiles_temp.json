@@ -1,0 +1,834 @@
+{
+  "meta": {
+    "title": "title",
+    "delimiter": "|",
+    "inp": {
+      "Input Files List": [
+        "File Name",
+        "File Empty?"
+      ],
+      "Input Files": [
+        "File Name",
+        "Line"
+      ]
+    },
+    "out": {
+      "Merged Output File": [
+        "Line"
+      ],
+      "Return Headings": [
+        "Line"
+      ],
+      "Error Message": [
+        "Line"
+      ]
+    }
+  },
+  "scenarios": {
+    "No file": {
+      "active_yn": "Y",
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One file": {
+      "active_yn": "Y",
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Multiple files": {
+      "active_yn": "Y",
+      "category_set": "File Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "No heading": {
+      "active_yn": "Y",
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One heading": {
+      "active_yn": "Y",
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Multiple headings": {
+      "active_yn": "Y",
+      "category_set": "Heading Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "No child link": {
+      "active_yn": "Y",
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One child link": {
+      "active_yn": "Y",
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Multiple child links": {
+      "active_yn": "Y",
+      "category_set": "Child Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "No parent link": {
+      "active_yn": "Y",
+      "category_set": "Parent Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One parent link": {
+      "active_yn": "Y",
+      "category_set": "Parent Link Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One level": {
+      "active_yn": "Y",
+      "category_set": "Level Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Six levels": {
+      "active_yn": "Y",
+      "category_set": "Level Multiplicity",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "One hash increment": {
+      "active_yn": "Y",
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Two hash increment": {
+      "active_yn": "Y",
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Three hash increment": {
+      "active_yn": "Y",
+      "category_set": "Hash Increment",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Root 1:N": {
+      "active_yn": "Y",
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Root 1:Y, Root 2:Y": {
+      "active_yn": "Y",
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Root 1:Y, Root 2:N": {
+      "active_yn": "Y",
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Root 1:N, Root 2:Y": {
+      "active_yn": "Y",
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Root 1:N, Root 2:N": {
+      "active_yn": "Y",
+      "category_set": "Root: Child? Incidence",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Dupe 1:Y, Dupe 2:Y": {
+      "active_yn": "Y",
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Dupe 1:Y, Dupe 2:N": {
+      "active_yn": "Y",
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Dupe 1:N, Dupe 2:Y": {
+      "active_yn": "Y",
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Dupe 1:N, Dupe 2:N": {
+      "active_yn": "Y",
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Dupe 1, 2, 3: Y": {
+      "active_yn": "Y",
+      "category_set": "Duplicate Headings: Linked?",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "In heading": {
+      "active_yn": "Y",
+      "category_set": "Special Characters",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "First in #-prefix": {
+      "active_yn": "Y",
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Non-first in #-prefix": {
+      "active_yn": "Y",
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "In heading text": {
+      "active_yn": "Y",
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "First in non-heading": {
+      "active_yn": "Y",
+      "category_set": "Delink Flag",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Not present": {
+      "active_yn": "Y",
+      "category_set": "Section Text",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Missing file": {
+      "active_yn": "Y",
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Empty file": {
+      "active_yn": "Y",
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    },
+    "Seven hashes": {
+      "active_yn": "Y",
+      "category_set": "Anomaly",
+      "inp": {
+        "Input Files List": [
+          "intro.md|N"
+        ],
+        "Input Files": [
+          "intro.md|# In This README..."
+        ]
+      },
+      "out": {
+        "Merged Output File": [
+          "# In This README..."
+        ],
+        "Return Headings": [
+          "# In This README..."
+        ],
+        "Error Message": [
+          ""
+        ]
+      }
+    }
+  }
+}

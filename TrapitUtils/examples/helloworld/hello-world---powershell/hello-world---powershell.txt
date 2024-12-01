@@ -7,7 +7,7 @@ Unit Test Report: Hello World - Powershell
 
 Test scenarios: 0 failed of 1: SUCCESS
 ======================================
-Tested: 2023-05-07 10:27:04, Formatted: 2023-05-07 10:27:04
+Formatted: 1/12/2024, 15:23:34
 
 SCENARIO 1: No input [Category Set: Global] {
 =============================================

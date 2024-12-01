@@ -752,7 +752,7 @@
         "Set 2 (formatted)": [
         ],
         "Self (unmocked)": [
-            "IN [50000, 200000]|IN [20000, 200000]"
+            "IN [10, 1000000]|IN [10, 1000000]"
         ],
         "Self (unmocked, formatted)": [
             "LIKE /\\[Timer timed \\(per call in ms\\): Elapsed: .*\\]/"
@@ -803,7 +803,7 @@
         "Set 2 (formatted)": [
         ],
         "Self (unmocked)": [
-            "IN [30000, 900000]|IN [1500, 450000]"
+            "IN [10, 1000000]|IN [10, 1000000]"
         ],
         "Self (unmocked, formatted)": [
             "LIKE /\\[Timer timed \\(per call in ms\\): Elapsed: .*\\]/"

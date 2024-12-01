@@ -23,29 +23,29 @@ Counts sorted by (as is)
 ========================
 Team         #apps
 -----------  -----
-Swansea       1180
-Bolton          37
-Aston Villa    685
-Fulham        1209
-West Ham      1126
-Wolves          31
+Southampton   1110
 West Brom     1219
+Sunderland    1162
+Tottenham     1288
+QPR           1517
+Stoke City    1170
+Fulham        1209
+Norwich       1229
+Blackburn       33
+Man Utd       1231
 Wigan         1036
 Arsenal        534
-Everton       1147
-Man City      1099
-Blackburn       33
-Stoke City    1170
-QPR           1517
-Newcastle     1247
-Man Utd       1231
-Tottenham     1288
 Liverpool     1227
-Norwich       1229
-Sunderland    1162
-Southampton   1110
-Reading       1167
+West Ham      1126
+Bolton          37
+Everton       1147
 Chelsea       1147
+Man City      1099
+Swansea       1180
+Wolves          31
+Newcastle     1247
+Reading       1167
+Aston Villa    685
 
 
 Counts sorted by key
@@ -106,6 +106,13 @@ Tottenham     1288
 QPR           1517
 
 
+Demonstrate call to Get-ColHeadersLis...
+========================================
+
+Get-ColHeadersLis @(('left, 10', -10), ('right, 15', 15))
+left, 10          right, 15
+----------  ---------------
+
 Demonstrate call to Get-StrLisFromObjLis...
 ===========================================
 
@@ -130,16 +137,25 @@ After:
 Content of debug.log...
 =======================
 
-Debug starting, 05/07/2023 11:23:40: Debug
+Debug starting, 12/01/2024 15:21:32: Debug
 Counted 23 teams, with 22831 appearances
 
 Demonstrate Install-Module...
 =============================
 
 Install-Module $PSScriptRoot 'ExampleModuleEmpty'
-Installing ExampleModuleEmpty in C:\Users\Brend\OneDrive\Documents\PowerShell\Modules
+Installing ExampleModuleEmpty in C:\Users\Brend\Documents\PowerShell\Modules
                        
-Installed in folder C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\ExampleModuleEmpty...
-C:\Users\Brend\OneDrive\Documents\PowerShell\Modules\ExampleModuleEmpty\ExampleModuleEmpty.psm1
+Installed in folder C:\Users\Brend\Documents\PowerShell\Modules\ExampleModuleEmpty...
+C:\Users\Brend\Documents\PowerShell\Modules\ExampleModuleEmpty\ExampleModuleEmpty.psm1
 Delete the installed module to clean up...
+
+Demonstrate call to Start-MySleep...
+====================================
+
+Start-MySleep 5 0.5
+Date before call: 12/01/2024 15:21:39
+Date after call: 12/01/2024 15:21:44
+Elapsed = 5.02
+CPU = 1.7
 
