@@ -1,0 +1,28 @@
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Tue Oct 22 08:06:31 2024
+Version 23.4.0.24.05
+
+Copyright (c) 1982, 2024, Oracle.  All rights reserved.
+
+Last Successful login time: Tue Oct 22 2024 08:05:25 +01:00
+
+Connected to:
+Oracle Database 23ai Free Release 23.0.0.0.0 - Production
+Version 23.4.0.24.05
+
+SQL> SQL>   2    3    4    5    6    7    8    9   10   11   12  !
+c:\input\tt_utils.purely_wrap_utils_out.json
+!
+
+PL/SQL procedure successfully completed.
+
+SQL> Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Production
+Version 23.4.0.24.05
+ 
+File:          tt_utils.purely_wrap_utils_out.json
+Title:         Oracle PL/SQL Utilities
+Inp Groups:    16
+Out Groups:    17
+Tests:         5
+Fails:         0
+Folder:        oracle-pl_sql-utilities

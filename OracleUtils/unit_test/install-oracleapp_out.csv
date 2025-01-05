@@ -1,0 +1,6 @@
+Group,Field,Value
+Input Path,Exists Y/N,Y
+Copy Files,File Name,File1.csv
+SQL Install List,Folder Name,lib
+SQL Install List,Execution String,sqlplus lib/lib@orclpdb @install_lib.sql
+Exception,Message,

@@ -1,0 +1,18 @@
+Group,Field,Value
+Scalars,Input Path,C:\input_dir
+Scalars,Path Type,Folder
+Scalars,Call Type,Both
+Scalars,Hash Key 1,folder
+Scalars,Hash Key 2,script
+Scalars,Hash Key 3,schema
+Scalars,Hash Key 4,prmLis
+Copy Files,File Name,File1.csv
+Copy Files,Exists Y/N,Y
+SQL Install List,Folder Name,lib
+SQL Install List,Folder Exists Y/N,Y
+SQL Install List,Script Name,install_lib.sql
+SQL Install List,Script Exists Y/N,Y
+SQL Install List,Schema,lib
+SQL Install List,Parameter 1,
+SQL Install List,Parameter 2,
+SQL Install List,Parameter 3,

@@ -1,0 +1,87 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #dddddd;
+  border: 1px solid #030303;
+  text-align: left;
+  padding: 8px;
+}
+          td {
+            font-weight: bold;
+            border: 1px solid #030303;
+            text-align: left;
+            padding: 8px;
+            white-space: pre;
+            font-family: arial, sans-serif;
+            font-size: 100%;
+          }
+h1 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 300%;
+  background-color: #FFFF00;
+}
+h2 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 200%;
+  background-color: #2AE6C1;
+}
+h3 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 150%;
+  background-color: #33F0FF;
+}
+h4 {margin-top: 0em; margin-bottom: 0em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-size: 125%;
+  background-color: #7DFF33;
+}
+</style>
+</head>
+<body>
+<h1>Unit Test Report: Install-OracleApp</h1>
+<table>
+<tr><th>#</th><th>Category Set</th><th>Scenario</th><th>Fails (of 5)</th><th>Status</th></tr>
+<tr><td>1</td><td>Input Path</td><td><a href="path-missing.html" target="_blank">Path missing</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>2</td><td>Input Path</td><td><a href="path-is-folder.html" target="_blank">Path is folder</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>3</td><td>Input Path</td><td><a href="path-is-file.html" target="_blank">Path is file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>4</td><td>Files to Copy Multiplicity</td><td><a href="no-file.html" target="_blank">No file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>5</td><td>Files to Copy Multiplicity</td><td><a href="one-file.html" target="_blank">One file</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>6</td><td>Files to Copy Multiplicity</td><td><a href="multiple-files.html" target="_blank">Multiple files</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>7</td><td>SQL Scripts Multiplicity</td><td><a href="no-sql-script.html" target="_blank">No SQL script</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>8</td><td>SQL Scripts Multiplicity</td><td><a href="one-sql-script.html" target="_blank">One SQL script</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>9</td><td>SQL Scripts Multiplicity</td><td><a href="multiple-sql-scripts.html" target="_blank">Multiple SQL scripts</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>10</td><td>Script Param Multiplicity</td><td><a href="no-script-parameters.html" target="_blank">No script parameters</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>11</td><td>Script Param Multiplicity</td><td><a href="one-script-parameter.html" target="_blank">One script parameter</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>12</td><td>Script Param Multiplicity</td><td><a href="two-script-parameters.html" target="_blank">Two script parameters</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>13</td><td>Script Param Multiplicity</td><td><a href="three-script-parameters.html" target="_blank">Three script parameters</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>14</td><td>Call Type</td><td><a href="copy-files-and-sql-scripts.html" target="_blank">Copy files and SQL scripts</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>15</td><td>Call Type</td><td><a href="copy-files-only.html" target="_blank">Copy files only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>16</td><td>Call Type</td><td><a href="sql-scripts-only.html" target="_blank">SQL scripts only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>17</td><td>Input Path / File Combis</td><td><a href="input-path-and-files.html" target="_blank">Input path and files</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>18</td><td>Input Path / File Combis</td><td><a href="input-path-only.html" target="_blank">Input path only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>19</td><td>Input Path / File Combis</td><td><a href="files-only.html" target="_blank">Files only</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>20</td><td>Null Exceptions</td><td><a href="null-sql-folder.html" target="_blank">Null SQL folder</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>21</td><td>Null Exceptions</td><td><a href="null-sql-script.html" target="_blank">Null SQL script</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>22</td><td>Null Exceptions</td><td><a href="null-sql-schema.html" target="_blank">Null SQL schema</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>23</td><td>Missing Exceptions</td><td><a href="file-to-copy-missing.html" target="_blank">File to copy missing</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>24</td><td>Missing Exceptions</td><td><a href="install-folder-missing.html" target="_blank">Install folder missing</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>25</td><td>Missing Exceptions</td><td><a href="install-script-missing.html" target="_blank">Install script missing</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>26</td><td>Missing Hashtable Key</td><td><a href="folder.html" target="_blank">Folder</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>27</td><td>Missing Hashtable Key</td><td><a href="script.html" target="_blank">Script</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>28</td><td>Missing Hashtable Key</td><td><a href="schema.html" target="_blank">Schema</a></td><td>0</td><td>SUCCESS</td></tr>
+<tr><td>29</td><td>Missing Hashtable Key</td><td><a href="prmlis.html" target="_blank">PrmLis</a></td><td>0</td><td>SUCCESS</td></tr>
+</table>
+<h1>Test scenarios: 0 failed of 29: SUCCESS</h1>
+<h4>Formatted: 5/1/2025, 14:54:15</h4>
+</body></html>

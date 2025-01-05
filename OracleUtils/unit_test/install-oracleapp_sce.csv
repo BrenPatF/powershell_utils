@@ -1,0 +1,30 @@
+Category Set,Scenario,Active
+Input Path,Path missing,Y
+Input Path,Path is folder,Y
+Input Path,Path is file,Y
+Files to Copy Multiplicity,No file,Y
+Files to Copy Multiplicity,One file,Y
+Files to Copy Multiplicity,Multiple files,Y
+SQL Scripts Multiplicity,No SQL script,Y
+SQL Scripts Multiplicity,One SQL script,Y
+SQL Scripts Multiplicity,Multiple SQL scripts,Y
+Script Param Multiplicity,No script parameters,Y
+Script Param Multiplicity,One script parameter,Y
+Script Param Multiplicity,Two script parameters,Y
+Script Param Multiplicity,Three script parameters,Y
+Call Type,Copy files and SQL scripts,Y
+Call Type,Copy files only,Y
+Call Type,SQL scripts only,Y
+Input Path / File Combis,Input path and files,Y
+Input Path / File Combis,Input path only,Y
+Input Path / File Combis,Files only,Y
+Null Exceptions,Null SQL folder,Y
+Null Exceptions,Null SQL script,Y
+Null Exceptions,Null SQL schema,Y
+Missing Item Exceptions,File to copy missing,Y
+Missing Item Exceptions,Install folder missing,Y
+Missing Item Exceptions,Install script missing,Y
+Missing Hashtable Key,Folder,Y
+Missing Hashtable Key,Script,Y
+Missing Hashtable Key,Schema,Y
+Missing Hashtable Key,PrmLis,Y

@@ -1,0 +1,1 @@
+pwsh .\Format-JSON-InstallOracleApp.ps1  > .\Format-JSON-InstallOracleApp.out 2> .\Format-JSON-InstallOracleApp.err

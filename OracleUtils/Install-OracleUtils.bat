@@ -1,0 +1,1 @@
+pwsh .\Install-OracleUtils.ps1 > .\Install-OracleUtils.out 2> .\Install-OracleUtils.err

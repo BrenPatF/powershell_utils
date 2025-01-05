@@ -1,0 +1,25 @@
+
+Database             Time                 Version
+-------------------- -------------------- ------------------------------
+Start: FREE          05-JAN-2025 14:54:37 Version 23.4.0.24.05
+
+Drop lib and app
+old   1: DROP USER &LIB_USER CASCADE
+new   1: DROP USER lib CASCADE
+
+User dropped.
+
+old   1: DROP USER &APP_USER CASCADE
+new   1: DROP USER app CASCADE
+
+User dropped.
+
+Drop directory input_dir
+
+Directory dropped.
+
+
+'END:'||TO_CHAR(SYSDATE,'DD-MON-YY
+----------------------------------
+End: 05-JAN-2025 14:54:39
+

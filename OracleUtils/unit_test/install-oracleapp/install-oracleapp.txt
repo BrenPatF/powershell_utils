@@ -1,0 +1,2056 @@
+Unit Test Report: Install-OracleApp
+===================================
+
+      #    Category Set                Scenario                    Fails (of 5)  Status 
+      ---  --------------------------  --------------------------  ------------  -------
+      1    Input Path                  Path missing                0             SUCCESS
+      2    Input Path                  Path is folder              0             SUCCESS
+      3    Input Path                  Path is file                0             SUCCESS
+      4    Files to Copy Multiplicity  No file                     0             SUCCESS
+      5    Files to Copy Multiplicity  One file                    0             SUCCESS
+      6    Files to Copy Multiplicity  Multiple files              0             SUCCESS
+      7    SQL Scripts Multiplicity    No SQL script               0             SUCCESS
+      8    SQL Scripts Multiplicity    One SQL script              0             SUCCESS
+      9    SQL Scripts Multiplicity    Multiple SQL scripts        0             SUCCESS
+      10   Script Param Multiplicity   No script parameters        0             SUCCESS
+      11   Script Param Multiplicity   One script parameter        0             SUCCESS
+      12   Script Param Multiplicity   Two script parameters       0             SUCCESS
+      13   Script Param Multiplicity   Three script parameters     0             SUCCESS
+      14   Call Type                   Copy files and SQL scripts  0             SUCCESS
+      15   Call Type                   Copy files only             0             SUCCESS
+      16   Call Type                   SQL scripts only            0             SUCCESS
+      17   Input Path / File Combis    Input path and files        0             SUCCESS
+      18   Input Path / File Combis    Input path only             0             SUCCESS
+      19   Input Path / File Combis    Files only                  0             SUCCESS
+      20   Null Exceptions             Null SQL folder             0             SUCCESS
+      21   Null Exceptions             Null SQL script             0             SUCCESS
+      22   Null Exceptions             Null SQL schema             0             SUCCESS
+      23   Missing Exceptions          File to copy missing        0             SUCCESS
+      24   Missing Exceptions          Install folder missing      0             SUCCESS
+      25   Missing Exceptions          Install script missing      0             SUCCESS
+      26   Missing Hashtable Key       Folder                      0             SUCCESS
+      27   Missing Hashtable Key       Script                      0             SUCCESS
+      28   Missing Hashtable Key       Schema                      0             SUCCESS
+      29   Missing Hashtable Key       PrmLis                      0             SUCCESS
+
+Test scenarios: 0 failed of 29: SUCCESS
+=======================================
+Formatted: 5/1/2025, 14:54:15
+
+SCENARIO 1: Path missing [Category Set: Input Path] {
+=====================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Missing    Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  N         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 2: Path is folder [Category Set: Input Path] {
+=======================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 3: Path is file [Category Set: Input Path] {
+=====================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path   Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  -----------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:input_dir  File       Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                    
+            -  -------------------------------------------
+            1  The item C:input_dir is a file, aborting...
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 4: No file [Category Set: Files to Copy Multiplicity] {
+================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path  Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ----------  ---------  ---------  ----------  ----------  ----------  ----------
+            1                         Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files: Empty
+      ==========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  N         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 5: One file [Category Set: Files to Copy Multiplicity] {
+=================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 6: Multiple files [Category Set: Files to Copy Multiplicity] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+            2  File2.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+            2  File2.csv
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 7: No SQL script [Category Set: SQL Scripts Multiplicity] {
+====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List: Empty
+      ================================
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 8: One SQL script [Category Set: SQL Scripts Multiplicity] {
+=====================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 9: Multiple SQL scripts [Category Set: SQL Scripts Multiplicity] {
+===========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name       Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ----------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib1.sql  Y                  lib                                          
+            2  lib          Y                  install_lib2.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                         
+            -  -----------  -----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib1.sql
+            2  lib          sqlplus lib/lib@orclpdb @install_lib2.sql
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 10: No script parameters [Category Set: Script Param Multiplicity] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 11: One script parameter [Category Set: Script Param Multiplicity] {
+=============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib     pval1                                
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                              
+            -  -----------  ----------------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql pval1
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 12: Two script parameters [Category Set: Script Param Multiplicity] {
+==============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib     pval1        pval2                   
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                                    
+            -  -----------  ----------------------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql pval1 pval2
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 13: Three script parameters [Category Set: Script Param Multiplicity] {
+================================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib     pval1        pval2        pval3      
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                                          
+            -  -----------  ----------------------------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql pval1 pval2 pval3
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 14: Copy files and SQL scripts [Category Set: Call Type] {
+===================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name       Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ----------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib1.sql  Y                  lib                                          
+            2  lib          Y                  install_lib2.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                         
+            -  -----------  -----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib1.sql
+            2  lib          sqlplus lib/lib@orclpdb @install_lib2.sql
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 15: Copy files only [Category Set: Call Type] {
+========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     File       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List: Empty
+      ================================
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 16: SQL scripts only [Category Set: Call Type] {
+=========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path  Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ----------  ---------  ---------  ----------  ----------  ----------  ----------
+            1                         SQL        folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files: Empty
+      ==========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name       Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ----------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib1.sql  Y                  lib                                          
+            2  lib          Y                  install_lib2.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                         
+            -  -----------  -----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib1.sql
+            2  lib          sqlplus lib/lib@orclpdb @install_lib2.sql
+
+      } 0 failed of 2: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 17: Input path and files [Category Set: Input Path / File Combis] {
+============================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path {
+      =====================
+
+            #  Exists Y/N
+            -  ----------
+            1  Y         
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name
+            -  ---------
+            1  File1.csv
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Execution String                        
+            -  -----------  ----------------------------------------
+            1  lib          sqlplus lib/lib@orclpdb @install_lib.sql
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 4: Exception: Empty as expected: SUCCESS
+      ==============================================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 18: Input path only [Category Set: Input Path / File Combis] {
+=======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files: Empty
+      ==========================
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                                       
+            -  ------------------------------------------------------------------------------
+            1  If input path (C:\input_dir) present, there must be at least one file to copy.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 19: Files only [Category Set: Input Path / File Combis] {
+==================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path  Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ----------  ---------  ---------  ----------  ----------  ----------  ----------
+            1                         Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                 
+            -  --------------------------------------------------------
+            1  If there is a file to copy input path must be specified.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 20: Null SQL folder [Category Set: Null Exceptions] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1               N                  install_lib.sql  N                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message             
+            -  --------------------
+            1  SQL folder required.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 21: Null SQL script [Category Set: Null Exceptions] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name  Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  -----------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                               N                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                  
+            -  -------------------------
+            1  SQL script name required.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 22: Null SQL schema [Category Set: Null Exceptions] {
+==============================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                                                               
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                  
+            -  -------------------------
+            1  SQL schema name required.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 23: File to copy missing [Category Set: Missing Exceptions] {
+======================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  N         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                       
+            -  ----------------------------------------------
+            1  The specified file 'File1.csv' does not exist.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 24: Install folder missing [Category Set: Missing Exceptions] {
+========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          N                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                   
+            -  ------------------------------------------
+            1  The specified folder 'lib' does not exist.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 25: Install script missing [Category Set: Missing Exceptions] {
+========================================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  N                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                   
+            -  ----------------------------------------------------------
+            1  The specified script 'lib/install_lib.sql' does not exist.
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 26: Folder [Category Set: Missing Hashtable Key] {
+===========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folderX     script      schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                                              
+            -  -------------------------------------------------------------------------------------
+            1  Missing required key 'folder' in hashtable, actual keys: folderX prmLis schema script
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 27: Script [Category Set: Missing Hashtable Key] {
+===========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      scriptX     schema      prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                                              
+            -  -------------------------------------------------------------------------------------
+            1  Missing required key 'script' in hashtable, actual keys: folder prmLis schema scriptX
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 28: Schema [Category Set: Missing Hashtable Key] {
+===========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schemaX     prmLis    
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                                              
+            -  -------------------------------------------------------------------------------------
+            1  Missing required key 'schema' in hashtable, actual keys: folder prmLis schemaX script
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================
+
+SCENARIO 29: PrmLis [Category Set: Missing Hashtable Key] {
+===========================================================
+
+   INPUTS
+   ======
+
+      GROUP 1: Scalars {
+      ==================
+
+            #  Input Path    Path Type  Call Type  Hash Key 1  Hash Key 2  Hash Key 3  Hash Key 4
+            -  ------------  ---------  ---------  ----------  ----------  ----------  ----------
+            1  C:\input_dir  Folder     Both       folder      script      schema      prmLisX   
+
+      }
+      =
+
+      GROUP 2: Copy Files {
+      =====================
+
+            #  File Name  Exists Y/N
+            -  ---------  ----------
+            1  File1.csv  Y         
+
+      }
+      =
+
+      GROUP 3: SQL Install List {
+      ===========================
+
+            #  Folder Name  Folder Exists Y/N  Script Name      Script Exists Y/N  Schema  Parameter 1  Parameter 2  Parameter 3
+            -  -----------  -----------------  ---------------  -----------------  ------  -----------  -----------  -----------
+            1  lib          Y                  install_lib.sql  Y                  lib                                          
+
+      }
+      =
+
+   OUTPUTS
+   =======
+
+      GROUP 1: Input Path: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 2: Copy Files: Empty as expected: SUCCESS
+      ===============================================
+
+      GROUP 3: SQL Install List: Empty as expected: SUCCESS
+      =====================================================
+
+      GROUP 4: Exception {
+      ====================
+
+            #  Message                                                                              
+            -  -------------------------------------------------------------------------------------
+            1  Missing required key 'prmLis' in hashtable, actual keys: folder prmLisX schema script
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 5: Unhandled Exception: Empty as expected: SUCCESS
+      ========================================================
+
+} 0 failed of 5: SUCCESS
+========================

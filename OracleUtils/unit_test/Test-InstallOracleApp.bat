@@ -1,0 +1,1 @@
+pwsh .\Test-InstallOracleApp.ps1  > .\Test-InstallOracleApp.out 2> .\Test-InstallOracleApp.err

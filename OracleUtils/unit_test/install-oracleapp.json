@@ -1,0 +1,832 @@
+{
+  "meta": {
+    "title": "Install-OracleApp",
+    "delimiter": "|",
+    "inp": {
+      "Scalars": [
+        "Input Path",
+        "Path Type",
+        "Call Type",
+        "Hash Key 1",
+        "Hash Key 2",
+        "Hash Key 3",
+        "Hash Key 4"
+      ],
+      "Copy Files": [
+        "File Name",
+        "Exists Y/N"
+      ],
+      "SQL Install List": [
+        "Folder Name",
+        "Folder Exists Y/N",
+        "Script Name",
+        "Script Exists Y/N",
+        "Schema",
+        "Parameter 1",
+        "Parameter 2",
+        "Parameter 3"
+      ]
+    },
+    "out": {
+      "Input Path": [
+        "Exists Y/N"
+      ],
+      "Copy Files": [
+        "File Name"
+      ],
+      "SQL Install List": [
+        "Folder Name",
+        "Execution String"
+      ],
+      "Exception": [
+        "Message"
+      ]
+    }
+  },
+  "scenarios": {
+    "Path missing": {
+      "active_yn": "Y",
+      "category_set": "Input Path",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Missing|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "N"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Path is folder": {
+      "active_yn": "Y",
+      "category_set": "Input Path",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Path is file": {
+      "active_yn": "Y",
+      "category_set": "Input Path",
+      "inp": {
+        "Scalars": [
+          "C:input_dir|File|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "The item C:input_dir is a file, aborting..."
+        ]
+      }
+    },
+    "No file": {
+      "active_yn": "Y",
+      "category_set": "Files to Copy Multiplicity",
+      "inp": {
+        "Scalars": [
+          "||Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "N"
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "One file": {
+      "active_yn": "Y",
+      "category_set": "Files to Copy Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Multiple files": {
+      "active_yn": "Y",
+      "category_set": "Files to Copy Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y",
+          "File2.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv",
+          "File2.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "No SQL script": {
+      "active_yn": "Y",
+      "category_set": "SQL Scripts Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "One SQL script": {
+      "active_yn": "Y",
+      "category_set": "SQL Scripts Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Multiple SQL scripts": {
+      "active_yn": "Y",
+      "category_set": "SQL Scripts Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib1.sql|Y|lib|||",
+          "lib|Y|install_lib2.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib1.sql",
+          "lib|sqlplus lib/lib@orclpdb @install_lib2.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "No script parameters": {
+      "active_yn": "Y",
+      "category_set": "Script Param Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "One script parameter": {
+      "active_yn": "Y",
+      "category_set": "Script Param Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|pval1||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql pval1"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Two script parameters": {
+      "active_yn": "Y",
+      "category_set": "Script Param Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|pval1|pval2|"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql pval1 pval2"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Three script parameters": {
+      "active_yn": "Y",
+      "category_set": "Script Param Multiplicity",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|pval1|pval2|pval3"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql pval1 pval2 pval3"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Copy files and SQL scripts": {
+      "active_yn": "Y",
+      "category_set": "Call Type",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib1.sql|Y|lib|||",
+          "lib|Y|install_lib2.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib1.sql",
+          "lib|sqlplus lib/lib@orclpdb @install_lib2.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Copy files only": {
+      "active_yn": "Y",
+      "category_set": "Call Type",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|File|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "SQL scripts only": {
+      "active_yn": "Y",
+      "category_set": "Call Type",
+      "inp": {
+        "Scalars": [
+          "||SQL|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib1.sql|Y|lib|||",
+          "lib|Y|install_lib2.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib1.sql",
+          "lib|sqlplus lib/lib@orclpdb @install_lib2.sql"
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Input path and files": {
+      "active_yn": "Y",
+      "category_set": "Input Path / File Combis",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+          "Y"
+        ],
+        "Copy Files": [
+          "File1.csv"
+        ],
+        "SQL Install List": [
+          "lib|sqlplus lib/lib@orclpdb @install_lib.sql",
+        ],
+        "Exception": [
+        ]
+      }
+    },
+    "Input path only": {
+      "active_yn": "Y",
+      "category_set": "Input Path / File Combis",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "If input path (C:\\input_dir) present, there must be at least one file to copy."
+        ]
+      }
+    },
+    "Files only": {
+      "active_yn": "Y",
+      "category_set": "Input Path / File Combis",
+      "inp": {
+        "Scalars": [
+          "||Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "If there is a file to copy input path must be specified."
+        ]
+      }
+    },
+    "Null SQL folder": {
+      "active_yn": "Y",
+      "category_set": "Null Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "|N|install_lib.sql|N|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "SQL folder required."
+        ]
+      }
+    },
+    "Null SQL script": {
+      "active_yn": "Y",
+      "category_set": "Null Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y||N|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "SQL script name required."
+        ]
+      }
+    },
+    "Null SQL schema": {
+      "active_yn": "Y",
+      "category_set": "Null Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y||||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "SQL schema name required."
+        ]
+      }
+    },
+    "File to copy missing": {
+      "active_yn": "Y",
+      "category_set": "Missing Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|N"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "The specified file 'File1.csv' does not exist."
+        ]
+      }
+    },
+    "Install folder missing": {
+      "active_yn": "Y",
+      "category_set": "Missing Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|N|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "The specified folder 'lib' does not exist."
+        ]
+      }
+    },
+    "Install script missing": {
+      "active_yn": "Y",
+      "category_set": "Missing Exceptions",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|N|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "The specified script 'lib/install_lib.sql' does not exist."
+        ]
+      }
+    },
+    "Folder": {
+      "active_yn": "Y",
+      "category_set": "Missing Hashtable Key",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folderX|script|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "Missing required key 'folder' in hashtable, actual keys: folderX prmLis schema script"
+        ]
+      }
+    },
+    "Script": {
+      "active_yn": "Y",
+      "category_set": "Missing Hashtable Key",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|scriptX|schema|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "Missing required key 'script' in hashtable, actual keys: folder prmLis schema scriptX"
+        ]
+      }
+    },
+    "Schema": {
+      "active_yn": "Y",
+      "category_set": "Missing Hashtable Key",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schemaX|prmLis"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "Missing required key 'schema' in hashtable, actual keys: folder prmLis schemaX script"
+        ]
+      }
+    },
+    "PrmLis": {
+      "active_yn": "Y",
+      "category_set": "Missing Hashtable Key",
+      "inp": {
+        "Scalars": [
+          "C:\\input_dir|Folder|Both|folder|script|schema|prmLisX"
+        ],
+        "Copy Files": [
+          "File1.csv|Y"
+        ],
+        "SQL Install List": [
+          "lib|Y|install_lib.sql|Y|lib|||"
+        ]
+      },
+      "out": {
+        "Input Path": [
+        ],
+        "Copy Files": [
+        ],
+        "SQL Install List": [
+        ],
+        "Exception": [
+          "Missing required key 'prmLis' in hashtable, actual keys: folder prmLisX schema script"
+        ]
+      }
+    }
+  }
+}

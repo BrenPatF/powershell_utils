@@ -1,7 +1,7 @@
 
 ## Installation
 
-To install MDUtils open a powershell window in the install folder below MDUtils, and execute as follows:
+To install MDUtils open a powershell window in the MDUtils root folder, and execute as follows:
 ```
 $ .\Install-MDUtils
 ```

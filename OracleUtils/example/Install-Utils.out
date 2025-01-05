@@ -1,0 +1,29 @@
+
+Copy folder
+===========
+
+Copy folder = c:/input, existing = Y
+
+Files copied...
+===============
+
+File                                           
+-----------------------------------------------
+./unit_test/tt_utils.purely_wrap_utils_inp.json
+./fantasy_premier_league_player_stats.csv
+
+Sqlplus results
+===============
+
+subFolder              exeStr                                                             
+---------------------  -------------------------------------------------------------------
+.                      sqlplus sys/sys@orclpdb AS SYSDBA @drop_utils_users.sql lib app    
+.                      sqlplus sys/sys@orclpdb AS SYSDBA @install_sys.sql lib app c:/input
+lib                    sqlplus lib/lib@orclpdb @install_utils.sql app                     
+install_ut_prereq\lib  sqlplus lib/lib@orclpdb @install_lib_all.sql app                   
+install_ut_prereq\app  sqlplus app/app@orclpdb @c_syns_all.sql lib                        
+lib                    sqlplus lib/lib@orclpdb @install_utils_tt.sql                      
+app                    sqlplus app/app@orclpdb @install_col_group.sql lib                 
+.                      sqlplus sys/sys@orclpdb AS SYSDBA @l_objects.sql sys               
+.                      sqlplus lib/lib@orclpdb @l_objects.sql lib                         
+.                      sqlplus app/app@orclpdb @l_objects.sql app                         
