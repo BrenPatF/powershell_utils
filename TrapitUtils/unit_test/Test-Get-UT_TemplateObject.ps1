@@ -77,11 +77,11 @@ $DELIM = ';'
 getGroupObjLis: Returns a list of objects from list of delimited group/field strings
 
 **************************************************************************************************#>
-function getGroupObjLis($strLis) { # list of delimited group/field/value strings
-    $objLis = @()
+function getGroupObjLis([String[]]$strLis) { # list of delimited group/field/value strings
+    [PSCustomObject[]]$objLis = @()
     foreach ($s in $strLis) {
         $fields = $s.Split($DELIM)
-        $objLis += @{'group' = $fields[0]; 'field' = $fields[1]; 'value' = $fields[2]}
+        $objLis += [PSCustomObject]@{'group' = $fields[0]; 'field' = $fields[1]; 'value1' = $fields[2]; 'value2' = $fields[3]}
     }
     $objLis
 }
@@ -90,11 +90,11 @@ function getGroupObjLis($strLis) { # list of delimited group/field/value strings
 getSceObjLis: Returns a list of objects from list of delimited Category Set/Scenario/Active strings
 
 **************************************************************************************************#>
-function getSceObjLis($strLis) { # list of delimited Category Set/Scenario/Active strings
-    $objLis = @()
+function getSceObjLis([String[]]$strLis) { # list of delimited Category Set/Scenario/Active strings
+    [PSCustomObject[]]$objLis = @()
     foreach ($s in $strLis) {
         $fields = $s.Split($DELIM)
-        $objLis += @{'Category Set' = $fields[0]; 'Scenario' = $fields[1]; 'Active' = $fields[2]}
+        $objLis += [PSCustomObject]@{'Category Set' = $fields[0]; 'Scenario' = $fields[1]; 'Active' = $fields[2]}
     }
     $objLis
 }
@@ -104,7 +104,7 @@ getGroupFieldStrLis: Returns a list of delimited group/field strings from an obj
                      for key, and list of fields names for value
 
 **************************************************************************************************#>
-function getGroupFieldStrLis($obj) { # object has a key and a value that is an array of strings
+function getGroupFieldStrLis([PSCustomObject]$obj) { # object has a key and a value that is an array of strings
     [String[]]$strLis = @()
     foreach ($o in $obj.PSObject.Properties) {
         foreach ($v in $o.value) {
@@ -129,17 +129,14 @@ purelyWrap-Unit: Design pattern has the unit under test calls wrapped in a 'pure
                  group name in each case, as the return value
 
 **************************************************************************************************#>
-function purelyWrap-Unit($inpGroups) { # input scenario groups
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
 
     $scalars = $inpGroups.'Scalars'
-    if ($scalars.length -eq 0) { # either empty or contains a delimiter
-         $delimiter = '|'
-    } else {
-         $delimiter = $scalars[0]
-    }
+    $delimiter, $title = $scalars.split($DELIM)
     $utObj = Get-UT_TemplateObject (getGroupObjLis $inpGroups.'Input Group') `
                                    (getGroupObjLis $inpGroups.'Output Group') `
                                    $delimiter `
+                                   $title `
                                    (getSceObjLis $inpGroups.'Scenarios')
     [String[]]$inpLis = @()
     [String[]]$outLis = @()
@@ -154,8 +151,9 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
 
     [String[]]$metaOutLis = @()
     $metaOutLis += getGroupFieldStrLis $utObj.meta.out
-    #      Object key (group name)  Private function    Returned group object = key + list of strings
+    #     Object key (group name)   group object value = list of strings
     [PSCustomObject]@{
+          'Scalars'               = [String[]]$utObj.meta.title
           'Meta Input Group'      = $metaInpLis
           'Meta Output Group'     = $metaOutLis
           'Scenarios'             = $sceLis

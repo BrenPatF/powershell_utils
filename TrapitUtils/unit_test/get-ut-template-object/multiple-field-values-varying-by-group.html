@@ -48,7 +48,7 @@ h4 {margin-top: 0em; margin-bottom: 0em;
 </style>
 </head>
 <body>
-<h2>SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity]</h2>
+<h2>SCENARIO 16: Multiple field values varying by group [Category Set: Field Value Multiplicity]</h2>
 <h3>INPUTS</h3>
 <h4>GROUP 1: Scalars</h4>
 <table>
@@ -66,8 +66,8 @@ h4 {margin-top: 0em; margin-bottom: 0em;
 <h4>GROUP 3: Input Group</h4>
 <table>
 <tr><th>#</th><th>Group Name</th><th>Field Name</th><th>Value1</th><th>Value2</th></tr>
-<tr><td>1</td><td>Input Group 1</td><td>Input Field 1-1</td><td>Input Value1 1-1</td><td>Input Value2 1-1</td></tr>
-<tr><td>2</td><td>Input Group 1</td><td>Input Field 1-2</td><td>Input Value1 1-2</td><td>Input Value2 1-2</td></tr>
+<tr><td>1</td><td>Input Group 1</td><td>Input Field 1-1</td><td>Input Value1 1-1</td><td></td></tr>
+<tr><td>2</td><td>Input Group 1</td><td>Input Field 1-2</td><td>Input Value1 1-2</td><td></td></tr>
 <tr><td>3</td><td>Input Group 2</td><td>Input Field 2-1</td><td>Input Value1 2-1</td><td>Input Value2 2-1</td></tr>
 <tr><td>4</td><td>Input Group 2</td><td>Input Field 2-2</td><td>Input Value1 2-2</td><td>Input Value2 2-2</td></tr>
 </table>
@@ -77,8 +77,8 @@ h4 {margin-top: 0em; margin-bottom: 0em;
 <tr><th>#</th><th>Group Name</th><th>Field Name</th><th>Value1</th><th>Value2</th></tr>
 <tr><td>1</td><td>Output Group 1</td><td>Output Field 1-1</td><td>Output Value1 1-1</td><td>Output Value2 1-1</td></tr>
 <tr><td>2</td><td>Output Group 1</td><td>Output Field 1-2</td><td>Output Value1 1-2</td><td>Output Value2 1-2</td></tr>
-<tr><td>3</td><td>Output Group 2</td><td>Output Field 2-1</td><td>Output Value1 2-1</td><td>Output Value2 2-1</td></tr>
-<tr><td>4</td><td>Output Group 2</td><td>Output Field 2-2</td><td>Output Value1 2-2</td><td>Output Value2 2-2</td></tr>
+<tr><td>3</td><td>Output Group 2</td><td>Output Field 2-1</td><td>Output Value1 2-1</td><td></td></tr>
+<tr><td>4</td><td>Output Group 2</td><td>Output Field 2-2</td><td>Output Value1 2-2</td><td></td></tr>
 </table>
 <h4></h4>
 <h3>OUTPUTS</h3>
@@ -117,28 +117,24 @@ h4 {margin-top: 0em; margin-bottom: 0em;
 <table>
 <tr><th>#</th><th>Scenario</th><th>Group Name</th><th>Record</th></tr>
 <tr><td>1</td><td>Scenario 1</td><td>Input Group 1</td><td>Input Value1 1-1~Input Value1 1-2</td></tr>
-<tr><td>2</td><td>Scenario 1</td><td>Input Group 1</td><td>Input Value2 1-1~Input Value2 1-2</td></tr>
-<tr><td>3</td><td>Scenario 1</td><td>Input Group 2</td><td>Input Value1 2-1~Input Value1 2-2</td></tr>
-<tr><td>4</td><td>Scenario 1</td><td>Input Group 2</td><td>Input Value2 2-1~Input Value2 2-2</td></tr>
-<tr><td>5</td><td>Scenario 2</td><td>Input Group 1</td><td>Input Value1 1-1~Input Value1 1-2</td></tr>
-<tr><td>6</td><td>Scenario 2</td><td>Input Group 1</td><td>Input Value2 1-1~Input Value2 1-2</td></tr>
-<tr><td>7</td><td>Scenario 2</td><td>Input Group 2</td><td>Input Value1 2-1~Input Value1 2-2</td></tr>
-<tr><td>8</td><td>Scenario 2</td><td>Input Group 2</td><td>Input Value2 2-1~Input Value2 2-2</td></tr>
+<tr><td>2</td><td>Scenario 1</td><td>Input Group 2</td><td>Input Value1 2-1~Input Value1 2-2</td></tr>
+<tr><td>3</td><td>Scenario 1</td><td>Input Group 2</td><td>Input Value2 2-1~Input Value2 2-2</td></tr>
+<tr><td>4</td><td>Scenario 2</td><td>Input Group 1</td><td>Input Value1 1-1~Input Value1 1-2</td></tr>
+<tr><td>5</td><td>Scenario 2</td><td>Input Group 2</td><td>Input Value1 2-1~Input Value1 2-2</td></tr>
+<tr><td>6</td><td>Scenario 2</td><td>Input Group 2</td><td>Input Value2 2-1~Input Value2 2-2</td></tr>
 </table>
-<h4>0 failed of 8: SUCCESS</h4>
+<h4>0 failed of 6: SUCCESS</h4>
 <h4>GROUP 6: Scenario Output Group</h4>
 <table>
 <tr><th>#</th><th>Scenario</th><th>Group Name</th><th>Record</th></tr>
 <tr><td>1</td><td>Scenario 1</td><td>Output Group 1</td><td>Output Value1 1-1~Output Value1 1-2</td></tr>
 <tr><td>2</td><td>Scenario 1</td><td>Output Group 1</td><td>Output Value2 1-1~Output Value2 1-2</td></tr>
 <tr><td>3</td><td>Scenario 1</td><td>Output Group 2</td><td>Output Value1 2-1~Output Value1 2-2</td></tr>
-<tr><td>4</td><td>Scenario 1</td><td>Output Group 2</td><td>Output Value2 2-1~Output Value2 2-2</td></tr>
-<tr><td>5</td><td>Scenario 2</td><td>Output Group 1</td><td>Output Value1 1-1~Output Value1 1-2</td></tr>
-<tr><td>6</td><td>Scenario 2</td><td>Output Group 1</td><td>Output Value2 1-1~Output Value2 1-2</td></tr>
-<tr><td>7</td><td>Scenario 2</td><td>Output Group 2</td><td>Output Value1 2-1~Output Value1 2-2</td></tr>
-<tr><td>8</td><td>Scenario 2</td><td>Output Group 2</td><td>Output Value2 2-1~Output Value2 2-2</td></tr>
+<tr><td>4</td><td>Scenario 2</td><td>Output Group 1</td><td>Output Value1 1-1~Output Value1 1-2</td></tr>
+<tr><td>5</td><td>Scenario 2</td><td>Output Group 1</td><td>Output Value2 1-1~Output Value2 1-2</td></tr>
+<tr><td>6</td><td>Scenario 2</td><td>Output Group 2</td><td>Output Value1 2-1~Output Value1 2-2</td></tr>
 </table>
-<h4>0 failed of 8: SUCCESS</h4>
+<h4>0 failed of 6: SUCCESS</h4>
 <h4>GROUP 7: Unhandled Exception: Empty as expected: SUCCESS</h4>
 <h2>0 failed of 7: SUCCESS</h2>
 </body></html>

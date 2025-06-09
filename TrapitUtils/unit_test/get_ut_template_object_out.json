@@ -4,7 +4,8 @@
     "delimiter": ";",
     "inp": {
       "Scalars": [
-        "Delimiter"
+        "Delimiter",
+        "Title"
       ],
       "Scenarios": [
         "Category Set",
@@ -14,15 +15,20 @@
       "Input Group": [
         "Group Name",
         "Field Name",
-        "Value"
+        "Value1",
+        "Value2"
       ],
       "Output Group": [
         "Group Name",
         "Field Name",
-        "Value"
+        "Value1",
+        "Value2"
       ]
     },
     "out": {
+      "Scalars": [
+        "Title"
+      ],
       "Meta Input Group": [
         "Group Name",
         "Field Name"
@@ -57,35 +63,55 @@
       "category_set": "Input Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
+        "Scalars": {
+          "exp": [
+            "Template Test"
+          ],
+          "act": [
+            "Template Test"
+          ]
+        },
         "Meta Input Group": {
           "exp": [],
           "act": []
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
@@ -94,10 +120,24 @@
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -110,57 +150,100 @@
       "category_set": "Input Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -173,62 +256,114 @@
       "category_set": "Input Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1-1;Input Value 1-1",
-          "Input Group 2;Input Field 2-1;Input Value 2-1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
+        "Scalars": {
+          "exp": [
+            "Template Test"
+          ],
+          "act": [
+            "Template Test"
+          ]
+        },
         "Meta Input Group": {
           "exp": [
             "Input Group 1;Input Field 1-1",
-            "Input Group 2;Input Field 2-1"
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ],
           "act": [
             "Input Group 1;Input Field 1-1",
-            "Input Group 2;Input Field 2-1"
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1-1",
-            "Scenario one;Input Group 2;Input Value 2-1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1-1",
-            "Scenario one;Input Group 2;Input Value 2-1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -241,23 +376,41 @@
       "category_set": "Output Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": []
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
@@ -266,18 +419,34 @@
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
@@ -294,57 +463,100 @@
       "category_set": "Output Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2"
           ]
         },
         "Unhandled Exception": {
@@ -357,62 +569,114 @@
       "category_set": "Output Group Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1-1;Output Value 1-1",
-          "Output Group 2;Output Field 2-1;Output Value 2-1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
             "Output Group 1;Output Field 1-1",
-            "Output Group 2;Output Field 2-1"
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
             "Output Group 1;Output Field 1-1",
-            "Output Group 2;Output Field 2-1"
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1-1",
-            "Scenario one;Output Group 2;Output Value 2-1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1-1",
-            "Scenario one;Output Group 2;Output Value 2-1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -425,57 +689,97 @@
       "category_set": "Input Field Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1",
+            "Scenario 1;Input Group 1;Input Value2 1-1",
+            "Scenario 2;Input Group 1;Input Value1 1-1",
+            "Scenario 2;Input Group 1;Input Value2 1-1"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1",
+            "Scenario 1;Input Group 1;Input Value2 1-1",
+            "Scenario 2;Input Group 1;Input Value1 1-1",
+            "Scenario 2;Input Group 1;Input Value2 1-1"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -488,60 +792,114 @@
       "category_set": "Input Field Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1-1",
-          "Input Group 1;Input Field 2;Input Value 1-2"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1",
-            "Input Group 1;Input Field 2"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1",
-            "Input Group 1;Input Field 2"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1-1~Input Value 1-2"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1-1~Input Value 1-2"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -554,57 +912,97 @@
       "category_set": "Output Field Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1",
+            "Scenario 1;Output Group 1;Output Value2 1-1",
+            "Scenario 2;Output Group 1;Output Value1 1-1",
+            "Scenario 2;Output Group 1;Output Value2 1-1"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1",
+            "Scenario 1;Output Group 1;Output Value2 1-1",
+            "Scenario 2;Output Group 1;Output Value1 1-1",
+            "Scenario 2;Output Group 1;Output Value2 1-1"
           ]
         },
         "Unhandled Exception": {
@@ -617,60 +1015,114 @@
       "category_set": "Output Field Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1-1",
-          "Output Group 1;Output Field 2;Output Value 1-2"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1-1~Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1-1~Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -683,60 +1135,114 @@
       "category_set": "Delimiter Multiplicity",
       "inp": {
         "Scalars": [
-          "?"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1-1",
-          "Output Group 1;Output Field 2;Output Value 1-2"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1-1?Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1-1?Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -749,60 +1255,114 @@
       "category_set": "Delimiter Multiplicity",
       "inp": {
         "Scalars": [
-          "??"
+          "?#;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1-1",
-          "Output Group 1;Output Field 2;Output Value 1-2"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1?#Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1?#Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1?#Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1?#Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1?#Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1?#Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1?#Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1?#Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1?#Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1?#Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1?#Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1?#Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1?#Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1?#Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1?#Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1?#Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1-1??Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1?#Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1?#Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1?#Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1?#Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1?#Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1?#Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1?#Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1?#Output Value2 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1-1??Output Value 1-2"
+            "Scenario 1;Output Group 1;Output Value1 1-1?#Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1?#Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1?#Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1?#Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1?#Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1?#Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1?#Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1?#Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -812,34 +1372,60 @@
       }
     },
     "Scenarios file not present": {
-      "category_set": "Scenarios Multiplicity",
+      "category_set": "Scenario Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
@@ -852,18 +1438,30 @@
         },
         "Scenario Input Group": {
           "exp": [
-            "scenario 1;Input Group 1;Input Value 1"
+            "scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "scenario 1;Input Group 1;Input Value 1"
+            "scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "scenario 1;Output Group 1;Output Value 1"
+            "scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "scenario 1;Output Group 1;Output Value 1"
+            "scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -873,67 +1471,117 @@
       }
     },
     "Multiple scenarios": {
-      "category_set": "Scenarios Multiplicity",
+      "category_set": "Scenario Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario One;Y",
-          "Generic;Scenario Two;Y"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario One;Y",
-            "Generic;Scenario Two;Y"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario One;Y",
-            "Generic;Scenario Two;Y"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -942,62 +1590,83 @@
         }
       }
     },
-    "All field values null": {
-      "category_set": "Initial Field Values",
+    "No field values": {
+      "category_set": "Field Value Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;"
+          "Input Group 1;Input Field 1-1;;",
+          "Input Group 1;Input Field 1-2;;",
+          "Input Group 2;Input Field 2-1;;",
+          "Input Group 2;Input Field 2-2;;"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;"
+          "Output Group 1;Output Field 1-1;;",
+          "Output Group 1;Output Field 1-2;;",
+          "Output Group 2;Output Field 2-1;;",
+          "Output Group 2;Output Field 2-2;;"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
-          "exp": [
-            "Scenario one;Input Group 1;"
-          ],
-          "act": [
-            "Scenario one;Input Group 1;"
-          ]
+          "exp": [],
+          "act": []
         },
         "Scenario Output Group": {
-          "exp": [
-            "Scenario one;Output Group 1;"
-          ],
-          "act": [
-            "Scenario one;Output Group 1;"
-          ]
+          "exp": [],
+          "act": []
         },
         "Unhandled Exception": {
           "exp": [],
@@ -1005,67 +1674,110 @@
         }
       }
     },
-    "Some field values null, some not null": {
-      "category_set": "Initial Field Values",
+    "Multiple field values varying by group": {
+      "category_set": "Field Value Multiplicity",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario one;N"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;",
-          "Input Group 1;Input Field 2;Input Value 2"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1",
-          "Output Group 1;Output Field 2;"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1",
-            "Input Group 1;Input Field 2"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1",
-            "Input Group 1;Input Field 2"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1",
-            "Output Group 1;Output Field 2"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario one;N"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario one;Input Group 1;~Input Value 2"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario one;Input Group 1;~Input Value 2"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario one;Output Group 1;Output Value 1~"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2"
           ],
           "act": [
-            "Scenario one;Output Group 1;Output Value 1~"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -1078,64 +1790,114 @@
       "category_set": "Category Set",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario One;Y",
-          ";Scenario Two;Y"
+          ";Scenario 1;N",
+          "Category Set 2;Scenario 2;N"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario One;Y",
-            ";Scenario Two;Y"
+            ";Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ],
           "act": [
-            "Generic;Scenario One;Y",
-            ";Scenario Two;Y"
+            ";Scenario 1;N",
+            "Category Set 2;Scenario 2;N"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {
@@ -1148,64 +1910,114 @@
       "category_set": "Active Flag",
       "inp": {
         "Scalars": [
-          "~"
+          "~;Template Test"
         ],
         "Scenarios": [
-          "Generic;Scenario One;N",
-          ";Scenario Two;Y"
+          "Category Set 1;Scenario 1;N",
+          "Category Set 2;Scenario 2;Y"
         ],
         "Input Group": [
-          "Input Group 1;Input Field 1;Input Value 1"
+          "Input Group 1;Input Field 1-1;Input Value1 1-1;Input Value2 1-1",
+          "Input Group 1;Input Field 1-2;Input Value1 1-2;Input Value2 1-2",
+          "Input Group 2;Input Field 2-1;Input Value1 2-1;Input Value2 2-1",
+          "Input Group 2;Input Field 2-2;Input Value1 2-2;Input Value2 2-2"
         ],
         "Output Group": [
-          "Output Group 1;Output Field 1;Output Value 1"
+          "Output Group 1;Output Field 1-1;Output Value1 1-1;Output Value2 1-1",
+          "Output Group 1;Output Field 1-2;Output Value1 1-2;Output Value2 1-2",
+          "Output Group 2;Output Field 2-1;Output Value1 2-1;Output Value2 2-1",
+          "Output Group 2;Output Field 2-2;Output Value1 2-2;Output Value2 2-2"
         ]
       },
       "out": {
-        "Meta Input Group": {
+        "Scalars": {
           "exp": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
           ],
           "act": [
-            "Input Group 1;Input Field 1"
+            "Template Test"
+          ]
+        },
+        "Meta Input Group": {
+          "exp": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
+          ],
+          "act": [
+            "Input Group 1;Input Field 1-1",
+            "Input Group 1;Input Field 1-2",
+            "Input Group 2;Input Field 2-1",
+            "Input Group 2;Input Field 2-2"
           ]
         },
         "Meta Output Group": {
           "exp": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ],
           "act": [
-            "Output Group 1;Output Field 1"
+            "Output Group 1;Output Field 1-1",
+            "Output Group 1;Output Field 1-2",
+            "Output Group 2;Output Field 2-1",
+            "Output Group 2;Output Field 2-2"
           ]
         },
         "Scenarios": {
           "exp": [
-            "Generic;Scenario One;N",
-            ";Scenario Two;Y"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;Y"
           ],
           "act": [
-            "Generic;Scenario One;N",
-            ";Scenario Two;Y"
+            "Category Set 1;Scenario 1;N",
+            "Category Set 2;Scenario 2;Y"
           ]
         },
         "Scenario Input Group": {
           "exp": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ],
           "act": [
-            "Scenario One;Input Group 1;Input Value 1",
-            "Scenario Two;Input Group 1;Input Value 1"
+            "Scenario 1;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 1;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 1;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 1;Input Group 2;Input Value2 2-1~Input Value2 2-2",
+            "Scenario 2;Input Group 1;Input Value1 1-1~Input Value1 1-2",
+            "Scenario 2;Input Group 1;Input Value2 1-1~Input Value2 1-2",
+            "Scenario 2;Input Group 2;Input Value1 2-1~Input Value1 2-2",
+            "Scenario 2;Input Group 2;Input Value2 2-1~Input Value2 2-2"
           ]
         },
         "Scenario Output Group": {
           "exp": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ],
           "act": [
-            "Scenario One;Output Group 1;Output Value 1",
-            "Scenario Two;Output Group 1;Output Value 1"
+            "Scenario 1;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 1;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 1;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 1;Output Group 2;Output Value2 2-1~Output Value2 2-2",
+            "Scenario 2;Output Group 1;Output Value1 1-1~Output Value1 1-2",
+            "Scenario 2;Output Group 1;Output Value2 1-1~Output Value2 1-2",
+            "Scenario 2;Output Group 2;Output Value1 2-1~Output Value1 2-2",
+            "Scenario 2;Output Group 2;Output Value2 2-1~Output Value2 2-2"
           ]
         },
         "Unhandled Exception": {

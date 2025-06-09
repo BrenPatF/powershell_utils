@@ -1,5 +1,5 @@
-Group,Field,Value
-Log,Line,
-Scalars,Delimiter,","
-Scalars,Column,col_1
-Lines,Line,"col_0,col_1,col_2"
+Group,Field,Value1,Value2,Value3,Value4
+Log,Line,,,,
+Scalars,Delimiter,",",,,
+Scalars,Column,col_1,,,
+Lines,Line,"col_0,col_1,col_2","val_01,val_11,val_21","val_02,val_12,val_22","val_03,val_11,val_23"

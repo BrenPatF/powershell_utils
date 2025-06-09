@@ -23,7 +23,7 @@ Unit Test Report: ColGroup - Powershell
 
 Test scenarios: 3 failed of 17: FAILURE
 =======================================
-Formatted: 1/12/2024, 15:23:36
+Formatted: 9/6/2025, 07:49:42
 
 SCENARIO 1: No lines [Category Set: Lines Multiplicity] {
 =========================================================
@@ -67,9 +67,9 @@ SCENARIO 1: No lines [Category Set: Lines Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 208.2834  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset           Text                                                                                                                                                                                                                    
+            -  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 892.056  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:39: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -139,9 +139,9 @@ SCENARIO 2: One line [Category Set: Lines Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 367.3234  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset          Text                                                                                                                                                                                                                    
+            -  ------  -------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 93.152  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -228,7 +228,7 @@ SCENARIO 3: Multiple lines [Category Set: Lines Multiplicity] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 506.8996  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 271.3318  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -314,7 +314,7 @@ SCENARIO 4: One column in file [Category Set: File Column Multiplicity] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 642.8798  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0
+            1  1       IN [0,2000]: 426.5385  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_0/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_0
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -400,7 +400,7 @@ SCENARIO 5: Multiple columns in file [Category Set: File Column Multiplicity] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 786.6075  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 545.0193  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -486,7 +486,7 @@ SCENARIO 6: One key instance [Category Set: Key Instance Multiplicity] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 919.4341  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:34: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 678.8168  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -572,9 +572,9 @@ SCENARIO 7: Multiple key instances [Category Set: Key Instance Multiplicity] {
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset           Text                                                                                                                                                                                                                    
-            -  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 52.0523  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
+            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 834.8261  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -662,7 +662,7 @@ SCENARIO 8: One delimiter character [Category Set: Delimiter Multiplicity] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 182.3271  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 977.0391  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:40: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -797,10 +797,10 @@ SCENARIO 9: Multiple delimiter characters [Category Set: Delimiter Multiplicity]
 at ColGroup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 95
 at setup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 95
 at purelyWrap-Unit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 108
-at callPWU, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 266
-at main, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 302
-at Test-Unit, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 321
-at Test-Format, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 367
+at callPWU, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 284
+at main, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 320
+at Test-Unit, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 339
+at Test-Format, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 385
 at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 132
 at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\Run-Test-Examples.ps1: line 4
 
@@ -848,7 +848,7 @@ SCENARIO 10: Short key [Category Set: Key Size] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 435.2424  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 269.2934  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -927,7 +927,7 @@ SCENARIO 11: Long key [Category Set: Key Size] {
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 567.3597  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 405.8015  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1006,7 +1006,7 @@ SCENARIO 12: Log file does not exist at time of call [Category Set: Log file exi
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 694.9148  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 532.5684  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1090,9 +1090,9 @@ SCENARIO 13: Log file exists at time of call [Category Set: Log file existence] 
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 825.7355  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset           Text                                                                                                                                                                                                                    
+            -  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 668.826  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1180,7 +1180,7 @@ SCENARIO 14: Order by key differs from order by value [Category Set: Key/Value O
 
             #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
             -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 945.3181  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:35: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1  1       IN [0,2000]: 804.2905  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1268,9 +1268,9 @@ SCENARIO 15: Order by key same as order by value [Category Set: Key/Value Orderi
       GROUP 1: Log {
       ==============
 
-            #  #Lines  Date Offset           Text                                                                                                                                                                                                                    
-            -  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1  1       IN [0,2000]: 72.1268  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:36: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #  #Lines  Date Offset            Text                                                                                                                                                                                                                    
+            -  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1  1       IN [0,2000]: 941.7745  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:41: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 0 failed of 1: SUCCESS
       ========================
@@ -1358,10 +1358,10 @@ SCENARIO 16: Actual/expected mismatch [Category Set: Errors] {
       GROUP 1: Log {
       ==============
 
-            #   #Lines  Date Offset            Text                                                                                                                                                                                                                    
-            --  ------  ---------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            1   2       IN [0,2000]: 196.2502  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:36: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
-            1*  1       IN [0,2000]: 196.2502  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2024-12-01 15:23:36: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            #   #Lines  Date Offset           Text                                                                                                                                                                                                                    
+            --  ------  --------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            1   2       IN [0,2000]: 79.5815  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
+            1*  1       IN [0,2000]: 79.5815  LIKE /.*: File .*ut_group.csv, delimiter ',', column col_1/: 2025-06-09 07:49:42: File C:-Users-Brend-OneDrive-Documents-GitHub-powershell_utils-TrapitUtils-examples-colgroup/ut_group.csv, delimiter ',', column col_1
 
       } 1 failed of 1: FAILURE
       ========================
@@ -1501,10 +1501,10 @@ SCENARIO 17: Unhandled exception [Category Set: Errors] {
 at ColGroup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\ColGroup.psm1: line 95
 at setup, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 95
 at purelyWrap-Unit, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 108
-at callPWU, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 266
-at main, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 302
-at Test-Unit, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 321
-at Test-Format, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 367
+at callPWU, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 284
+at main, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 320
+at Test-Unit, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 339
+at Test-Format, C:\Users\Brend\Documents\PowerShell\Modules\TrapitUtils\TrapitUtils.psm1: line 385
 at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\colgroup\Test-ColGroup.ps1: line 132
 at <ScriptBlock>, C:\Users\Brend\OneDrive\Documents\GitHub\powershell_utils\TrapitUtils\examples\Run-Test-Examples.ps1: line 4
 

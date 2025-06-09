@@ -19,4 +19,4 @@ generate a template for the unit testing input JSON file, based on CSV files wit
 
 **************************************************************************************************#>
 Import-Module ..\TrapitUtils.psm1
-Write-UT_Template 'get_ut_template_object' ';'
+Write-UT_Template 'get_ut_template_object' ';' 'Get UT Template Object'

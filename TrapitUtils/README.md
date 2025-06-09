@@ -1,25 +1,25 @@
-# powershell_utils/TrapitUtils
+# Trapit - PowerShell Unit Testing Utilities Module
 <img src="png/mountains.png">
 
-> Powershell Trapit Unit Testing Utilities module
+> The Math Function Unit Testing design pattern, implemented in PowerShell
 
-:hammer_and_wrench: :detective:
+:detective: :hammer_and_wrench:
 
-This module contains utility functions for unit testing following [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html). The first one supports the design pattern for testing in any language:
+This module supports [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html), a design pattern that can be applied in any language, and is here implemented in PowerShell. The module name is derived from 'TRansactional API Testing' (TRAPIT), and the 'unit' should be considered to be a transactional unit. The pattern avoids microtesting, is data-driven, and fully supports multi-scenario testing and refactoring.
 
-- `Write-UT_Template` creates a template for the JSON input file required by the design pattern, based on CSV files specifying the structure. The template file includes scenarios that may be assigned against category sets, with placeholder records to be updated manually
+The PowerShell Trapit module provides a generic driver program for PowerShell unit testing, with test data read from an input JSON file, results written to an output JSON file, and all specific test code contained in a callback function passed to the driver function.
 
-The two other entry-point functions are for testing powershell programs, and automating the running of Oracle PL/SQL unit tests, respectively:
+Unit test results are formatted by a JavaScript program that takes the JSON output results file as its input, [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester), and renders the results in HTML and text formats.
 
-- `Test-Format` is the powershell version of the unit testing driver program required by the design pattern, using JSON files for input scenarios, and writing results in HTML and text formats via a JavaScript formatter
+The module also provides two utilities for more general use:
 
-- `Test-FormatDB` automates the running of Oracle PL/SQL unit tests and formatting of the results via the JavaScript formatter
+- One generates a template for the JSON input file used by the design pattern, based on simple input CSV files, and this can be used for unit testing in any language
 
-Within this design pattern, unit test results are formatted by a JavaScript program that takes a JSON output results file as its input: [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester).
+- The other automates the running of Oracle PL/SQL unit tests and formatting of the results via the JavaScript formatter
 
-This blog post, [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html) provides guidance on effective  selection of scenarios for unit testing.
+This blog post, [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html) provides guidance on effective selection of scenarios for unit testing.
 
-There is an extended Usage section below that illustrates the use of the powershell utilities, along with the JavaScript program, for unit testing, by means of two examples. The Unit Testing section also uses them in testing the pure function, Get-UT_TemplateObject, which is called by Write-UT_Template.
+There is an extended Usage section below that illustrates the use of the PowerShell utilities, along with the JavaScript program, for unit testing, by means of two examples. The Unit Testing section also uses them in testing the pure function, Get-UT_TemplateObject, which is called by the API that generates the template JSON file.
 
 # In This README...
 [&darr; Background](#background)<br />
@@ -37,7 +37,7 @@ I explained the concepts for the unit testing design pattern in relation specifi
 
 - [The Database API Viewed As A Mathematical Function: Insights into Testing](https://www.slideshare.net/brendanfurey7/database-api-viewed-as-a-mathematical-function-insights-into-testing)
 
-I later named the approach [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) when I applied it in Javascript and wrote a JavaScript program to format results both in plain text and as HTML pages:
+I later named the approach [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) when I applied it in JavaScript and wrote a JavaScript program to format results both in plain text and as HTML pages:
 - [Trapit - JavaScript Unit Tester/Formatter](https://github.com/BrenPatF/trapit_nodejs_tester)
 
 The module also allowed for the formatting of results obtained from testing in languages other than JavaScript by means of an intermediate output JSON file. In 2021 I developed a powershell module that included a utility to generate a template for the JSON input scenarios file required by the design pattern:
@@ -53,26 +53,28 @@ In early 2023 I extended both the the JavaScript results formatter, and the powe
 [&darr; Example 1 - HelloWorld](#example-1---helloworld)<br />
 [&darr; Example 2 - ColGroup](#example-2---colgroup)<br />
 
-As noted above, the JavaScript module allows for unit testing of JavaScript programs and also the formatting of test results for both JavaScript and non-JavaScript programs. Similarly, the powershell module mentioned allows for unit testing of powershell programs, and also the generation of the JSON input scenarios file template for testing in any language.
+As noted above, the JavaScript module allows for unit testing of JavaScript programs and also the formatting of test results for both JavaScript and non-JavaScript programs. Similarly, the PowerShell module mentioned allows for unit testing of PowerShell programs, and also the generation of the JSON input scenarios file template for testing in any language.
 
-In this section we'll start by describing the steps involved in The Math Function Unit Testing design pattern at an overview level. This will show how the generic powershell and JavaScript utilities fit in alongside the language-specific driver utilities.
+In this section we'll start by describing the steps involved in [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) at an overview level. This will show how the generic PowerShell and JavaScript utilities fit in alongside the language-specific driver utilities.
 
-Then we'll show how to use the design pattern in unit testing powershell programs by means of two simple examples.
+Then we'll show how to use the design pattern in unit testing PowerShell programs by means of two simple examples.
 
 ### General Usage
 [&uarr; Usage](#usage)<br />
-[&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
-[&darr; Step 2: Create Results Object](#step-2-create-results-object)<br />
-[&darr; Step 3: Format Results](#step-3-format-results)<br />
-[&darr; Unit Test Driver Script](#unit-test-driver-script)<br />
+[&darr; General Description](#general-description)<br />
+[&darr; Unit Testing Process](#unit-testing-process)<br />
+[&darr; Unit Test Results](#unit-test-results)<br />
 
-At a high level the Math Function Unit Testing design pattern involves three main steps:
+At a high level the [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) involves three main steps:
 
 1. Create an input file containing all test scenarios with input data and expected output data for each scenario
 2. Create a results object based on the input file, but with actual outputs merged in, based on calls to the unit under test
 3. Use the results object to generate unit test results files formatted in HTML and/or text
 
 <img src="png/HLS.png">
+
+#### General Description
+[&uarr; General Usage](#general-usage)<br />
 
 The first and third of these steps are supported by generic utilities that can be used in unit testing in any language. The second step uses a language-specific unit test driver utility.
 
@@ -89,26 +91,21 @@ This creates a subfolder with name based on the unit test title within the file,
 
 In the first step the external program creates the output results JSON file, while in the second step the file is read into an object by the Trapit library package, which then formats the results.
 
-#### Step 1: Create Input Scenarios File
+#### Unit Testing Process
 [&uarr; General Usage](#general-usage)<br />
+[&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
+[&darr; Step 2: Create Results Object](#step-2-create-results-object)<br />
+[&darr; Step 3: Format Results](#step-3-format-results)<br />
+
+This section details the three steps involved in following [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html).
+
+##### Step 1: Create Input Scenarios File
+[&uarr; Unit Testing Process](#unit-testing-process)<br />
+[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function)<br />
+[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
+[&darr; Creating the Input Scenarios File](#creating-the-input-scenarios-file)<br />
 
 Step 1 requires analysis to determine the extended signature for the unit under test, and to determine appropriate scenarios to test.
-
-The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
-
-A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. I explore this approach further in this article:
-
-- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
-
-While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
-
-The results of this analysis can be summarised in three CSV files which the first API in this powershell package uses as inputs to create a template for the JSON file.
-
-The powershell API, `Write-UT_Template` creates a template for the JSON file, with the full meta section, and a set of template scenarios having name as scenario key, a category set attribute, and a single record with default values for each input and output group. The API takes as inputs three CSV files:
-  - `stem`_inp.csv: Input group triplets - (Input group name, field name, default value)
-  - `stem`_out.csv: Input group triplets - (Output group name, field name, default value)
-  - `stem`_sce.csv: Scenario triplets - (Category set, scenario name, active flag)
-
 
 It may be useful during the analysis phase to create two diagrams, one for the extended signature:
 - JSON Structure Diagram: showing the groups with their fields for input and output
@@ -116,88 +113,163 @@ It may be useful during the analysis phase to create two diagrams, one for the e
 and another for the category sets and categories:
 - Category Structure Diagram: showing the category sets identified with their categories
 
-You can see examples of these diagrams later in this document, eg: [JSON Structure Diagram - ColGroup](#unit-test-wrapper-function---colgroup) and [Category Structure Diagram - ColGroup](#scenario-category-analysis-scan---colgroup).
+You can see examples of these diagrams later in this document: [JSON Structure Diagram](#unit-test-wrapper-function-2) and [Category Structure Diagram](#scenario-category-analysis-scan-2), and schematic versions in the next two subsections.
 
+###### Unit Test Wrapper Function
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
 
-The API can be run with the following powershell in the folder of the CSV files:
+Here is a schematic version of a JSON structure diagram, which in a real instance will  in general have multiple input and output groups, each with multiple fields:
 
-#### Format-JSON-Stem.ps1
+<img src="png/JSD-Example.png">
+
+Each group in the diagram corresponds to a property within the $inpGroups input object or $outGroups return value object of the wrapper function, and contains an array of the group records stored as delimited strings.
+
+```powershell
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
+    ...
+    [PSCustomObject]$outGroups
+}
+```
+
+###### Scenario Category ANalysis (SCAN)
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
+
+The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
+
+A useful approach can be to think in terms of categories of inputs, where we reduce large ranges to representative categories, an idea I explore in this article:
+
+- [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
+
+Here is a schematic version of a category set diagram, which in a real instance will  in general have multiple category sets, each with multiple categories:
+
+<img src="png/CSD-Example.png">
+
+Each category i-j in the diagram corresponds to a scenario j for category set i.
+
+###### Creating the Input Scenarios File
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file)<br />
+
+The results of the analysis can be summarised in three CSV files which the first API in this PowerShell package uses as inputs to create a template for the JSON file.
+
+The PowerShell API, `Write-UT_Template` creates a template for the JSON file, with the full meta section, and a set of template scenarios having name as scenario key, a category set attribute, and zero or more records with default values for each input and output group. The API takes as inputs three CSV files:
+  - `stem`\_inp.csv: list of group, field, values tuples for input
+  - `stem`\_out.csv: list of group, field, values tuples for output
+  - `stem`\_sce.csv: scenario triplets - (Category set, scenario name, active flag); this file is optional
+
+In the case where a scenarios file is present, each group has zero or more records with field values taken from the group CSV files, with a record for each value column present where at least one value is not null for the group. The template scenario represents a kind of prototype scenario, where records may be manually updated (and added or subtracted) to reflect input and expected output values for the actual scenario being tested.
+
+The API can be run with the following PowerShell in the folder of the CSV files:
+
+###### Format-JSON-Stem.ps1
 ```powershell
 Import-Module TrapitUtils
-Write-UT_Template 'stem' '|'
+Write-UT_Template 'stem' '|' 'title'
 ```
-This creates the template JSON file, `stem`_temp.json based on the CSV files having prefix `stem` and using the field delimiter '|'. The template file is then updated manually with data appropriate to each scenario.
+This creates the template JSON file, `stem`\_temp.json based on the CSV files having prefix `stem` and using the field delimiter '|', and including the unit test title passed. The PowerShell API can be used for testing in any language.
 
-This powershell API can be used for testing in any language.
+The template file is then updated manually with data appropriate to each scenario.
 
-#### Step 2: Create Results Object
-[&uarr; General Usage](#general-usage)<br />
+##### Step 2: Create Results Object
+[&uarr; Unit Testing Process](#unit-testing-process)<br />
 
 Step 2 requires the writing of a wrapper function that is passed into a unit test library function, Test-Unit, via the entry point API,  `Test-Format`. Test-Unit reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results.
 
 ##### purelyWrap-Unit
 ```powershell
-function purelyWrap-Unit($inpGroups) { # input scenario groups
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
     ...
+    [PSCustomObject]$outGroups
 }
 ```
 
-The test driver API,  `Test-Format`, is language-specific, and this one is for testing powershell programs. Equivalents exist under the same GitHub account (BrenPatF) for JavaScript, Python and Oracle PL/SQL at present.
+The test driver API,  `Test-Format`, is language-specific, and this one is for testing PowerShell programs. Equivalents exist under the same GitHub account (BrenPatF) for JavaScript, Python and Oracle PL/SQL at present.
 
-#### Step 3: Format Results
-[&uarr; General Usage](#general-usage)<br />
+##### Step 3: Format Results
+[&uarr; Unit Testing Process](#unit-testing-process)<br />
 
-Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter:
+Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter, and this step can be combined with step 2 for convenience.
 
-```powershell
-    node ($npmRoot + '/node_modules/trapit/externals/format-external-file') $jsonFile
-```
+- `Test-Format` is the function from the TrapitUtils PowerShell package that calls the main test driver function that contains the wrapper function, then passes the output JSON file name to the JavaScript formatter and outputs a summary of the results. It takes as parameters:
 
-This step is executed within the TrapitUtils entry point API, `Test-Format`.
+    - `[String]$utRoot`: unit test root folder
+    - `[String]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+    - `[String]$stemInpJSON`: input JSON file name stem
+    - `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario
 
-#### Unit Test Driver Script
-[&uarr; General Usage](#general-usage)<br />
+    with return value:
 
-Unit testing is executed through a driver script, Test-Stem.ps1, that contains the wrapper function and makes a call to the TrapitUtils library function `Test-Format`. This calls Test-Unit to create the output JSON file, and then calls the Javascript formatter, which writes the formatted results files to a subfolder in the script folder, with name based on the title, returning a summary of the results.
-
-`Test-Format` has parameters:
-
-* `[string]$utRoot`: unit test root folder
-* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
-* `[string]$stemInpJSON`: input JSON file name stem
-* `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario
-
-Return value:
-
-* `[string]`: summary of results
+    - `[String]`: summary of results
 
 ##### Test-Stem.ps1
 ```powershell
 Import-Module TrapitUtils
-function purelyWrap-Unit($inpGroups) { # input scenario groups
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
     ...
+    [PSCustomObject]$outGroups
 }
 Test-Format $PSScriptRoot ($PSScriptRoot + '/../../TrapitUtils') 'stem' ${function:purelyWrap-Unit}
 ```
-This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs a summary of the following form:
+
+#### Unit Test Results
+[&uarr; General Usage](#general-usage)<br />
+[&darr; Unit Test Report - Scenario List](#unit-test-report---scenario-list)<br />
+[&darr; Unit Test Report - Scenario Pages](#unit-test-report---scenario-pages)<br />
+
+The script above creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs a summary of the following form:
 
 ```
 Results summary for file: [MY_PATH]/stem_out.json
-==============================================
+=================================================
 
 File:          stem_out.json
 Title:         [Title]
-Inp Groups:    [Inp Groups]
-Out Groups:    [Out Groups]
-Tests:         [Tests]
-Fails:         [Fails]
+Inp Groups:    [#Inp Groups]
+Out Groups:    [#Out Groups]
+Tests:         [#Tests]
+Fails:         [#Fails]
 Folder:        [Folder]
+```
+
+Within the results subfolder there is a text file containing a list of summary results at scenario level, followed by the detailed results for each scenario. In addition there are files providing the results in HTML format.
+
+##### Unit Test Report - Scenario List
+[&uarr; Unit Test Results](#unit-test-results)<br />
+
+The scenario list page lists, for each scenario:
+
+- \# - the scenario index
+- Category Set - the category set applying to the scenario
+- Scenario - a description of the scenario
+- Fails (of N) - the number of groups failing, with N being the total number of groups
+- Status - SUCCESS or FAIL
+
+The scenario field is a hyperlink to the individual scenario page.
+
+##### Unit Test Report - Scenario Pages
+[&uarr; Unit Test Results](#unit-test-results)<br />
+
+The page for each scenario has the following schematic structure:
+```
+SCENARIO i: Scenario [Category Set: (category set)]
+  INPUTS
+    For each input group: [Group name] - a heading line followed by a list of records
+      For each field: Field name
+      For each record: 1 line per record, with record number followed by:
+        For each field: Field value for record
+  OUTPUTS
+    For each output group: [Group name] - a heading line followed by a list of records
+      For each field: Field name
+      For each record: 1 line per record, with record number followed by:
+        For each field: Field expected value for record
+        For each field: Field actual value for record (only if any actual differs from expected)
+    Group status - #fails of #records: SUCCESS / FAIL
+Scenario status - #fails of #groups: SUCCESS / FAIL
 ```
 ### Example 1 - HelloWorld
 [&uarr; Usage](#usage)<br />
 [&darr; Example Description](#example-description)<br />
-[&darr; Unit Test Process](#unit-test-process)<br />
-[&darr; Unit Test Results](#unit-test-results)<br />
+[&darr; Unit Testing Process](#unit-testing-process-1)<br />
+[&darr; Unit Test Results](#unit-test-results-1)<br />
 
 The first example is a version of the 'Hello World' program traditionally used as a starting point in learning a new programming language. This is useful as it shows the core structures involved in following the design pattern with a minimalist unit under test.
 
@@ -217,7 +289,8 @@ There is a main script that shows how the function might be called outside of un
 Using Module './HelloWorld.psm1'
 Write-HelloWorld
 ```
-This can be called from a command window in the examples folder:
+This can be called from a command window in the examples folder (in PowerShell 7, in earlier versions it may need to be run from the subfolder):
+
 ```powershell
 $ ./helloworld/Show-HelloWorld
 ```
@@ -225,17 +298,17 @@ with output to console:
 ```
 Hello World!
 ```
-#### Unit Test Process
+#### Unit Testing Process
 [&uarr; Example 1 - HelloWorld](#example-1---helloworld)<br />
 [&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-1)<br />
 [&darr; Step 2: Create Results Object](#step-2-create-results-object-1)<br />
 [&darr; Step 3: Format Results](#step-3-format-results-1)<br />
-[&darr; Unit Test Driver Script](#unit-test-driver-script-1)<br />
 
 ##### Step 1: Create Input Scenarios File
-[&uarr; Unit Test Process](#unit-test-process)<br />
-[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function)<br />
-[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-1)<br />
+[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function-1)<br />
+[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-1)<br />
+[&darr; Creating the Input Scenarios File](#creating-the-input-scenarios-file-1)<br />
 
 ###### Unit Test Wrapper Function
 [&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-1)<br />
@@ -264,18 +337,23 @@ From the scenarios identified we can construct the following CSV file (`hellowor
 
 <img src="png/scenarios - helloworld.png">
 
-The API can be run with the following powershell in the folder of the CSV files:
+###### Creating the Input Scenarios File
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-1)<br />
+
+The API to generate a template JSON file can be run with the following PowerShell script in the folder of the CSV files:
 
 ###### Format-JSON-HelloWorld.ps1
 ```powershell
 Import-Module TrapitUtils
-Write-UT_Template 'helloworld' '|'
+Write-UT_Template 'helloworld' '|' 'Hello World - Powershell'
 ```
-This creates the template JSON file, helloworld_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files. Here is the complete file:
+This creates the template JSON file, helloworld_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag. In this case there is a single scenario, with empty input, and a single record in the output group with the default value from the output groups CSV file. Here is the complete file:
+
+##### helloworld_temp.json
 ```js
 {
   "meta": {
-    "title": "title",
+    "title": "Hello World - Powershell",
     "delimiter": "|",
     "inp": {},
     "out": {
@@ -298,10 +376,9 @@ This creates the template JSON file, helloworld_temp.json, which contains an ele
   }
 }
 ```
-The actual JSON file has just the "title" value replaced with: "HelloWorld - Powershell".
 
 ##### Step 2: Create Results Object
-[&uarr; Unit Test Process](#unit-test-process)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-1)<br />
 
 Step 2 requires the writing of a wrapper function that is passed into a unit test library function, Test-Unit, via the entry point API,  `Test-Format`. Test-Unit reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results.
 
@@ -315,20 +392,11 @@ Here we use a lambda expression as the wrapper function is so simple:
 This lambda expression is included in the script Test-HelloWorld.ps1 and passed as a parameter to Test-Format.
 
 ##### Step 3: Format Results
-[&uarr; Unit Test Process](#unit-test-process)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-1)<br />
 
-Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter:
+Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter, and this step can be combined with step 2 for convenience.
 
-```powershell
-    node ($npmRoot + '/node_modules/trapit/externals/format-external-file') $jsonFile
-```
-
-This step is executed within the TrapitUtils entry point API, `Test-Format`.
-
-##### Unit Test Driver Script
-[&uarr; Unit Test Process](#unit-test-process)<br />
-
-Unit testing is executed through a driver script, Test-HelloWorld.ps1, that contains the wrapper function and makes a call to the TrapitUtils library function `Test-Format`. This calls Test-Unit to create the output JSON file, and then calls the Javascript formatter, which writes the formatted results files to a subfolder in the script folder, with name based on the title, returning a summary of the results.
+- `Test-Format` is the function from the TrapitUtils PowerShell package that calls the main test driver function, then passes the output JSON file name to the JavaScript formatter and outputs a summary of the results.
 
 ###### Test-HelloWorld.ps1
 ```powershell
@@ -338,11 +406,18 @@ Import-Module TrapitUtils
 Test-Format $PSScriptRoot ($PSScriptRoot + '/../../../TrapitUtils') 'helloworld' `
             { param($inpGroups) [PSCustomObject]@{'Group' = [String[]]@(Write-HelloWorld)} }
 ```
-This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
+This script contains the wrapper function (here a lambda expression), passing it in a call to the TrapitUtils library function Test-Format.
+
+#### Unit Test Results
+[&uarr; Example 1 - HelloWorld](#example-1---helloworld)<br />
+[&darr; Unit Test Report: Hello World](#unit-test-report-hello-world)<br />
+[&darr; Scenario 1: No input](#scenario-1-no-input)<br />
+
+The unit test script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
 
 ```
 Results summary for file: [MY_PATH]/powershell_utils/TrapitUtils/examples/helloworld/helloworld_out.json
-=============================================================================================================
+========================================================================================================
 
 File:          helloworld_out.json
 Title:         Hello World - Powershell
@@ -353,10 +428,8 @@ Fails:         0
 Folder:        hello-world---powershell
 ```
 
-#### Unit Test Results
-[&uarr; Example 1 - HelloWorld](#example-1---helloworld)<br />
-[&darr; Unit Test Report - HelloWorld](#unit-test-report---helloworld)<br />
-[&darr; Scenario 1: No input](#scenario-1-no-input)<br />
+##### Unit Test Report: Hello World
+[&uarr; Unit Test Results](#unit-test-results-1)<br />
 
 Here we show the scenario-level summary of results for this example, and also show the detail for the only scenario.
 
@@ -364,8 +437,6 @@ You can review the HTML formatted unit test results here:
 
 - [Unit Test Report: Hello World](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/examples/helloworld/hello-world---powershell/hello-world---powershell.html)
 
-###### Unit Test Report - HelloWorld
-[&uarr; Unit Test Results](#unit-test-results)<br />
 
 This is the summary page in text format.
 
@@ -382,8 +453,8 @@ Test scenarios: 0 failed of 1: SUCCESS
 Tested: 2023-04-09 14:43:33, Formatted: 2023-04-09 14:43:33
 ```
 
-###### Scenario 1: No input
-[&uarr; Unit Test Results](#unit-test-results)<br />
+##### Scenario 1: No input
+[&uarr; Unit Test Results](#unit-test-results-1)<br />
 
 This is the scenario page in text format, with only one scenario.
 
@@ -410,8 +481,8 @@ Note that the second output group, 'Unhandled Exception', is not specified in th
 ### Example 2 - ColGroup
 [&uarr; Usage](#usage)<br />
 [&darr; Example Description](#example-description-1)<br />
-[&darr; Unit Test Process](#unit-test-process-1)<br />
-[&darr; Unit Test Results](#unit-test-results-1)<br />
+[&darr; Unit Testing Process](#unit-testing-process-2)<br />
+[&darr; Unit Test Results](#unit-test-results-2)<br />
 
 The second example, 'ColGroup', is larger and intended to show a wider range of features, but without too much extraneous detail.
 
@@ -422,13 +493,15 @@ This example involves a class with a constructor function that reads in a CSV fi
 
 ##### ColGroup.psm1 (skeleton)
 ```powershell
+Import-Module Utils
 ...
 Class ColGroup {
     ...
 }
 ```
 
-There is a main script that shows how the class might be called outside of unit testing, run from the examples folder:
+There is a main script that shows how the class might be called outside of unit testing:
+
 ##### Show-ColGroup.ps1
 ```powershell
 Using Module './ColGroup.psm1'
@@ -440,7 +513,7 @@ $grp.WriteList('(as is)', $grp.ListAsIs())
 $grp.WriteList('key',     $grp.SortByKey())
 $grp.WriteList('value',   $grp.SortByValue())
 ```
-This can be called from a command window in the examples folder:
+This can be called from a command window in the examples folder (in PowerShell 7, in earlier versions it may need to be run from the subfolder):
 
 ```powershell
 $ ./colgroup/Show-ColGroup
@@ -487,17 +560,17 @@ The example illustrates how a wrapper function can handle `impure` features of t
 - By using regex matching for strings including timestamps
 - By using number range matching and converting timestamps to epochal offsets (number of units of time since a fixed time)
 
-#### Unit Test Process
+#### Unit Testing Process
 [&uarr; Example 2 - ColGroup](#example-2---colgroup)<br />
 [&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-2)<br />
 [&darr; Step 2: Create Results Object](#step-2-create-results-object-2)<br />
 [&darr; Step 3: Format Results](#step-3-format-results-2)<br />
-[&darr; Unit Test Driver Script](#unit-test-driver-script-2)<br />
 
 ##### Step 1: Create Input Scenarios File
-[&uarr; Unit Test Process](#unit-test-process-1)<br />
-[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function-1)<br />
-[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-1)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-2)<br />
+[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function-2)<br />
+[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-2)<br />
+[&darr; Creating the Input Scenarios File](#creating-the-input-scenarios-file-2)<br />
 
 ###### Unit Test Wrapper Function
 [&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-2)<br />
@@ -508,6 +581,21 @@ Here is a diagram of the input and output groups for this example:
 
 From the input and output groups depicted we can construct CSV files with flattened group/field structures, and default values added, as follows (with `colgrp_inp.csv` left, `colgrp_out.csv` right):
 <img src="png/groups - colgroup.png">
+
+The value fields shown correspond to a prototype scenario with records per group:
+
+- Input
+    - Log: 0
+    - Scalars: 1
+    - Lines: 4
+- Output
+    - Log: 1
+    - Scalars: 1
+    - listAsIs: 1
+    - sortByKey: 2
+    - sortByValue: 2
+
+A PowerShell utility uses these CSV files, together with one for scenarios, discussed next, to generate a template for the JSON unit testing input file. The utility creates a prototype scenario dataset with a record in each group for each populated value column, that is used for each scenario in the template.
 
 ###### Scenario Category ANalysis (SCAN)
 [&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-2)<br />
@@ -568,64 +656,55 @@ From the scenarios identified we can construct the following CSV file (`colgrp_s
 
 <img src="png/scenarios - colgroup.png">
 
-The API can be run with the following powershell script in the folder of the CSV files:
+###### Creating the Input Scenarios File
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-2)<br />
+
+The API to generate a template JSON file can be run with the following PowerShell in the folder of the CSV files:
 
 ###### Format-JSON-ColGroup.ps1
 ```powershell
 Import-Module TrapitUtils
-Write-UT_Template 'colgroup' '|'
+Write-UT_Template 'colgroup' '|' 'ColGroup - Powershell'
 ```
-This creates the template JSON file, colgroup_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files. Here is the "Multiple lines" element:
+This creates the template JSON file, colgroup_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with zero or more records in each group with default values from the groups CSV files. Here is the "Multiple lines" element:
 
     "Multiple lines": {
-      "active_yn": "N",
+      "active_yn": "Y",
       "category_set": "Lines Multiplicity",
       "inp": {
-        "Log": [
-          ""
-        ],
+        "Log": [],
         "Scalars": [
           ",|col_1"
         ],
         "Lines": [
-          "col_0,col_1,col_2"
+          "col_0,col_1,col_2",
+          "val_01,val_11,val_21",
+          "val_02,val_12,val_22",
+          "val_03,val_11,val_23"
         ]
       },
       "out": {
         "Log": [
-          "1|IN [0,2000]|LIKE /.*: File .*ut_group.*.csv, delimiter ',', column 0/"
+          "1|IN [0,2000]|LIKE /.*: File .*ut_group.*.csv, delimiter ',', column col_1/"
         ],
         "listAsIs": [
-          "1"
+          "2"
         ],
         "sortByKey": [
-          "val_1|1"
+          "val_11|2",
+          "val_12|1"
         ],
         "sortByValue": [
-          "val_1|1"
+          "val_12|1",
+          "val_11|2"
         ]
       }
     },
 
-For each scenario element, we need to update the values to reflect the scenario to be tested, in the actual input JSON file, colgroup.json. In the case above, we can just replace the "Lines" input group with:
-
-        "Lines": [
-          "col_0,col_1,col_2",
-          "val_0,val_1,val_2",
-          "val_0,val_1,val_2"
-        ]
-
-and replace '1' with '2' in two of the output groups:
-
-        "sortByKey": [
-          "val_1|2"
-        ],
-        "sortByValue": [
-          "val_1|2"
-        ]
+For each scenario element, we need to update the values to reflect the scenario to be tested, in the actual input JSON file, colgroup.json. In the "Multiple lines" scenario above the prototype scenario data can be used as is, but in others it would need to be updated.
 
 ##### Step 2: Create Results Object
-[&uarr; Unit Test Process](#unit-test-process-1)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-2)<br />
 
 Step 2 requires the writing of a wrapper function that is passed into a unit test library function, Test-Unit, via the entry point API,  `Test-Format`. Test-Unit reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results.
 
@@ -680,20 +759,10 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
 ```
 
 ##### Step 3: Format Results
-[&uarr; Unit Test Process](#unit-test-process-1)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-2)<br />
 
 Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter:
-
-```powershell
-    node ($npmRoot + '/node_modules/trapit/externals/format-external-file') $jsonFile
-```
-
-This step is executed within the TrapitUtils entry point API, `Test-Format`.
-
-##### Unit Test Driver Script
-[&uarr; Unit Test Process](#unit-test-process-1)<br />
-
-Unit testing is executed through a driver script, Test-ColGroup.ps1, that contains the wrapper function and makes a call to the TrapitUtils library function `Test-Format`. This calls Test-Unit to create the output JSON file, and then calls the Javascript formatter, which writes the formatted results files to a subfolder in the script folder, with name based on the title, returning a summary of the results.
+- `Test-Format` is the function from the TrapitUtils PowerShell package that calls the main test driver function, then passes the output JSON file name to the JavaScript formatter and outputs a summary of the results.
 
 ###### Test-ColGroup.ps1 (skeleton)
 ```powershell
@@ -705,8 +774,14 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
 }
 Test-Format $PSScriptRoot ($PSScriptRoot + '/../../../TrapitUtils') 'colgroup' ${function:purely-WrapUnit}
 ```
-This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
+This script contains the wrapper function, passing it in a call to the TrapitUtils library function Test-Format.
 
+#### Unit Test Results
+[&uarr; Example 2 - ColGroup](#example-2---colgroup)<br />
+[&darr; Unit Test Report - ColGroup](#unit-test-report---colgroup)<br />
+[&darr; Scenario 9: Multiple delimiter characters](#scenario-9-multiple-delimiter-characters)<br />
+
+The unit test script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
 ```
 Results summary for file: [MY_PATH]/powershell_utils/TrapitUtils/examples/colgroup/colgroup_out.json
 =========================================================================================================
@@ -719,10 +794,9 @@ Tests:         17
 Fails:         3
 Folder:        colgroup---powershell
 ```
-#### Unit Test Results
-[&uarr; Example 2 - ColGroup](#example-2---colgroup)<br />
-[&darr; Unit Test Report - ColGroup](#unit-test-report---colgroup)<br />
-[&darr; Scenario 9: Multiple delimiter characters](#scenario-9-multiple-delimiter-characters)<br />
+
+##### Unit Test Report - ColGroup
+[&uarr; Unit Test Results](#unit-test-results-2)<br />
 
 Here we show the scenario-level summary of results for the specific example, and show the detail for one of the failing scenarios.
 
@@ -730,21 +804,18 @@ You can review the HTML formatted unit test results here:
 
 - [Unit Test Report: ColGroup](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/examples/colgroup/colgroup---powershell/colgroup---powershell.html)
 
-###### Unit Test Report - ColGroup
-[&uarr; Unit Test Results](#unit-test-results-1)<br />
-
 <img src="png/summary-colgroup.png">
 
-###### Scenario 9: Multiple delimiter characters
-[&uarr; Unit Test Results](#unit-test-results-1)<br />
+##### Scenario 9: Multiple delimiter characters
+[&uarr; Unit Test Results](#unit-test-results-2)<br />
 
 <img src="png/scenario_9-colgroup.png">This is one of three scenarios that fail, and it fails due to an unhandled exception, which is captured by the Test-Unit API. The error message is printed in a special output group, `Unhandled Exception` that is not specified in the input JSON file but added dynamically by the API into each scenario. In the case of an unhandled exception all the other output groups have empty 'actual' record sets, which will usually be reported as failing. Note that we also use the scenario data to explicitly demonstrate behaviour of unhandled exceptions against the 'Errors' category set in scenario 17.
 
-The error message comes from powershell itself and explains clearly what has gone wrong:
+The error message comes from PowerShell itself and explains clearly what has gone wrong:
 ```
 Cannot validate argument on parameter 'delimiter'. The specified delimiter ';;' must be a single character.
 ```
-The code uses a standard powershell API, Import-CSV, to read in a CSV file, which takes the delimiter as a parameter. This API does not accept multi-character delimiters as the message indicates.
+The code uses a standard PowerShell API, Import-CSV, to read in a CSV file, which takes the delimiter as a parameter. This API does not accept multi-character delimiters as the message indicates.
 
 The Unhandled Exception group also includes the error stack:
 ```
@@ -773,25 +844,28 @@ Import-Module TrapitUtils
 ### Write-UT_Template
 [&uarr; API](#api)<br />
 ```powershell
-Write-UT_Template($stem, $delimiter)
+Write-UT_Template($stem, $delimiter, $title)
 ```
 Writes a unit testing template JSON file in the format of the Math Function Unit Testing design pattern, with parameters:
 
-* `[string]$stem`: file name stem,
-* `[string]$delimiter`: delimiter; default '|'
+* `[String]$stem`: file name stem,
+* `[String]$delimiter`: delimiter; default '|'
+* `[String]$title`: title
 
-There are two mandatory input group structure CSV files, with header 'Group, Field, Value':
-* `$stem`_inp.csv: list of group, field, value triples for input
-* `$stem`_out.csv: list of group, field, value triples for output
+There are two mandatory input group structure CSV files, with header 'Group, Field, Value1, Value2,...', where there are zero or more Valuei columns:
+* `$stem`_inp.csv: list of group, field, values tuples for input
+* `$stem`\_out.csv: list of group, field, values tuples for output
 
 and there is an optional scenario list CSV file, with header 'Category Set, Scenario, Active':
-* `$stem`_sce.csv: list of category set, scenario, active triples for output
+* `$stem`\_sce.csv: list of category set, scenario, active triples for output
 
 
 The function writes an output JSON file:
-* `$stem`_temp.json
+* `$stem`\_temp.json
 
-If there is a scenario list CSV file present, then the output file will contain a template scenario for each record; if not the output file will have a single template scenario with name 'scenario 1'. Each group has a single record with field values taken from the group CSV files. The records need to be manually updated (and added or subtracted) to reflect input and expected output values for the scenario being tested.
+If there is a scenario list CSV file present, then the output file will contain a template scenario for each record; if not the output file will have a single template scenario with name 'scenario 1', and a single null-values record for each group.
+
+In the case where a scenarios file is present, each group has zero or more records with field values taken from the group CSV files, with a record for each value column present where at least one value is not null for the group. The template scenario represents a kind of prototype scenario, where records may be manually updated (and added or subtracted) to reflect input and expected output values for the actual scenario being tested.
 
 Return value:
 
@@ -800,14 +874,15 @@ Return value:
 ### Get-UT_TemplateObject
 [&uarr; API](#api)<br />
 ```powershell
-Get-UT_TemplateObject($inpGroupLis, $outGroupLis, $delimiter, $sceLis)
+Get-UT_TemplateObject($inpGroupLis, $outGroupLis, $delimiter, $title, $sceLis)
 ```
 Gets an object with the same structure as the unit testing template JSON file, from input lists of objects for input and output groups, with parameters:
 
-* `$inpGroupLis`: list of group, field, value triples for input
-* `$outGroupLis`: list of group, field, value triples for output
-* `[string]$delimiter`: delimiter; default '|'
-* `$sceLis`: list of category set, scenario, active triples
+* `[PSCustomObject[]]$inpGroupLis`: list of group, field, value objects for input
+* `[PSCustomObject[]]$outGroupLis`: list of group, field, value objects for output
+* `[String]$delimiter`: delimiter; default '|'
+* `[String]$title`: title
+* `[PSCustomObject[]]$sceLis`: list of category set, scenario, active objects
 
 This is a pure function that is called by Write-UT_Template, which writes its return value to file in JSON format.
 
@@ -824,13 +899,9 @@ Test-Unit($inpFile, $outFile, $purelyWrapUnit)
 ```
 Unit tests a unit using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html) with input data read from a JSON file, and output results written to an output JSON file, with parameters:
 
-* `[string]$inpFile`: input JSON file, with input and expected output data
-* `[string]$outFile`: output JSON file, with input, expected and actual output data
+* `[String]$inpFile`: input JSON file, with input and expected output data
+* `[String]$outFile`: output JSON file, with input, expected and actual output data
 * `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario, passed in from test script, described below
-
-Return value:
-
-* `[string]`: output JSON file passed in
 
 #### $purelyWrapUnit
 ```powershell
@@ -859,21 +930,23 @@ Return value:
 
 This function acts as a 'pure' wrapper around calls to the unit under test. It is 'externally pure' in the sense that it is deterministic, and interacts externally only via parameters and return value. Where the unit under test reads inputs from file the wrapper writes them based on its parameters, and where the unit under test writes outputs to file the wrapper reads them and passes them out in its return value. Any file writing is reverted before exit.
 
+Test-Unit is not normally called directly, but via the Test-Format function.
+
 ### Test-Format
 [&uarr; API](#api)<br />
 ```powershell
 Test-Format($utRoot, $npmRoot, $stemInpJSON, $purelyWrapUnit)
 ```
-Calls Test-Unit, then calls the JavaScript formatter, which writes the formatted results files to a subfolder in the script folder, based on the title, returning a summary. It has parameters:
+The unit test driver utility function is called as effectively the main function of any specific unit test script. It calls Test-Unit, then calls the JavaScript formatter, which writes the formatted results files to a subfolder in the script folder, based on the title, returning a summary. It has parameters:
 
-* `[string]$utRoot`: unit test root folder
-* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
-* `[string]$stemInpJSON`: input JSON file name stem
+* `[String]$utRoot`: unit test root folder
+* `[String]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
+* `[String]$stemInpJSON`: input JSON file name stem
 * `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario, passed in from test script, described in the section above for Test-Unit
 
 Return value:
 
-* `[string]`: summary of results
+* `[String]`: summary of results
 
 ### Test-FormatDB
 [&uarr; API](#api)<br />
@@ -882,11 +955,11 @@ Test-FormatDB($unpw, $conn, $utGroup, $testRoot, $preSQL)
 ```
 Automates the running of Oracle PL/SQL unit tests and formatting of the results via the JavaScript formatter. It has parameters:
 
-* `[string]$unpw`: Oracle user name / password string
-* `[string]$conn`: Oracle connection string (such as the TNS alias)
-* `[string]$utGroup`: Oracle unit test group
-* `[string]$testRoot`: Unit testing root folder, where results folders will be placed
-* `[string]$preSQL`: SQL to execute first (optional)
+* `[String]$unpw`: Oracle user name / password string
+* `[String]$conn`: Oracle connection string (such as the TNS alias)
+* `[String]$utGroup`: Oracle unit test group
+* `[String]$testRoot`: Unit testing root folder, where results folders will be placed
+* `[String]$preSQL`: SQL to execute first (optional)
 
 Runs a SQL*Plus session calling the Oracle unit test driving function, with the test group passed as a parameter. The unit test driving function returns a list of the output JSON files created, which are then processed in a loop by the JavaScript formatter, which writes the formatted results files to subfolders based on the titles, and returns a summary of the results.
 
@@ -894,7 +967,7 @@ If $preSQL is set the SQL statement it contains will be executed first. It can b
 
 Return value:
 
-* `[string]`: summary of results
+* `[String]`: summary of results
 ## Installation
 [&uarr; In This README...](#in-this-readme)<br />
 [&darr; Install Prerequisites](#install-prerequisites)<br />
@@ -919,8 +992,8 @@ This will create a folder TrapitUtils under the first folder in your `PSModulePa
 It will also create a folder for the prerequisite module, Utils, under the first folder in your `PSModulePath` environment variable, and copy Utils.psm1 to it.
 ## Unit Testing
 [&uarr; In This README...](#in-this-readme)<br />
-[&darr; Unit Testing Process](#unit-testing-process)<br />
-[&darr; Unit Test Results](#unit-test-results-2)<br />
+[&darr; Unit Testing Process](#unit-testing-process-3)<br />
+[&darr; Unit Test Results](#unit-test-results-3)<br />
 
 In this section the unit testing core API function Get-UT_TemplateObject is itself tested using [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html). A 'pure' wrapper function is constructed that takes input parameters and returns a value, and is tested within a loop over scenario records read from a JSON file.
 
@@ -929,12 +1002,14 @@ In this section the unit testing core API function Get-UT_TemplateObject is itse
 [&darr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-3)<br />
 [&darr; Step 2: Create Results Object](#step-2-create-results-object-3)<br />
 [&darr; Step 3: Format Results](#step-3-format-results-3)<br />
-[&darr; Unit Test Driver Script](#unit-test-driver-script-3)<br />
+
+This section details the three steps involved in following [The Math Function Unit Testing Design Pattern](https://brenpatf.github.io/2023/06/05/the-math-function-unit-testing-design-pattern.html).
 
 #### Step 1: Create Input Scenarios File
-[&uarr; Unit Testing Process](#unit-testing-process)<br />
-[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function-2)<br />
-[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-2)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-3)<br />
+[&darr; Unit Test Wrapper Function](#unit-test-wrapper-function-3)<br />
+[&darr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-3)<br />
+[&darr; Creating the Input Scenarios File](#creating-the-input-scenarios-file-3)<br />
 
 ##### Unit Test Wrapper Function
 [&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-3)<br />
@@ -948,8 +1023,34 @@ where the parameters are described in the API section above. The diagram below s
 
 <img src="png/JSD-TrapitUtils.png">
 
-From the input and output groups depicted we can construct CSV files with flattened group/field structures, and default values added, as follows (with `get_ut_template_object_inp.csv` left, `get_ut_template_object_out.csv` right):
-<img src="png/groups - ut.png">
+From the input and output groups depicted we can construct CSV files with flattened group/field structures, and default values added, as follows:
+
+###### get_ut_template_object_inp.csv
+<img src="png/groups - ut - inp.png">
+
+The value fields shown correspond to a prototype scenario with records per input group:
+
+- Scalars: 1
+- Scenarios: 2
+- Scenario Input Group: 4
+- Scenario Output Group: 4
+
+###### get_ut_template_object_out.csv (Group, Field, Value1-Value4 columns)
+<img src="png/groups - ut-L - out.png">
+
+###### get_ut_template_object_out.csv (Group, Field, Value5-Value8 columns)
+<img src="png/groups - ut-R - out.png">
+
+The value fields shown correspond to a prototype scenario with records per output group:
+
+- Scalars: 1
+- Meta Input Group: 4
+- Meta Output Group: 4
+- Scenarios: 2
+- Scenario Input Group: 8
+- Scenario Output Group: 8
+
+A PowerShell utility uses these CSV files, together with one for scenarios, discussed next, to generate a template for the JSON unit testing input file. The utility creates a prototype scenario dataset with a record in each group for each populated value column, that is used for each scenario in the template.
 
 ##### Scenario Category ANalysis (SCAN)
 [&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-3)<br />
@@ -958,14 +1059,12 @@ From the input and output groups depicted we can construct CSV files with flatte
 
 The art of unit testing lies in choosing a set of scenarios that will produce a high degree of confidence in the functioning of the unit under test across the often very large range of possible inputs.
 
-A useful approach to this can be to think in terms of categories of inputs, where we reduce large ranges to representative categories. I explore this approach further in this article:
+A useful approach can be to think in terms of categories of inputs, where we reduce large ranges to representative categories, an idea I explore in this article:
 
 - [Unit Testing, Scenarios and Categories: The SCAN Method](https://brenpatf.github.io/2021/10/17/unit-testing-scenarios-and-categories-the-scan-method.html)
 
-While the examples in the blog post aimed at minimal sets of scenarios, we have since found it simpler and clearer to use a separate scenario for each category.
-
 ###### Generic Category Sets
-[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-2)<br />
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-3)<br />
 
 As explained in the article mentioned above, it can be very useful to think in terms of generic category sets that apply in many situations. Multiplicity is relevant here (as it often is):
 
@@ -987,10 +1086,11 @@ Apply to:
 <li>Output Group Fields (one or multiple only)</li>
 <li>Delimiter (one or multiple only)</li>
 <li>Scenarios (none or multiple only)</li>
+<li>Field Values (none or multiple only)</li>
 </ul>
 
 ###### Categories and Scenarios
-[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-2)<br />
+[&uarr; Scenario Category ANalysis (SCAN)](#scenario-category-analysis-scan-3)<br />
 
 After analysis of the possible scenarios in terms of categories and category sets, we can depict them on a Category Structure diagram:
 
@@ -1014,8 +1114,8 @@ We can tabulate the results of the category analysis, and assign a scenario agai
 | 12 | Delimiter Multiplicity    | Multiple      | Multi-character delimiter                      |
 | 13 | Scenarios Multiplicity    | None          | Scenarios file not present                     |
 | 14 | Scenarios Multiplicity    | Multiple      | Multiple scenarios                             |
-| 15 | Initial Field Values      | Null          | All field values null                          |
-| 16 | Initial Field Values      | Mixed         | Some field values null, some not null          |
+| 15 | Field Value Multiplicity  | Null          | All field values null                          |
+| 16 | Field Value Multiplicity  | Mixed         | Some field values null, some not null          |
 | 17 | Category Set              | Null/Not Null | Scenarios with null and not null category sets |
 | 18 | Active Flag               | Y/N           | Scenarios with Y and N active flag             |
 
@@ -1023,31 +1123,34 @@ From the scenarios identified we can construct the following CSV file (`get_ut_t
 
 <img src="png/scenarios - ut.png">
 
-The API can be run with the following powershell in the folder of the CSV files:
+##### Creating the Input Scenarios File
+[&uarr; Step 1: Create Input Scenarios File](#step-1-create-input-scenarios-file-3)<br />
+
+The API to generate a template JSON file can be run with the following PowerShell in the folder of the CSV files:
 
 ###### Format-JSON-Get-UT_TemplateObject
 
 ```powershell
-Import-Module TrapitUtils
-Write-UT_Template 'get_ut_template_object' '|'
+Import-Module ..\TrapitUtils.psm1
+Write-UT_Template 'get_ut_template_object' '|' 'Get UT Template Object'
 ```
-This creates the template JSON file, get_ut_template_object_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, with a single record in each group with default values from the groups CSV files. The template file is then updated manually with data appropriate to each scenario.
+This creates the template JSON file, trapit_py_temp.json, which contains an element for each of the scenarios, with the appropriate category set and active flag, and a prototype set of input and output records.
+
+In the prototype record sets, each group has zero or more records with field values taken from the group CSV files, with a record for each value column present where at least one value is not null for the group. The template scenario records may be manually updated (and added or subtracted) to reflect input and expected output values for the actual scenario being tested.
 
 #### Step 2: Create Results Object
-[&uarr; Unit Testing Process](#unit-testing-process)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-3)<br />
 
 Step 2 requires the writing of a wrapper function that is passed into a unit test library function, Test-Unit, via the entry point API,  `Test-Format`. Test-Unit reads the input JSON file, calls the wrapper function for each scenario, and writes the output JSON file with the actual results merged in along with the expected results.
 
 ##### purelyWrap-Unit
 
 ```powershell
-Import-Module TrapitUtils
-$DELIM = ';'
-function getGroupObjLis($strLis) { (function body) }
-function getSceObjLis($strLis) { (function body) }
+function getGroupObjLis([String[]]$strLis) { (function body) }
+function getSceObjLis([String[]]$strLis) { (function body) }
 function getGroupFieldStrLis($obj) { (function body) }
 function getGroupObjLis($strLis) { # list of delimited group/field/value strings
-    $objLis = @()
+    [PSCustomObject[]]$objLis = @()
     foreach ($s in $strLis) {
         $fields = $s.Split($DELIM)
         $objLis += @{'group' = $fields[0]; 'field' = $fields[1]; 'value' = $fields[2]}
@@ -1055,14 +1158,14 @@ function getGroupObjLis($strLis) { # list of delimited group/field/value strings
     $objLis
 }
 function getSceObjLis($strLis) { # list of delimited Category Set/Scenario/Active strings
-    $objLis = @()
+    [PSCustomObject[]]$objLis = @()
     foreach ($s in $strLis) {
         $fields = $s.Split($DELIM)
         $objLis += @{'Category Set' = $fields[0]; 'Scenario' = $fields[1]; 'Active' = $fields[2]}
     }
     $objLis
 }
-function getGroupFieldStrLis($obj) { # object has a key and a value that is an array of strings
+function getGroupFieldStrLis([PSCustomObject]$obj) { # object has a key and a value that is an array of strings
     [String[]]$strLis = @()
     foreach ($o in $obj.PSObject.Properties) {
         foreach ($v in $o.value) {
@@ -1071,17 +1174,13 @@ function getGroupFieldStrLis($obj) { # object has a key and a value that is an a
     }
     $strLis
 }
-function purelyWrap-Unit($inpGroups) { # input scenario groups
-
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
     $scalars = $inpGroups.'Scalars'
-    if ($scalars.length -eq 0) { # either empty or contains a delimiter
-         $delimiter = '|'
-    } else {
-         $delimiter = $scalars[0]
-    }
+    $delimiter, $title = $scalars.split($DELIM)
     $utObj = Get-UT_TemplateObject (getGroupObjLis $inpGroups.'Input Group') `
                                    (getGroupObjLis $inpGroups.'Output Group') `
                                    $delimiter `
+                                   $title `
                                    (getSceObjLis $inpGroups.'Scenarios')
     [String[]]$inpLis = @()
     [String[]]$outLis = @()
@@ -1093,11 +1192,11 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
     }
     [String[]]$metaInpLis = @()                        # direct assignment can lead to null object
     $metaInpLis += getGroupFieldStrLis $utObj.meta.inp # iso empty array
-
     [String[]]$metaOutLis = @()
     $metaOutLis += getGroupFieldStrLis $utObj.meta.out
-    #      Object key (group name)  Private function    Returned group object = key + list of strings
+    #     Object key (group name)   group object value = list of strings
     [PSCustomObject]@{
+          'Scalars'               = [String[]]$utObj.meta.title
           'Meta Input Group'      = $metaInpLis
           'Meta Output Group'     = $metaOutLis
           'Scenarios'             = $sceLis
@@ -1108,44 +1207,28 @@ function purelyWrap-Unit($inpGroups) { # input scenario groups
 ```
 
 #### Step 3: Format Results
-[&uarr; Unit Testing Process](#unit-testing-process)<br />
+[&uarr; Unit Testing Process](#unit-testing-process-3)<br />
 
 Step 3 involves formatting the results contained in the JSON output file from step 2, via the JavaScript formatter:
+- `Test-Format` is the function from the TrapitUtils PowerShell package that calls the main test driver function, then passes the output JSON file name to the JavaScript formatter and outputs a summary of the results.
 
-```powershell
-    node ($npmRoot + '/node_modules/trapit/externals/format-external-file') $jsonFile
-```
-
-This step is executed within the TrapitUtils entry point API, `Test-Format`.
-
-#### Unit Test Driver Script
-[&uarr; Unit Testing Process](#unit-testing-process)<br />
-
-Unit testing is executed through a driver script, Test-Get-UT_TemplateObject.ps1, that contains the wrapper function and makes a call to the TrapitUtils library function `Test-Format`. This calls Test-Unit to create the output JSON file, and then calls the Javascript formatter, which writes the formatted results files to a subfolder in the script folder, with name based on the title, returning a summary of the results.
-
-`Test-Format` has parameters:
-
-* `[string]$utRoot`: unit test root folder
-* `[string]$npmRoot`: parent folder of the JavaScript node_modules npm root folder
-* `[string]$stemInpJSON`: input JSON file name stem
-* `[ScriptBlock]$purelyWrapUnit`: function to process unit test for a single scenario
-
-Return value:
-
-* `[string]`: summary of results
-
-#### #Test-Get-UT_TemplateObject.ps1 (skeleton)
-
+##### Test-Get-UT_TemplateObject.ps1 (skeleton)
 ```powershell
 Import-Module ..\TrapitUtils.psm1
 $DELIM = ';'
-function purelyWrap-Unit($inpGroups) { # input scenario groups
+function purelyWrap-Unit([PSCustomObject]$inpGroups) { # input scenario groups
     ...
 }
 Test-Format $PSScriptRoot ($PSScriptRoot + '/../../TrapitUtils') 'get_ut_template_object' ${function:purelyWrap-Unit}
 ```
-This script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
+This script contains the wrapper function, passing it in a call to the TrapitUtils library function Test-Format.
 
+### Unit Test Results
+[&uarr; Unit Testing](#unit-testing)<br />
+[&darr; Unit Test Report - Get UT Template Object](#unit-test-report---get-ut-template-object)<br />
+[&darr; Scenario 14: Multiple scenarios [Category Set: Scenarios Multiplicity]](#scenario-14-multiple-scenarios-category-set-scenarios-multiplicity)<br />
+
+The unit test script creates a results subfolder, with results in text and HTML formats, in the script folder, and outputs the following summary:
 ```
 Results summary for file: [MY_PATH]/TrapitUtils/unit_test/get_ut_template_object_out.json
 ===============================================================================================================
@@ -1159,10 +1242,8 @@ Fails:         0
 Folder:        get-ut-template-object
 ```
 
-### Unit Test Results
-[&uarr; Unit Testing](#unit-testing)<br />
-[&darr; Unit Test Report - Get UT Template Object](#unit-test-report---get-ut-template-object)<br />
-[&darr; Scenario 14: Multiple scenarios [Category Set: Scenarios Multiplicity]](#scenario-14-multiple-scenarios-category-set-scenarios-multiplicity)<br />
+#### Unit Test Report - Get UT Template Object
+[&uarr; Unit Test Results](#unit-test-results-3)<br />
 
 Here  we show the scenario-level summary of results, and show the detail for one of the scenarios, in text format.
 
@@ -1170,14 +1251,11 @@ You can review the HTML formatted unit test results here:
 
 - [Unit Test Report: Get UT Template Object](http://htmlpreview.github.io/?https://github.com/BrenPatF/powershell_utils/blob/master/TrapitUtils/unit_test/get-ut-template-object/get-ut-template-object.html)
 
-#### Unit Test Report - Get UT Template Object
-[&uarr; Unit Test Results](#unit-test-results-2)<br />
-
 ```
 Unit Test Report: Get UT Template Object
 ========================================
 
-      #    Category Set               Scenario                                        Fails (of 6)  Status
+      #    Category Set               Scenario                                        Fails (of 7)  Status
       ---  -------------------------  ----------------------------------------------  ------------  -------
       1    Input Group Multiplicity   No input groups                                 0             SUCCESS
       2    Input Group Multiplicity   One input group                                 0             SUCCESS
@@ -1191,98 +1269,129 @@ Unit Test Report: Get UT Template Object
       10   Output Field Multiplicity  Multiple output fields                          0             SUCCESS
       11   Delimiter Multiplicity     One-character delimiter                         0             SUCCESS
       12   Delimiter Multiplicity     Multi-character delimiter                       0             SUCCESS
-      13   Scenarios Multiplicity     Scenarios file not present                      0             SUCCESS
-      14   Scenarios Multiplicity     Multiple scenarios                              0             SUCCESS
-      15   Initial Field Values       All field values null                           0             SUCCESS
-      16   Initial Field Values       Some field values null, some not null           0             SUCCESS
+      13   Scenario Multiplicity      Scenarios file not present                      0             SUCCESS
+      14   Scenario Multiplicity      Multiple scenarios                              0             SUCCESS
+      15   Field Value Multiplicity   No field values                                 0             SUCCESS
+      16   Field Value Multiplicity   Multiple field values varying by group          0             SUCCESS
       17   Category Set               Scenarios with null and not null category sets  0             SUCCESS
       18   Active Flag                Scenarios with Y and N active flag              0             SUCCESS
 
 Test scenarios: 0 failed of 18: SUCCESS
 =======================================
-Tested: 2023-04-09 14:33:22, Formatted: 2023-04-09 14:33:22
+Formatted: 8/6/2025, 15:50:19
 ```
 
 #### Scenario 14: Multiple scenarios [Category Set: Scenarios Multiplicity]
-[&uarr; Unit Test Results](#unit-test-results-2)<br />
+[&uarr; Unit Test Results](#unit-test-results-3)<br />
 
 ```
-SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
-========================================================================
+SCENARIO 14: Multiple scenarios [Category Set: Scenario Multiplicity] {
+=======================================================================
    INPUTS
    ======
       GROUP 1: Scalars {
       ==================
-            #  Delimiter
-            -  ---------
-            1  ~
+            #  Delimiter  Title
+            -  ---------  -------------
+            1  ~          Template Test
       }
       =
       GROUP 2: Scenarios {
       ====================
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y
-            2  Generic       Scenario Two  Y
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N
+            2  Category Set 2  Scenario 2  N
       }
       =
       GROUP 3: Input Group {
       ======================
-            #  Group Name     Field Name     Value
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
       }
       =
       GROUP 4: Output Group {
       =======================
-            #  Group Name      Field Name      Value
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
       }
       =
    OUTPUTS
    =======
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+            #  Title
+            -  -------------
+            1  Template Test
+      } 0 failed of 1: SUCCESS
+      ========================
+      GROUP 2: Meta Input Group {
       ===========================
             #  Group Name     Field Name
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
-      } 0 failed of 1: SUCCESS
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+      } 0 failed of 4: SUCCESS
       ========================
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
             #  Group Name      Field Name
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-      } 0 failed of 1: SUCCESS
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+      } 0 failed of 4: SUCCESS
       ========================
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y
-            2  Generic       Scenario Two  Y
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N
+            2  Category Set 2  Scenario 2  N
       } 0 failed of 2: SUCCESS
       ========================
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
-            #  Scenario      Group Name     Record
-            -  ------------  -------------  -------------
-            1  Scenario One  Input Group 1  Input Value 1
-            2  Scenario Two  Input Group 1  Input Value 1
-      } 0 failed of 2: SUCCESS
+            #  Scenario    Group Name     Record
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
+      } 0 failed of 8: SUCCESS
       ========================
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
-            #  Scenario      Group Name      Record
-            -  ------------  --------------  --------------
-            1  Scenario One  Output Group 1  Output Value 1
-            2  Scenario Two  Output Group 1  Output Value 1
-      } 0 failed of 2: SUCCESS
+            #  Scenario    Group Name      Record
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
+      } 0 failed of 8: SUCCESS
       ========================
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 ```
 ## Folder Structure
@@ -1293,7 +1402,7 @@ The project folder structure is shown below.
 <img src="png/folders-TrapitUtils.png">
 
 There are four subfolders below the trapit root folder, which has README and module:
-- `examples`: Two working powershell examples are included in their own subfolders, with both test scripts and a main script that shows how the unit under test would normally be called
+- `examples`: Two working PowerShell examples are included in their own subfolders, with both test scripts and a main script that shows how the unit under test would normally be called
 - `node_modules`: npm root
 - `png`: This holds the image files for the README
 - `unit_test`: Root folder for unit testing of the Get-UT_TemplateObject function, with subfolder having the results files

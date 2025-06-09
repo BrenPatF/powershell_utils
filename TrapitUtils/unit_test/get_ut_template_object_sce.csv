@@ -11,9 +11,9 @@ Output Field Multiplicity,One output field,N
 Output Field Multiplicity,Multiple output fields,N
 Delimiter Multiplicity,One-character delimiter,N
 Delimiter Multiplicity,Multi-character delimiter,N
-Scenarios Multiplicity,Scenarios file not present,N
-Scenarios Multiplicity,Multiple scenarios,N
-Initial Field Values,All field values null,N
-Initial Field Values,"Some field values null, some not null",N
+Scenario Multiplicity,Scenarios file not present,N
+Scenario Multiplicity,Multiple scenarios,N
+Field Value Multiplicity,No field values,N
+Field Value Multiplicity,Multiple field values varying by group,N
 Category Set,Scenarios with null and not null category sets,N
 Active Flag,Scenarios with Y and N active flag,N

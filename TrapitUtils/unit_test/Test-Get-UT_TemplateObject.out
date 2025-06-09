@@ -5,7 +5,7 @@ Results summary for file: C:/Users/Brend/OneDrive/Documents/GitHub/powershell_ut
 File:          get_ut_template_object_out.json
 Title:         Get UT Template Object
 Inp Groups:    4
-Out Groups:    6
+Out Groups:    7
 Tests:         18
 Fails:         0
 Folder:        get-ut-template-object

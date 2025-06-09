@@ -1,7 +1,7 @@
 Unit Test Report: Get UT Template Object
 ========================================
 
-      #    Category Set               Scenario                                        Fails (of 6)  Status 
+      #    Category Set               Scenario                                        Fails (of 7)  Status 
       ---  -------------------------  ----------------------------------------------  ------------  -------
       1    Input Group Multiplicity   No input groups                                 0             SUCCESS
       2    Input Group Multiplicity   One input group                                 0             SUCCESS
@@ -15,16 +15,16 @@ Unit Test Report: Get UT Template Object
       10   Output Field Multiplicity  Multiple output fields                          0             SUCCESS
       11   Delimiter Multiplicity     One-character delimiter                         0             SUCCESS
       12   Delimiter Multiplicity     Multi-character delimiter                       0             SUCCESS
-      13   Scenarios Multiplicity     Scenarios file not present                      0             SUCCESS
-      14   Scenarios Multiplicity     Multiple scenarios                              0             SUCCESS
-      15   Initial Field Values       All field values null                           0             SUCCESS
-      16   Initial Field Values       Some field values null, some not null           0             SUCCESS
+      13   Scenario Multiplicity      Scenarios file not present                      0             SUCCESS
+      14   Scenario Multiplicity      Multiple scenarios                              0             SUCCESS
+      15   Field Value Multiplicity   No field values                                 0             SUCCESS
+      16   Field Value Multiplicity   Multiple field values varying by group          0             SUCCESS
       17   Category Set               Scenarios with null and not null category sets  0             SUCCESS
       18   Active Flag                Scenarios with Y and N active flag              0             SUCCESS
 
 Test scenarios: 0 failed of 18: SUCCESS
 =======================================
-Formatted: 1/12/2024, 15:18:26
+Formatted: 9/6/2025, 07:54:46
 
 SCENARIO 1: No input groups [Category Set: Input Group Multiplicity] {
 ======================================================================
@@ -35,9 +35,9 @@ SCENARIO 1: No input groups [Category Set: Input Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -45,9 +45,10 @@ SCENARIO 1: No input groups [Category Set: Input Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -58,9 +59,12 @@ SCENARIO 1: No input groups [Category Set: Input Group Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -68,46 +72,67 @@ SCENARIO 1: No input groups [Category Set: Input Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group: Empty as expected: SUCCESS
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group: Empty as expected: SUCCESS
       =====================================================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group: Empty as expected: SUCCESS
+      GROUP 5: Scenario Input Group: Empty as expected: SUCCESS
       =========================================================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
@@ -119,9 +144,9 @@ SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -129,9 +154,10 @@ SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -139,9 +165,10 @@ SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
 
       }
       =
@@ -149,9 +176,12 @@ SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -159,60 +189,85 @@ SCENARIO 2: One input group [Category Set: Input Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            4  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
@@ -224,9 +279,9 @@ SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -234,9 +289,10 @@ SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -244,10 +300,12 @@ SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name       Value          
-            -  -------------  ---------------  ---------------
-            1  Input Group 1  Input Field 1-1  Input Value 1-1
-            2  Input Group 2  Input Field 2-1  Input Value 2-1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -255,9 +313,12 @@ SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -265,62 +326,91 @@ SCENARIO 3: Multiple input groups [Category Set: Input Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
             #  Group Name     Field Name     
             -  -------------  ---------------
             1  Input Group 1  Input Field 1-1
-            2  Input Group 2  Input Field 2-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
-      ===============================
-
-            #  Scenario      Group Name     Record         
-            -  ------------  -------------  ---------------
-            1  Scenario one  Input Group 1  Input Value 1-1
-            2  Scenario one  Input Group 2  Input Value 2-1
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
-      ================================
+      GROUP 5: Scenario Input Group {
+      ===============================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 6: Scenario Output Group {
+      ================================
+
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 4: No output groups [Category Set: Output Group Multiplicity] {
@@ -332,9 +422,9 @@ SCENARIO 4: No output groups [Category Set: Output Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -342,9 +432,10 @@ SCENARIO 4: No output groups [Category Set: Output Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -352,9 +443,12 @@ SCENARIO 4: No output groups [Category Set: Output Group Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -365,46 +459,67 @@ SCENARIO 4: No output groups [Category Set: Output Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group: Empty as expected: SUCCESS
+      GROUP 3: Meta Output Group: Empty as expected: SUCCESS
       ======================================================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group: Empty as expected: SUCCESS
+      GROUP 6: Scenario Output Group: Empty as expected: SUCCESS
       ==========================================================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
@@ -416,9 +531,9 @@ SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -426,9 +541,10 @@ SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -436,9 +552,12 @@ SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -446,9 +565,10 @@ SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
 
       }
       =
@@ -456,60 +576,85 @@ SCENARIO 5: One output group [Category Set: Output Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            4  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
@@ -521,9 +666,9 @@ SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -531,9 +676,10 @@ SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -541,9 +687,12 @@ SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -551,10 +700,12 @@ SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name        Value           
-            -  --------------  ----------------  ----------------
-            1  Output Group 1  Output Field 1-1  Output Value 1-1
-            2  Output Group 2  Output Field 2-1  Output Value 2-1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -562,62 +713,91 @@ SCENARIO 6: Multiple output groups [Category Set: Output Group Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
-      ===========================
+      GROUP 1: Scalars {
+      ==================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Title        
+            -  -------------
+            1  Template Test
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 2: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Meta Output Group {
       ============================
 
             #  Group Name      Field Name      
             -  --------------  ----------------
             1  Output Group 1  Output Field 1-1
-            2  Output Group 2  Output Field 2-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
-      ===============================
-
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 5: Scenario Output Group {
-      ================================
-
-            #  Scenario      Group Name      Record          
-            -  ------------  --------------  ----------------
-            1  Scenario one  Output Group 1  Output Value 1-1
-            2  Scenario one  Output Group 2  Output Value 2-1
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 5: Scenario Input Group {
+      ===============================
+
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 6: Scenario Output Group {
+      ================================
+
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
+
+      } 0 failed of 8: SUCCESS
+      ========================
+
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
@@ -629,9 +809,9 @@ SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -639,9 +819,10 @@ SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -649,9 +830,9 @@ SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
 
       }
       =
@@ -659,9 +840,12 @@ SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -669,60 +853,84 @@ SCENARIO 7: One input field [Category Set: Input Field Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record          
+            -  ----------  -------------  ----------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1
+            2  Scenario 1  Input Group 1  Input Value2 1-1
+            3  Scenario 2  Input Group 1  Input Value1 1-1
+            4  Scenario 2  Input Group 1  Input Value2 1-1
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
@@ -734,9 +942,9 @@ SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -744,9 +952,10 @@ SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -754,10 +963,12 @@ SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value          
-            -  -------------  -------------  ---------------
-            1  Input Group 1  Input Field 1  Input Value 1-1
-            2  Input Group 1  Input Field 2  Input Value 1-2
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -765,9 +976,12 @@ SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -775,61 +989,91 @@ SCENARIO 8: Multiple input fields [Category Set: Input Field Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
-            2  Input Group 1  Input Field 2
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Meta Output Group {
+      ============================
+
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 4: Scenarios {
+      ====================
+
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
-      ============================
-
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 3: Scenarios {
-      ====================
-
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record                         
-            -  ------------  -------------  -------------------------------
-            1  Scenario one  Input Group 1  Input Value 1-1~Input Value 1-2
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
@@ -841,9 +1085,9 @@ SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -851,9 +1095,10 @@ SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -861,9 +1106,12 @@ SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -871,9 +1119,9 @@ SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
 
       }
       =
@@ -881,60 +1129,84 @@ SCENARIO 9: One output field [Category Set: Output Field Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario one  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record           
+            -  ----------  --------------  -----------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1
+            2  Scenario 1  Output Group 1  Output Value2 1-1
+            3  Scenario 2  Output Group 1  Output Value1 1-1
+            4  Scenario 2  Output Group 1  Output Value2 1-1
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
@@ -946,9 +1218,9 @@ SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -956,9 +1228,10 @@ SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -966,9 +1239,12 @@ SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -976,10 +1252,12 @@ SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value           
-            -  --------------  --------------  ----------------
-            1  Output Group 1  Output Field 1  Output Value 1-1
-            2  Output Group 1  Output Field 2  Output Value 1-2
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -987,61 +1265,91 @@ SCENARIO 10: Multiple output fields [Category Set: Output Field Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
-      ===========================
+      GROUP 1: Scalars {
+      ==================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Title        
+            -  -------------
+            1  Template Test
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 2: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-            2  Output Group 1  Output Field 2
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 4: Scenarios {
+      ====================
+
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
-      ====================
-
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record                           
-            -  ------------  --------------  ---------------------------------
-            1  Scenario one  Output Group 1  Output Value 1-1~Output Value 1-2
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
@@ -1053,9 +1361,9 @@ SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ?        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1063,9 +1371,10 @@ SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1073,9 +1382,12 @@ SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1083,10 +1395,12 @@ SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value           
-            -  --------------  --------------  ----------------
-            1  Output Group 1  Output Field 1  Output Value 1-1
-            2  Output Group 1  Output Field 2  Output Value 1-2
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1094,61 +1408,91 @@ SCENARIO 11: One-character delimiter [Category Set: Delimiter Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
-      ===========================
+      GROUP 1: Scalars {
+      ==================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Title        
+            -  -------------
+            1  Template Test
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 2: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-            2  Output Group 1  Output Field 2
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 4: Scenarios {
+      ====================
+
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
-      ====================
-
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record                           
-            -  ------------  --------------  ---------------------------------
-            1  Scenario one  Output Group 1  Output Value 1-1?Output Value 1-2
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
@@ -1160,9 +1504,9 @@ SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ??       
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ?#         Template Test
 
       }
       =
@@ -1170,9 +1514,10 @@ SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1180,9 +1525,12 @@ SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1190,10 +1538,12 @@ SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value           
-            -  --------------  --------------  ----------------
-            1  Output Group 1  Output Field 1  Output Value 1-1
-            2  Output Group 1  Output Field 2  Output Value 1-2
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1201,65 +1551,95 @@ SCENARIO 12: Multi-character delimiter [Category Set: Delimiter Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
-      ===========================
+      GROUP 1: Scalars {
+      ==================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Title        
+            -  -------------
+            1  Template Test
 
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 2: Meta Input Group {
+      ===========================
+
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-            2  Output Group 1  Output Field 2
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 4: Scenarios {
+      ====================
+
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
-      ====================
-
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario one  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                            
+            -  ----------  -------------  ----------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1?#Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1?#Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1?#Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1?#Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1?#Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1?#Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1?#Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1?#Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record                            
-            -  ------------  --------------  ----------------------------------
-            1  Scenario one  Output Group 1  Output Value 1-1??Output Value 1-2
+            #  Scenario    Group Name      Record                              
+            -  ----------  --------------  ------------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1?#Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1?#Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1?#Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1?#Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1?#Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1?#Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1?#Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1?#Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
-SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
-================================================================================
+SCENARIO 13: Scenarios file not present [Category Set: Scenario Multiplicity] {
+===============================================================================
 
    INPUTS
    ======
@@ -1267,9 +1647,9 @@ SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1280,9 +1660,12 @@ SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1290,9 +1673,12 @@ SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1300,27 +1686,43 @@ SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
             #  Category Set  Scenario    Active
@@ -1330,34 +1732,40 @@ SCENARIO 13: Scenarios file not present [Category Set: Scenarios Multiplicity] {
       } 0 failed of 1: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario    Group Name     Record       
-            -  ----------  -------------  -------------
-            1  scenario 1  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario    Group Name      Record        
-            -  ----------  --------------  --------------
-            1  scenario 1  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
-SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
-========================================================================
+SCENARIO 14: Multiple scenarios [Category Set: Scenario Multiplicity] {
+=======================================================================
 
    INPUTS
    ======
@@ -1365,9 +1773,9 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1375,10 +1783,10 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y     
-            2  Generic       Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1386,9 +1794,12 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1396,9 +1807,12 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1406,67 +1820,95 @@ SCENARIO 14: Multiple scenarios [Category Set: Scenarios Multiplicity] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y     
-            2  Generic       Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario One  Input Group 1  Input Value 1
-            2  Scenario Two  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario One  Output Group 1  Output Value 1
-            2  Scenario Two  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
-SCENARIO 15: All field values null [Category Set: Initial Field Values] {
-=========================================================================
+SCENARIO 15: No field values [Category Set: Field Value Multiplicity] {
+=======================================================================
 
    INPUTS
    ======
@@ -1474,9 +1916,9 @@ SCENARIO 15: All field values null [Category Set: Initial Field Values] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1484,9 +1926,10 @@ SCENARIO 15: All field values null [Category Set: Initial Field Values] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1494,9 +1937,12 @@ SCENARIO 15: All field values null [Category Set: Initial Field Values] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value
-            -  -------------  -------------  -----
-            1  Input Group 1  Input Field 1       
+            #  Group Name     Field Name       Value1  Value2
+            -  -------------  ---------------  ------  ------
+            1  Input Group 1  Input Field 1-1                
+            2  Input Group 1  Input Field 1-2                
+            3  Input Group 2  Input Field 2-1                
+            4  Input Group 2  Input Field 2-2                
 
       }
       =
@@ -1504,9 +1950,12 @@ SCENARIO 15: All field values null [Category Set: Initial Field Values] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value
-            -  --------------  --------------  -----
-            1  Output Group 1  Output Field 1       
+            #  Group Name      Field Name        Value1  Value2
+            -  --------------  ----------------  ------  ------
+            1  Output Group 1  Output Field 1-1                
+            2  Output Group 1  Output Field 1-2                
+            3  Output Group 2  Output Field 2-1                
+            4  Output Group 2  Output Field 2-2                
 
       }
       =
@@ -1514,64 +1963,67 @@ SCENARIO 15: All field values null [Category Set: Initial Field Values] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
-      ===============================
+      GROUP 5: Scenario Input Group: Empty as expected: SUCCESS
+      =========================================================
 
-            #  Scenario      Group Name     Record
-            -  ------------  -------------  ------
-            1  Scenario one  Input Group 1        
+      GROUP 6: Scenario Output Group: Empty as expected: SUCCESS
+      ==========================================================
 
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 5: Scenario Output Group {
-      ================================
-
-            #  Scenario      Group Name      Record
-            -  ------------  --------------  ------
-            1  Scenario one  Output Group 1        
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
-SCENARIO 16: Some field values null, some not null [Category Set: Initial Field Values] {
-=========================================================================================
+SCENARIO 16: Multiple field values varying by group [Category Set: Field Value Multiplicity] {
+==============================================================================================
 
    INPUTS
    ======
@@ -1579,9 +2031,9 @@ SCENARIO 16: Some field values null, some not null [Category Set: Initial Field 
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1589,9 +2041,10 @@ SCENARIO 16: Some field values null, some not null [Category Set: Initial Field 
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1599,10 +2052,12 @@ SCENARIO 16: Some field values null, some not null [Category Set: Initial Field 
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1               
-            2  Input Group 1  Input Field 2  Input Value 2
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1                  
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2                  
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1610,10 +2065,12 @@ SCENARIO 16: Some field values null, some not null [Category Set: Initial Field 
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
-            2  Output Group 1  Output Field 2                
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1                   
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2                   
 
       }
       =
@@ -1621,62 +2078,87 @@ SCENARIO 16: Some field values null, some not null [Category Set: Initial Field 
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
-            2  Input Group 1  Input Field 2
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
-            2  Output Group 1  Output Field 2
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
+
+      } 0 failed of 4: SUCCESS
+      ========================
+
+      GROUP 4: Scenarios {
+      ====================
+
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
-      ====================
-
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario one  N     
-
-      } 0 failed of 1: SUCCESS
-      ========================
-
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record        
-            -  ------------  -------------  --------------
-            1  Scenario one  Input Group 1  ~Input Value 2
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            3  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            4  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            5  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            6  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 6: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record         
-            -  ------------  --------------  ---------------
-            1  Scenario one  Output Group 1  Output Value 1~
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            5  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            6  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 6: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 17: Scenarios with null and not null category sets [Category Set: Category Set] {
@@ -1688,9 +2170,9 @@ SCENARIO 17: Scenarios with null and not null category sets [Category Set: Categ
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1698,10 +2180,10 @@ SCENARIO 17: Scenarios with null and not null category sets [Category Set: Categ
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y     
-            2                Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1                  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       }
       =
@@ -1709,9 +2191,12 @@ SCENARIO 17: Scenarios with null and not null category sets [Category Set: Categ
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1719,9 +2204,12 @@ SCENARIO 17: Scenarios with null and not null category sets [Category Set: Categ
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1729,63 +2217,91 @@ SCENARIO 17: Scenarios with null and not null category sets [Category Set: Categ
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  Y     
-            2                Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1                  Scenario 1  N     
+            2  Category Set 2  Scenario 2  N     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario One  Input Group 1  Input Value 1
-            2  Scenario Two  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario One  Output Group 1  Output Value 1
-            2  Scenario Two  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================
 
 SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
@@ -1797,9 +2313,9 @@ SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
       GROUP 1: Scalars {
       ==================
 
-            #  Delimiter
-            -  ---------
-            1  ~        
+            #  Delimiter  Title        
+            -  ---------  -------------
+            1  ~          Template Test
 
       }
       =
@@ -1807,10 +2323,10 @@ SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
       GROUP 2: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  N     
-            2                Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  Y     
 
       }
       =
@@ -1818,9 +2334,12 @@ SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
       GROUP 3: Input Group {
       ======================
 
-            #  Group Name     Field Name     Value        
-            -  -------------  -------------  -------------
-            1  Input Group 1  Input Field 1  Input Value 1
+            #  Group Name     Field Name       Value1            Value2          
+            -  -------------  ---------------  ----------------  ----------------
+            1  Input Group 1  Input Field 1-1  Input Value1 1-1  Input Value2 1-1
+            2  Input Group 1  Input Field 1-2  Input Value1 1-2  Input Value2 1-2
+            3  Input Group 2  Input Field 2-1  Input Value1 2-1  Input Value2 2-1
+            4  Input Group 2  Input Field 2-2  Input Value1 2-2  Input Value2 2-2
 
       }
       =
@@ -1828,9 +2347,12 @@ SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
       GROUP 4: Output Group {
       =======================
 
-            #  Group Name      Field Name      Value         
-            -  --------------  --------------  --------------
-            1  Output Group 1  Output Field 1  Output Value 1
+            #  Group Name      Field Name        Value1             Value2           
+            -  --------------  ----------------  -----------------  -----------------
+            1  Output Group 1  Output Field 1-1  Output Value1 1-1  Output Value2 1-1
+            2  Output Group 1  Output Field 1-2  Output Value1 1-2  Output Value2 1-2
+            3  Output Group 2  Output Field 2-1  Output Value1 2-1  Output Value2 2-1
+            4  Output Group 2  Output Field 2-2  Output Value1 2-2  Output Value2 2-2
 
       }
       =
@@ -1838,61 +2360,89 @@ SCENARIO 18: Scenarios with Y and N active flag [Category Set: Active Flag] {
    OUTPUTS
    =======
 
-      GROUP 1: Meta Input Group {
+      GROUP 1: Scalars {
+      ==================
+
+            #  Title        
+            -  -------------
+            1  Template Test
+
+      } 0 failed of 1: SUCCESS
+      ========================
+
+      GROUP 2: Meta Input Group {
       ===========================
 
-            #  Group Name     Field Name   
-            -  -------------  -------------
-            1  Input Group 1  Input Field 1
+            #  Group Name     Field Name     
+            -  -------------  ---------------
+            1  Input Group 1  Input Field 1-1
+            2  Input Group 1  Input Field 1-2
+            3  Input Group 2  Input Field 2-1
+            4  Input Group 2  Input Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 2: Meta Output Group {
+      GROUP 3: Meta Output Group {
       ============================
 
-            #  Group Name      Field Name    
-            -  --------------  --------------
-            1  Output Group 1  Output Field 1
+            #  Group Name      Field Name      
+            -  --------------  ----------------
+            1  Output Group 1  Output Field 1-1
+            2  Output Group 1  Output Field 1-2
+            3  Output Group 2  Output Field 2-1
+            4  Output Group 2  Output Field 2-2
 
-      } 0 failed of 1: SUCCESS
+      } 0 failed of 4: SUCCESS
       ========================
 
-      GROUP 3: Scenarios {
+      GROUP 4: Scenarios {
       ====================
 
-            #  Category Set  Scenario      Active
-            -  ------------  ------------  ------
-            1  Generic       Scenario One  N     
-            2                Scenario Two  Y     
+            #  Category Set    Scenario    Active
+            -  --------------  ----------  ------
+            1  Category Set 1  Scenario 1  N     
+            2  Category Set 2  Scenario 2  Y     
 
       } 0 failed of 2: SUCCESS
       ========================
 
-      GROUP 4: Scenario Input Group {
+      GROUP 5: Scenario Input Group {
       ===============================
 
-            #  Scenario      Group Name     Record       
-            -  ------------  -------------  -------------
-            1  Scenario One  Input Group 1  Input Value 1
-            2  Scenario Two  Input Group 1  Input Value 1
+            #  Scenario    Group Name     Record                           
+            -  ----------  -------------  ---------------------------------
+            1  Scenario 1  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            2  Scenario 1  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            3  Scenario 1  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            4  Scenario 1  Input Group 2  Input Value2 2-1~Input Value2 2-2
+            5  Scenario 2  Input Group 1  Input Value1 1-1~Input Value1 1-2
+            6  Scenario 2  Input Group 1  Input Value2 1-1~Input Value2 1-2
+            7  Scenario 2  Input Group 2  Input Value1 2-1~Input Value1 2-2
+            8  Scenario 2  Input Group 2  Input Value2 2-1~Input Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 5: Scenario Output Group {
+      GROUP 6: Scenario Output Group {
       ================================
 
-            #  Scenario      Group Name      Record        
-            -  ------------  --------------  --------------
-            1  Scenario One  Output Group 1  Output Value 1
-            2  Scenario Two  Output Group 1  Output Value 1
+            #  Scenario    Group Name      Record                             
+            -  ----------  --------------  -----------------------------------
+            1  Scenario 1  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            2  Scenario 1  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            3  Scenario 1  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            4  Scenario 1  Output Group 2  Output Value2 2-1~Output Value2 2-2
+            5  Scenario 2  Output Group 1  Output Value1 1-1~Output Value1 1-2
+            6  Scenario 2  Output Group 1  Output Value2 1-1~Output Value2 1-2
+            7  Scenario 2  Output Group 2  Output Value1 2-1~Output Value1 2-2
+            8  Scenario 2  Output Group 2  Output Value2 2-1~Output Value2 2-2
 
-      } 0 failed of 2: SUCCESS
+      } 0 failed of 8: SUCCESS
       ========================
 
-      GROUP 6: Unhandled Exception: Empty as expected: SUCCESS
+      GROUP 7: Unhandled Exception: Empty as expected: SUCCESS
       ========================================================
 
-} 0 failed of 6: SUCCESS
+} 0 failed of 7: SUCCESS
 ========================

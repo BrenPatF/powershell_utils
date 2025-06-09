@@ -1,9 +1,9 @@
-Group,Field,Value
-Log,#Lines,1
-Log,Date Offset,"IN [0,2000]"
-Log,Text,"LIKE /.*: File .*ut_group.*.csv, delimiter ',', column col_1/"
-listAsIs,#Instances,1
-sortByKey,Key,val_1
-sortByKey,Value,1
-sortByValue,Key,val_1
-sortByValue,Value,1
+Group,Field,Value1,Value2
+Log,#Lines,1,
+Log,Date Offset,"IN [0,2000]",
+Log,Text,"LIKE /.*: File .*ut_group.*.csv, delimiter ',', column col_1/",
+listAsIs,#Instances,2,
+sortByKey,Key,val_11,val_12
+sortByKey,Value,2,1
+sortByValue,Key,val_12,val_11
+sortByValue,Value,1,2

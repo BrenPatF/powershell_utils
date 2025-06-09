@@ -84,7 +84,8 @@ function Write-UT_Template {
             if ($_.length -eq 1) { return $true }
             else { throw "The specified delimiter '$_' must be a single character." }
         })]
-        [string]$delimiter # delimiter
+        [String]$delimiter, # delimiter
+        [String]$title # title
     )
 
     $path = '.\' + $stem
@@ -93,7 +94,7 @@ function Write-UT_Template {
     $csvSce = $path + '_sce.csv'
     $json = $path + '_temp.json' 
 
-    Get-UT_TemplateObject (Get-ObjLisFromCsv $csvInp) (Get-ObjLisFromCsv $csvOut) $delimiter `
+    Get-UT_TemplateObject (Get-ObjLisFromCsv $csvInp) (Get-ObjLisFromCsv $csvOut) $delimiter $title `
                           (Get-ObjLisFromCsv $csvSce) | ConvertTo-Json -depth 4 | Set-Content $json
 
 }
@@ -105,51 +106,58 @@ Get-UT_TemplateObject: Gets a template in object form for the unit test scenario
     Constructs object in required format from the input object lists
 
 **************************************************************************************************#>
-function Get-UT_TemplateObject($inpGroupLis, # list of group, field, value triples for input
-                               $outGroupLis, # list of group, field, value triples for output
-                               $delimiter,   # delimiter
-                               $sceLis) {    # list of category set, scenario, active triples
+function Get-UT_TemplateObject([PSCustomObject[]]$inpGroupLis, # list of group, field, value objects for input
+                               [PSCustomObject[]]$outGroupLis, # list of group, field, value objects for output
+                               [String]$delimiter,             # delimiter
+                               [String]$title,                 # title
+                               [PSCustomObject[]]$sceLis) {    # list of category set, scenario, active objects
 
 <#**************************************************************************************************
 
-groupObjectFromLis: Takes either an input or an output group, returns meta and scenarios objects for
-    the group within outer object wrapper; special handling for empty group
+groupObjectFromLis: Takes either an input or an output list of group objects, returns meta and
+    scenarios objects for the groups within outer object wrapper; special handling for empty group
 
 **************************************************************************************************#>
-    function groupObjectFromLis($groupLis) { # list of group, field, value triples
+    function groupObjectFromLis([PSCustomObject[]]$groupsObjLis) { # list of group, field, value objects
 
-        function nonEmptyObject($groupLis) { # list of group, field, value triples
+        function nonEmptyObject([PSCustomObject[]]$groupsObjLis) { # list of group, field, value objects
 
             $metaObj = New-Object -TypeName psobject
             $sceObj = New-Object -TypeName psobject
-
-            $grpNames = @{}
-            foreach ($g in $groupLis) {
-                If ($grpNames[$g.group]) {
-                    Continue
-                } Else { 
-                    $grpNames.Add($g.group, 1)
-                    $flds = $groupLis | Where {$_.group -eq $g.group}
-                    $val = ''
-                    foreach ($f in $flds) {
-                        $val += $f.value + $delimiter
-                    }
-                    $fldArr = [String[]]$flds.field
-
-                    $valArr = [String[]]($val -Replace ("." * $delimiter.length + "$"))
-                    $metaObj | Add-Member -MemberType NoteProperty -Name $g.group -Value $fldArr
-                    $sceObj | Add-Member -MemberType NoteProperty -Name $g.group -Value $valArr
+            $colLis = [string[]]$groupsObjLis[0].psobject.Properties.Name
+            $seen = @{}
+            $grpNames = foreach ($g in $groupsObjLis.Group) {
+                if (-not $seen.ContainsKey($g)) {
+                    $seen[$g] = $true
+                    $g
                 }
             }
-            @{
+            foreach ($g in $grpNames) {
+                $groupObjLis = $groupsObjLis | Where {$_.group -eq $g}
+                [String[]]$valArr = @()
+                for($i = 2; $i -lt $colLis.length; $i++) {
+                    $val = ''
+                    foreach ($o in $groupObjLis) {
+                        $val += $o.$($colLis[$i]) + $delimiter
+                    }
+                    if ($val -ne ($delimiter * ($val.Length / $delimiter.Length))) {
+                        $val = $val.Substring(0, $val.Length - $delimiter.Length)
+                        $valArr += $val
+                    }
+                }
+                $fldArr = [String[]]$groupObjLis.field
+                $metaObj | Add-Member -MemberType NoteProperty -Name $g -Value $fldArr
+                $sceObj | Add-Member -MemberType NoteProperty -Name $g -Value $valArr
+            }
+            [PSCustomObject]@{
                 meta = $metaObj
                 sce = $sceObj
             }
         }
-        If ($groupLis) {
-            nonEmptyObject($groupLis)
+        If ($groupsObjLis) {
+            nonEmptyObject($groupsObjLis)
         } Else {
-            @{
+             [PSCustomObject]@{
                 meta = [PSCustomObject]@{}
                 sce = [PSCustomObject]@{}
             }
@@ -158,12 +166,12 @@ groupObjectFromLis: Takes either an input or an output group, returns meta and s
     $inpGroupObject = groupObjectFromLis($inpGroupLis)
     $outGroupObject = groupObjectFromLis($outGroupLis)
     $metaObj = [PSCustomObject]@{
-        title = 'title'
+        title = $title
         delimiter = $delimiter
         inp = $inpGroupObject.meta
         out = $outGroupObject.meta
     }
-    $inp = $inpGroupObject.sce
+    [PSCustomObject]$inp = $inpGroupObject.sce
     If ($sceLis -eq $null) {
         $sce_1Obj = [PSCustomObject]@{
             active_yn = 'Y'
@@ -225,10 +233,10 @@ function Test-Unit {
         [string]$outFile, # output JSON file name
         [Parameter(Mandatory=$true)]
         [ValidateScript({
-            if ($_ -is [scriptblock]) { return $true }
+            if ($_ -is [ScriptBlock]) { return $true }
             else { throw "The specified purelyWrapUnit '$_' is not a valid function." }
         })]
-        [scriptblock]$purelyWrapUnit # function that takes as input an object with lists of records 
+        [ScriptBlock]$purelyWrapUnit # function that takes as input an object with lists of records 
                                      # by group, returning an object with lists of output records by
                                      # group
     )
@@ -240,8 +248,8 @@ function Test-Unit {
         group into the input object, as act, alongside the input lists, as exp
 
     **************************************************************************************************#>
-    function getUT_OutScenario($inpScenario, # input scenario
-                               $actObj) {    # object with lists of actuals for each output group
+    function getUT_OutScenario([PSCustomObject]$inpScenario, # input scenario
+                               [PSCustomObject]$actObj) {    # object with lists of actuals for each output group
 
         $retObj = New-Object -TypeName psobject
         foreach ($o in $actObj.PSObject.Properties) {
@@ -260,7 +268,7 @@ function Test-Unit {
             out = $retObj
         }
     }
-    function callPWU($delimiter, $inp, $out, $purelyWrapUnit) {
+    function callPWU([String]$delimiter, [PSCustomObject]$inp, [PSCustomObject]$out, [ScriptBlock]$purelyWrapUnit) {
         [String[]]$lineArr = @()
         try {
             [PSCustomObject]$actObj = &$purelyWrapUnit $inp
@@ -289,11 +297,11 @@ function Test-Unit {
         - convert the object to JSON and write to the output json file
 
     **************************************************************************************************#>
-    function main($inpFile,          # input file
-                  $outFile,          # output file
-                  $purelyWrapUnit) { # function that takes scenario input value as input, returning actual output value
+    function main([String]$inpFile,               # input file
+                  [String]$outFile,               # output file
+                  [ScriptBlock]$purelyWrapUnit) { # function that takes scenario input value as input, returning actual output value
 
-        $json = Get-Content $inpFile | Out-String | ConvertFrom-Json
+        [PSCustomObject]$json = Get-Content $inpFile | Out-String | ConvertFrom-Json
 
         $scenarios = New-Object -TypeName psobject
         foreach ($s in $json.scenarios.PSObject.Properties) {
@@ -354,10 +362,10 @@ function Test-Format {
         [string]$stemInpJSON, # input JSON file name stem
         [Parameter(Mandatory=$true)]
         [ValidateScript({
-            if ($_ -is [scriptblock]) { return $true }
+            if ($_ -is [ScriptBlock]) { return $true }
             else { throw "The specified purelyWrapUnit '$_' is not a valid function." }
         })]
-        [scriptblock]$purelyWrapUnit # function that takes as input an object with lists of records 
+        [ScriptBlock]$purelyWrapUnit # function that takes as input an object with lists of records 
                                      # by group, returning an object with lists of output records by
                                      # group
     )

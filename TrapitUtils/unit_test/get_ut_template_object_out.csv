@@ -1,9 +1,15 @@
-group,field
-Meta Input Group,Group Name
-Meta Input Group,Field Name
-Meta Output Group,Group Name
-Meta Output Group,Field Name
-Scenario Input Group,Group Name
-Scenario Input Group,Delimiters
-Scenario Output Group,Group Name
-Scenario Output Group,Delimiters
+Group,Field,Value1,Value2,Value3,Value4,Value5,Value6,Value7,Value8
+Scalars,Title,Template Test,,,,,,,
+Meta Input Group,Group Name,Input Group 1,Input Group 1,Input Group 2,Input Group 2,,,,
+Meta Input Group,Field Name,Input Field 1-1,Input Field 1-2,Input Field 2-1,Input Field 2-2,,,,
+Meta Output Group,Group Name,Output Group 1,Output Group 1,Output Group 2,Output Group 2,,,,
+Meta Output Group,Field Name,Output Field 1-1,Output Field 1-2,Output Field 2-1,Output Field 2-2,,,,
+Scenarios,Category Set,Category Set 1,Category Set 2,,,,,,
+Scenarios,Scenario,Scenario 1,Scenario 2,,,,,,
+Scenarios,Active,N,N,,,,,,
+Scenario Input Group,Scenario,Scenario 1,Scenario 1,Scenario 1,Scenario 1,Scenario 2,Scenario 2,Scenario 2,Scenario 2
+Scenario Input Group,Group Name,Input Group 1,Input Group 1,Input Group 2,Input Group 2,Input Group 1,Input Group 1,Input Group 2,Input Group 2
+Scenario Input Group,Record,Input Value1 1-1~Input Value1 1-2,Input Value2 1-1~Input Value2 1-2,Input Value1 2-1~Input Value1 2-2,Input Value2 2-1~Input Value2 2-2,Input Value1 1-1~Input Value1 1-2,Input Value2 1-1~Input Value2 1-2,Input Value1 2-1~Input Value1 2-2,Input Value2 2-1~Input Value2 2-2
+Scenario Output Group,Scenario,Scenario 1,Scenario 1,Scenario 1,Scenario 1,Scenario 2,Scenario 2,Scenario 2,Scenario 2
+Scenario Output Group,Group Name,Output Group 1,Output Group 1,Output Group 2,Output Group 2,Output Group 1,Output Group 1,Output Group 2,Output Group 2
+Scenario Output Group,Record,Output Value1 1-1~Output Value1 1-2,Output Value2 1-1~Output Value2 1-2,Output Value1 2-1~Output Value1 2-2,Output Value2 2-1~Output Value2 2-2,Output Value1 1-1~Output Value1 1-2,Output Value2 1-1~Output Value2 1-2,Output Value1 2-1~Output Value1 2-2,Output Value2 2-1~Output Value2 2-2
